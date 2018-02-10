@@ -61,15 +61,17 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
 The `ef` (effect) object provides you with some string style effects.
 These are supported by default:
 
-* bold (alias b)
-* faint
-* italic (alias i)
-* underline (alias u)
-* blink_slow
-* blink_fast
-* reverse
-* conceal
-* strike
+| First Header         | Second Header |
+| -------------------- | ------------- |
+| bold (alias b)--     | Content Cell  |
+| faint                | Content Cell  |
+| italic (alias i)     |               |
+| underline (alias u)  |               |
+| blink_slow           |               |
+| blink_fast           |               |
+| reverse              |               |
+| conceal              |               |
+| strike               |               |
 
 Note: Terminal support for these varies.
 
