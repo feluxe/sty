@@ -105,6 +105,8 @@ class FgBase(Base):
     cyan = sgr(36)
     white = sgr(37)
 
+    rs = sgr(39)
+
     # These are less supported:
     li_black = sgr(90)
     li_red = sgr(91)
@@ -140,6 +142,8 @@ class BgBase(Base):
     magenta = sgr(45)
     cyan = sgr(46)
     white = sgr(47)
+
+    rs = sgr(49)
 
     # These are less supported:
     li_black = sgr(100)
