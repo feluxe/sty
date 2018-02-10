@@ -214,9 +214,11 @@ This was initially tested on Arch Linux using 'Termite' terminal. If you have is
 
 #### Termite on Linux
 
-* SGR: Fine!
-* 8-bit color: Fine!
-* 24-bit color: Fine!
+| Option        | Status  |
+| ------------- | ------- |
+| SGR:          | Ok!     |
+| 8-bit color:  | Ok!     |
+| 24-bit color: | Ok!     |
 
 If you want to support the widest range of terminals, you should stick to the sgr renderer. The default attributes in all sty objects (`fb`,`bg`,`ef`,`rs`) use `sgr` values exclusively.
 
