@@ -91,7 +91,7 @@ print(a, b, c, sep='\n')
 
 <img src="assets/color_by_name.png" alt="color_by_name" />  
 
-Notice: Color names/values can be modified/extended. See below.
+Notice: Color names/values can be modified/extended. See 'customizing' below.
 
 
 #### String coloring using 8-bit numbers:
