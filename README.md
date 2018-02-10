@@ -102,7 +102,7 @@ print(a, b, sep='\n')
 
 <img src="assets/italic.png" alt="italic" />  
 
-### Bold:
+### Bold
 
 ```python
 a = ef.bold + 'Bold.' + rs.bold
@@ -115,7 +115,7 @@ print(a, b, sep='\n')
 
 <img src="assets/bold.png" alt="bold" />  
 
-### Underline:
+### Underline
 
 ```python
 a = ef.underline + 'Underlined.' + rs.underline
@@ -128,12 +128,12 @@ print(a, b, sep='\n')
 
 <img src="assets/underline.png" alt="underline" />  
 
-#### TODO:
+#### TODO
 
 Add examples for, strike, blink, etc..
 
 
-### String coloring by name:
+### String coloring by name
 
 ```python
 a = fg.blue + 'I have a blue foreground.' + rs.fg
@@ -147,7 +147,7 @@ print(a, b, c, sep='\n')
 
 
 
-### String coloring using 8-bit numbers:
+### String coloring using 8-bit numbers
 
 ```python
 a = fg(34) + 'I have a green foreground.' + rs.fg
@@ -162,7 +162,7 @@ print(a, b, c, sep='\n')
 Link: [Info on 8-bit numbers][1]
 
 
-### String coloring using 24-bit RGB values:
+### String coloring using 24-bit RGB values
 
 ```python
 a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
