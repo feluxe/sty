@@ -49,6 +49,7 @@ b = ef.i + fg.blue + 'Italic.' + rs.i + ' Not italic but blue.' + rs.fg
 print(a, b, sep='\n')
 ```
 
+<img src="assets/italic.png" alt="italic" />  
 
 #### Bold:
 
@@ -59,6 +60,7 @@ b = ef.b + 'Bold.' + rs.b + fg.li_yellow + ' Not bold but yellow.' + rs.fg
 print(a, b, sep='\n')
 ```
 
+<img src="assets/bold.png" alt="bold" />  
 
 #### Underline:
 
@@ -69,6 +71,7 @@ b = ef.u + 'Underlined.' + rs.u + fg.green + ' Not underlined but green.' + rs.f
 print(a, b, sep='\n')
 ```
 
+<img src="assets/underline.png" alt="underline" />  
 
 #### TODO:
 
@@ -85,6 +88,8 @@ c = fg.red + bg.green + 'I have a red fg and green bg.' + rs.all
 print(a, b, c, sep='\n')
 ```
 
+<img src="assets/color_by_name.png" alt="color_by_name" />  
+
 Notice: Color names/values can be modified/extended. See below.
 
 
@@ -97,6 +102,8 @@ c = fg(226) + bg(19) + 'I have a light yellow fg and dark blue bg.' + rs.all
 
 print(a, b, c, sep='\n')
 ```
+
+<img src="assets/8bit.png" alt="8bit" />  
     
 Link: [Info on 8-bit numbers](1)
 
@@ -110,6 +117,8 @@ c = fg(90, 90, 90) + bg(32, 32, 32) + 'Grey fg and dark grey bg.' + rs.all
 
 print(a, b, c, sep='\n')
 ```
+
+<img src="assets/24bit.png" alt="24bit" />  
 
 Link: [Info on 24-bit numbers](2)
 
@@ -136,6 +145,8 @@ e = fg.orange + 'I was set orange by a newly registered color name.' + rs.fg
 
 print(a, b, c, d, e, sep='\n')
 ```
+
+<img src="assets/customizing.png" alt="customizing" />  
 
 As you see, there are three types of renders:
 
