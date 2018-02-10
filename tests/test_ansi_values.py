@@ -1,5 +1,6 @@
 from sty import rs
-from sty.render import sgr
+from sty.renderer import sgr
+
 
 items = [
     sgr(1) + '1 bold' + rs.all,
@@ -10,7 +11,7 @@ items = [
     sgr(6) + '6 blink_fast' + rs.all,
     sgr(7) + '7 reverse' + rs.all,
     sgr(8) + '8 conceal' + rs.all,
-    sgr(9) + '9 crossed' + rs.all,
+    sgr(9) + '9 strike' + rs.all,
     sgr(10) +'10 testing' + rs.all,
     sgr(11) +'11 ?????' + rs.all,
     sgr(12) +'12 ?????' + rs.all,
@@ -30,7 +31,7 @@ items = [
     sgr(26) +'26 ????? ' + rs.all,
     sgr(27) +'27 ????? ' + rs.all,
     sgr(28) +'28 rs_conceal' + rs.all,
-    sgr(29) +'29 rs_crossed' + rs.all,
+    sgr(29) +'29 rs_strike' + rs.all,
     sgr(30) +'30 ?????' + rs.all,
     sgr(31) +'31 ?????' + rs.all,
     sgr(32) +'32 ?????' + rs.all,
@@ -114,5 +115,5 @@ items = [
     sgr(109) + '?????' + rs.all,
 ]
 
-# for item in items:
-#     print(item)
+for item in items:
+    print(item)
