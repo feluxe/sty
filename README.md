@@ -45,7 +45,7 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
     
 ## Documentation:
 
-#### Italic:
+### Italic:
 
 ```python
 a = ef.italic + 'Italic.' + rs.italic
@@ -58,7 +58,7 @@ print(a, b, sep='\n')
 
 <img src="assets/italic.png" alt="italic" />  
 
-#### Bold:
+### Bold:
 
 ```python
 a = ef.bold + 'Bold.' + rs.bold
@@ -71,7 +71,7 @@ print(a, b, sep='\n')
 
 <img src="assets/bold.png" alt="bold" />  
 
-#### Underline:
+### Underline:
 
 ```python
 a = ef.underline + 'Underlined.' + rs.underline
@@ -84,12 +84,12 @@ print(a, b, sep='\n')
 
 <img src="assets/underline.png" alt="underline" />  
 
-#### TODO:
+### TODO:
 
 Add examples for, strike, blink, etc..
 
 
-#### String coloring by name:
+### String coloring by name:
 
 ```python
 a = fg.blue + 'I have a blue foreground.' + rs.fg
@@ -104,7 +104,7 @@ print(a, b, c, sep='\n')
 Notice: Color names/values can be modified/extended. See 'customizing' below.
 
 
-#### String coloring using 8-bit numbers:
+### String coloring using 8-bit numbers:
 
 ```python
 a = fg(34) + 'I have a green foreground.' + rs.fg
@@ -119,7 +119,7 @@ print(a, b, c, sep='\n')
 Link: [Info on 8-bit numbers](1)
 
 
-#### String coloring using 24-bit RGB values:
+### String coloring using 24-bit RGB values:
 
 ```python
 a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
@@ -134,7 +134,7 @@ print(a, b, c, sep='\n')
 Link: [Info on 24-bit numbers](2)
 
 
-#### Customizing sty
+### Customizing sty
 
 If you want to change/add attributes to your sty objects (fg, bg, ef, rs) you can use a dict and the rendering methods provided by `sty.render` to do so:
 
