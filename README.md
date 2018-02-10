@@ -46,6 +46,15 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
 ## Documentation:
 
 * [Italic](#italic)
+* [Bold](#bold)
+* [Underline](#underline)
+* [Coloring by name](#string-coloring-by-name)
+* [Coloring with 8bit](#string-coloring-using-8-bit-numbers)
+* [Coloring with 24bit (rgb, truecolor)](#string-coloring-using-24-bit-rgb-values)
+* [Customizing](#customizing-sty)
+* [Terminal Support](#terminal-support)
+
+
 
 ### Italic
 
