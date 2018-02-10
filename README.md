@@ -63,15 +63,15 @@ These are supported by default:
 
 | First Header         | Second Header |
 | -------------------- | ------------- |
-| bold (alias b)--     | Content Cell  |
-| faint                | Content Cell  |
-| italic (alias i)     |               |
-| underline (alias u)  |               |
-| blink_slow           |               |
-| blink_fast           |               |
-| reverse              |               |
-| conceal              |               |
-| strike               |               |
+| bold (alias b)       | Bold or increased intensity  |
+| faint                | Decreased intensity  |
+| italic (alias i)     | Italic.. |
+| underline (alias u)  | Underline..|
+| blink_slow           | Blink less than 150 per minute |
+| blink_fast           | Blink more than 150 per minute |
+| reverse              | Reverse fore- and background |
+| conceal              | Conceal/Hide |
+| strike               | Striketrhough | 
 
 Note: Terminal support for these varies.
 
