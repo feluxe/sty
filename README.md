@@ -12,11 +12,13 @@ Sty has no dependencies and consists of ~ 170 LOC (incl. empty lines).
 
 ## Getting Started
 
-**Install** sty:
+**Install Sty**:
 
 ```
 pip install sty
 ```
+
+**Import sty**
 
 You can import sty like this:
  
@@ -30,6 +32,8 @@ style objects directly, like this:
 ```python
 from sty import fg, bg, ef, rs
 ```
+
+**Use sty**
 
 Style all the strings:
 
