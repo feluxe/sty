@@ -34,6 +34,8 @@ Style all the strings:
 ```python
 my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
 ```
+
+output:
  
 <img src="assets/helloworld.png" alt="helloworld" />  
     
@@ -52,8 +54,7 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
 
 ### List of style effects
 
-The `ef` (effect) object provides you with some string style effects.
-These are supported by default:
+More info: [SGR](https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters)
 
 | Effect               | Description |
 | -------------------- | ------------- |
@@ -67,30 +68,22 @@ These are supported by default:
 | conceal              | Conceal/Hide |
 | strike               | Striketrhough | 
 
-Note: Terminal support for these varies.
+
 
 ### List of default color names
 
-The default list of names relates to the classic [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit), supported by most terminals. 
+More info: [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit).
 
-These are the names provided by default:
+| -------- | ----- |
+| black li |_black | 
+| red | li_red |
+| green | li_green |
+| yellow | li_yellow |
+| blue | li_blue |
+| magenta | li_magenta |
+| cyan | li_cyan |
+| white | li_white |
 
-* black
-* red
-* green
-* yellow
-* blue
-* magenta
-* cyan
-* white
-* li_black
-* li_red
-* li_green
-* li_yellow
-* li_blue
-* li_magenta
-* li_cyan
-* li_white
 
 Notice: Color names/values can be modified/extended. See [customizing sty](#customizing-sty) below.
 
