@@ -29,7 +29,7 @@ style objects directly, like this:
 from sty import fg, bg, ef, rs
 ```
 
-Style all the strings:
+Style all the strings!
 
 ```python
 foo = fg.red + 'This is red text!' + fg.rs
@@ -63,6 +63,19 @@ output:
 * [Coloring with 24bit (rgb, truecolor)](#string-coloring-using-24-bit-rgb-values)
 * [Customizing](#customizing-sty)
 * [Terminal Support](#terminal-support)
+
+
+### Primitives
+
+There is a bunch of tiny, but flexible objects to get you going: `ef`, `fg`, 
+`bg`, `rs`.
+
+#### `ef`
+
+`sty.ef`
+
+The `ef` object provides effects like *italic*, *bold*, *strike*, etc. 
+
 
 ### List of style effects
 
