@@ -54,7 +54,7 @@ class EfBase(Base):
     blink_fast = sgr(6)
     reverse = sgr(7)
     conceal = sgr(8)
-    crossed = sgr(9)
+    strike = sgr(9)
 
 
 class RsBase(Base):
