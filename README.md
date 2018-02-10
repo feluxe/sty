@@ -12,13 +12,9 @@ Sty has no dependencies and consists of ~ 170 LOC (incl. empty lines).
 
 ## Getting Started
 
-**Install Sty:**:
-
 ```
 pip install sty
 ```
-
-**Import sty:**
 
 You can import sty like this:
  
@@ -32,8 +28,6 @@ style objects directly, like this:
 ```python
 from sty import fg, bg, ef, rs
 ```
-
-**Use sty:**
 
 Style all the strings:
 
@@ -61,7 +55,7 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
 The `ef` (effect) object provides you with some string style effects.
 These are supported by default:
 
-| Effect               | Info |
+| Effect               | Description |
 | -------------------- | ------------- |
 | bold (alias b)       | Bold or increased intensity  |
 | faint                | Decreased intensity  |
