@@ -45,9 +45,9 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
     
 ## Documentation:
 
-* [Italic](#Italic)
+* [Italic](###Italic)
 
-(###Italic):
+(###Italic)
 
 ```python
 a = ef.italic + 'Italic.' + rs.italic
