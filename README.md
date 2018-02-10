@@ -35,7 +35,8 @@ Style all the strings:
 ```python
 my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
 ```
-    
+ 
+<img src="assets/helloworld.png" alt="helloworld" />  
     
 ## Documentation:
 
