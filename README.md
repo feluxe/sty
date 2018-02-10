@@ -1,6 +1,7 @@
 
 # sty
 
+<img src="assets/charts.png" alt="charts" />  
 
 ## Description
 

@@ -8,7 +8,12 @@ def is_args_rgb(*args):
 
 
 def is_args_eightbit(*args):
-    return args and isinstance(args[0], int)
+    if args:
+        if args[0] is 0:
+            return True
+        if isinstance(args[0], int):
+            return True
+    return False
 
 
 class Base(object):
