@@ -61,7 +61,7 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
 The `ef` (effect) object provides you with some string style effects.
 These are supported by default:
 
-| First Header         | Second Header |
+| Effect               | Info |
 | -------------------- | ------------- |
 | bold (alias b)       | Bold or increased intensity  |
 | faint                | Decreased intensity  |
