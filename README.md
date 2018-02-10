@@ -45,7 +45,8 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
     
 ## Documentation:
 
-* [String styling effects](#string-styling-effects)
+* [List of style effects](#list-of-style-effects)
+* [List of default color names](#list-of-default-color-names)
 * [Italic](#italic)
 * [Bold](#bold)
 * [Underline](#underline)
@@ -55,9 +56,10 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
 * [Customizing](#customizing-sty)
 * [Terminal Support](#terminal-support)
 
-### String styling effects
+### List of style effects
 
-The `ef` (effect) object provides you with certain string style effect:
+The `ef` (effect) object provides you with some string style effects.
+These are supported by default:
 
 * bold (alias b)
 * faint
@@ -70,6 +72,32 @@ The `ef` (effect) object provides you with certain string style effect:
 * strike
 
 Note: Terminal support for these varies.
+
+### List of default color names
+
+The default list of names relates to the classic [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit), supported by most terminals. 
+
+These are the names provided by default:
+
+* black
+* red
+* green
+* yellow
+* blue
+* magenta
+* cyan
+* white
+* li_black
+* li_red
+* li_green
+* li_yellow
+* li_blue
+* li_magenta
+* li_cyan
+* li_white
+
+Notice: Color names/values can be modified/extended. See [customizing sty](#customizing-sty) below.
+
 
 ### Italic
 
@@ -116,29 +144,6 @@ Add examples for, strike, blink, etc..
 
 
 ### String coloring by name:
-
-The default list of names relates to the classic [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit), supported by most terminals. 
-
-These are the names provided by default:
-
-* black
-* red
-* green
-* yellow
-* blue
-* magenta
-* cyan
-* white
-* li_black
-* li_red
-* li_green
-* li_yellow
-* li_blue
-* li_magenta
-* li_cyan
-* li_white
-
-Notice: Color names/values can be modified/extended. See [customizing sty](#customizing-sty) below.
 
 ```python
 a = fg.blue + 'I have a blue foreground.' + rs.fg
