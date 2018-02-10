@@ -45,6 +45,8 @@ my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
 
 ```python
 a = ef.italic + 'Italic.' + rs.italic
+
+# Shorthand version:
 b = ef.i + fg.blue + 'Italic.' + rs.i + ' Not italic but blue.' + rs.fg
 
 print(a, b, sep='\n')
@@ -56,6 +58,8 @@ print(a, b, sep='\n')
 
 ```python
 a = ef.bold + 'Bold.' + rs.bold
+
+# Shorthand version:
 b = ef.b + 'Bold.' + rs.b + fg.li_yellow + ' Not bold but yellow.' + rs.fg
 
 print(a, b, sep='\n')
@@ -67,6 +71,8 @@ print(a, b, sep='\n')
 
 ```python
 a = ef.underline + 'Underlined.' + rs.underline
+
+# Shorthand version:
 b = ef.u + 'Underlined.' + rs.u + fg.green + ' Not underlined but green.' + rs.fg
 
 print(a, b, sep='\n')
@@ -157,7 +163,7 @@ As you see, there are three types of renders:
 
 ## Terminal Support
 
-This was initially tested on Arch Linux using 'Termite' terminal. If you have issues with your setup, please leave an issue. If sty forks fine on your setup, feel free to add your setup to the list below:
+This was initially tested on Arch Linux using 'Termite' terminal. If you have issues with your setup, please leave an issue. If sty works fine on your setup, feel free to add your setup to the list below:
 
 #### Termite on Linux
 

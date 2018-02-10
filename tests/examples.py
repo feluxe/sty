@@ -10,6 +10,8 @@ print(my_string)
 # Italic:
 
 a = ef.italic + 'Italic.' + rs.italic
+
+# There are shorthands for this:
 b = ef.i + fg.blue + 'Italic.' + rs.i + ' Not italic but blue.' + rs.fg
 
 print(a, b, sep='\n')
@@ -17,6 +19,8 @@ print(a, b, sep='\n')
 # Bold:
 
 a = ef.bold + 'Bold.' + rs.bold
+
+# This has shorthands too:
 b = ef.b + 'Bold.' + rs.b + fg.li_yellow + ' Not bold but yellow.' + rs.fg
 
 print(a, b, sep='\n')
@@ -24,6 +28,8 @@ print(a, b, sep='\n')
 # Underlining:
 
 a = ef.underline + 'Underlined.' + rs.underline
+
+# Shorthand version:
 b = ef.u + 'Underlined.' + rs.u + fg.green + ' Not underlined but green.' + rs.fg
 
 print(a, b, sep='\n')
