@@ -116,7 +116,7 @@ print(a, b, c, sep='\n')
 
 <img src="assets/8bit.png" alt="8bit" />  
     
-Link: [Info on 8-bit numbers](1)
+Link: [Info on 8-bit numbers][1]
 
 
 ### String coloring using 24-bit RGB values:
@@ -131,7 +131,7 @@ print(a, b, c, sep='\n')
 
 <img src="assets/24bit.png" alt="24bit" />  
 
-Link: [Info on 24-bit numbers](2)
+Link: [Info on 24-bit numbers][2]
 
 
 ### Customizing sty
@@ -161,9 +161,9 @@ print(a, b, c, d, e, sep='\n')
 
 As you see, there are three types of renders:
 
-* `sgr` This one is used to generate ansi strings for SGR "Select Graphic Rendition" codes. These are most widely supported. They can be used for colors, as well as styling (italic, bold, blink, etc.). Link
-* `rgb`: This one is used to generate ansi strings for 24-bit colors. Link
-* `eigthbit`: This one is used to generate ansi strings for 8-bit colors. Link
+* `sgr` This one is used to generate ansi strings for SGR "Select Graphic Rendition" codes. These are most widely supported. They can be used for colors, as well as styling (italic, bold, blink, etc.). [Link][0]
+* `eigthbit`: This one is used to generate ansi strings for 8-bit colors. [Link][1]
+* `rgb`: This one is used to generate ansi strings for 24-bit colors. [Link][2]
 
 ## Terminal Support
 
@@ -181,7 +181,5 @@ If you want to support the widest range of terminals, you should stick to the sg
 
 
 [0]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
-
 [1]: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
-
 [2]: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
