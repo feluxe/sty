@@ -74,15 +74,16 @@ More info: [SGR](https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Grap
 
 More info: [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit).
 
+| normal   | light |
 | -------- | ----- |
-| black li |_black | 
-| red | li_red |
-| green | li_green |
-| yellow | li_yellow |
-| blue | li_blue |
-| magenta | li_magenta |
-| cyan | li_cyan |
-| white | li_white |
+| black    | li_black | 
+| red      | li_red |
+| green    | li_green |
+| yellow   | li_yellow |
+| blue     | li_blue |
+| magenta  | li_magenta |
+| cyan     | li_cyan |
+| white    | li_white |
 
 
 Notice: Color names/values can be modified/extended. See [customizing sty](#customizing-sty) below.
