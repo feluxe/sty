@@ -4,56 +4,69 @@
 
 ## Description
 
-A simple, intuitive and extensible string styling tool for your terminal.
+Simple, intuitive and extensible string styling for your terminal.
 
 Sty has no dependencies and consists of ~ 170 LOC (incl. empty lines).
 
 
 ## Getting Started
 
-Install sty:
+**Install** sty:
 
-    pip install sty
+```
+pip install sty
+```
 
 You can import sty like this:
  
-    import sty
+```python
+import sty
+```
 
 However, if you need to style a lot of stuff, you might consider importing the 
 style objects directly, like this:
 
-    from sty import fg, bg, ef, rs
+```python
+from sty import fg, bg, ef, rs
+```
 
 Style all the strings:
 
-    my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
+```python
+my_string = fg.blue + bg.li_red + ef.bold + 'Hello world!' + rs.all
+```
     
     
 ## Documentation:
 
 #### Italic:
 
+```python
+a = ef.italic + 'Italic.' + rs.italic
+b = ef.i + fg.blue + 'Italic.' + rs.i + ' Not italic but blue.' + rs.fg
 
-    a = ef.italic + 'Italic.' + rs.italic
-    b = ef.i + fg.blue + 'Italic.' + rs.i + ' Not italic but blue.' + rs.fg
-
-    print(a, b, sep='\n')
+print(a, b, sep='\n')
+```
 
 
 #### Bold:
 
-    a = ef.bold + 'Bold.' + rs.bold
-    b = ef.b + 'Bold.' + rs.b + fg.li_yellow + ' Not bold but yellow.' + rs.fg
+```python
+a = ef.bold + 'Bold.' + rs.bold
+b = ef.b + 'Bold.' + rs.b + fg.li_yellow + ' Not bold but yellow.' + rs.fg
 
-    print(a, b, sep='\n')
+print(a, b, sep='\n')
+```
 
 
 #### Underline:
 
-    a = ef.underline + 'Underlined.' + rs.underline
-    b = ef.u + 'Underlined.' + rs.u + fg.green + ' Not underlined but green.' + rs.fg
+```python
+a = ef.underline + 'Underlined.' + rs.underline
+b = ef.u + 'Underlined.' + rs.u + fg.green + ' Not underlined but green.' + rs.fg
 
-    print(a, b, sep='\n')
+print(a, b, sep='\n')
+```
 
 
 #### TODO:
@@ -63,33 +76,39 @@ Add examples for, strike, blink, etc..
 
 #### String coloring by name:
 
-    a = fg.blue + 'I have a blue foreground.' + rs.fg
-    b = bg.li_cyan + 'I have a light cyan background' + rs.bg
-    c = fg.red + bg.green + 'I have a red fg and green bg.' + rs.all
+```python
+a = fg.blue + 'I have a blue foreground.' + rs.fg
+b = bg.li_cyan + 'I have a light cyan background' + rs.bg
+c = fg.red + bg.green + 'I have a red fg and green bg.' + rs.all
 
-    print(a, b, c, sep='\n')
+print(a, b, c, sep='\n')
+```
 
 Notice: Color names/values can be modified/extended. See below.
 
 
 #### String coloring using 8-bit numbers:
 
-    a = fg(34) + 'I have a green foreground.' + rs.fg
-    b = bg(133) + 'I have a pink background' + rs.bg
-    c = fg(226) + bg(19) + 'I have a light yellow fg and dark blue bg.' + rs.all
+```python
+a = fg(34) + 'I have a green foreground.' + rs.fg
+b = bg(133) + 'I have a pink background' + rs.bg
+c = fg(226) + bg(19) + 'I have a light yellow fg and dark blue bg.' + rs.all
 
-    print(a, b, c, sep='\n')
+print(a, b, c, sep='\n')
+```
     
 Link: [Info on 8-bit numbers](1)
 
 
 #### String coloring using 24-bit RGB values:
 
-    a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
-    b = bg(255, 150, 50) + 'I have an orange background' + rs.bg
-    c = fg(90, 90, 90) + bg(32, 32, 32) + 'Grey fg and dark grey bg.' + rs.all
+```python
+a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
+b = bg(255, 150, 50) + 'I have an orange background' + rs.bg
+c = fg(90, 90, 90) + bg(32, 32, 32) + 'Grey fg and dark grey bg.' + rs.all
 
-    print(a, b, c, sep='\n')
+print(a, b, c, sep='\n')
+```
 
 Link: [Info on 24-bit numbers](2)
 
@@ -98,22 +117,24 @@ Link: [Info on 24-bit numbers](2)
 
 If you want to change/add attributes to your sty objects (fg, bg, ef, rs) you can use a dict and the rendering methods provided by `sty.render` to do so:
 
-    custom_register = dict(
-        orange=render.eightbit_fg(214),  # Add 'orange' to fg (using 8-bit code)
-        green=render.rgb_fg(255, 0, 0),  # Modify value for 'green' (using rgb code)
-        blue=render.sgr(95),  # Turn 'blue' into magenta (using sgr code)
-    )
+```python
+custom_register = dict(
+    orange=render.eightbit_fg(214),  # Add 'orange' to fg (using 8-bit code)
+    green=render.rgb_fg(255, 0, 0),  # Modify value for 'green' (using rgb code)
+    blue=render.sgr(95),  # Turn 'blue' into magenta (using sgr code)
+)
 
-    a = fg.green + 'I have a green foreground.' + rs.fg
-    b = fg.blue + 'I have a blue foreground.' + rs.fg
+a = fg.green + 'I have a green foreground.' + rs.fg
+b = fg.blue + 'I have a blue foreground.' + rs.fg
 
-    fg(custom_register)
+fg(custom_register)
 
-    c = fg.green + 'I have a red foreground now.' + rs.fg
-    d = fg.blue + 'I have a magenta foreground now.' + rs.fg
-    e = fg.orange + 'I was set orange by a newly registered color name.' + rs.fg
+c = fg.green + 'I have a red foreground now.' + rs.fg
+d = fg.blue + 'I have a magenta foreground now.' + rs.fg
+e = fg.orange + 'I was set orange by a newly registered color name.' + rs.fg
 
-    print(a, b, c, d, e, sep='\n')
+print(a, b, c, d, e, sep='\n')
+```
 
 As you see, there are three types of renders:
 
