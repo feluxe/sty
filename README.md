@@ -67,7 +67,7 @@ output:
 
 ### Primitives
 
-There is a bunch of tiny, but flexible primitives that are used to style your strings: 
+There is a bunch of tiny, but flexible primitives that are used for styling your strings: 
 
 * `ef` (effects)
 * `fg` (foreground)
@@ -111,7 +111,7 @@ bg.green = render.rgb(0, 128, 255)  # fg.green now renders blue text using a 24b
 rs.all = render.sgr(24)  # rs.all now resets the underline effect, not all effects like before.
 ```
 
-# TODO: More on this in section dedicated to render
+TODO: More on this in section dedicated to render
 
 In order to update/extend a batch of attributes, you can pass them via dict as well:
 
