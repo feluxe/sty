@@ -116,7 +116,7 @@ custom_colors = dict(
 fg(custom_colors)
 ```
 
-If you don't like the values that sty uses by default, you can create your own objects with their own attribute register:
+If you don't like sty's default attribute, you can create your own clean objects:
 
 ```python
 from sty.primitives import Fg
