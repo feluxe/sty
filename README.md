@@ -151,9 +151,11 @@ I think this is all you need to know. Check out the documentation or the codebas
 * [Colors](#list-of-default-colors)
 * [Terminal Support](#terminal-support)
 
-### List of Renderers
+### Renderer
 
 The renderfunctions are stored in `sty.render`.
+
+#### List of Renderer
 
 | Render Function      | Description |
 | -------------------- | ------------- |
