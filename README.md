@@ -95,7 +95,7 @@ bg(randint(0,254)) + 'Random colored bg' + rs.bg
 
 ```python
 a = fg(196) + 'This is red text' + rs.fg  # select an 8bit color directly.
-b = bg(50, 255, 50) + 'Text with green bg' + rs.bg  # select a 25bit rgb color directly.
+b = bg(50, 255, 50) + 'Text with green bg' + rs.bg  # select a 24bit rgb color directly.
 ```
   
 Sty allows you to change or extend the default attributes as you like, using the render functions:
@@ -106,6 +106,7 @@ from sty import render
 ef.italic = render.sgr(1)  # ef.italic now renders bold text.
 fg.red = render.sgr(32)  # fg.red renders green text from now on.
 fg.blue = render.eightbit_bg(111)  # fg.blue renders blue text from now on (using an 8bit color code).
+fg.my_new_item = render.eightbit_fg(130)  # Create a new item that renders brown text.
 bg.green = render.rgb(0, 128, 255)  # bg.green renders blue text from now on (using a 24bit rgb code).
 rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
 ```
@@ -113,9 +114,11 @@ rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
 In case you need to set something dynamically you can use the `set` method:
 
 ```python
-my_color_name = 'red'
+my_color_name = 'special_teal'
 
-fg.set(my_color_name, render.sgr(32))  # fg.red renders green text from now on.
+fg.set(my_color_name, render.eightbit_fg(51)) 
+
+a = fg.special_teal + 'This is teal text.' + fg.rs
 ```
 
 If you want to apply a larger register of custom attributes, applying them like this might be more convenient.
