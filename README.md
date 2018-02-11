@@ -52,7 +52,7 @@ output:
 <img src="assets/example_so.png" alt="example_so" />  
 
 
-### A little Walkthrough
+## A little Walkthrough
 
 There is a bunch of tiny, but flexible primitives that are used for styling your strings: 
 
