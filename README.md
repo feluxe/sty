@@ -169,10 +169,10 @@ The renderfunctions are stored in `sty.render`.
 
 | Render Function      | Description |
 | -------------------- | ------------- |
-| sgr                  | Render [SGR codes ([wikipedia#SGR][SGR])] (works for fg-colors, bg-colors and effects) |
-| eightbit_fg          | Render foreground using [8bit color codes (wikipedia#8bit)][8bit] |
+| sgr                  | Render [SGR codes ([wikipedia:SGR][SGR])] (works for fg-colors, bg-colors and effects) |
+| eightbit_fg          | Render foreground using [8bit color codes (wikipedia:8bit)][8bit] |
 | eightbit_bg          | Render background using 8bit color codes |
-| rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia#24bit)][24bit] |
+| rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia:24bit)][24bit] |
 | rgb_bg               | Render background using 24bit (RGB) color codes |
 
 ## Effects
@@ -181,7 +181,7 @@ The renderfunctions are stored in `sty.render`.
 
 These are the default attributes for the `ef` object.
 
-More info: [wikipedia#SGR][SGR]
+More info: [wikipedia:SGR][SGR]
 
 | Effect               | Description | Default Renderer |
 | -------------------- | ------------- | --------------|
@@ -245,7 +245,7 @@ Add examples for, strike, blink, etc..
 
 #### Foreground
 
-More info:  [wikipedia#3/4bit colors][3_4bit], [wikipedia#8bit colors][8bit], [wikipedia#24bit colors][24bit].
+More info:  [wikipedia:3/4bit colors][3_4bit], [wikipedia:8bit colors][8bit], [wikipedia:24bit colors][24bit].
 
 The default colors for the `fg` object.
 
@@ -361,7 +361,7 @@ print(a, b, c, sep='\n')
 
 <img src="assets/8bit.png" alt="8bit" />  
     
-Link: [wikipedia#8bit][8bit]
+Link: [wikipedia:8bit][8bit]
 
 
 ### Coloring with 24bit codes
@@ -376,7 +376,7 @@ print(a, b, c, sep='\n')
 
 <img src="assets/24bit.png" alt="24bit" />  
 
-Link: [wikipedia#24bit][24bit]
+Link: [wikipedia:24bit][24bit]
 
 
 ## Terminal Support
