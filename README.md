@@ -189,9 +189,7 @@ print(a, b, sep='\n')
 
 <img src="assets/underline.png" alt="underline" />  
 
-### TODO
-
-Add examples for, strike, blink, etc..
+> TODO: Add examples for, strike, blink, etc..
 
 ## Colors
 
