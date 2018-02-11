@@ -88,7 +88,7 @@ Or like this, which is nice in case you need to dynamically select attributes:
 ```python
 ef('italic')
 fg('blue')
-bg(my_color)
+bg(my_dynamic_color)
 rs('all')
 ```
 
@@ -111,45 +111,37 @@ bg.green = render.rgb(0, 128, 255)  # fg.green now renders blue text using a 24b
 rs.all = render.sgr(24)  # rs.all now resets the underline effect, not all effects like before.
 ```
 
-If you want to apply a larger register of custom attributes you might want to create your own object from an extended *Default* class:
+If you want to apply a larger register of custom attributes you might want to apply them like this:
 
 ```python
 from sty.register import DefaultFg
 from sty.render import sgr, rgb_fg
 
-class MyFg(DefaultFg):
+class MyFgRegister(DefaultFg):
     black = sgr(31)
     red = sgr(34)
     orange = rgb_fg(10, 40, 133)
     # etc..
 
-fg = MyFg()
+fg = MyFgRegister()
 ```
 
-You can also start a clean new object like this:
+If you don't want to use the default registers at all, you may want to inherit directly from the base classes:
 
 ```python
 from sty.primitive import Fg
 from sty.render import sgr, rgb_fg
 
-class MyFg(Fg):
+class MyFgRegister(Fg):
     black = sgr(31)
     red = sgr(34)
     orange = rgb_fg(10, 40, 133)
     # etc..
 
-fg = MyFg()
+fg = MyFgRegister()
 ```
 
 
-If you don't like sty's [default attributes](sty/register.py), you can create your own clean objects:
-
-```python
-from sty.primitives import Fg
-
-fg = Fg()  # Create a clean fg object. This one is free of attributes.
-
-```
 
 More on customizing and the section below. 
 
