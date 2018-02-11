@@ -193,6 +193,8 @@ More info: [wikipedia#SGR][SGR]
 
 #### Foreground
 
+More info:  3/4bit colors: [wikipedia#3/4bit][3_4bit], 8bit colors: [wikipedia#8bit][8bit], 24bit colors: [wikipedia#24bit][24bit]
+
 The default colors for the `fg` object.
 
 These are most widely supported. (using sgr codes).
@@ -418,6 +420,6 @@ If you want to support the widest range of terminals, you should stick to the sg
 
 
 [SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
-[256]: https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit
+[3_4bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit
 [8bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 [16bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
