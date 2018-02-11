@@ -172,8 +172,8 @@ The renderfunctions are stored in `sty.render`.
 | sgr                  | Render [SGR codes ([wikipedia#SGR][SGR])] (works for fg-colors, bg-colors and effects) |
 | eightbit_fg          | Render foreground using [8bit color codes (wikipedia#8bit)][8bit] |
 | eightbit_bg          | Render background using 8bit color codes |
-| rgb_fg               | Render foreground using [16bit (RGB) color codes (wikipedia#24bit)][24bit] |
-| rgb_bg               | Render background using 16bit (RGB) color codes |
+| rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia#24bit)][24bit] |
+| rgb_bg               | Render background using 24bit (RGB) color codes |
 
 ## Effects
 
@@ -397,4 +397,4 @@ If you want to support the widest range of terminals, you should stick to the sg
 [SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
 [3_4bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit
 [8bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
-[16bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
+[24bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
