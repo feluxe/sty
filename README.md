@@ -111,7 +111,7 @@ bg.green = render.rgb(0, 128, 255)  # bg.green renders blue text from now on (us
 rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
 ```
 
-In case you need to set something dynamically you can use the `set` method:
+In case you need to set attributes dynamically you can use the `set` method:
 
 ```python
 my_color_name = 'special_teal'
@@ -121,7 +121,7 @@ fg.set(my_color_name, render.eightbit_fg(51))
 a = fg.special_teal + 'This is teal text.' + fg.rs
 ```
 
-If you want to apply a larger register of custom attributes, applying them like this might be more convenient:
+If you want to apply a larger register of custom attributes, inheriting from the default register might be more convenient:
 
 ```python
 from sty.register import DefaultFg 
