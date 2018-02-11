@@ -50,19 +50,6 @@ print(foo, bar, baz, qux, qui, buf, sep='\n')
 output:
  
 <img src="assets/example_so.png" alt="example_so" />  
-    
-## Documentation:
-
-* [List of default effects](#list-of-default-effects)
-* [List of default colors](#list-of-default-colors)
-* [Italic](#italic)
-* [Bold](#bold)
-* [Underline](#underline)
-* [Coloring by name](#string-coloring-by-name)
-* [Coloring with 8bit](#string-coloring-using-8-bit-numbers)
-* [Coloring with 24bit (rgb, truecolor)](#string-coloring-using-24-bit-rgb-values)
-* [Customizing](#customizing-sty)
-* [Terminal Support](#terminal-support)
 
 
 ### A little Walkthrough
@@ -155,6 +142,20 @@ fg = MyFgRegister()
 
 I think this is all you need to know. Have fun! :D
 
+
+    
+## Documentation:
+
+* [List of default effects](#list-of-default-effects)
+* [List of default colors](#list-of-default-colors)
+* [Italic](#italic)
+* [Bold](#bold)
+* [Underline](#underline)
+* [Coloring by name](#string-coloring-by-name)
+* [Coloring with 8bit](#string-coloring-using-8-bit-numbers)
+* [Coloring with 24bit (rgb, truecolor)](#string-coloring-using-24-bit-rgb-values)
+* [Customizing](#customizing-sty)
+* [Terminal Support](#terminal-support)
 
 ### List of default effects
 
