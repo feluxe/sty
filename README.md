@@ -9,6 +9,14 @@ Simple, flexible and extensible string styling for your terminal. Supports 3/4bi
 
 Sty has no dependencies and consists of only ~200 LOC (including empty lines and comments).
 
+## Goal
+
+The idea is to provide a little style markup for python strings, which is decoupled from color palettes and rendering implementations. Why? Because string styling for command line apps is a common problem and it would be nice if there was a standard markup for it that is not bound to certain terminal implementations.
+
+If future terminal implementations require new escape sequences, you provide them to sty and leave the markup untouched.
+
+Sty comes with default color registers and renderers, which you can easily replace with new ones.
+
 
 ## Getting Started
 
@@ -92,8 +100,8 @@ I think this is all you need to know to get going. Check out the documentation o
 
     
 # Documentation:
-* [Renderer](#renderer)
-  * [List of renderer](#list-of-renderer)
+* [Renderers](#renderers)
+  * [List of renderers](#list-of-renderers)
 * [Effects](#effects)
   * [List of default effects](#list-of-default-effects)
   * [Italic](#italic)
@@ -355,7 +363,7 @@ These are the default attributes for the `rs` object:
 
 ## Customization
  
-Sty allows you to change or extend the default attributes as you like, using the [render functions](#list-of-renderer):
+Sty allows you to change or extend the default attributes as you like, using the [render functions](#list-of-renderers):
 
 ### Direct attribute customization
 
@@ -432,7 +440,7 @@ This was initially tested on Arch Linux using 'Termite' terminal. If you have is
 | 8-bit color:  | Ok!     |
 | 24-bit color: | Ok!     |
 
-If you want to support the widest range of terminals, you should stick to the sgr renderer. The default attributes in all sty objects (`fb`,`bg`,`ef`,`rs`) use `sgr` values exclusively.
+If you want to support the widest range of terminals, you should stick to the sgr renderer.
 
 
 [SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
