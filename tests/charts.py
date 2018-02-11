@@ -78,4 +78,4 @@ print(sgr_bg(names))
 print(eightbit('fg'))
 print(eightbit('bg'))
 print(
-    '\n24bit\n------ I skip the 24-bit chart for now. Please add one to charts.py if you like.')
+    '\n24bit: I skip the 24-bit chart for now. Please add one to charts.py if you like.')
