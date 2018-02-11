@@ -121,7 +121,7 @@ fg.set(my_color_name, render.eightbit_fg(51))
 a = fg.special_teal + 'This is teal text.' + fg.rs
 ```
 
-If you want to apply a larger register of custom attributes, applying them like this might be more convenient.
+If you want to apply a larger register of custom attributes, applying them like this might be more convenient:
 
 ```python
 from sty.register import DefaultFg 
@@ -152,17 +152,6 @@ class MyFgRegister(Fg):
 fg = MyFgRegister()
 ```
 
-
-
-More on customizing and the section below. 
-
-#### `ef`
-
-`sty.ef`
-
-The `ef` object provides effects like *italic*, *bold*, *strike*, etc. 
-
- TODO: finish this section.
 
 
 ### List of default effects
