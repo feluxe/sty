@@ -67,7 +67,12 @@ output:
 
 ### Primitives
 
-There is a bunch of tiny, but flexible primitives that are used to style your string: `ef` (effects), `fg` (foreground), `bg` (background), `rs` (reset).
+There is a bunch of tiny, but flexible primitives that are used to style your strings: 
+
+* `ef` (effects)
+* `fg` (foreground)
+* `bg` (background)
+* `rs` (reset).
 
 Each primitive carries a default selection of attributes, which you can select like this:
 
