@@ -54,7 +54,7 @@ output:
 
 ## A little Walkthrough
 
-There is a bunch of tiny, but flexible primitives that are used for styling your strings: 
+sty provides a bunch of tiny, but flexible primitives that can be used for styling your strings: 
 
 * `ef` (effects)
 * `fg` (foreground)
@@ -69,6 +69,7 @@ fg.blue
 bg.green
 rs.all
 ```
+> [List of default effects](#list-of-default-effects), [List of default colors](#li)
 
 Or like this, which is nice in case you need to dynamically select attributes:
 
@@ -163,10 +164,10 @@ The renderfunctions are stored in `sty.render`.
 
 | Render Function      | Description |
 | -------------------- | ------------- |
-| sgr                  | Render SGR codes (works for fg-colors, bg-colors and effects) |
-| eightbit_fg          | Render foreground using 8bit color codes |
+| sgr                  | Render [SGR codes ([wikipedia#SGR][SGR])] (works for fg-colors, bg-colors and effects) |
+| eightbit_fg          | Render foreground using [8bit color codes (wikipedia#8bit)][8bit] |
 | eightbit_bg          | Render background using 8bit color codes |
-| rgb_fg               | Render foreground using 16bit (RGB) color codes |
+| rgb_fg               | Render foreground using [16bit (RGB) color codes (wikipedia#24bit)][24bit] |
 | rgb_bg               | Render background using 16bit (RGB) color codes |
 
 ### List of default effects
@@ -187,9 +188,7 @@ More info: [wikipedia#SGR][SGR]
 
 
 
-### List of default foreground colors
-
-More info: [wikipedia#256][256] and [wikipedia#8bit][8bit].
+### List of default colors
 
 #### Foreground `fg`
 
@@ -349,7 +348,7 @@ print(a, b, c, sep='\n')
 
 <img src="assets/8bit.png" alt="8bit" />  
     
-Link: [wikipedia#256][256]
+Link: [wikipedia#8bit][8bit]
 
 
 ### String coloring using 24-bit RGB values
