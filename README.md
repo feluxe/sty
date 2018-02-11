@@ -69,7 +69,8 @@ fg.blue
 bg.green
 rs.all
 ```
-> See: [List of default effects](#list-of-default-effects) and: [List of default colors](#list-of-default-colors)
+
+> <samll> See: [List of default effects](#list-of-default-effects) and: [List of default colors](#list-of-default-colors) </small>
 
 Or like this, which is nice in case you need to dynamically select attributes:
 
