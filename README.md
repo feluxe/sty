@@ -121,6 +121,7 @@ fg.set(my_color_name, render.eightbit_fg(51))
 a = fg.special_teal + 'This is teal text.' + fg.rs
 ```
 
+
 If you want to apply a larger register of custom attributes, inheriting from the default register might be more convenient:
 
 ```python
@@ -152,6 +153,7 @@ class MyFgRegister(Fg):
 fg = MyFgRegister()
 ```
 
+I think this is all you need to know. Have fun! :D
 
 
 ### List of default effects
