@@ -85,7 +85,7 @@ a = fg(196) + 'This is red text' + rs.fg  # select an 8bit color directly.
 b = bg(50, 255, 50) + 'Text with green bg' + rs.bg  # select a 24bit rgb color directly.
 ```
   
-Sty allows you to change or extend the default attributes as you like, using the render functions:
+Sty allows you to change or extend the default attributes as you like, using the [render functions](#list-of-renderers):
 
 ```python
 from sty import render
@@ -109,7 +109,7 @@ a = fg.special_teal + 'This is teal text.' + fg.rs
 ```
 
 
-If you want to apply a larger register of custom attributes, inheriting from the default register might be more convenient:
+If you want to set a larger register of custom attributes, inheriting from the default register might be more convenient:
 
 ```python
 from sty.register import DefaultFg 
@@ -131,7 +131,7 @@ You can also start your own register from scratch by inheriting the clean base c
 from sty.primitive import Fg
 from sty.render import sgr, rgb_fg
 
-# Create a register from scratch.
+# Create a fg register from scratch.
 class MyFgRegister(Fg):
     black = sgr(31)
     red = sgr(34)
@@ -140,7 +140,7 @@ class MyFgRegister(Fg):
 fg = MyFgRegister()
 ```
 
-I think this is all you need to know. Have fun! :D
+I think this is all you need to know. Check out the documentation or the codebase for more detail or feel free to create an issu and ask. Have fun! :D
 
 
     
