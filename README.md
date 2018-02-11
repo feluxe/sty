@@ -65,7 +65,7 @@ output:
 * [Terminal Support](#terminal-support)
 
 
-### A little Walkthrough the primitives 
+### A little Walkthrough
 
 There is a bunch of tiny, but flexible primitives that are used for styling your strings: 
 
