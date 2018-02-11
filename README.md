@@ -163,7 +163,9 @@ The renderfunctions are stored in `sty.render`.
 | rgb_fg               | Render foreground using [16bit (RGB) color codes (wikipedia#24bit)][24bit] |
 | rgb_bg               | Render background using 16bit (RGB) color codes |
 
-### List of default effects
+### Effects
+
+#### List of default effects
 
 These are the default attributes for the `ef` object.
 
@@ -225,10 +227,11 @@ print(a, b, sep='\n')
 
 Add examples for, strike, blink, etc..
 
+### Colors
 
-### List of default colors
+#### List of default colors
 
-#### Foreground
+##### Foreground
 
 More info:  [wikipedia#3/4bit colors][3_4bit], [wikipedia#8bit colors][8bit], [wikipedia#24bit colors][24bit].
 
@@ -276,7 +279,7 @@ These are even less widely supported. (using 8bit color codes).
 | da_white    | eightbit_fg(249) |
 
 
-#### Background
+##### Background
 
 The default colors for the `bg` object.
 
