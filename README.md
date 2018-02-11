@@ -114,7 +114,9 @@ rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
 In case you need to set something dynamically you can use the `set` method:
 
 ```python
-fg.set('red', render.sgr(32))  # fg.red renders green text from now on.
+my_color_name = 'red'
+
+fg.set(my_color_name, render.sgr(32))  # fg.red renders green text from now on.
 ```
 
 If you want to apply a larger register of custom attributes, applying them like this might be more convenient.
