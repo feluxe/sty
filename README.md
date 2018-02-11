@@ -171,7 +171,7 @@ The renderfunctions are stored in `sty.render`.
 
 ### List of default effects
 
-More info: [SGR](https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters)
+More info: [SGR][SGR]
 
 | Effect               | Description | Default Renderer |
 | -------------------- | ------------- | --------------|
@@ -413,8 +413,6 @@ This was initially tested on Arch Linux using 'Termite' terminal. If you have is
 If you want to support the widest range of terminals, you should stick to the sgr renderer. The default attributes in all sty objects (`fb`,`bg`,`ef`,`rs`) use `sgr` values exclusively.
 
 
-
-
-[0]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
-[1]: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
-[2]: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
+[SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
+[8bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
+[16bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
