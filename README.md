@@ -111,7 +111,7 @@ bg.green = render.rgb(0, 128, 255)  # bg.green renders blue text from now on (us
 rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
 ```
 
-If you want to apply a larger register of custom attributes you might want to apply them like this:
+If you want to apply a larger register of custom attributes applying them like this might be more convenient.
 
 ```python
 from sty.register import DefaultFg 
@@ -123,12 +123,11 @@ class MyFgRegister(DefaultFg):
     black = sgr(31)
     red = sgr(34)
     orange = rgb_fg(10, 40, 133)
-    # etc..
 
 fg = MyFgRegister()
 ```
 
-You can also start your own register from the clean base classes:
+You can also start your own register from scratch by inheriting the clean base classes:
 
 ```python
 from sty.primitive import Fg
@@ -139,7 +138,6 @@ class MyFgRegister(Fg):
     black = sgr(31)
     red = sgr(34)
     orange = rgb_fg(10, 40, 133)
-    # etc..
 
 fg = MyFgRegister()
 ```
