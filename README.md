@@ -140,7 +140,7 @@ class MyFgRegister(Fg):
 fg = MyFgRegister()
 ```
 
-I think this is all you need to know. Check out the documentation or the codebase for more detail or feel free to create an issu and ask. Have fun! :D
+I think this is all you need to know. Check out the documentation or the codebase for more detail or feel free to create an issue and ask.
 
 
     
