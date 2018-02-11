@@ -87,7 +87,7 @@ a = fg(196) + 'This is red text' + rs.fg  # select an 8bit color directly.
 b = bg(50, 255, 50) + 'Text with green bg' + rs.bg  # select a 24bit rgb color directly.
 ```
 
-I think this is all you need to know. Check out the documentation or the codebase for more detail or feel free to create an issue and ask. Have fun! :D
+I think this is all you need to know to get you going with sty. Check out the documentation or the codebase for more detail or feel free to create an issue and ask. Have fun! :D
 
 
     
