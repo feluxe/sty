@@ -114,9 +114,11 @@ rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
 If you want to apply a larger register of custom attributes you might want to apply them like this:
 
 ```python
-from sty.register import DefaultFg  # sty.register contains the default registers used by sty.
+from sty.register import DefaultFg 
 from sty.render import sgr, rgb_fg
 
+
+# Extend default Fg register.
 class MyFgRegister(DefaultFg):
     black = sgr(31)
     red = sgr(34)
@@ -126,12 +128,13 @@ class MyFgRegister(DefaultFg):
 fg = MyFgRegister()
 ```
 
-If you don't want to use the default registers at all, you may want to inherit directly from the base classes:
+You can also start your own register from the clean base classes:
 
 ```python
 from sty.primitive import Fg
 from sty.render import sgr, rgb_fg
 
+# Create a register from scratch.
 class MyFgRegister(Fg):
     black = sgr(31)
     red = sgr(34)
