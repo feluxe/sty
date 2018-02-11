@@ -74,7 +74,7 @@ There is a bunch of tiny, but flexible primitives that are used for styling your
 * `bg` (background)
 * `rs` (reset).
 
-Each primitive carries a default selection of attributes, which you can select like this (see: [List of style effects]() and [List of default color names]()):
+Each primitive carries a default selection of attributes, which you can select like this:
 
 ```python
 ef.italic
@@ -82,6 +82,8 @@ fg.blue
 bg.green
 rs.all
 ```
+
+> Relevant: [List of style effects]() and [List of default color names]()):
 
 Or like this, which is nice in case you need to dynamically select attributes:
 
