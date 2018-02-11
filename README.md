@@ -92,7 +92,7 @@ bg(my_color)
 rs('all')
 ```
 
-`fg` and `bg` also allow you to select 8bit and 24bit colors directly:
+`fg` and `bg` are special in the way that they allow you to select 8bit and 24bit colors directly:
 
 ```python
 fg(242)  # select 8bit color directly.
@@ -111,19 +111,36 @@ bg.green = render.rgb(0, 128, 255)  # fg.green now renders blue text using a 24b
 rs.all = render.sgr(24)  # rs.all now resets the underline effect, not all effects like before.
 ```
 
-TODO: More on this in section dedicated to render
-
-In order to update/extend a batch of attributes, you can pass them via dict as well:
+If you want to apply a larger register of custom attributes you might want to create your own object from an extended *Default* class:
 
 ```python
-custom_colors = dict(
-    orange = eightbit_fg(208),
-    teal = eightbit_fg(159),
-    blue = eightbit_fg(33),
-)
+from sty.register import DefaultFg
+from sty.render import sgr, rgb_fg
 
-fg(custom_colors)
+class MyFg(DefaultFg):
+    black = sgr(31)
+    red = sgr(34)
+    orange = rgb_fg(10, 40, 133)
+    # etc..
+
+fg = MyFg()
 ```
+
+You can also start a clean new object like this:
+
+```python
+from sty.primitive import Fg
+from sty.render import sgr, rgb_fg
+
+class MyFg(Fg):
+    black = sgr(31)
+    red = sgr(34)
+    orange = rgb_fg(10, 40, 133)
+    # etc..
+
+fg = MyFg()
+```
+
 
 If you don't like sty's [default attributes](sty/register.py), you can create your own clean objects:
 
