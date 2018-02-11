@@ -12,6 +12,8 @@ Sty has no dependencies and consists of only ~200 LOC (including empty lines and
 
 ## Getting Started
 
+Install:
+
 ```
 pip install sty
 ```
