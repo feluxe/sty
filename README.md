@@ -56,14 +56,14 @@ output:
 
 #### A quick look at the primitives:
 
-sty provides a bunch of tiny, but flexible primitives that can be used for styling your strings: 
+sty provides a bunch of tiny, but flexible primitives that can be used to style your strings: 
 
 * `ef` (effects)
 * `fg` (foreground)
 * `bg` (background)
 * `rs` (reset).
 
-Each primitive carries a default selection of attributes ([list-of-effects](#list-of-default-effects), [list-of-colors](#list-of-default-colors)), which you can select like this:
+Each primitive carries a default selection of attributes ([list-of-effects](#list-of-default-effects), [list-of-colors](#list-of-default-colors), [list-of-resets](#list-of-default-reset-attributes)), which you can select like this:
 
 ```python
 ef.italic
