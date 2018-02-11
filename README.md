@@ -109,8 +109,8 @@ I think this is all you need to know to get going. Check out the documentation o
 * [Customization](#customization)
   * [Direct attribute customization](#direct-attribute-customization)
   * [Dynamic attribute customization](#dynamic-attribute-customization)
-  * [Extending the default registers via inheritance](#extending-the-default-registers-via-inheritance)
-  * [Create a custom register from scratch via inheritance](#create-a-custom-register-from-scratch-via-inheritance)
+  * [Extending the default registers](#extending-the-default-registers)
+  * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
 * [Terminal Support](#terminal-support)
 
 ## Renderer
@@ -361,7 +361,7 @@ fg.set(my_color_name, render.eightbit_fg(51))
 a = fg.special_teal + 'This is teal text.' + fg.rs
 ```
 
-### Extending the default registers via inheritance
+### Extending the default registers
 
 If you want to set a larger register of custom attributes, inheriting from the default register might be more convenient:
 
@@ -379,7 +379,7 @@ fg = MyFgRegister()
 ```
 
 
-### Create a custom register from scratch via inheritance
+### Create a custom register from scratch
 
 You can also start your own register from scratch by inheriting the clean base classes:
 
