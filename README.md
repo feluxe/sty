@@ -29,9 +29,7 @@ style objects directly, like this:
 from sty import fg, bg, ef, rs
 ```
 
-#### Example usage:
-
-*Sty* all the strings!
+#### *Sty* all the strings!
 
 ```python
 foo = fg.red + 'This is red text!' + fg.rs
