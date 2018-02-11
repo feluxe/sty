@@ -74,7 +74,7 @@ There is a bunch of tiny, but flexible primitives that are used for styling your
 * `bg` (background)
 * `rs` (reset).
 
-Each primitive carries a default selection of attributes, which you can select like this:
+Each primitive carries a default selection of attributes, which you can select like this (see: [List of style effects]() and [List of default color names]()):
 
 ```python
 ef.italic
