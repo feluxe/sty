@@ -29,6 +29,8 @@ style objects directly, like this:
 from sty import fg, bg, ef, rs
 ```
 
+#### Example usage:
+
 *Sty* all the strings!
 
 ```python
@@ -52,7 +54,7 @@ output:
 <img src="assets/example_so.png" alt="example_so" />  
 
 
-## A little Walkthrough
+#### A quick look at the primitives:
 
 sty provides a bunch of tiny, but flexible primitives that can be used for styling your strings: 
 
