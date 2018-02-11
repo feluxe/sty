@@ -171,6 +171,8 @@ The renderfunctions are stored in `sty.render`.
 
 ### List of default effects
 
+These are the default attributes for the `ef` object.
+
 More info: [wikipedia#SGR][SGR]
 
 | Effect               | Description | Default Renderer |
@@ -189,7 +191,9 @@ More info: [wikipedia#SGR][SGR]
 
 ### List of default colors
 
-#### Foreground `fg`
+#### Foreground
+
+The default colors for the `fg` object.
 
 These are most widely supported. (using sgr codes).
 
@@ -233,7 +237,9 @@ These are even less widely supported. (using 8bit color codes).
 | da_white    | eightbit_fg(249) |
 
 
-#### Background `bg`
+#### Background
+
+The default colors for the `bg` object.
 
 These are most widely supported. (using sgr codes).
 
