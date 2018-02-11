@@ -175,20 +175,50 @@ More info: [SGR](https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Grap
 
 
 
-### List of default colors
+### List of default foreground colors
 
 More info: [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit).
 
-| normal   | light |
-| -------- | ----- |
-| black    | li_black | 
-| red      | li_red |
-| green    | li_green |
-| yellow   | li_yellow |
-| blue     | li_blue |
-| magenta  | li_magenta |
-| cyan     | li_cyan |
-| white    | li_white |
+These are most widely supported.
+
+| normal   | Default Renderer |
+| -------- | ---------------- |
+| black    | sgr(30)          |
+| red      | sgr(31)          |
+| green    | sgr(32)          |
+| yellow   | sgr(33)          |
+| blue     | sgr(34)          |
+| magenta  | sgr(35)          |
+| cyan     | sgr(36)          |
+| white    | sgr(37)          |
+
+
+These are less widely supported.
+
+| light       | Default Renderer |
+| ----------- | ---------------- |
+| li_black    | sgr(90)          |
+| li_red      | sgr(91)          |
+| li_green    | sgr(92)          |
+| li_yellow   | sgr(93)          |
+| li_blue     | sgr(94)          |
+| li_magenta  | sgr(95)          |
+| li_cyan     | sgr(96)          |
+| li_white    | sgr(97)          |
+
+
+These use the eightbit color renderer, which is less widely supported than the sgr renderer.
+
+| dark        | Default Renderer |
+| ----------- | ---------------- |
+| da_black    | eightbit_fg(90)  |
+| da_red      | eightbit_fg(91)  |
+| da_green    | eightbit_fg(92)  |
+| da_yellow   | eightbit_fg(93)  |
+| da_blue     | eightbit_fg(94)  |
+| da_magenta  | eightbit_fg(95)  |
+| da_cyan     | eightbit_fg(96)  |
+| da_white    | eightbit_fg(97)  |
 
 
 Notice: Color names/values can be modified/extended. See [customizing sty](#customizing-sty) below.
