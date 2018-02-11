@@ -106,6 +106,8 @@ I think this is all you need to know to get going. Check out the documentation o
     * [Coloring by name](#coloring-by-name)
     * [Coloring with 8bit codes](#coloring-with-8-bit-codes)
     * [Coloring with 24bit codes](#coloring-with-24bit-codes)
+* [Reset](#reset)
+  * [List of default reset attributes](#list-of-default-reset-attributes)
 * [Customization](#customization)
   * [Direct attribute customization](#direct-attribute-customization)
   * [Dynamic attribute customization](#dynamic-attribute-customization)
@@ -115,7 +117,7 @@ I think this is all you need to know to get going. Check out the documentation o
 
 ## Renderer
 
-The renderfunctions are stored in `sty.render`.
+The render functions are stored in `sty.render`.
 
 ### List of Renderer
 
@@ -329,6 +331,29 @@ print(a, b, c, sep='\n')
 <img src="assets/24bit.png" alt="24bit" />  
 
 Link: [wikipedia:24bit][24bit]
+
+## Reset
+
+The reset object `rs` can be used to reset previously applied styles.
+
+### List of default reset attributes
+
+These are the default attributes for the `rs` object:
+
+| Reset                | Default Renderer |
+| -------------------- | ---------------- |
+| all                  | sgr(0)           |
+| fg                   | sgr(39)          |
+| bg                   | sgr(49)          |
+| bold (alias b)       | sgr(21)          |
+| faint                | sgr(22)          |
+| italic (alias i)     | sgr(23)          |
+| underline (alias u)  | sgr(24)          |
+| blink                | sgr(25)          |
+| conceal              | sgr(28)          |
+| strike               | sgr(29)          |
+
+
 
 ## Customization
  
