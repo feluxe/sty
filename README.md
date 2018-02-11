@@ -147,14 +147,8 @@ I think this is all you need to know. Check out the documentation or the codebas
 ## Documentation:
 
 * [List of renderers](#list-of-renderers)
-* [List of default effects](#list-of-default-effects)
-* [List of default colors](#list-of-default-colors)
-* [Italic](#italic)
-* [Bold](#bold)
-* [Underline](#underline)
-* [Coloring by name](#string-coloring-by-name)
-* [Coloring with 8bit](#string-coloring-using-8-bit-numbers)
-* [Coloring with 24bit (rgb, truecolor)](#string-coloring-using-24-bit-rgb-values)
+* [Effect](#list-of-default-effects)
+* [Colors](#list-of-default-colors)
 * [Terminal Support](#terminal-support)
 
 ### List of Renderers
@@ -187,6 +181,49 @@ More info: [wikipedia#SGR][SGR]
 | conceal              | Conceal/Hide | sgr(8) |
 | strike               | Striketrhough | sgr(9) |
 
+
+#### Italic
+
+```python
+a = ef.italic + 'Italic.' + rs.italic
+
+# Shorthand version:
+b = ef.i + fg.blue + 'Italic.' + rs.i + ' Not italic but blue.' + rs.fg
+
+print(a, b, sep='\n')
+```
+
+<img src="assets/italic.png" alt="italic" />  
+
+#### Bold
+
+```python
+a = ef.bold + 'Bold.' + rs.bold
+
+# Shorthand version:
+b = ef.b + 'Bold.' + rs.b + fg.li_yellow + ' Not bold but yellow.' + rs.fg
+
+print(a, b, sep='\n')
+```
+
+<img src="assets/bold.png" alt="bold" />  
+
+#### Underline
+
+```python
+a = ef.underline + 'Underlined.' + rs.underline
+
+# Shorthand version:
+b = ef.u + 'Underlined.' + rs.u + fg.green + ' Not underlined but green.' + rs.fg
+
+print(a, b, sep='\n')
+```
+
+<img src="assets/underline.png" alt="underline" />  
+
+#### TODO
+
+Add examples for, strike, blink, etc..
 
 
 ### List of default colors
@@ -284,52 +321,7 @@ These are even less widely supported. (using 8bit color codes).
 | da_white    | eightbit_bg(249) |
 
 
-
-### Italic
-
-```python
-a = ef.italic + 'Italic.' + rs.italic
-
-# Shorthand version:
-b = ef.i + fg.blue + 'Italic.' + rs.i + ' Not italic but blue.' + rs.fg
-
-print(a, b, sep='\n')
-```
-
-<img src="assets/italic.png" alt="italic" />  
-
-### Bold
-
-```python
-a = ef.bold + 'Bold.' + rs.bold
-
-# Shorthand version:
-b = ef.b + 'Bold.' + rs.b + fg.li_yellow + ' Not bold but yellow.' + rs.fg
-
-print(a, b, sep='\n')
-```
-
-<img src="assets/bold.png" alt="bold" />  
-
-### Underline
-
-```python
-a = ef.underline + 'Underlined.' + rs.underline
-
-# Shorthand version:
-b = ef.u + 'Underlined.' + rs.u + fg.green + ' Not underlined but green.' + rs.fg
-
-print(a, b, sep='\n')
-```
-
-<img src="assets/underline.png" alt="underline" />  
-
-#### TODO
-
-Add examples for, strike, blink, etc..
-
-
-### String coloring by name
+#### String coloring by name
 
 ```python
 a = fg.blue + 'I have a blue foreground.' + rs.fg
@@ -342,8 +334,7 @@ print(a, b, c, sep='\n')
 <img src="assets/color_by_name.png" alt="color_by_name" />  
 
 
-
-### String coloring using 8-bit numbers
+#### Coloring using 8-bit numbers
 
 ```python
 a = fg(34) + 'I have a green foreground.' + rs.fg
@@ -358,7 +349,7 @@ print(a, b, c, sep='\n')
 Link: [wikipedia#8bit][8bit]
 
 
-### String coloring using 24-bit RGB values
+#### Coloring using 24-bit RGB values
 
 ```python
 a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
