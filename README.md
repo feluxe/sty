@@ -53,8 +53,8 @@ output:
     
 ## Documentation:
 
-* [List of style effects](#list-of-style-effects)
-* [List of default color names](#list-of-default-color-names)
+* [List of default effects](#list-of-default-effects)
+* [List of default colors](#list-of-default-colors)
 * [Italic](#italic)
 * [Bold](#bold)
 * [Underline](#underline)
@@ -83,7 +83,7 @@ bg.green
 rs.all
 ```
 
-> Relevant: [List of style effects]() and [List of default color names]()):
+> Relevant: [List of default effects](#list-of-default-effects) and [list of default colors](#list-of-default-colors):
 
 Or like this, which is nice in case you need to dynamically select attributes:
 
@@ -156,7 +156,7 @@ The `ef` object provides effects like *italic*, *bold*, *strike*, etc.
  TODO: finish this section.
 
 
-### List of style effects
+### List of default effects
 
 More info: [SGR](https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters)
 
@@ -174,7 +174,7 @@ More info: [SGR](https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Grap
 
 
 
-### List of default color names
+### List of default colors
 
 More info: [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit).
 
