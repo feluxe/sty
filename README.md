@@ -86,17 +86,16 @@ rs.all
 Or like this, which is nice in case you need to dynamically select attributes:
 
 ```python
-ef('italic')
-fg('blue')
-bg(my_dynamic_color)
-rs('all')
+ef('italic') + 'Italic text.' + rs.italic
+fg('blue') + 'Blue text.' + rs.fg
+bg(randint(0,254)) + 'Random colored bg' + rs.bg
 ```
 
 `fg` and `bg` are special in the way that they allow you to select 8bit and 24bit colors directly:
 
 ```python
-fg(242)  # select an 8bit color directly.
-bg(49, 233, 150)  # select a 25bit rgb color directly.
+a = fg(196) + 'This is red text' + rs.fg  # select an 8bit color directly.
+b = bg(50, 255, 50) + 'Text with green bg' + rs.bg  # select a 25bit rgb color directly.
 ```
   
 Sty allows you to change or extend the default attributes as you like, using the render functions:
