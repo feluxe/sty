@@ -85,7 +85,7 @@ a = fg(196) + 'This is red text' + rs.fg  # select an 8bit color directly.
 b = bg(50, 255, 50) + 'Text with green bg' + rs.bg  # select a 24bit rgb color directly.
 ```
   
-Sty allows you to change or extend the default attributes as you like, using the [render functions](#list-of-renderers):
+Sty allows you to change or extend the default attributes as you like, using the [render functions](#list-of-renderer):
 
 ```python
 from sty import render
@@ -145,10 +145,20 @@ I think this is all you need to know. Check out the documentation or the codebas
 
     
 # Documentation:
-
-* [List of renderers](#list-of-renderers)
-* [Effect](#list-of-default-effects)
-* [Colors](#list-of-default-colors)
+* [Renderer](#renderer)
+  * [List of renderer](#list-of-renderer)
+* [Effect](#effects)
+  * [List of default effects](#list-of-default-effects)
+  * [Italic](#italic)
+  * [Bold](#bold)
+  * [Underline](#underline)
+* [Colors](#colors)
+  * [List of default colors](#list-of-default-colors)
+    * [Foreground](#foreground)
+    * [Background](#background)
+    * [Coloring by name](#coloring-by-name)
+    * [Coloring with 8bit codes](#coloring-with-8-bit-codes)
+    * [Coloring with 24bit codes](#coloring-with-24bit-codes)
 * [Terminal Support](#terminal-support)
 
 ## Renderer
@@ -326,7 +336,7 @@ These are even less widely supported. (using 8bit color codes).
 | da_white    | eightbit_bg(249) |
 
 
-### String coloring by name
+### Coloring by name
 
 ```python
 a = fg.blue + 'I have a blue foreground.' + rs.fg
@@ -339,7 +349,7 @@ print(a, b, c, sep='\n')
 <img src="assets/color_by_name.png" alt="color_by_name" />  
 
 
-### Coloring using 8-bit numbers
+### Coloring with 8-bit codes
 
 ```python
 a = fg(34) + 'I have a green foreground.' + rs.fg
@@ -354,7 +364,7 @@ print(a, b, c, sep='\n')
 Link: [wikipedia#8bit][8bit]
 
 
-### Coloring using 24-bit RGB values
+### Coloring with 24bit codes
 
 ```python
 a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
