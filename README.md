@@ -161,17 +161,17 @@ I think this is all you need to know. Have fun! :D
 
 More info: [SGR](https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters)
 
-| Effect               | Description |
-| -------------------- | ------------- |
-| bold (alias b)       | Bold or increased intensity  |
-| faint                | Decreased intensity  |
-| italic (alias i)     | Italic.. |
-| underline (alias u)  | Underline..|
-| blink_slow           | Blink less than 150 per minute |
-| blink_fast           | Blink more than 150 per minute |
-| reverse              | Reverse fore- and background |
-| conceal              | Conceal/Hide |
-| strike               | Striketrhough | 
+| Effect               | Description | Default Renderer |
+| -------------------- | ------------- | --------------|
+| bold (alias b)       | Bold or increased intensity  | sgr(1) |
+| faint                | Decreased intensity  | sgr(2) |
+| italic (alias i)     | Italic.. | sgr(3) |
+| underline (alias u)  | Underline..| sgr(4) |
+| blink_slow           | Blink less than 150 per minute | sgr(5) |
+| blink_fast           | Blink more than 150 per minute | sgr(6) |
+| reverse              | Reverse fore- and background | sgr(7) |
+| conceal              | Conceal/Hide | sgr(8) |
+| strike               | Striketrhough | sgr(9) |
 
 
 
