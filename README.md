@@ -95,8 +95,8 @@ rs('all')
 `fg` and `bg` are special in the way that they allow you to select 8bit and 24bit colors directly:
 
 ```python
-fg(242)  # select 8bit color directly.
-bg(49, 233, 150)  # select 25bit rgb color directly.
+fg(242)  # select an 8bit color directly.
+bg(49, 233, 150)  # select a 25bit rgb color directly.
 ```
   
 Sty allows you to change or extend the default attributes as you like, using the render functions:
@@ -111,7 +111,13 @@ bg.green = render.rgb(0, 128, 255)  # bg.green renders blue text from now on (us
 rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
 ```
 
-If you want to apply a larger register of custom attributes applying them like this might be more convenient.
+In case you need to set something dynamically you can use the `set` method:
+
+```python
+fg.set('red', render.sgr(32))  # fg.red renders green text from now on.
+```
+
+If you want to apply a larger register of custom attributes, applying them like this might be more convenient.
 
 ```python
 from sty.register import DefaultFg 
