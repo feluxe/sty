@@ -157,6 +157,18 @@ I think this is all you need to know. Have fun! :D
 * [Customizing](#customizing-sty)
 * [Terminal Support](#terminal-support)
 
+### List of Renderers
+
+The renderfunctions are stored in `sty.render`.
+
+| Render Function      | Description |
+| -------------------- | ------------- |
+| sgr                  | Render SGR codes (works for fg-colors, bg-colors and effects) |
+| eightbit_fg          | Render foreground using 8bit color codes |
+| eightbit_bg          | Render background using 8bit color codes |
+| rgb_fg               | Render foreground using 16bit (RGB) color codes |
+| rgb_bg               | Render background using 16bit (RGB) color codes |
+
 ### List of default effects
 
 More info: [SGR](https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters)
