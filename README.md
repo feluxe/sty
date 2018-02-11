@@ -140,12 +140,13 @@ class MyFgRegister(Fg):
 fg = MyFgRegister()
 ```
 
-I think this is all you need to know. Check out the documentation or the codebase for more detail or feel free to create an issue and ask.
+I think this is all you need to know. Check out the documentation or the codebase for more detail or feel free to create an issue and ask. Have fun! :D
 
 
     
 ## Documentation:
 
+* [List of renderers](#list-of-renderers)
 * [List of default effects](#list-of-default-effects)
 * [List of default colors](#list-of-default-colors)
 * [Italic](#italic)
@@ -154,7 +155,6 @@ I think this is all you need to know. Check out the documentation or the codebas
 * [Coloring by name](#string-coloring-by-name)
 * [Coloring with 8bit](#string-coloring-using-8-bit-numbers)
 * [Coloring with 24bit (rgb, truecolor)](#string-coloring-using-24-bit-rgb-values)
-* [Customizing](#customizing-sty)
 * [Terminal Support](#terminal-support)
 
 ### List of Renderers
@@ -193,7 +193,7 @@ More info: [wikipedia#SGR][SGR]
 
 #### Foreground
 
-More info:  3/4bit colors: [wikipedia#3/4bit][3_4bit], 8bit colors: [wikipedia#8bit][8bit], 24bit colors: [wikipedia#24bit][24bit]
+More info:  [wikipedia#3/4bit colors][3_4bit], [wikipedia#8bit colors][8bit], [wikipedia#24bit colors][24bit].
 
 The default colors for the `fg` object.
 
@@ -372,37 +372,6 @@ print(a, b, c, sep='\n')
 
 Link: [wikipedia#24bit][24bit]
 
-
-### Customizing sty
-
-If you want to change/add attributes to your sty objects (fg, bg, ef, rs) you can use a dict and the rendering methods provided by `sty.render` to do so:
-
-```python
-custom_colors= dict(
-    orange=render.eightbit_fg(214),  # Add 'orange' to fg (using 8-bit code)
-    green=render.rgb_fg(255, 0, 0),  # Modify value for 'green' (using rgb code)
-    blue=render.sgr(95),  # Turn 'blue' into magenta (using sgr code)
-)
-
-a = fg.green + 'I have a green foreground.' + rs.fg
-b = fg.blue + 'I have a blue foreground.' + rs.fg
-
-fg(custom_colors)
-
-c = fg.green + 'I have a red foreground now.' + rs.fg
-d = fg.blue + 'I have a magenta foreground now.' + rs.fg
-e = fg.orange + 'I was set orange by a newly registered color name.' + rs.fg
-
-print(a, b, c, d, e, sep='\n')
-```
-
-<img src="assets/customizing.png" alt="customizing" />  
-
-As you see, there are three types of renders:
-
-* `sgr` This one is used to generate ansi strings for SGR "Select Graphic Rendition" codes. These are most widely supported. They can be used for colors, as well as styling (italic, bold, blink, etc.). [wikipedia#SGR][SGR]
-* `eigthbit`: This one is used to generate ansi strings for 8-bit colors. [wikipedia#8bit][8bit]
-* `rgb`: This one is used to generate ansi strings for 24-bit colors. [wikipedia#24bit][24bit]
 
 ## Terminal Support
 
