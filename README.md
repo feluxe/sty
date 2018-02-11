@@ -5,9 +5,9 @@
 
 ## Description
 
-Simple, intuitive and extensible string styling for your terminal.
+Simple, flexible and extensible string styling for your terminal.
 
-Sty has no dependencies and consists of ~ 170 LOC (incl. empty lines).
+Sty has no dependencies and consists of only ~200 LOC (including empty lines and comments).
 
 
 ## Getting Started
@@ -67,14 +67,68 @@ output:
 
 ### Primitives
 
-There is a bunch of tiny, but flexible objects to get you going: `ef`, `fg`, 
-`bg`, `rs`.
+There is a bunch of tiny, but flexible primitives that are used to style your string: `ef` (effects), `fg` (foreground), `bg` (background), `rs` (reset).
+
+Each primitive carries a default selection of attributes, which you can select like this:
+
+```python
+ef.italic
+fg.blue
+bg.green
+rs.all
+```
+
+Or like this, which is nice in case you need to dynamically select attributes:
+
+```python
+ef('italic')
+fg('blue')
+bg('green')
+rs('all')
+```
+    
+You can change or extend the attributes as you like, using the render functions:
+
+```python
+from sty import render
+
+ef.italic = render.sgr(1)  # ef.italic now renders bold text.
+fg.blue = render.sgr(32)  # fg.blue now renders green text.
+bg.green = render.eightbit_bg(111)  # fg.green now renders blue text using an 8bit color code.
+bg.green = render.rgb(0, 128, 255)  # fg.green now renders blue text using a 24bit rgb code.
+rs.all = render.sgr(24)  # rs.all now resets the underline effect, not all effects like before.
+```
+
+In order to update/extend a batch of attributes, you can pass them via dict as well:
+
+```python
+custom_colors = dict(
+    orange = eightbit_fg(208),
+    teal = eightbit_fg(159),
+    blue = eightbit_fg(33),
+)
+
+fg(custom_colors)
+```
+
+If you don't like the values that sty uses by default, you can create your own objects with their own attribute register:
+
+```python
+from sty.primitives import Fg
+
+fg = Fg()  # Create a clean fg object. This one is free of attributes.
+
+```
+
+More on customizing and the section below. 
 
 #### `ef`
 
 `sty.ef`
 
 The `ef` object provides effects like *italic*, *bold*, *strike*, etc. 
+
+ TODO: finish this section.
 
 
 ### List of style effects
@@ -207,7 +261,7 @@ Link: [Info on 24-bit numbers][2]
 If you want to change/add attributes to your sty objects (fg, bg, ef, rs) you can use a dict and the rendering methods provided by `sty.render` to do so:
 
 ```python
-custom_register = dict(
+custom_colors= dict(
     orange=render.eightbit_fg(214),  # Add 'orange' to fg (using 8-bit code)
     green=render.rgb_fg(255, 0, 0),  # Modify value for 'green' (using rgb code)
     blue=render.sgr(95),  # Turn 'blue' into magenta (using sgr code)
@@ -216,7 +270,7 @@ custom_register = dict(
 a = fg.green + 'I have a green foreground.' + rs.fg
 b = fg.blue + 'I have a blue foreground.' + rs.fg
 
-fg(custom_register)
+fg(custom_colors)
 
 c = fg.green + 'I have a red foreground now.' + rs.fg
 d = fg.blue + 'I have a magenta foreground now.' + rs.fg

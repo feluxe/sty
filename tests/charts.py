@@ -1,8 +1,8 @@
-from sty import ef, fg, bg, rs, sgr, BgBase, rgb_bg, FgBase
+from sty import ef, fg, bg, rs, Fg, Bg
 
 # SGR Chart
-fg = FgBase()
-bg = BgBase()
+fg = Fg()
+bg = Bg()
 
 print('\n\nDEMO:\n')
 

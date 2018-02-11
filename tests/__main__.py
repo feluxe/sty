@@ -1,6 +1,6 @@
 
 from sty import fg, bg, rs, ef
-print('\n\n\n\n')
+print('\n')
 
 foo = fg.red + 'This is red text!' + fg.rs
 bar = bg.blue + 'This has a blue background!' + bg.rs

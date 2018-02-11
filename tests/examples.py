@@ -1,5 +1,4 @@
-from sty import ef, fg, bg, rs, sgr, BgBase, rgb_bg, FgBase
-from sty import render
+from sty import ef, fg, bg, rs, render
 
 # Hello World!
 
