@@ -83,8 +83,6 @@ bg.green
 rs.all
 ```
 
-> Relevant: [List of default effects](#list-of-default-effects) and [list of default colors](#list-of-default-colors):
-
 Or like this, which is nice in case you need to dynamically select attributes:
 
 ```python
@@ -107,16 +105,16 @@ Sty allows you to change or extend the default attributes as you like, using the
 from sty import render
 
 ef.italic = render.sgr(1)  # ef.italic now renders bold text.
-fg.blue = render.sgr(32)  # fg.blue now renders green text.
-bg.green = render.eightbit_bg(111)  # fg.green now renders blue text using an 8bit color code.
-bg.green = render.rgb(0, 128, 255)  # fg.green now renders blue text using a 24bit rgb code.
-rs.all = render.sgr(24)  # rs.all now resets the underline effect, not all effects like before.
+fg.red = render.sgr(32)  # fg.red renders green text from now on.
+fg.blue = render.eightbit_bg(111)  # fg.blue renders blue text from now on (using an 8bit color code).
+bg.green = render.rgb(0, 128, 255)  # bg.green renders blue text from now on (using a 24bit rgb code).
+rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
 ```
 
 If you want to apply a larger register of custom attributes you might want to apply them like this:
 
 ```python
-from sty.register import DefaultFg
+from sty.register import DefaultFg  # sty.register contains the default registers used by sty.
 from sty.render import sgr, rgb_fg
 
 class MyFgRegister(DefaultFg):
