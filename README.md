@@ -177,9 +177,11 @@ More info: [SGR](https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Grap
 
 ### List of default foreground colors
 
-More info: [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit).
+More info: [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit) and [8bit color table][1].
 
-These are most widely supported.
+#### Foreground `fg`
+
+These are most widely supported. (using sgr codes).
 
 | normal   | Default Renderer |
 | -------- | ---------------- |
@@ -193,7 +195,7 @@ These are most widely supported.
 | white    | sgr(37)          |
 
 
-These are less widely supported.
+These are less widely supported. (using less common set of sgr codes).
 
 | light       | Default Renderer |
 | ----------- | ---------------- |
@@ -207,21 +209,62 @@ These are less widely supported.
 | li_white    | sgr(97)          |
 
 
-These use the eightbit color renderer, which is less widely supported than the sgr renderer.
+These are even less widely supported. (using 8bit color codes).
 
 | dark        | Default Renderer |
 | ----------- | ---------------- |
-| da_black    | eightbit_fg(90)  |
-| da_red      | eightbit_fg(91)  |
-| da_green    | eightbit_fg(92)  |
-| da_yellow   | eightbit_fg(93)  |
-| da_blue     | eightbit_fg(94)  |
-| da_magenta  | eightbit_fg(95)  |
-| da_cyan     | eightbit_fg(96)  |
-| da_white    | eightbit_fg(97)  |
+| da_black    | eightbit_fg(0)   |
+| da_red      | eightbit_fg(88)  |
+| da_green    | eightbit_fg(22)  |
+| da_yellow   | eightbit_fg(58)  |
+| da_blue     | eightbit_fg(18)  |
+| da_magenta  | eightbit_fg(89)  |
+| da_cyan     | eightbit_fg(23)  |
+| da_white    | eightbit_fg(249) |
 
 
-Notice: Color names/values can be modified/extended. See [customizing sty](#customizing-sty) below.
+#### Background `bg`
+
+These are most widely supported. (using sgr codes).
+
+| normal   | Default Renderer |
+| -------- | ---------------- |
+| black    | sgr(40)          |
+| red      | sgr(41)          |
+| green    | sgr(42)          |
+| yellow   | sgr(43)          |
+| blue     | sgr(44)          |
+| magenta  | sgr(45)          |
+| cyan     | sgr(46)          |
+| white    | sgr(47)          |
+
+
+These are less widely supported. (using less common set of sgr codes).
+
+| light       | Default Renderer |
+| ----------- | ---------------- |
+| li_black    | sgr(100)          |
+| li_red      | sgr(101)          |
+| li_green    | sgr(102)          |
+| li_yellow   | sgr(103)          |
+| li_blue     | sgr(104)          |
+| li_magenta  | sgr(105)          |
+| li_cyan     | sgr(106)          |
+| li_white    | sgr(107)          |
+
+These are even less widely supported. (using 8bit color codes).
+
+| dark        | Default Renderer |
+| ----------- | ---------------- |
+| da_black    | eightbit_bg(0)   |
+| da_red      | eightbit_bg(88)  |
+| da_green    | eightbit_bg(22)  |
+| da_yellow   | eightbit_bg(58)  |
+| da_blue     | eightbit_bg(18)  |
+| da_magenta  | eightbit_bg(89)  |
+| da_cyan     | eightbit_bg(23)  |
+| da_white    | eightbit_bg(249) |
+
 
 
 ### Italic

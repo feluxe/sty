@@ -8,6 +8,14 @@ bg = DefaultBg()
 print('\n\nDEMO:\n')
 
 names = [
+    'da_black',
+    'da_red',
+    'da_green',
+    'da_yellow',
+    'da_blue',
+    'da_magenta',
+    'da_cyan',
+    'da_white',
     'black',
     'red',
     'green',
@@ -28,16 +36,18 @@ names = [
 
 
 def sgr_fg(names):
-    items = [fg(name) + ' ' + name.ljust(10) for name in names]
+    items = [fg(name) + ' ' + name.ljust(12) for name in names]
     items.insert(8, rs.fg + '\n')
+    items.insert(16 + 1, rs.fg + '\n')
     line = '\nSGR_FG:\n-------\n' + ''.join(items) + rs.fg
     return line
 
 
 def sgr_bg(names):
-    items = [bg(name) + ' ' + name.ljust(10) for name in names]
+    items = [bg(name) + ' ' + name.ljust(12)+ bg.rs for name in names]
     items.insert(8, rs.bg + '\n')
-    line = '\nSGR_BG:\n-------\n' + ''.join(items) + rs.bg
+    items.insert(16 + 1, rs.fg + '\n')
+    line = '\nSGR_BG:\n-------\n' + ''.join(items)
     return line
 
 
@@ -63,9 +73,9 @@ def eightbit(kind):
     return line
 
 
-
 print(sgr_fg(names))
 print(sgr_bg(names))
 print(eightbit('fg'))
 print(eightbit('bg'))
-print('\n24bit\n------ I skip the 24-bit chart for now. Please add one to charts.py if you like.')
+print(
+    '\n24bit\n------ I skip the 24-bit chart for now. Please add one to charts.py if you like.')

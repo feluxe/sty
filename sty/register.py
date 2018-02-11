@@ -1,4 +1,4 @@
-from sty.render import sgr
+from sty.render import sgr, eightbit_fg, eightbit_bg
 from sty.primitive import Ef, Fg, Bg, Rs
 
 
@@ -41,6 +41,16 @@ class DefaultFg(Fg):
     li_cyan = sgr(96)
     li_white = sgr(97)
 
+    # These are less supported:
+    da_black = eightbit_fg(0)
+    da_red = eightbit_fg(88)
+    da_green = eightbit_fg(22)
+    da_yellow = eightbit_fg(58)
+    da_blue = eightbit_fg(18)
+    da_magenta = eightbit_fg(89)
+    da_cyan = eightbit_fg(23)
+    da_white = eightbit_fg(249)
+
 
 class DefaultBg(Bg):
     # Classic terminal background color preset.
@@ -66,6 +76,15 @@ class DefaultBg(Bg):
     li_cyan = sgr(106)
     li_white = sgr(107)
 
+    # These are less supported:
+    da_black = eightbit_bg(0)
+    da_red = eightbit_bg(88)
+    da_green = eightbit_bg(22)
+    da_yellow = eightbit_bg(58)
+    da_blue = eightbit_bg(18)
+    da_magenta = eightbit_bg(89)
+    da_cyan = eightbit_bg(23)
+    da_white = eightbit_bg(249)
 
 class DefaultRs(Rs):
     all = sgr(0)
