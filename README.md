@@ -5,7 +5,7 @@
 
 ## Description
 
-Simple, flexible and extensible string styling for your terminal.
+Simple, flexible and extensible string styling for your terminal. Supports 3/4bit, 8bit and 24bit (truecolor, rgb) colors. Should work on most Unix platfroms with most terminals. Recent versions of Windows 10 should work with this as well.
 
 Sty has no dependencies and consists of only ~200 LOC (including empty lines and comments).
 
