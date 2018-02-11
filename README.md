@@ -11,7 +11,7 @@ Sty has no dependencies and consists of only ~200 LOC (including empty lines and
 
 ## Goal
 
-The idea is to provide a little style markup for python strings, which is decoupled from color palettes and rendering implementations. Why? Because string styling for command line apps is a common problem and it would be nice if there was a standard markup for it that is not bound to certain terminal implementations.
+The idea is to provide a little style markup for python strings, which is decoupled from color palettes and terminal implementations. Why? Because string styling for command line apps is a common problem and it would be nice if there was a standard markup for it that is not bound to certain terminal implementations.
 
 If future terminal implementations require new escape sequences, you provide them to sty and leave the markup untouched.
 
