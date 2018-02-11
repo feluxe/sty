@@ -84,61 +84,6 @@ bg(randint(0,254)) + 'Random colored bg' + rs.bg
 a = fg(196) + 'This is red text' + rs.fg  # select an 8bit color directly.
 b = bg(50, 255, 50) + 'Text with green bg' + rs.bg  # select a 24bit rgb color directly.
 ```
-  
-Sty allows you to change or extend the default attributes as you like, using the [render functions](#list-of-renderer):
-
-```python
-from sty import render
-
-ef.italic = render.sgr(1)  # ef.italic now renders bold text.
-fg.red = render.sgr(32)  # fg.red renders green text from now on.
-fg.blue = render.eightbit_bg(111)  # fg.blue renders blue text from now on (using an 8bit color code).
-fg.my_new_item = render.eightbit_fg(130)  # Create a new item that renders brown text.
-bg.green = render.rgb(0, 128, 255)  # bg.green renders blue text from now on (using a 24bit rgb code).
-rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
-```
-
-In case you need to set attributes dynamically you can use the `set` method:
-
-```python
-my_color_name = 'special_teal'
-
-fg.set(my_color_name, render.eightbit_fg(51)) 
-
-a = fg.special_teal + 'This is teal text.' + fg.rs
-```
-
-
-If you want to set a larger register of custom attributes, inheriting from the default register might be more convenient:
-
-```python
-from sty.register import DefaultFg 
-from sty.render import sgr, rgb_fg
-
-
-# Extend default Fg register.
-class MyFgRegister(DefaultFg):
-    black = sgr(31)
-    red = sgr(34)
-    orange = rgb_fg(10, 40, 133)
-
-fg = MyFgRegister()
-```
-
-You can also start your own register from scratch by inheriting the clean base classes:
-
-```python
-from sty.primitive import Fg
-from sty.render import sgr, rgb_fg
-
-# Create a fg register from scratch.
-class MyFgRegister(Fg):
-    black = sgr(31)
-    red = sgr(34)
-    orange = rgb_fg(10, 40, 133)
-
-fg = MyFgRegister()
-```
 
 I think this is all you need to know. Check out the documentation or the codebase for more detail or feel free to create an issue and ask. Have fun! :D
 
@@ -147,7 +92,7 @@ I think this is all you need to know. Check out the documentation or the codebas
 # Documentation:
 * [Renderer](#renderer)
   * [List of renderer](#list-of-renderer)
-* [Effect](#effects)
+* [Effects](#effects)
   * [List of default effects](#list-of-default-effects)
   * [Italic](#italic)
   * [Bold](#bold)
@@ -377,6 +322,72 @@ print(a, b, c, sep='\n')
 <img src="assets/24bit.png" alt="24bit" />  
 
 Link: [wikipedia:24bit][24bit]
+
+## Customizing Sty
+ 
+Sty allows you to change or extend the default attributes as you like, using the [render functions](#list-of-renderer):
+
+
+### Simple attribute customization
+
+You can change and add attributes directly like this:
+
+```python
+from sty import render
+
+ef.italic = render.sgr(1)  # ef.italic now renders bold text.
+fg.red = render.sgr(32)  # fg.red renders green text from now on.
+fg.blue = render.eightbit_bg(111)  # fg.blue renders blue text from now on (using an 8bit color code).
+fg.my_new_item = render.eightbit_fg(130)  # Create a new item that renders brown text.
+bg.green = render.rgb(0, 128, 255)  # bg.green renders blue text from now on (using a 24bit rgb code).
+rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
+```
+
+### Dynamic attribute customization
+
+In case you need to set attributes dynamically you can use the `set` method:
+
+```python
+my_color_name = 'special_teal'
+
+fg.set(my_color_name, render.eightbit_fg(51)) 
+
+a = fg.special_teal + 'This is teal text.' + fg.rs
+```
+
+### Extending the default registers via inheritance
+
+If you want to set a larger register of custom attributes, inheriting from the default register might be more convenient:
+
+```python
+from sty.register import DefaultFg 
+from sty.render import sgr, rgb_fg
+
+# Extend default Fg register.
+class MyFgRegister(DefaultFg):
+    black = sgr(31)
+    red = sgr(34)
+    orange = rgb_fg(10, 40, 133)
+
+fg = MyFgRegister()
+```
+
+### Create a custom register from scratch via inheritance
+
+You can also start your own register from scratch by inheriting the clean base classes:
+
+```python
+from sty.primitive import Fg
+from sty.render import sgr, rgb_fg
+
+# Create a fg register from scratch.
+class MyFgRegister(Fg):
+    black = sgr(31)
+    red = sgr(34)
+    orange = rgb_fg(10, 40, 133)
+
+fg = MyFgRegister()
+```
 
 
 ## Terminal Support
