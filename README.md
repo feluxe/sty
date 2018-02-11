@@ -104,6 +104,11 @@ I think this is all you need to know. Check out the documentation or the codebas
     * [Coloring by name](#coloring-by-name)
     * [Coloring with 8bit codes](#coloring-with-8-bit-codes)
     * [Coloring with 24bit codes](#coloring-with-24bit-codes)
+* [Customization](#customization)
+  * [Direct attribute customization](#direct-attribute-customization)
+  * [Dynamic attribute customization](#dynamic-attribute-customization)
+  * [Extending the default registers via inheritance](#extending-the-default-registers-via-inheritance)
+  * [Create a custom register from scratch via inheritance](#create-a-custom-register-from-scratch-via-inheritance)
 * [Terminal Support](#terminal-support)
 
 ## Renderer
@@ -323,12 +328,11 @@ print(a, b, c, sep='\n')
 
 Link: [wikipedia:24bit][24bit]
 
-## Customizing Sty
+## Customization
  
 Sty allows you to change or extend the default attributes as you like, using the [render functions](#list-of-renderer):
 
-
-### Simple attribute customization
+### Direct attribute customization
 
 You can change and add attributes directly like this:
 
@@ -371,6 +375,7 @@ class MyFgRegister(DefaultFg):
 
 fg = MyFgRegister()
 ```
+
 
 ### Create a custom register from scratch via inheritance
 
