@@ -1,16 +1,8 @@
 """
 """
-from sty.primitives import Ef, Fg, Bg, Rs
-from sty import defaults
+from sty import register
 
-ef = Ef()
-ef(defaults.ef)
-
-fg = Fg()
-fg(defaults.fg)
-
-bg = Bg()
-bg(defaults.bg)
-
-rs = Rs()
-rs(defaults.rs)
+ef = register.DefaultEf()
+fg = register.DefaultFg()
+bg = register.DefaultBg()
+rs = register.DefaultRs()

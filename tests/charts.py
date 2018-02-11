@@ -1,8 +1,9 @@
-from sty import ef, fg, bg, rs, Fg, Bg
+from sty import ef, fg, bg, rs
+from sty.register import DefaultFg, DefaultBg
 
-# SGR Chart
-fg = Fg()
-bg = Bg()
+# Reset items
+fg = DefaultFg()
+bg = DefaultBg()
 
 print('\n\nDEMO:\n')
 

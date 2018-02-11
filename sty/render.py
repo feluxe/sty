@@ -2,6 +2,7 @@
 
 """
 
+
 def sgr(num):
     return '\033[' + str(num) + 'm'
 

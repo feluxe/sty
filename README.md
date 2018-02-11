@@ -29,7 +29,7 @@ style objects directly, like this:
 from sty import fg, bg, ef, rs
 ```
 
-Style all the strings!
+*Sty* all the strings!
 
 ```python
 foo = fg.red + 'This is red text!' + fg.rs
@@ -88,11 +88,18 @@ Or like this, which is nice in case you need to dynamically select attributes:
 ```python
 ef('italic')
 fg('blue')
-bg('green')
+bg(my_color)
 rs('all')
 ```
-    
-You can change or extend the attributes as you like, using the render functions:
+
+`fg` and `bg` also allow you to select 8bit and 24bit colors directly:
+
+```python
+fg(242)  # select 8bit color directly.
+bg(49, 233, 150)  # select 25bit rgb color directly.
+```
+  
+Sty allows you to change or extend the default attributes as you like, using the render functions:
 
 ```python
 from sty import render
@@ -103,6 +110,8 @@ bg.green = render.eightbit_bg(111)  # fg.green now renders blue text using an 8b
 bg.green = render.rgb(0, 128, 255)  # fg.green now renders blue text using a 24bit rgb code.
 rs.all = render.sgr(24)  # rs.all now resets the underline effect, not all effects like before.
 ```
+
+# TODO: More on this in section dedicated to render
 
 In order to update/extend a batch of attributes, you can pass them via dict as well:
 
@@ -116,7 +125,7 @@ custom_colors = dict(
 fg(custom_colors)
 ```
 
-If you don't like sty's [default attributes](sty/defaults.py), you can create your own clean objects:
+If you don't like sty's [default attributes](sty/register.py), you can create your own clean objects:
 
 ```python
 from sty.primitives import Fg
