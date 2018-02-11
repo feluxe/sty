@@ -171,7 +171,7 @@ The renderfunctions are stored in `sty.render`.
 
 ### List of default effects
 
-More info: [SGR][SGR]
+More info: [wikipedia#SGR][SGR]
 
 | Effect               | Description | Default Renderer |
 | -------------------- | ------------- | --------------|
@@ -189,7 +189,7 @@ More info: [SGR][SGR]
 
 ### List of default foreground colors
 
-More info: [3/4 bit color table](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit) and [8bit color table][1].
+More info: [wikipedia#256][256] and [wikipedia#8bit][8bit].
 
 #### Foreground `fg`
 
@@ -349,7 +349,7 @@ print(a, b, c, sep='\n')
 
 <img src="assets/8bit.png" alt="8bit" />  
     
-Link: [Info on 8-bit numbers][1]
+Link: [wikipedia#256][256]
 
 
 ### String coloring using 24-bit RGB values
@@ -364,7 +364,7 @@ print(a, b, c, sep='\n')
 
 <img src="assets/24bit.png" alt="24bit" />  
 
-Link: [Info on 24-bit numbers][2]
+Link: [wikipedia#24bit][24bit]
 
 
 ### Customizing sty
@@ -394,9 +394,9 @@ print(a, b, c, d, e, sep='\n')
 
 As you see, there are three types of renders:
 
-* `sgr` This one is used to generate ansi strings for SGR "Select Graphic Rendition" codes. These are most widely supported. They can be used for colors, as well as styling (italic, bold, blink, etc.). [Link][0]
-* `eigthbit`: This one is used to generate ansi strings for 8-bit colors. [Link][1]
-* `rgb`: This one is used to generate ansi strings for 24-bit colors. [Link][2]
+* `sgr` This one is used to generate ansi strings for SGR "Select Graphic Rendition" codes. These are most widely supported. They can be used for colors, as well as styling (italic, bold, blink, etc.). [wikipedia#SGR][SGR]
+* `eigthbit`: This one is used to generate ansi strings for 8-bit colors. [wikipedia#8bit][8bit]
+* `rgb`: This one is used to generate ansi strings for 24-bit colors. [wikipedia#24bit][24bit]
 
 ## Terminal Support
 
@@ -414,5 +414,6 @@ If you want to support the widest range of terminals, you should stick to the sg
 
 
 [SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
+[256]: https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit
 [8bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 [16bit]: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
