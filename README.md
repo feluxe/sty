@@ -61,7 +61,7 @@ sty provides a bunch of tiny, but flexible primitives that can be used for styli
 * `bg` (background)
 * `rs` (reset).
 
-Each primitive carries a default selection of attributes, which you can select like this:
+Each primitive carries a default selection of attributes ([List of default effects](#list-of-default-effects) and: [List of default colors](#list-of-default-colors)), which you can select like this:
 
 ```python
 ef.italic
@@ -69,8 +69,6 @@ fg.blue
 bg.green
 rs.all
 ```
-
-> <samll> See: [List of default effects](#list-of-default-effects) and: [List of default colors](#list-of-default-colors) </small>
 
 Or like this, which is nice in case you need to dynamically select attributes:
 
