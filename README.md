@@ -144,18 +144,18 @@ I think this is all you need to know. Check out the documentation or the codebas
 
 
     
-## Documentation:
+# Documentation:
 
 * [List of renderers](#list-of-renderers)
 * [Effect](#list-of-default-effects)
 * [Colors](#list-of-default-colors)
 * [Terminal Support](#terminal-support)
 
-### Renderer
+## Renderer
 
 The renderfunctions are stored in `sty.render`.
 
-#### List of Renderer
+### List of Renderer
 
 | Render Function      | Description |
 | -------------------- | ------------- |
@@ -165,9 +165,9 @@ The renderfunctions are stored in `sty.render`.
 | rgb_fg               | Render foreground using [16bit (RGB) color codes (wikipedia#24bit)][24bit] |
 | rgb_bg               | Render background using 16bit (RGB) color codes |
 
-### Effects
+## Effects
 
-#### List of default effects
+### List of default effects
 
 These are the default attributes for the `ef` object.
 
@@ -186,7 +186,7 @@ More info: [wikipedia#SGR][SGR]
 | strike               | Striketrhough | sgr(9) |
 
 
-#### Italic
+### Italic
 
 ```python
 a = ef.italic + 'Italic.' + rs.italic
@@ -199,7 +199,7 @@ print(a, b, sep='\n')
 
 <img src="assets/italic.png" alt="italic" />  
 
-#### Bold
+### Bold
 
 ```python
 a = ef.bold + 'Bold.' + rs.bold
@@ -212,7 +212,7 @@ print(a, b, sep='\n')
 
 <img src="assets/bold.png" alt="bold" />  
 
-#### Underline
+### Underline
 
 ```python
 a = ef.underline + 'Underlined.' + rs.underline
@@ -225,15 +225,15 @@ print(a, b, sep='\n')
 
 <img src="assets/underline.png" alt="underline" />  
 
-#### TODO
+### TODO
 
 Add examples for, strike, blink, etc..
 
-### Colors
+## Colors
 
-#### List of default colors
+### List of default colors
 
-##### Foreground
+#### Foreground
 
 More info:  [wikipedia#3/4bit colors][3_4bit], [wikipedia#8bit colors][8bit], [wikipedia#24bit colors][24bit].
 
@@ -281,7 +281,7 @@ These are even less widely supported. (using 8bit color codes).
 | da_white    | eightbit_fg(249) |
 
 
-##### Background
+#### Background
 
 The default colors for the `bg` object.
 
@@ -326,7 +326,7 @@ These are even less widely supported. (using 8bit color codes).
 | da_white    | eightbit_bg(249) |
 
 
-#### String coloring by name
+### String coloring by name
 
 ```python
 a = fg.blue + 'I have a blue foreground.' + rs.fg
@@ -339,7 +339,7 @@ print(a, b, c, sep='\n')
 <img src="assets/color_by_name.png" alt="color_by_name" />  
 
 
-#### Coloring using 8-bit numbers
+### Coloring using 8-bit numbers
 
 ```python
 a = fg(34) + 'I have a green foreground.' + rs.fg
@@ -354,7 +354,7 @@ print(a, b, c, sep='\n')
 Link: [wikipedia#8bit][8bit]
 
 
-#### Coloring using 24-bit RGB values
+### Coloring using 24-bit RGB values
 
 ```python
 a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
@@ -373,7 +373,7 @@ Link: [wikipedia#24bit][24bit]
 
 This was initially tested on Arch Linux using 'Termite' terminal. If you have issues with your setup, please leave an issue. If sty works fine on your setup, feel free to add your setup to the list below:
 
-#### Termite on Linux
+### Termite on Linux
 
 | Option        | Status  |
 | ------------- | ------- |
