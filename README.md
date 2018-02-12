@@ -491,7 +491,7 @@ class MyFgRegister(Base):
 
 This was initially tested on Arch Linux using 'Termite' terminal. If you have issues with your system, please leave an issue. If sty works fine on your system, feel free to add your system info to the list below:
 
-### Termite on Linux
+#### Termite on Linux
 
 | Option        | Status  |
 | ------------- | ------- |
