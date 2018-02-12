@@ -5,7 +5,9 @@
 
 ## Description
 
-Simple, flexible and extensible string styling for your terminal. Supports 3/4bit, 8bit and 24bit (truecolor, rgb) colors. Should work on most Unix platfroms with most terminals. Recent versions of Windows 10 should work with this as well.
+Simple, flexible and extensible string styling for your terminal. Supports 3/4bit, 8bit and 24bit (truecolor, rgb) colors. Should work on most Unix platfroms with most terminals. Recent versions of Windows 10 should work with this as well. 
+
+If you run into compatibility problems with sty, please file an issue!
 
 Sty has no dependencies and consists of only ~250 LOC (including empty lines and comments).
 
@@ -53,7 +55,6 @@ fg.orange = ('rgb', (255, 150, 50))
 buf = fg.orange + 'Yay, Im orange.' + fg.rs
 
 print(foo, bar, baz, qux, qui, buf, sep='\n')
-#
 ```
 
 output:
@@ -99,8 +100,7 @@ I think this is all you need to know to get going. Check out the documentation o
 
     
 # Documentation:
-* [Renderers](#renderers)
-  * [List of renderers](#list-of-renderers)
+
 * [Effects](#effects)
   * [List of default effects](#list-of-default-effects)
   * [Italic](#italic)
@@ -115,26 +115,14 @@ I think this is all you need to know to get going. Check out the documentation o
   * [Coloring with 24bit codes](#coloring-with-24bit-codes)
 * [Reset](#reset)
   * [List of default reset attributes](#list-of-default-reset-attributes)
+* [Renderers](#renderers)
+  * [List of renderers](#list-of-renderers) 
 * [Customization](#customization)
   * [Direct attribute customization](#direct-attribute-customization)
   * [Dynamic attribute customization](#dynamic-attribute-customization)
   * [Extending the default registers](#extending-the-default-registers)
   * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
 * [Terminal Support](#terminal-support)
-
-## Renderers
-
-The default render functions are stored in `sty.render`.
-
-### List of Renderers
-
-| Render Function      | Description |
-| -------------------- | ------------- |
-| sgr                  | Render [SGR codes (wikipedia:SGR)][SGR] (works for fg-colors, bg-colors and effects) |
-| eightbit_fg          | Render foreground using [8bit color codes (wikipedia:8bit)][8bit] |
-| eightbit_bg          | Render background using 8bit color codes |
-| rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia:24bit)][24bit] |
-| rgb_bg               | Render background using 24bit (RGB) color codes |
 
 ## Effects
 
@@ -310,6 +298,8 @@ print(a, b, c, sep='\n')
 
 ### Coloring with 8-bit codes
 
+Link: [wikipedia:8bit][8bit]
+
 ```python
 a = fg(34) + 'I have a green foreground.' + rs.fg
 b = bg(133) + 'I have a pink background' + rs.bg
@@ -319,11 +309,11 @@ print(a, b, c, sep='\n')
 ```
 
 <img src="assets/8bit.png" alt="8bit" />  
-    
-Link: [wikipedia:8bit][8bit]
 
 
 ### Coloring with 24bit codes
+
+Link: [wikipedia:24bit][24bit]
 
 ```python
 a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
@@ -335,11 +325,12 @@ print(a, b, c, sep='\n')
 
 <img src="assets/24bit.png" alt="24bit" />  
 
-Link: [wikipedia:24bit][24bit]
 
 ## Reset
 
 The reset object `rs` can be used to reset previously applied styles.
+
+Link: [wikipedia:SGR][SGR]
 
 ### List of default reset attributes
 
@@ -359,6 +350,20 @@ These are the default attributes for the `rs` object:
 | strike               | sgr(29)          |
 
 
+## Renderers
+
+The default render functions are stored in `sty.render`.
+
+### List of Renderers
+
+| Render Function      | Description |
+| -------------------- | ------------- |
+| sgr                  | Render [SGR codes (wikipedia:SGR)][SGR] (works for fg-colors, bg-colors and effects) |
+| eightbit_fg          | Render foreground using [8bit color codes (wikipedia:8bit)][8bit] |
+| eightbit_bg          | Render background using 8bit color codes |
+| rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia:24bit)][24bit] |
+| rgb_bg               | Render background using 24bit (RGB) color codes |
+
 
 ## Customization
  
@@ -374,9 +379,12 @@ ef.italic = ('sgr', 1)  # ef.italic now renders bold text.
 fg.red = ('sgr', 32)  # fg.red renders green text from now on.
 fg.blue = ('eightbit', 111)  # fg.blue renders blue text from now on (using an 8bit color code).
 fg.my_new_item = ('eightbit', 130)  # Create a new item that renders brown text.
-bg.green = ('rgb', 0, 128, 255)  # bg.green renders blue text from now on (using a 24bit rgb code).
+bg.green = ('rgb', (0, 128, 255))  # bg.green renders blue text from now on (using a 24bit rgb code).
 rs.all = ('sgr', 24)  # rs.all only resets the underline effect from now on.
 ```
+
+The first part of the tuple describes, which renderer should be used (`sgr`, `eightbit`, `rgb`), the second part is the argument with which the render function is called. As you see, the `sgr` renderer requires an `int` and the `rgb` renderer requires a `Tuple[int, int, int]`.
+
 
 ### Dynamic attribute customization
 
@@ -411,14 +419,20 @@ a = fg.orange + 'This is orange text.' + rs.fg
 
 ```
 
+I think this might be useful in case you want to provide your project with custom versions of `fg`, `bg`, `ef`, `rs`. You could for example create your own `style.py` and import your custom style objects from there: `from myproj.style import fg, bg, ef, rs`.
+
+
 ### Replace or add renderers
 
-You can change or add *renderers* to your *registers*, by adding them as class methods to your register class. The following example replaces the default rgb renderer for the `fg` (foreground) object, with the one from the `bg` (background) Register. The result is that the `fg` object renders `'rgb'` values not as foreground colors, but as background colors.
+This is a little more advanced, but you can change or add *renderers* to your *registers*, by adding them as class methods to your register class.
+
+The following example replaces the default rgb renderer for the `fg` (foreground) object, with the one from the `bg` (background) Register. The result is that the `fg` object renders `'rgb'` values not as foreground colors, but as background colors. Of cause this doesn't make sense; it's just a simple demonstration.
 
 ```python
 from sty.register import FgRegister
 
 
+# RGB background render function.
 def rgb_bg(rgb: tuple):
     return f'\x1b[48;2;{str(rgb[0])};{str(rgb[1])};{str(rgb[2])}m'
 
@@ -441,7 +455,7 @@ a = fg.orange + 'I have a orange background instead of an orange fg.'
 
 The class method name of the renderer can be used for the attribute values. E.g. if the name of the renderer method is `foo`, you can set an attribute like this to access the renderer: `red = ('foo' , 24)`.
 
-This is exactly how the default registers of sty are created. You can easily use these buildingblocks to extend/customize the default registers or create new registers from scratch.
+This is exactly how the default registers of sty are created. You can easily use these building blocks to extend/customize the default registers or create new registers from scratch.
 
 There is one speciality. Remember that you can call the `fg` and `bg` object like this `fg(140)` and this `fg(100, 244, 50)`? By default `fg(140)` uses the default `eightbit` renderer and `fg(100, 244, 50)` uses the default `rgb` renderer to handle these calls. However, you can change the renderers for both cases like this:
 
@@ -488,7 +502,7 @@ class MyFgRegister(Base):
 
 This was initially tested on Arch Linux using 'Termite' terminal. If you have issues with your system, please leave an issue. If sty works fine on your system, feel free to add your system info to the list below:
 
-### Termite on Linux
+#### Termite on Linux
 
 | Option        | Status  |
 | ------------- | ------- |
@@ -496,7 +510,6 @@ This was initially tested on Arch Linux using 'Termite' terminal. If you have is
 | 8-bit color:  | Ok!     |
 | 24-bit color: | Ok!     |
 
-If you want to support the widest range of terminals, you should stick to the sgr renderer.
 
 
 [SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
