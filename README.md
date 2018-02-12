@@ -122,11 +122,11 @@ I think this is all you need to know to get going. Check out the documentation o
   * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
 * [Terminal Support](#terminal-support)
 
-## Renderer
+## Renderers
 
 The default render functions are stored in `sty.render`.
 
-### List of Renderer
+### List of Renderers
 
 | Render Function      | Description |
 | -------------------- | ------------- |
