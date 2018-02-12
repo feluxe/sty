@@ -419,6 +419,9 @@ a = fg.orange + 'This is orange text.' + rs.fg
 
 ```
 
+I think this might be useful in case you want to provide your project with custom versions of `fg`, `bg`, `ef`, `rs`. You could for example create your own `style.py` and import your custom style objects from there: `from myproj.style import fg, bg, ef, rs`.
+
+
 ### Replace or add renderers
 
 You can change or add *renderers* to your *registers*, by adding them as class methods to your register class. The following example replaces the default rgb renderer for the `fg` (foreground) object, with the one from the `bg` (background) Register. The result is that the `fg` object renders `'rgb'` values not as foreground colors, but as background colors.
