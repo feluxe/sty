@@ -11,11 +11,9 @@ Sty has no dependencies and consists of only ~200 LOC (including empty lines and
 
 ## Goal
 
-The idea is to provide a little style markup for python strings, which is decoupled from color palettes and terminal implementations. Why? Because string styling for command line apps is a common problem and it would be nice if there was a standard markup for it that is not bound to certain terminal implementations.
+The idea is to provide Python with a little string style markup, which is decoupled from color palettes and terminal implementations.
 
-If future terminal implementations require new escape sequences, you provide them to sty and leave the markup untouched.
-
-Sty comes with default color registers and renderers, which you can easily replace with new ones.
+Sty comes with default color palettes and renderers, but you can easily replace them with new ones, without touching the markup.
 
 
 ## Getting Started
@@ -49,12 +47,13 @@ qux = fg(201) + 'This is pink text using 8bit colors' + fg.rs
 qui = fg(255, 10, 10) + 'This is red text using 24bit colors.' + fg.rs
 
 # Add new colors:
-from sty import render
-fg.orange = render.rgb_fg(255, 150, 40)
+
+fg.orange = ('rgb', (255, 150, 50))
 
 buf = fg.orange + 'Yay, Im orange.' + fg.rs
 
 print(foo, bar, baz, qux, qui, buf, sep='\n')
+#
 ```
 
 output:
@@ -370,14 +369,13 @@ Sty allows you to change or extend the default attributes as you like, using the
 You can change and add attributes directly like this:
 
 ```python
-from sty import render
 
-ef.italic = render.sgr(1)  # ef.italic now renders bold text.
-fg.red = render.sgr(32)  # fg.red renders green text from now on.
-fg.blue = render.eightbit_bg(111)  # fg.blue renders blue text from now on (using an 8bit color code).
-fg.my_new_item = render.eightbit_fg(130)  # Create a new item that renders brown text.
-bg.green = render.rgb(0, 128, 255)  # bg.green renders blue text from now on (using a 24bit rgb code).
-rs.all = render.sgr(24)  # rs.all only resets the underline effect from now on.
+ef.italic = ('sgr', 1)  # ef.italic now renders bold text.
+fg.red = ('sgr', 32)  # fg.red renders green text from now on.
+fg.blue = ('eightbit', 111)  # fg.blue renders blue text from now on (using an 8bit color code).
+fg.my_new_item = ('eightbit', 130)  # Create a new item that renders brown text.
+bg.green = ('rgb', 0, 128, 255)  # bg.green renders blue text from now on (using a 24bit rgb code).
+rs.all = ('sgr', 24)  # rs.all only resets the underline effect from now on.
 ```
 
 ### Dynamic attribute customization
@@ -387,50 +385,108 @@ In case you need to set attributes dynamically you can use the `set` method:
 ```python
 my_color_name = 'special_teal'
 
-fg.set(my_color_name, render.eightbit_fg(51)) 
+fg.set(my_color_name, 'eightbit', 51) 
 
 a = fg.special_teal + 'This is teal text.' + fg.rs
 ```
 
 ### Extending the default registers
 
-If you want to set a larger register of custom attributes, inheriting from the default register might be more convenient:
+If you want to set a larger register of custom attributes, inheriting from the default registers might be more convenient:
 
 ```python
-from sty.register import DefaultFg 
-from sty.render import sgr, rgb_fg
+from sty.register import FgRegister
+
 
 # Extend default Fg register.
-class MyFgRegister(DefaultFg):
-    black = sgr(31)
-    red = sgr(34)
-    orange = rgb_fg(10, 40, 133)
+class MyFgRegister(FgRegister):
+    black = ('sgr', 31)
+    red = ('sgr', 34)
+    orange = ('rgb', (255, 128, 0))
+
 
 fg = MyFgRegister()
+
+a = fg.orange + 'This is orange text.' + rs.fg
+
+```
+
+### Replace or add renderers
+
+You can change or add *renderers* to your *registers*, by adding them as class methods to your register class. The following example replaces the default rgb renderer for the `fg` (foreground) object, with the one from the `bg` (background) Register. The result is that the `fg` object renders `'rgb'` values not as foreground colors, but as background colors.
+
+```python
+from sty.register import FgRegister
+
+
+def rgb_bg(rgb: tuple):
+    return f'\x1b[48;2;{str(rgb[0])};{str(rgb[1])};{str(rgb[2])}m'
+
+
+# Extend default Fg register.
+class MyFgRegister(FgRegister):
+
+    def rgb(self, *args):
+        return rgb_bg(*args)
+
+    black = ('sgr', 31)
+    red = ('sgr', 34)
+    orange = ('rgb', (255, 128, 0))
+
+
+fg = MyFgRegister()
+
+a = fg.orange + 'I have a orange background instead of an orange fg.'
+```
+
+The class method name of the renderer can be used for the attribute values. E.g. if the name of the renderer method is `foo`, you can set an attribute like this to access the renderer: `red = ('foo' , 24).
+
+This is exactly how the default registers of sty are created. You can esily use these buildingblocks to extend/customize the default registers or create new registers from scratch.
+
+There is one speciality. Remember that you can call the `fg` and `bg` object like this `fg(140)` and this `fg(100, 244, 50)`? By default `fg(140)` uses the default `eightbit` renderer and `fg(100, 244, 50)` uses the default `rgb` renderer to handle these calls. However, you can change the renderers for both cases like this:
+
+```python
+from sty.register import FgRegister
+
+
+class MyFgRegister(FgRegister):
+    
+    def _num_call(self, num):
+        return my_num_renderer(*num)  # default renderer is `eightbit`.
+
+    def _rgb_call(self, *args):
+        return my_rgb_tuple_renderer(*args)  # default renderer is `rgb`.
+
+
+    black = ('sgr', 31)
+    red = ('sgr', 34)
+    orange = ('rgb', (255, 128, 0))
+    
+
+fg = MyFgRegister()
+
+a = fg(100) + 'I have a new renderer now.' + rs.fg
+b = fg(40, 50, 200) + 'I have a new renderer now as well.' + rs.fg
 ```
 
 
 ### Create a custom register from scratch
 
-You can also start your own register from scratch by inheriting the clean base classes:
+If you want to create custom registers from scratch, you can do it the same way as described in the chapters above. The only difference is that you inherit from the `Base` class instead of the default register classes.
 
 ```python
-from sty.primitive import Fg
-from sty.render import sgr, rgb_fg
+from sty.primitive import Base
 
-# Create a fg register from scratch.
-class MyFgRegister(Fg):
-    black = sgr(31)
-    red = sgr(34)
-    orange = rgb_fg(10, 40, 133)
 
-fg = MyFgRegister()
+class MyFgRegister(Base):
+    # ...
+    
 ```
 
 
 ## Terminal Support
 
-This was initially tested on Arch Linux using 'Termite' terminal. If you have issues with your setup, please leave an issue. If sty works fine on your setup, feel free to add your setup to the list below:
+This was initially tested on Arch Linux using 'Termite' terminal. If you have issues with your system, please leave an issue. If sty works fine on your system, feel free to add your system info to the list below:
 
 ### Termite on Linux
 

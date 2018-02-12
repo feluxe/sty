@@ -1,12 +1,10 @@
-from sty import ef, fg, bg, rs
-from sty.primitive import Fg, Bg
-from sty import register, render
+from sty.register import FgRegister, BgRegister, RsRegister, EfRegister
 
-# # Reset items
-# fg = Fg()
-# fg(register.fg)
-# bg = Bg()
-# bg(register.bg)
+# Reset items
+ef = EfRegister()
+fg = FgRegister()
+bg = BgRegister()
+rs = RsRegister()
 
 # Getting Started
 
@@ -19,20 +17,18 @@ qux = fg(201) + 'This is pink text using 8bit colors' + fg.rs
 qui = fg(255, 10, 10) + 'This is red text using 24bit colors.' + fg.rs
 
 # Add new colors:
-from sty import render
 
-fg.orange = render.rgb_fg(255, 150, 40)
+
+fg.orange = ('rgb', (255, 150, 50))
 
 buf = fg.orange + 'Yay, Im orange.' + fg.rs
 
 print(foo, bar, baz, qux, qui, buf, sep='\n')
 
-
 # Hello World!
 
 my_string = fg.black + bg.white + ef.bold + 'Hello world!' + rs.all
 print(my_string)
-
 
 # Italic:
 
@@ -85,21 +81,126 @@ c = fg(90, 90, 90) + bg(32, 32, 32) + 'Grey fg and dark grey bg.' + rs.all
 
 print(a, b, c, sep='\n')
 
-# Customizing name register
+### Direct attribute customization
 
-custom_register = dict(
-    orange=render.eightbit_fg(214),  # Add 'orange' to fg (using 8-bit code)
-    green=render.rgb_fg(255, 0, 0),  # Modify value for 'green' (using rgb code)
-    blue=render.sgr(95),  # Turn 'blue' into magenta (using sgr code)
-)
 
-a = fg.green + 'I have a green foreground.' + rs.fg
-b = fg.blue + 'I have a blue foreground.' + rs.fg
+ef.italic = ('sgr', 1)  # ef.italic now renders bold text.
+fg.red = ('sgr', 32)  # fg.red renders green text from now on.
+fg.blue = ('eightbit',
+           111)  # fg.blue renders blue text from now on (using an 8bit color code).
+fg.my_new_item = ('eightbit', 130)  # Create a new item that renders brown text.
+bg.green = ('rgb', (0, 128,
+                    255))  # bg.green renders blue text from now on (using a 24bit rgb code).
+rs.bold = ('sgr', 24)  # rs.all only resets the underline effect from now on.
 
-fg(custom_register)
+a = ef.italic + 'This is not italic any more' + rs.italic
+b = fg.red + 'This is not red any more.' + rs.fg
+c = fg.blue + 'This is not blue any more' + rs.fg
+d = fg.my_new_item + 'This is a new attribute' + rs.fg
+e = bg.green + 'This is not green bg any more.' + rs.bg
+f = 'This does not reset bold any more' + rs.bold + ' -> This is still bold' + rs.all
 
-c = fg.green + 'I have a red foreground now.' + rs.fg
-d = fg.blue + 'I have a magenta foreground now.' + rs.fg
-e = fg.orange + 'I was set orange by a newly registered color name.' + rs.fg
+print(a, b, c, d, e, f, sep='\n')
 
-print(a, b, c, d, e, sep='\n')
+# Reset items
+ef = EfRegister()
+fg = FgRegister()
+bg = BgRegister()
+rs = RsRegister()
+
+### Dynamic attribute customization
+
+my_color_name = 'special_teal'
+
+fg.set(my_color_name, 'eightbit', 51)
+
+a = fg.special_teal + 'This is teal text.' + fg.rs
+
+print(a)
+
+# Reset items
+ef = EfRegister()
+fg = FgRegister()
+bg = BgRegister()
+rs = RsRegister()
+
+### Extending the default registers
+
+from sty.register import FgRegister
+
+
+# Extend default Fg register.
+class MyFgRegister(FgRegister):
+    black = ('sgr', 31)
+    red = ('sgr', 34)
+    orange = ('rgb', (255, 128, 0))
+
+
+fg = MyFgRegister()
+
+a = fg.orange + 'This is orange text.' + rs.fg
+
+print(a)
+
+# Reset items
+ef = EfRegister()
+fg = FgRegister()
+bg = BgRegister()
+rs = RsRegister()
+
+### Replace or add renderers
+
+from sty.register import FgRegister
+
+
+def rgb_bg(rgb: tuple):
+    return f'\x1b[48;2;{str(rgb[0])};{str(rgb[1])};{str(rgb[2])}m'
+
+
+# Extend default Fg register.
+class MyFgRegister(FgRegister):
+
+    def rgb(self, *args):
+        return rgb_bg(*args)
+
+    black = ('sgr', 31)
+    red = ('sgr', 34)
+    orange = ('rgb', (255, 128, 0))
+
+
+fg = MyFgRegister()
+
+a = fg.orange + 'I have a orange background instead of an orange fg.' + rs.bg
+
+print(a)
+# Reset items
+ef = EfRegister()
+fg = FgRegister()
+bg = BgRegister()
+rs = RsRegister()
+
+
+from sty.register import FgRegister
+from sty.renderer import rgb_bg, eightbit_bg
+
+
+class MyFgRegister(FgRegister):
+
+    def _num_call(self, num):
+        return eightbit_bg(*num)  # default renderer is `eightbit`.
+
+    def _rgb_call(self, *args):
+        return rgb_bg(*args)  # default renderer is `rgb`.
+
+
+    black = ('sgr', 31)
+    red = ('sgr', 34)
+    orange = ('rgb', (255, 128, 0))
+
+
+fg = MyFgRegister()
+
+a = fg(90) + 'I have a colored background now.' + rs.bg
+b = fg(40, 50, 200) + 'I have a colored background now.' + rs.bg
+
+print(a, b, sep='\n')

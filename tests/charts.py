@@ -1,9 +1,9 @@
 from sty import ef, fg, bg, rs
-from sty.register import DefaultFg, DefaultBg
+from sty.register import FgRegister, BgRegister
 
 # Reset items
-fg = DefaultFg()
-bg = DefaultBg()
+fg = FgRegister()
+bg = BgRegister()
 
 print('\n\nDEMO:\n')
 

@@ -1,5 +1,6 @@
 from sty import rs
-from sty.render import sgr
+from sty.renderer import sgr
+
 
 items = [
     sgr(1) + '1 bold' + rs.all,
