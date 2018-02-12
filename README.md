@@ -455,7 +455,7 @@ a = fg.orange + 'I have a orange background instead of an orange fg.'
 
 The class method name of the renderer can be used for the attribute values. E.g. if the name of the renderer method is `foo`, you can set an attribute like this to access the renderer: `red = ('foo' , 24)`.
 
-This is exactly how the default registers of sty are created. You can easily use these building blocks to extend/customize the default registers or create new registers from scratch.
+This is exactly how the default registers of sty are created (see: `sty.register` package). You can easily use these building blocks to extend/customize the default registers or create new registers from scratch.
 
 There is one speciality. Remember that you can call the `fg` and `bg` object like this `fg(140)` and this `fg(100, 244, 50)`? By default `fg(140)` uses the default `eightbit` renderer and `fg(100, 244, 50)` uses the default `rgb` renderer to handle these calls. However, you can change the renderers for both cases like this:
 
