@@ -130,7 +130,7 @@ The default render functions are stored in `sty.render`.
 
 | Render Function      | Description |
 | -------------------- | ------------- |
-| sgr                  | Render [SGR codes ([wikipedia:SGR])][SGR] (works for fg-colors, bg-colors and effects) |
+| sgr                  | Render [SGR codes (wikipedia:SGR)][SGR] (works for fg-colors, bg-colors and effects) |
 | eightbit_fg          | Render foreground using [8bit color codes (wikipedia:8bit)][8bit] |
 | eightbit_bg          | Render background using 8bit color codes |
 | rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia:24bit)][24bit] |
