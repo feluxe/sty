@@ -55,7 +55,6 @@ fg.orange = ('rgb', (255, 150, 50))
 buf = fg.orange + 'Yay, Im orange.' + fg.rs
 
 print(foo, bar, baz, qux, qui, buf, sep='\n')
-#
 ```
 
 output:
@@ -299,6 +298,8 @@ print(a, b, c, sep='\n')
 
 ### Coloring with 8-bit codes
 
+Link: [wikipedia:8bit][8bit]
+
 ```python
 a = fg(34) + 'I have a green foreground.' + rs.fg
 b = bg(133) + 'I have a pink background' + rs.bg
@@ -308,11 +309,11 @@ print(a, b, c, sep='\n')
 ```
 
 <img src="assets/8bit.png" alt="8bit" />  
-    
-Link: [wikipedia:8bit][8bit]
 
 
 ### Coloring with 24bit codes
+
+Link: [wikipedia:24bit][24bit]
 
 ```python
 a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
@@ -324,11 +325,12 @@ print(a, b, c, sep='\n')
 
 <img src="assets/24bit.png" alt="24bit" />  
 
-Link: [wikipedia:24bit][24bit]
 
 ## Reset
 
 The reset object `rs` can be used to reset previously applied styles.
+
+Link: [wikipedia:SGR][SGR]
 
 ### List of default reset attributes
 
@@ -377,9 +379,12 @@ ef.italic = ('sgr', 1)  # ef.italic now renders bold text.
 fg.red = ('sgr', 32)  # fg.red renders green text from now on.
 fg.blue = ('eightbit', 111)  # fg.blue renders blue text from now on (using an 8bit color code).
 fg.my_new_item = ('eightbit', 130)  # Create a new item that renders brown text.
-bg.green = ('rgb', 0, 128, 255)  # bg.green renders blue text from now on (using a 24bit rgb code).
+bg.green = ('rgb', (0, 128, 255))  # bg.green renders blue text from now on (using a 24bit rgb code).
 rs.all = ('sgr', 24)  # rs.all only resets the underline effect from now on.
 ```
+
+The first part of the tuple describes, which renderer should be used (`sgr`, `eightbit`, `rgb`), the second part is the argument with which the render function is called. As you see, the `sgr` renderer requires an `int` and the `rgb` renderer requires a `Tuple[int, int, int]`.
+
 
 ### Dynamic attribute customization
 
