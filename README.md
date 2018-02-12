@@ -424,7 +424,9 @@ I think this might be useful in case you want to provide your project with custo
 
 ### Replace or add renderers
 
-This is a little more advanced, but you can change or add *renderers* to your *registers*, by adding them as class methods to your register class. The following example replaces the default rgb renderer for the `fg` (foreground) object, with the one from the `bg` (background) Register. The result is that the `fg` object renders `'rgb'` values not as foreground colors, but as background colors.
+This is a little more advanced, but you can change or add *renderers* to your *registers*, by adding them as class methods to your register class.
+
+The following example replaces the default rgb renderer for the `fg` (foreground) object, with the one from the `bg` (background) Register. The result is that the `fg` object renders `'rgb'` values not as foreground colors, but as background colors.
 
 ```python
 from sty.register import FgRegister
