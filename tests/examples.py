@@ -1,5 +1,5 @@
 from sty.register import FgRegister, BgRegister, RsRegister, EfRegister
-
+from random import randint
 
 print('\nGetting Started\n--------------------')
 
@@ -22,6 +22,11 @@ buf = fg.orange + 'Yay, Im orange.' + fg.rs
 
 print(foo, bar, baz, qux, qui, buf, sep='\n')
 
+a = ef('italic') + 'Italic text.' + rs.italic
+b = fg('blue') + 'Blue text.' + rs.fg
+c = bg(randint(0, 254)) + 'Random colored bg' + rs.bg
+
+print(a, b, c , sep='\n')
 
 print('\nHello World!\n--------------------')
 ef = EfRegister()
@@ -29,10 +34,8 @@ fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
 
-
 my_string = fg.black + bg.white + ef.bold + 'Hello world!' + rs.all
 print(my_string)
-
 
 print('\nItalic\n--------------------')
 ef = EfRegister()
@@ -40,14 +43,12 @@ fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
 
-
 a = ef.italic + 'Italic.' + rs.italic
 
 # There are shorthands for this:
 b = ef.i + fg.blue + 'Italic.' + rs.i + ' Not italic but blue.' + rs.fg
 
 print(a, b, sep='\n')
-
 
 print('\nBold\n--------------------')
 ef = EfRegister()
@@ -62,13 +63,11 @@ b = ef.b + 'Bold.' + rs.b + fg.li_yellow + ' Not bold but yellow.' + rs.fg
 
 print(a, b, sep='\n')
 
-
 print('\nUnderlining\n--------------------')
 ef = EfRegister()
 fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
-
 
 a = ef.underline + 'Underlined.' + rs.underline
 
@@ -77,13 +76,11 @@ b = ef.u + 'Underlined.' + rs.u + fg.green + ' Not underlined but green.' + rs.f
 
 print(a, b, sep='\n')
 
-
 print('\nString coloring by name\n--------------------')
 ef = EfRegister()
 fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
-
 
 a = fg.blue + 'I have a blue foreground.' + rs.fg
 b = bg.li_cyan + 'I have a light cyan background' + rs.bg
@@ -91,13 +88,11 @@ c = fg.red + bg.green + 'I have a red fg and green bg.' + rs.all
 
 print(a, b, c, sep='\n')
 
-
 print('\nString coloring by 8-bit number\n--------------------')
 ef = EfRegister()
 fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
-
 
 a = fg(34) + 'I have a green foreground.' + rs.fg
 b = bg(133) + 'I have a pink background' + rs.bg
@@ -105,13 +100,11 @@ c = fg(226) + bg(19) + 'I have a light yellow fg and dark blue bg.' + rs.all
 
 print(a, b, c, sep='\n')
 
-
 print('\nString coloring by 24-bit RGB value\n--------------------')
 ef = EfRegister()
 fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
-
 
 a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
 b = bg(255, 150, 50) + 'I have an orange background' + rs.bg
@@ -119,19 +112,19 @@ c = fg(90, 90, 90) + bg(32, 32, 32) + 'Grey fg and dark grey bg.' + rs.all
 
 print(a, b, c, sep='\n')
 
-
 print('\nDirect attribute customization\n--------------------')
 ef = EfRegister()
 fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
 
-
 ef.italic = ('sgr', 4)  # ef.italic now renders underlined text.
 fg.red = ('sgr', 32)  # fg.red renders green text from now on.
-fg.blue = ('eightbit', 88)  # fg.blue renders red text from now on (using an 8bit color code).
+fg.blue = ('eightbit',
+           88)  # fg.blue renders red text from now on (using an 8bit color code).
 fg.my_new_item = ('eightbit', 130)  # Create a new item that renders brown text.
-bg.green = ('rgb', (0, 128,255))  # bg.green renders blue text from now on (using a 24bit rgb code).
+bg.green = ('rgb', (0, 128,
+                    255))  # bg.green renders blue text from now on (using a 24bit rgb code).
 rs.bold = ('sgr', 24)  # rs.all only resets the underline effect from now on.
 
 a = ef.italic + 'This is not italic any more, but underlined' + rs.underline
@@ -150,7 +143,6 @@ fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
 
-
 my_color_name = 'special_teal'
 
 fg.set(my_color_name, 'eightbit', 51)
@@ -164,7 +156,6 @@ ef = EfRegister()
 fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
-
 
 from sty.register import FgRegister
 
@@ -187,7 +178,6 @@ ef = EfRegister()
 fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
-
 
 from sty.register import FgRegister
 
@@ -213,13 +203,11 @@ a = fg.orange + 'I have a orange background instead of an orange fg.' + rs.bg
 
 print(a)
 
-
 print('\nChange call renderers\n--------------------')
 ef = EfRegister()
 fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
-
 
 from sty.register import FgRegister
 from sty.renderer import rgb_bg, eightbit_bg
@@ -232,7 +220,6 @@ class MyFgRegister(FgRegister):
 
     def _rgb_call(self, *args):
         return rgb_bg(*args)  # default renderer is `rgb`.
-
 
     black = ('sgr', 31)
     red = ('sgr', 34)

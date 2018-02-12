@@ -7,13 +7,13 @@
 
 Simple, flexible and extensible string styling for your terminal. Supports 3/4bit, 8bit and 24bit (truecolor, rgb) colors. Should work on most Unix platfroms with most terminals. Recent versions of Windows 10 should work with this as well.
 
-Sty has no dependencies and consists of only ~200 LOC (including empty lines and comments).
+Sty has no dependencies and consists of only ~250 LOC (including empty lines and comments).
 
 ## Goal
 
-The idea is to provide Python with a little string style markup, which is decoupled from color palettes and terminal implementations.
+The idea is to provide Python with a little string styling markup, which is decoupled from color palettes and terminal implementations.
 
-Sty comes with default color palettes and renderers, but you can easily replace them with new ones, without touching the markup.
+Sty comes with default color palettes and renderers, but you can easily replace/customize them with new ones, without touching the markup.
 
 
 ## Getting Started
@@ -124,13 +124,13 @@ I think this is all you need to know to get going. Check out the documentation o
 
 ## Renderer
 
-The render functions are stored in `sty.render`.
+The default render functions are stored in `sty.render`.
 
 ### List of Renderer
 
 | Render Function      | Description |
 | -------------------- | ------------- |
-| sgr                  | Render [SGR codes ([wikipedia:SGR][SGR])] (works for fg-colors, bg-colors and effects) |
+| sgr                  | Render [SGR codes ([wikipedia:SGR])][SGR] (works for fg-colors, bg-colors and effects) |
 | eightbit_fg          | Render foreground using [8bit color codes (wikipedia:8bit)][8bit] |
 | eightbit_bg          | Render background using 8bit color codes |
 | rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia:24bit)][24bit] |
