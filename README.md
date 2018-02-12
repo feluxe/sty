@@ -101,8 +101,7 @@ I think this is all you need to know to get going. Check out the documentation o
 
     
 # Documentation:
-* [Renderers](#renderers)
-  * [List of renderers](#list-of-renderers)
+
 * [Effects](#effects)
   * [List of default effects](#list-of-default-effects)
   * [Italic](#italic)
@@ -117,26 +116,14 @@ I think this is all you need to know to get going. Check out the documentation o
   * [Coloring with 24bit codes](#coloring-with-24bit-codes)
 * [Reset](#reset)
   * [List of default reset attributes](#list-of-default-reset-attributes)
+* [Renderers](#renderers)
+  * [List of renderers](#list-of-renderers) 
 * [Customization](#customization)
   * [Direct attribute customization](#direct-attribute-customization)
   * [Dynamic attribute customization](#dynamic-attribute-customization)
   * [Extending the default registers](#extending-the-default-registers)
   * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
 * [Terminal Support](#terminal-support)
-
-## Renderers
-
-The default render functions are stored in `sty.render`.
-
-### List of Renderers
-
-| Render Function      | Description |
-| -------------------- | ------------- |
-| sgr                  | Render [SGR codes (wikipedia:SGR)][SGR] (works for fg-colors, bg-colors and effects) |
-| eightbit_fg          | Render foreground using [8bit color codes (wikipedia:8bit)][8bit] |
-| eightbit_bg          | Render background using 8bit color codes |
-| rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia:24bit)][24bit] |
-| rgb_bg               | Render background using 24bit (RGB) color codes |
 
 ## Effects
 
@@ -360,6 +347,20 @@ These are the default attributes for the `rs` object:
 | conceal              | sgr(28)          |
 | strike               | sgr(29)          |
 
+
+## Renderers
+
+The default render functions are stored in `sty.render`.
+
+### List of Renderers
+
+| Render Function      | Description |
+| -------------------- | ------------- |
+| sgr                  | Render [SGR codes (wikipedia:SGR)][SGR] (works for fg-colors, bg-colors and effects) |
+| eightbit_fg          | Render foreground using [8bit color codes (wikipedia:8bit)][8bit] |
+| eightbit_bg          | Render background using 8bit color codes |
+| rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia:24bit)][24bit] |
+| rgb_bg               | Render background using 24bit (RGB) color codes |
 
 
 ## Customization
