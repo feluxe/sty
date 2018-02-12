@@ -499,7 +499,6 @@ This was initially tested on Arch Linux using 'Termite' terminal. If you have is
 | 8-bit color:  | Ok!     |
 | 24-bit color: | Ok!     |
 
-If you want to support the widest range of terminals, you should stick to the sgr renderer.
 
 
 [SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
