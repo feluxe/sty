@@ -430,6 +430,7 @@ This is a little more advanced, but you can change or add *renderers* to your *r
 from sty.register import FgRegister
 
 
+# RGB background render function.
 def rgb_bg(rgb: tuple):
     return f'\x1b[48;2;{str(rgb[0])};{str(rgb[1])};{str(rgb[2])}m'
 
