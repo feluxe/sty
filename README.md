@@ -17,6 +17,10 @@ The idea is to provide Python with a little string styling markup, which is deco
 
 Sty comes with default color palettes and renderers, but you can easily replace/customize them with new ones, without touching the markup.
 
+## Requirements
+
+Sty requires Python `>= 3.6`
+
 
 ## Getting Started
 
