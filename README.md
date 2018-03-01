@@ -19,7 +19,7 @@ Sty comes with default color palettes and renderers, but you can easily replace/
 
 ## Requirements
 
-Sty requires Python `>= 3.6`
+Sty requires Python `>= 3.5`
 
 
 ## Getting Started
