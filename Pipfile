@@ -11,12 +11,10 @@ name = "pypi"
 
 [dev-packages]
 
-wheel = "*"
+"ruamel.yaml" = "*"
 setuptools = "*"
-buildlib = "*"
-docopt = "*"
 
 
 [requires]
 
-python_version = "3.6"
+python_version = "3.5"

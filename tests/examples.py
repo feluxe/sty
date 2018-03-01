@@ -26,7 +26,7 @@ a = ef('italic') + 'Italic text.' + rs.italic
 b = fg('blue') + 'Blue text.' + rs.fg
 c = bg(randint(0, 254)) + 'Random colored bg' + rs.bg
 
-print(a, b, c , sep='\n')
+print(a, b, c, sep='\n')
 
 print('\nHello World!\n--------------------')
 ef = EfRegister()
@@ -183,7 +183,10 @@ from sty.register import FgRegister
 
 
 def rgb_bg(rgb: tuple):
-    return f'\x1b[48;2;{str(rgb[0])};{str(rgb[1])};{str(rgb[2])}m'
+    r = str(rgb[0])
+    g = str(rgb[1])
+    b = str(rgb[2])
+    return '\x1b[48;2;' + r + ';' + g + ';' + b + 'm'
 
 
 # Extend default Fg register.
