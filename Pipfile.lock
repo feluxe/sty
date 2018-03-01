@@ -1,24 +1,24 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4b95dfc95d3a7ab6153e8b3a3615802cd05c08c52dbd007765c29213d6080937"
+            "sha256": "c9bb667a8ce17f6c03aa0a7db87a16e1b668111c1a542a3183d04084cf158367"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
-            "implementation_version": "3.6.4",
+            "implementation_version": "3.5.5",
             "os_name": "posix",
             "platform_machine": "x86_64",
             "platform_python_implementation": "CPython",
-            "platform_release": "4.15.1-2-ARCH",
+            "platform_release": "4.15.4-1-ARCH",
             "platform_system": "Linux",
-            "platform_version": "#1 SMP Sun Feb 4 22:27:45 UTC 2018",
-            "python_full_version": "3.6.4",
-            "python_version": "3.6",
+            "platform_version": "#1 SMP PREEMPT Sat Feb 17 16:01:38 UTC 2018",
+            "python_full_version": "3.5.5",
+            "python_version": "3.5",
             "sys_platform": "linux"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.6"
+            "python_version": "3.5"
         },
         "sources": [
             {
@@ -30,42 +30,6 @@
     },
     "default": {},
     "develop": {
-        "buildlib": {
-            "hashes": [
-                "sha256:18370125149417e854a23e9758539ae68b577a332bd6a80ef3af08f232377dc8"
-            ],
-            "version": "==1.0.46"
-        },
-        "cmdinter": {
-            "hashes": [
-                "sha256:fff165746e6812d5366118f544461ce2bbffe204eea67730bde6d8018a454804"
-            ],
-            "version": "==1.0.11"
-        },
-        "docopt": {
-            "hashes": [
-                "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"
-            ],
-            "version": "==0.6.2"
-        },
-        "headlines": {
-            "hashes": [
-                "sha256:d027928d040ff13ee190fdcf8db0b8a61b9829e2177ce2da606bf649af44845a"
-            ],
-            "version": "==0.0.0a5"
-        },
-        "prmt": {
-            "hashes": [
-                "sha256:b88146d20eb1755dd36b62e92eef5b7dbe237b8d95ef0d65a61aa1b2becc0a27"
-            ],
-            "version": "==0.0.0a8"
-        },
-        "processy": {
-            "hashes": [
-                "sha256:b9fdcac05b13f9d6f5e4918dcf2eac7d3c2a4bd6c33779e3ab64b3fe37385b29"
-            ],
-            "version": "==1.0.6"
-        },
         "ruamel.yaml": {
             "hashes": [
                 "sha256:14d161558e3bf89e87d77c218098be22fa9a0d6d0bea40250fce525b1d0cbee2",
@@ -87,13 +51,6 @@
                 "sha256:8dc74821e4bb6b21fb1ab35964e159391d99ee44981d07d57bf96e2395f3ef75"
             ],
             "version": "==0.15.35"
-        },
-        "wheel": {
-            "hashes": [
-                "sha256:e721e53864f084f956f40f96124a74da0631ac13fbbd1ba99e8e2b5e9cafdf64",
-                "sha256:9515fe0a94e823fd90b08d22de45d7bde57c90edce705b22f5e1ecf7e1b653c8"
-            ],
-            "version": "==0.30.0"
         }
     }
 }

@@ -16,10 +16,14 @@ def eightbit_bg(num):
 
 
 def rgb_fg(rgb: tuple):
-    return f'\x1b[38;2;{str(rgb[0])};{str(rgb[1])};{str(rgb[2])}m'
+    r = str(rgb[0])
+    g = str(rgb[1])
+    b = str(rgb[2])
+    return '\x1b[38;2;' + r + ';' + g + ';' + b + 'm'
 
 
 def rgb_bg(rgb: tuple):
-    return f'\x1b[48;2;{str(rgb[0])};{str(rgb[1])};{str(rgb[2])}m'
-
-
+    r = str(rgb[0])
+    g = str(rgb[1])
+    b = str(rgb[2])
+    return '\x1b[48;2;' + r + ';' + g + ';' + b + 'm'
