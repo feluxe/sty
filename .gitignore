@@ -1,25 +1,25 @@
-### Misc. ###
+
+# Misc
+
 INFO.fmw.md
+**/tmp/*
 .cache/
 
-### Python ###
+# Python
+
 __pycache__/
 .env
 *.pyc
-venv-buildlib/
-
-### Wheels ###
 /build/
 dist/
 buildlib.egg-info/
 
-### Intellij ###
+# Ediors
+
+.vscode
+.history
 *.iml
 .idea/
-
-### Vim ###
 .swp
 
-### testing ###
-**/tmp/*
 

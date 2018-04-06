@@ -10,7 +10,7 @@
 "description": ""
 "keywords": ["styling"]
 "interpreter": "python3.6"
-"registry": "pypi"
+
 "pypi":
   "install_requires": []
   "packages": ["sty"]
@@ -23,4 +23,4 @@
   "entry_points": {"console_scripts": []
 , "gui_scripts": []
 }
-  "tests_require": ["pytest", "wheel", "buildlib"]
+  "tests_require": ["pytest", "wheel"]
