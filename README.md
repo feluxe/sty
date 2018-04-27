@@ -145,14 +145,13 @@ More info: [wikipedia:SGR][SGR]
 | Effect               | Description | Default Renderer |
 | -------------------- | ------------- | --------------|
 | bold (alias b)       | Bold or increased intensity  | sgr(1) |
-| faint                | Decreased intensity  | sgr(2) |
+| dim                  | Decreased intensity  | sgr(2) |
 | italic (alias i)     | Italic.. | sgr(3) |
-| underline (alias u)  | Underline..| sgr(4) |
-| blink_slow           | Blink less than 150 per minute | sgr(5) |
-| blink_fast           | Blink more than 150 per minute | sgr(6) |
-| reverse              | Reverse fore- and background | sgr(7) |
-| conceal              | Conceal/Hide | sgr(8) |
-| strike               | Striketrhough | sgr(9) |
+| underl (alias u)     | Underline..| sgr(4) |
+| blink                | Blink.. | sgr(5) |
+| inverse              | Inverse fore- and background | sgr(7) |
+| hidden               | Conceal/Hide | sgr(8) |
+| strike               | Strike-trhough | sgr(9) |
 
 
 ### Italic
@@ -171,10 +170,10 @@ print(a, b, sep='\n')
 ### Bold
 
 ```python
-a = ef.bold + 'Bold.' + rs.bold
+a = ef.bold + 'Bold.' + rs.bold_dim
 
 # Shorthand version:
-b = ef.b + 'Bold.' + rs.b + fg.li_yellow + ' Not bold but yellow.' + rs.fg
+b = ef.b + 'Bold.' + rs.bold_dim + fg.li_yellow + ' Not bold but yellow.' + rs.fg
 
 print(a, b, sep='\n')
 ```
@@ -184,7 +183,7 @@ print(a, b, sep='\n')
 ### Underline
 
 ```python
-a = ef.underline + 'Underlined.' + rs.underline
+a = ef.underl + 'Underlined.' + rs.underl
 
 # Shorthand version:
 b = ef.u + 'Underlined.' + rs.u + fg.green + ' Not underlined but green.' + rs.fg
@@ -351,12 +350,12 @@ These are the default attributes for the `rs` object:
 | all                  | sgr(0)           |
 | fg                   | sgr(39)          |
 | bg                   | sgr(49)          |
-| bold (alias b)       | sgr(21)          |
-| faint                | sgr(22)          |
+| bold_faint           | sgr(22)          |
+| faint_bold           | sgr(22)          |
 | italic (alias i)     | sgr(23)          |
-| underline (alias u)  | sgr(24)          |
+| underl    (alias u)  | sgr(24)          |
 | blink                | sgr(25)          |
-| conceal              | sgr(28)          |
+| hidden               | sgr(28)          |
 | strike               | sgr(29)          |
 
 
@@ -507,19 +506,42 @@ class MyFgRegister(Base):
     
 ```
 
+## Developing / Testing
+
+Clone the repo:
+
+    git clone https://github.com/feluxe/sty.git
+
+Run tests:
+
+    cd sty
+    python3 -m tests
+
+Read test results in your terminal and see if things match up.
+
 
 ## Terminal Support
 
-This was initially tested on Arch Linux using 'Termite' terminal. If you have issues with your system, please leave an issue. If sty works fine on your system, feel free to add your system info to the list below:
+If you have issues with sty on your system, please leave an issue.
 
-#### Termite on Linux
 
-| Option        | Status  |
-| ------------- | ------- |
-| SGR:          | Ok!     |
-| 8-bit color:  | Ok!     |
-| 24-bit color: | Ok!     |
+#### Yakuake
 
+Tests pass.
+
+
+#### Termite
+
+Tests pass.
+
+* `blink` effect not supported.
+
+
+#### Genome Terminal
+
+Tests pass.
+
+* `blink` effect not supported.
 
 
 [SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
