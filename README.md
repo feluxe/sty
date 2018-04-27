@@ -3,6 +3,10 @@
 
 <img src="assets/charts.png" alt="charts" />  
 
+## News
+
+Beta 6 released. Subscribe to #5 for breaking changes. Subscribe to #4 for full changelog.
+
 ## Description
 
 Simple, flexible and extensible string styling for your terminal. Supports 3/4bit, 8bit and 24bit (truecolor, rgb) colors. Should work on most Unix platfroms with most terminals. Recent versions of Windows 10 should work with this as well. 
