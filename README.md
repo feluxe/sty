@@ -132,7 +132,7 @@ I think this is all you need to know to get going. Check out the documentation o
   * [Dynamic attribute customization](#dynamic-attribute-customization)
   * [Extending the default registers](#extending-the-default-registers)
   * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
-* [Developing / Testing](#developing-/-testing)
+* [Developing / Testing](#developing--testing)
 * [Terminal Support](#terminal-support)
 
 ## Effects
