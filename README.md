@@ -132,6 +132,7 @@ I think this is all you need to know to get going. Check out the documentation o
   * [Dynamic attribute customization](#dynamic-attribute-customization)
   * [Extending the default registers](#extending-the-default-registers)
   * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
+* [Developing / Testing](#developing-/-testing)
 * [Terminal Support](#terminal-support)
 
 ## Effects
@@ -525,23 +526,11 @@ Read test results in your terminal and see if things match up.
 If you have issues with sty on your system, please leave an issue.
 
 
-#### Yakuake
-
-Tests pass.
-
-
-#### Termite
-
-Tests pass.
-
-* `blink` effect not supported.
-
-
-#### Genome Terminal
-
-Tests pass.
-
-* `blink` effect not supported.
+| Terminal    | Tested | Known Issues 
+|-------------|--------|--------------|
+| Genome Terminal | yes | * `blink` effect not supported. |
+| Terminte | yes | * `blink` effect not supported. |
+| Yakuake | yes | |
 
 
 [SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
