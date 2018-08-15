@@ -37,7 +37,7 @@ def deploy(cfg: Cfg):
 
 
 def test(cfg: Cfg):
-    sp.run(['pipenv', 'run', 'python', '-m', 'tests'])
+    sp.run(['python3.5', '-m', 'tests'])
 
 
 def bump(cfg: Cfg):
