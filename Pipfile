@@ -8,9 +8,10 @@ name = "pypi"
 [dev-packages]
 "ruamel.yaml" = "*"
 setuptools = "*"
-buildlib = "*"
+buildlib = "==0.3.1"
 yapf = "*"
 pylint = "*"
+docopt = "*"
 
 [requires]
-python_version = "3.5"
+python_version = "3.7"
