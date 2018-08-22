@@ -142,7 +142,8 @@ I think this is all you need to know to get going. Check out the documentation o
   * [Customizing register-classes](#customizing-the-register-classes)
     * [Extending the default registers and creating new instances](#extending-the-default-registers-and-creating-new-instances)
     * [Adding render-functions in a class definition](#adding-render-functions-in-a-class-definition)
-  * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
+    * [Adding special \__call__ methods in a class definition](#addding-special-_call_-mehtods-in-a-class-definition)
+    * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
 * [Developing / Testing](#developing--testing)
 * [Terminal Support](#terminal-support)
 
