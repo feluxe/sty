@@ -130,7 +130,7 @@ I think this is all you need to know to get going. Check out the documentation o
   * [List of default reset attributes](#list-of-default-reset-attributes)
 * [Renderers](#renderers)
   * [List of renderers](#list-of-renderers) 
-* [Muting / Silencing / Disabling formatting](#muting--silencing--disabling-formatting)
+* [Muting](#muting)
   * [The mute and unmute methods](#the-mute-and-unmute-methods) 
   * [The mute and unmute batch functions](#the-mute-and-unmute-batch-functions)
 * [Customization](#customization)
@@ -388,7 +388,7 @@ The default render-functions are stored in `sty.renderfunc`.
 | sty.renderfunc.rgb_bg               | Render background using 24bit (RGB) color codes |
 
 
-## Muting / Silencing / Disabling formatting
+## Muting
 
 ### The `mute` and `unmute` methods
 
