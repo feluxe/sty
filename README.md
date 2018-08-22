@@ -53,6 +53,8 @@ from sty import fg, bg, ef, rs
 #### *Sty* all the strings!
 
 ```python
+from sty import fg, bg, ef, rs, Rule, Render
+
 foo = fg.red + 'This is red text!' + fg.rs
 bar = bg.blue + 'This has a blue background!' + bg.rs
 baz = ef.italic + 'This is italic text' + rs.italic
@@ -61,7 +63,7 @@ qui = fg(255, 10, 10) + 'This is red text using 24bit colors.' + fg.rs
 
 # Add new colors:
 
-fg.orange = ('rgb', (255, 150, 50))
+fg.orange = Rule(Render.rgb_fg, 255, 150, 50)
 
 buf = fg.orange + 'Yay, Im orange.' + fg.rs
 
@@ -75,14 +77,14 @@ output:
 
 #### A quick look at the primitives:
 
-sty provides a bunch of tiny, but flexible primitives that can be used to style your strings: 
+sty provides a bunch of tiny, but flexible primitives (called register-objects) that can be used to style your strings: 
 
-* `ef` (effects)
-* `fg` (foreground)
-* `bg` (background)
-* `rs` (reset).
+* `ef` (effect-register)
+* `fg` (foreground-register)
+* `bg` (background-register)
+* `rs` (reset-register).
 
-Each primitive carries a default selection of attributes ([list-of-effects](#list-of-default-effects), [list-of-colors](#list-of-default-colors), [list-of-resets](#list-of-default-reset-attributes)), which you can select like this:
+Each register-object carries a default selection of attributes ([list-of-effects](#list-of-default-effects), [list-of-colors](#list-of-default-colors), [list-of-resetters](#list-of-default-reset-attributes)), which you can select like this:
 
 ```python
 ef.italic
@@ -140,20 +142,20 @@ I think this is all you need to know to get going. Check out the documentation o
 
 ### List of default effects
 
-These are the default attributes for the `ef` object.
+These are the default attributes for the `ef` register-object.
 
 More info: [wikipedia:SGR][SGR]
 
 | Effect               | Description | Default Renderer |
 | -------------------- | ------------- | --------------|
-| bold (alias b)       | Bold or increased intensity  | sgr(1) |
-| dim                  | Decreased intensity  | sgr(2) |
-| italic (alias i)     | Italic.. | sgr(3) |
-| underl (alias u)     | Underline..| sgr(4) |
-| blink                | Blink.. | sgr(5) |
-| inverse              | Inverse fore- and background | sgr(7) |
-| hidden               | Conceal/Hide | sgr(8) |
-| strike               | Strike-trhough | sgr(9) |
+| bold (alias b)       | Bold or increased intensity  | sty.renderfunc.sgr(1) |
+| dim                  | Decreased intensity  | sty.renderfunc.sgr(2) |
+| italic (alias i)     | Italic.. | sty.renderfunc.sgr(3) |
+| underl (alias u)     | Underline..| sty.renderfunc.sgr(4) |
+| blink                | Blink.. | sty.renderfunc.sgr(5) |
+| inverse              | Inverse fore- and background | sty.renderfunc.sgr(7) |
+| hidden               | Conceal/Hide | sty.renderfunc.sgr(8) |
+| strike               | Strike-trhough | sty.renderfunc.sgr(9) |
 
 
 ### Italic
@@ -205,103 +207,104 @@ print(a, b, sep='\n')
 
 More info:  [wikipedia:3/4bit colors][3_4bit], [wikipedia:8bit colors][8bit], [wikipedia:24bit colors][24bit].
 
-The default colors for the `fg` object.
+The default colors for the `fg` register-object.
 
 These are most widely supported. (using sgr codes).
 
 | normal   | Default Renderer |
 | -------- | ---------------- |
-| black    | sgr(30)          |
-| red      | sgr(31)          |
-| green    | sgr(32)          |
-| yellow   | sgr(33)          |
-| blue     | sgr(34)          |
-| magenta  | sgr(35)          |
-| cyan     | sgr(36)          |
-| white    | sgr(37)          |
+| black    | sty.renderfunc.sgr(30)          |
+| red      | sty.renderfunc.sgr(31)          |
+| green    | sty.renderfunc.sgr(32)          |
+| yellow   | sty.renderfunc.sgr(33)          |
+| blue     | sty.renderfunc.sgr(34)          |
+| magenta  | sty.renderfunc.sgr(35)          |
+| cyan     | sty.renderfunc.sgr(36)          |
+| white    | sty.renderfunc.sgr(37)          |
 
 
 These are less widely supported. (using less common set of sgr codes).
 
 | light       | Default Renderer |
 | ----------- | ---------------- |
-| li_black    | sgr(90)          |
-| li_red      | sgr(91)          |
-| li_green    | sgr(92)          |
-| li_yellow   | sgr(93)          |
-| li_blue     | sgr(94)          |
-| li_magenta  | sgr(95)          |
-| li_cyan     | sgr(96)          |
-| li_white    | sgr(97)          |
+| li_black    | sty.renderfunc.sgr(90)          |
+| li_red      | sty.renderfunc.sgr(91)          |
+| li_green    | sty.renderfunc.sgr(92)          |
+| li_yellow   | sty.renderfunc.sgr(93)          |
+| li_blue     | sty.renderfunc.sgr(94)          |
+| li_magenta  | sty.renderfunc.sgr(95)          |
+| li_cyan     | sty.renderfunc.sgr(96)          |
+| li_white    | sty.renderfunc.sgr(97)          |
 
 
 These are even less widely supported. (using 8bit color codes).
 
 | dark        | Default Renderer |
 | ----------- | ---------------- |
-| da_black    | eightbit_fg(0)   |
-| da_red      | eightbit_fg(88)  |
-| da_green    | eightbit_fg(22)  |
-| da_yellow   | eightbit_fg(58)  |
-| da_blue     | eightbit_fg(18)  |
-| da_magenta  | eightbit_fg(89)  |
-| da_cyan     | eightbit_fg(23)  |
-| da_white    | eightbit_fg(249) |
+| da_black    | sty.renderfunc.eightbit_fg(0)   |
+| da_red      | sty.renderfunc.eightbit_fg(88)  |
+| da_green    | sty.renderfunc.eightbit_fg(22)  |
+| da_yellow   | sty.renderfunc.eightbit_fg(58)  |
+| da_blue     | sty.renderfunc.eightbit_fg(18)  |
+| da_magenta  | sty.renderfunc.eightbit_fg(89)  |
+| da_cyan     | sty.renderfunc.eightbit_fg(23)  |
+| da_white    | sty.renderfunc.eightbit_fg(249) |
 
 
 #### Background
 
-The default colors for the `bg` object.
+The default colors for the `bg` register-object.
 
 These are most widely supported. (using sgr codes).
 
 | normal   | Default Renderer |
 | -------- | ---------------- |
-| black    | sgr(40)          |
-| red      | sgr(41)          |
-| green    | sgr(42)          |
-| yellow   | sgr(43)          |
-| blue     | sgr(44)          |
-| magenta  | sgr(45)          |
-| cyan     | sgr(46)          |
-| white    | sgr(47)          |
+| black    | sty.renderfunc.sgr(40)          |
+| red      | sty.renderfunc.sgr(41)          |
+| green    | sty.renderfunc.sgr(42)          |
+| yellow   | sty.renderfunc.sgr(43)          |
+| blue     | sty.renderfunc.sgr(44)          |
+| magenta  | sty.renderfunc.sgr(45)          |
+| cyan     | sty.renderfunc.sgr(46)          |
+| white    | sty.renderfunc.sgr(47)          |
 
 
 These are less widely supported. (using less common set of sgr codes).
 
 | light       | Default Renderer |
 | ----------- | ---------------- |
-| li_black    | sgr(100)          |
-| li_red      | sgr(101)          |
-| li_green    | sgr(102)          |
-| li_yellow   | sgr(103)          |
-| li_blue     | sgr(104)          |
-| li_magenta  | sgr(105)          |
-| li_cyan     | sgr(106)          |
-| li_white    | sgr(107)          |
+| li_black    | sty.renderfunc.sgr(100)          |
+| li_red      | sty.renderfunc.sgr(101)          |
+| li_green    | sty.renderfunc.sgr(102)          |
+| li_yellow   | sty.renderfunc.sgr(103)          |
+| li_blue     | sty.renderfunc.sgr(104)          |
+| li_magenta  | sty.renderfunc.sgr(105)          |
+| li_cyan     | sty.renderfunc.sgr(106)          |
+| li_white    | sty.renderfunc.sgr(107)          |
 
 These are even less widely supported. (using 8bit color codes).
 
 | dark        | Default Renderer |
 | ----------- | ---------------- |
-| da_black    | eightbit_bg(0)   |
-| da_red      | eightbit_bg(88)  |
-| da_green    | eightbit_bg(22)  |
-| da_yellow   | eightbit_bg(58)  |
-| da_blue     | eightbit_bg(18)  |
-| da_magenta  | eightbit_bg(89)  |
-| da_cyan     | eightbit_bg(23)  |
-| da_white    | eightbit_bg(249) |
+| da_black    | sty.renderfunc.eightbit_bg(0)   |
+| da_red      | sty.renderfunc.eightbit_bg(88)  |
+| da_green    | sty.renderfunc.eightbit_bg(22)  |
+| da_yellow   | sty.renderfunc.eightbit_bg(58)  |
+| da_blue     | sty.renderfunc.eightbit_bg(18)  |
+| da_magenta  | sty.renderfunc.eightbit_bg(89)  |
+| da_cyan     | sty.renderfunc.eightbit_bg(23)  |
+| da_white    | sty.renderfunc.eightbit_bg(249) |
 
 
 ### Coloring by name
 
 ```python
-a = fg.blue + 'I have a blue foreground.' + rs.fg
-b = bg.li_cyan + 'I have a light cyan background' + rs.bg
-c = fg.red + bg.green + 'I have a red fg and green bg.' + rs.all
+a = fg.li_blue + 'I have a light blue foreground.' + rs.fg
+b = bg.cyan + 'I have a cyan background' + rs.bg
+c = fg.da_red + bg.li_red + 'I have a dark red fg and light red bg.' + rs.all
+d = fg('yellow') + 'I have yellow fg.' + rs.fg
 
-print(a, b, c, sep='\n')
+print(a, b, c, d, sep='\n')
 ```
 
 <img src="assets/color_by_name.png" alt="color_by_name" />  
@@ -339,136 +342,255 @@ print(a, b, c, sep='\n')
 
 ## Reset
 
-The reset object `rs` can be used to reset previously applied styles.
+The reset register-object `rs` can be used to reset previously applied styles.
 
 Link: [wikipedia:SGR][SGR]
 
 ### List of default reset attributes
 
-These are the default attributes for the `rs` object:
+These are the default attributes for the `rs` register-object:
 
 | Reset                | Default Renderer |
 | -------------------- | ---------------- |
-| all                  | sgr(0)           |
-| fg                   | sgr(39)          |
-| bg                   | sgr(49)          |
-| bold_faint           | sgr(22)          |
-| faint_bold           | sgr(22)          |
-| italic (alias i)     | sgr(23)          |
-| underl    (alias u)  | sgr(24)          |
-| blink                | sgr(25)          |
-| hidden               | sgr(28)          |
-| strike               | sgr(29)          |
+| all                  | sty.renderfunc.sgr(0)           |
+| fg                   | sty.renderfunc.sgr(39)          |
+| bg                   | sty.renderfunc.sgr(49)          |
+| bold_faint           | sty.renderfunc.sgr(22)          |
+| faint_bold           | sty.renderfunc.sgr(22)          |
+| italic (alias i)     | sty.renderfunc.sgr(23)          |
+| underl    (alias u)  | sty.renderfunc.sgr(24)          |
+| blink                | sty.renderfunc.sgr(25)          |
+| hidden               | sty.renderfunc.sgr(28)          |
+| strike               | sty.renderfunc.sgr(29)          |
 
 
 ## Renderers
 
-The default render functions are stored in `sty.render`.
+The default render-functions are stored in `sty.renderfunc`.
 
 ### List of Renderers
 
-| Render Function      | Description |
+| Render-Function      | Description |
 | -------------------- | ------------- |
-| sgr                  | Render [SGR codes (wikipedia:SGR)][SGR] (works for fg-colors, bg-colors and effects) |
-| eightbit_fg          | Render foreground using [8bit color codes (wikipedia:8bit)][8bit] |
-| eightbit_bg          | Render background using 8bit color codes |
-| rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia:24bit)][24bit] |
-| rgb_bg               | Render background using 24bit (RGB) color codes |
+| sty.renderfunc.sgr                  | Render [SGR codes (wikipedia:SGR)][SGR] (works for fg-colors, bg-colors and effects) |
+| sty.renderfunc.eightbit_fg          | Render foreground using [8bit color codes (wikipedia:8bit)][8bit] |
+| sty.renderfunc.eightbit_bg          | Render background using 8bit color codes |
+| sty.renderfunc.rgb_fg               | Render foreground using [24bit (RGB) color codes (wikipedia:24bit)][24bit] |
+| sty.renderfunc.rgb_bg               | Render background using 24bit (RGB) color codes |
+
+
+## Muting / Silencing / Disabling formatting
+
+### The `mute` and `unmute` methods
+
+Sometimes its useful to disable the formatting for a register-object. You can do so by invoking the `mute` and `unmute` methods:
+
+```python
+a = fg.red + 'This text is red.' + fg.rs
+
+fg.mute()
+
+b = fg.red + 'This text is NOT red.' + fg.rs
+
+fg.unmute()
+
+c = fg.red + 'This text is red.' + fg.rs
+```
+
+### The `mute` and `unmute` batch functions
+
+If you want to mute multiple register-objects at the same time you can use the `mute` and `unmute` functions that you find in `sty.mute`, `sty.unmute`:
+
+```python
+from sty import fg, bg, ef, rs, mute, unmute
+
+a1 = fg.red + 'This text is red.' + fg.rs
+a2 = bg.red + 'This bg is red.' + bg.rs
+a3 = ef.italic + 'This text is italic' + ef.rs
+
+mute(fg, bg, ef, rs)
+
+b1 = fg.red + 'This text is NOT red.' + fg.rs
+b2 = bg.red + 'This bg is NOT red.' + bg.rs
+b3 = ef.italic + 'This text is NOT italic' + ef.rs
+
+unmute(fg, bg, ef, rs)
+
+c1 = fg.red + 'This text is red.' + fg.rs
+c2 = bg.red + 'This bg is red.' + bg.rs
+c3 = ef.italic + 'This text is italic' + ef.rs
+```
 
 
 ## Customization
  
-Sty allows you to change or extend the default registers as you like. You can also create a complete new register. More on these things in the following chapters.
+Sty allows you to change or to extend the default registers as you like. You can also create a complete new register. More on these things in the following chapters.
 
-### Direct attribute customization
+> #### WARNING:
+> If you create a library that is shared among other projects, I highly suggest not to customize the "global" register-objects (sty.fg, sty.bg, sty.ef, sty.rs) directly, because that might cause conflicts with other packages that share the same sty dependency within the same project.
+>
+> If you want to use custom register-objects in a library project, you should create new register-object instances from the register-classes dedicated to your project only. More on this int the chapter *"Extending the default registers and creating new instances"*.
 
-You can change and add attributes directly like this:
+
+### The "Rule" type and the "Render" enum 
+
+In order to assing values to a register-object, you have to use the 'Rule' type (`sty.Rule`).
+
+The Rule type simply takes the name of a render-function and the arguments that the function should use:
+
+`Rule(renderer_name, *args, **kwargs)`
+
+In this example we assign a render-function called 'sgr' with the argument 32 to `fg.red`:
 
 ```python
-
-ef.italic = ('sgr', 1)  # ef.italic now renders bold text.
-fg.red = ('sgr', 32)  # fg.red renders green text from now on.
-fg.blue = ('eightbit', 111)  # fg.blue renders blue text from now on (using an 8bit color code).
-fg.my_new_item = ('eightbit', 130)  # Create a new item that renders brown text.
-bg.green = ('rgb', (0, 128, 255))  # bg.green renders blue text from now on (using a 24bit rgb code).
-rs.all = ('sgr', 24)  # rs.all only resets the underline effect from now on.
+fg.red = Rule('sgr', 32)
 ```
 
-The first part of the tuple describes, which renderer should be used (`sgr`, `eightbit`, `rgb`), the second part is the argument with which the render function is called. As you see, the `sgr` renderer requires an `int` and the `rgb` renderer requires a `Tuple[int, int, int]`.
+Sty provides an enum `sty.Render` that allows for more structured selection of the render-function name. The following example does the same as the one above:
 
-
-### Dynamic attribute customization
-
-In case you need to set attributes dynamically you can use the `set` method:
 
 ```python
+from sty import Render
+
+fg.red = Rule(Render.sgr, 32)
+```
+
+The reason why we are assigning the name of the function instead of the function itself is that this way we can replace the render-functions on the fly for each register-object.
+
+
+### Customizing register-objects
+
+#### Direct attribute customization
+
+You can add and change attributes of each register-object directly like this:
+
+```python
+from sty import fg, bg, ef, rs, Rule, Render
+
+# ef.italic now renders underlined text.
+ef.italic = Rule(Render.sgr, 4)
+
+# fg.red renders green text from now on.
+fg.red = Rule(Render.sgr, 32)
+
+# fg.blue renders red text from now on (using an 8bit color code).
+fg.blue = Rule(Render.eightbit_fg, 88)
+
+# Create a new item that renders brown text.
+fg.my_new_item = Rule(Render.eightbit_fg, 130)
+
+# bg.green renders blue bg from now on (using a 24bit rgb code).
+bg.green = Rule(Render.rgb_bg, 0, 128, 255)
+
+# rs.all only resets the underline effect from now on.
+rs.bold_dim = Rule(Render.sgr, 24)
+```
+
+
+#### Dynamic attribute customization using the `set_rule` method.
+
+In case you need to set attributes of a register-object dynamically you can use the `set_rule` method:
+
+```python
+from sty import fg, Rule, Render
+
 my_color_name = 'special_teal'
 
-fg.set(my_color_name, 'eightbit', 51) 
+fg.set_rule(my_color_name, Rule(Render.eightbit_fg, 51))
 
-a = fg.special_teal + 'This is teal text.' + fg.rs
+a = fg.special_teal + 'This is custom teal text.' + fg.rs
 ```
 
-### Extending the default registers
+#### Changing a render-functions using `set_renderer` method for a regsiter-object.
 
-If you want to set a larger register of custom attributes, inheriting from the default registers might be more convenient:
+In order to change a render-function for a register-object (fg, bg, ef, rs) you can use the `set_renderer` mehtod:
 
 ```python
-from sty.register import FgRegister
+from sty import fg, Render
+
+def my_custom_renderfunc():
+    # ...
+
+fg.set_renderer(Render.rgb_fg, my_custom_renderfunc)
+```
+
+After this each attribute of `fg` that was set with a `Rule(Render.rgb_fg, ...` will now use the new render-function.
+
+
+### Customizing the register-classes
+
+#### Extending the default registers and creating new instances
+
+If you want to set a larger register of custom attributes, it may be more convenient to extend the default register-classes and create new register-objects from them.
+
+
+```python
+from sty import FgRegister, Rule, Render
+
+
+# Extend default Fg register.
+
+class MyFgRegister(FgRegister):
+
+    black = Rule(Render.sgr, 31)
+    red = Rule(Render.sgr, 34)
+    orange = Rule(Render.rgb_fg, 255, 128, 0)
+    # ...
+
+
+# Create a new instance from the new Register
+
+fg = MyFgRegister()
+
+a = fg.orange + 'This is orange text from a non default attribute.' + rs.fg
+```
+
+This is useful in case you want to provide your project with custom versions of `fg`, `bg`, `ef`, `rs` or if you don't want to mess with the "global" register-objects provided by sty.
+
+You could for example create your own `style.py` and import your custom regsiter-objects from there: `from myproj.style import fg, bg, ef, rs`.
+
+
+#### Add/customize render-functions in a class definition
+
+In an earlier chapter, we saw how to use the `set_renderer` method to replace a render-function for a register-object. In this example we set a new render-function within a class definition. 
+
+```python
+import sty
+from sty import Rule, FgRegister
+
+
+# Your new bg render-function.
+def my_custom_rgb_fg(r,g,b):
+    return f'\x1b[48;2;{str(r)};{str(g)};{str(b)}m'
+
+
+# Extend the enum with the name of your new render-funtion.
+class Render(sty.Render):
+    custom_rgb_fg = 'custom_rgb_fg'
 
 
 # Extend default Fg register.
 class MyFgRegister(FgRegister):
-    black = ('sgr', 31)
-    red = ('sgr', 34)
-    orange = ('rgb', (255, 128, 0))
+
+    def __init__(self):
+        super().__init__() # Call super to apply render-functions from FgRegister.
+        self.set_renderer(Render.custom_rgb_fg, my_custom_rgb_fg)
+
+    black = Rule(Render.sgr, 31)
+    red = Rule(Render.sgr, 34)
+    orange = Rule(Render.custom_rgb_bg, 255, 128, 0) # This uses the new render-function.
 
 
 fg = MyFgRegister()
 
-a = fg.orange + 'This is orange text.' + rs.fg
-
+a = fg.orange + 'I use the new render-function.' + fg.rs
 ```
 
-I think this might be useful in case you want to provide your project with custom versions of `fg`, `bg`, `ef`, `rs`. You could for example create your own `style.py` and import your custom style objects from there: `from myproj.style import fg, bg, ef, rs`.
+#### Add/customize special \__call__ mehtods
 
+Remember that you can call register-objects like this `fg(100)` (to generate a 8bit color) or like this `fg(40, 100, 20)` (to generate an rgb color)?
 
-### Replace or add renderers
-
-This is a little more advanced, but you can change or add *renderers* to your *registers*, by adding them as class methods to your register class.
-
-The following example replaces the default rgb renderer for the `fg` (foreground) object, with the one from the `bg` (background) Register. The result is that the `fg` object renders `'rgb'` values not as foreground colors, but as background colors. Of cause this doesn't make sense; it's just a simple demonstration.
-
-```python
-from sty.register import FgRegister
-
-
-# RGB background render function.
-def rgb_bg(rgb: tuple):
-    return f'\x1b[48;2;{str(rgb[0])};{str(rgb[1])};{str(rgb[2])}m'
-
-
-# Extend default Fg register.
-class MyFgRegister(FgRegister):
-
-    def rgb(self, *args):
-        return rgb_bg(*args)
-
-    black = ('sgr', 31)
-    red = ('sgr', 34)
-    orange = ('rgb', (255, 128, 0))
-
-
-fg = MyFgRegister()
-
-a = fg.orange + 'I have a orange background instead of an orange fg.'
-```
-
-The class method name of the renderer can be used for the attribute values. E.g. if the name of the renderer method is `foo`, you can set an attribute like this to access the renderer: `red = ('foo' , 24)`.
-
-This is exactly how the default registers of sty are created (see: `sty.register` package). You can easily use these building blocks to extend/customize the default registers or create new registers from scratch.
-
-There is one speciality. Remember that you can call the `fg` and `bg` object like this `fg(140)` and this `fg(100, 244, 50)`? By default `fg(140)` uses the default `eightbit` renderer and `fg(100, 244, 50)` uses the default `rgb` renderer to handle these calls. However, you can change the renderers for both cases like this:
+Each of those two calls have a different render-function assigned. You can add/change the render-functions for these calls by setting the `eightbit_call` and `rgb_call` attributes, like in this example:
 
 ```python
 from sty.register import FgRegister
@@ -476,37 +598,50 @@ from sty.register import FgRegister
 
 class MyFgRegister(FgRegister):
     
-    def _num_call(self, num):
-        return my_num_renderer(*num)  # default renderer is `eightbit`.
+    eightbit_call = Rule(Render.eightbit_fg)
+    rgb_call = Rule(Render.rgb_fg)
 
-    def _rgb_call(self, *args):
-        return my_rgb_tuple_renderer(*args)  # default renderer is `rgb`.
-
-
-    black = ('sgr', 31)
-    red = ('sgr', 34)
-    orange = ('rgb', (255, 128, 0))
+    black = Rule(Render.sgr, 31)
+    red = Rule(Render.sgr, 34)
+    orange = Rule(Render.rgb_fg, 255, 128, 0)
     
 
 fg = MyFgRegister()
 
-a = fg(100) + 'I have a new renderer now.' + rs.fg
-b = fg(40, 50, 200) + 'I have a new renderer now as well.' + rs.fg
+a = fg(100) + 'I use an eightbit_fg renderer.' + rs.fg
+b = fg(40, 50, 200) + 'I use an rgb_fg renderer.' + rs.fg
 ```
 
 
-### Create a custom register from scratch
+#### Create a custom register from scratch
 
-If you want to create custom registers from scratch, you can do it the same way as described in the chapters above. The only difference is that you inherit from the `Base` class instead of the default register classes.
+If you want to create custom register-classes from scratch, you can do it as described in the chapters above. The only difference is that you inherit from the `Base` class instead of the default register-classes.
 
 ```python
-from sty.primitive import Base
+from sty import Base, Rule, Render, renderfunc
 
 
 class MyFgRegister(Base):
+
+    # Set render-functions.
+    def __init__(self):
+        self.set_renderer(Render.sgr, renderfunc.sgr)
+        self.set_renderer(Render.rgb_fg, renderfunc.rgb_fg)
+
+    # Set rules for special call methods.
+    eightbit_call = Rule(Render.eightbit_fg)
+    rgb_call = Rule(Render.rgb_fg)
+
+    # Set styling rules.
+    black = (Render.sgr, 31)
+    red = (Render.sgr, 34)
+    orange = (Render.rgb_fg, 255, 128, 0)
     # ...
-    
 ```
+
+This is exactly how the default register-classes are created in `sty.register`.
+
+
 
 ## Developing / Testing
 

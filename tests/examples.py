@@ -1,4 +1,4 @@
-from sty.register import FgRegister, BgRegister, RsRegister, EfRegister
+from sty import Rule, renderfunc, EfRegister, FgRegister, RsRegister, BgRegister, Render
 from random import randint
 
 
@@ -12,8 +12,9 @@ def reset_registers():
 
 
 print('\nGetting Started\n--------------------')
-
 ef, fg, bg, rs = reset_registers()
+
+# from sty import fg, bg, ef, rs, Render
 
 foo = fg.red + 'This is red text!' + fg.rs
 bar = bg.blue + 'This has a blue background!' + bg.rs
@@ -23,7 +24,7 @@ qui = fg(255, 10, 10) + 'This is red text using 24bit colors.' + fg.rs
 
 # Add new colors:
 
-fg.orange = ('rgb', (255, 150, 50))
+fg.orange = Rule(Render.rgb_fg, 255, 150, 50)
 
 buf = fg.orange + 'Yay, Im orange.' + fg.rs
 
@@ -109,11 +110,12 @@ print(a, sep='\n')
 print('\nString coloring by name\n--------------------')
 ef, fg, bg, rs = reset_registers()
 
-a = fg.blue + 'I have a blue foreground.' + rs.fg
-b = bg.li_cyan + 'I have a light cyan background' + rs.bg
-c = fg.red + bg.green + 'I have a red fg and green bg.' + rs.all
+a = fg.li_blue + 'I have a light blue foreground.' + rs.fg
+b = bg.cyan + 'I have a cyan background' + rs.bg
+c = fg.da_red + bg.li_red + 'I have a dark red fg and light red bg.' + rs.all
+d = fg('yellow') + 'I have yellow fg.' + rs.fg
 
-print(a, b, c, sep='\n')
+print(a, b, c, d, sep='\n')
 
 print('\nString coloring by 8-bit number\n--------------------')
 ef, fg, bg, rs = reset_registers()
@@ -136,20 +138,23 @@ print(a, b, c, sep='\n')
 print('\nDirect attribute customization\n--------------------')
 ef, fg, bg, rs = reset_registers()
 
-ef.italic = ('sgr', 4)  # ef.italic now renders underlined text.
-fg.red = ('sgr', 32)  # fg.red renders green text from now on.
-fg.blue = (
-    'eightbit', 88
-)  # fg.blue renders red text from now on (using an 8bit color code).
-fg.my_new_item = (
-    'eightbit', 130
-)  # Create a new item that renders brown text.
-bg.green = (
-    'rgb', (0, 128, 255)
-)  # bg.green renders blue text from now on (using a 24bit rgb code).
-rs.bold_dim = (
-    'sgr', 24
-)  # rs.all only resets the underline effect from now on.
+# ef.italic now renders underlined text.
+ef.italic = Rule(Render.sgr, 4)
+
+# fg.red renders green text from now on.
+fg.red = Rule(Render.sgr, 32)
+
+# fg.blue renders red text from now on (using an 8bit color code).
+fg.blue = Rule(Render.eightbit_fg, 88)
+
+# Create a new item that renders brown text.
+fg.my_new_item = Rule(Render.eightbit_fg, 130)
+
+# bg.green renders blue bg from now on (using a 24bit rgb code).
+bg.green = Rule(Render.rgb_bg, 0, 128, 255)
+
+# rs.all only resets the underline effect from now on.
+rs.bold_dim = Rule(Render.sgr, 24)
 
 a = ef.italic + 'This is not italic any more, but underlined' + rs.underl
 b = fg.red + 'This is not red any more, but green.' + rs.fg
@@ -166,7 +171,7 @@ ef, fg, bg, rs = reset_registers()
 
 my_color_name = 'special_teal'
 
-fg.set(my_color_name, 'eightbit', 51)
+fg.set_rule(my_color_name, Rule(Render.eightbit_fg, 51))
 
 a = fg.special_teal + 'This is custom teal text.' + fg.rs
 
@@ -175,19 +180,24 @@ print(a)
 print('\nExtending the default registers\n--------------------')
 ef, fg, bg, rs = reset_registers()
 
-from sty.register import FgRegister
-
+from sty.register import FgRegister, Rule, Render
 
 # Extend default Fg register.
-class MyFgRegister(FgRegister):
-    black = ('sgr', 31)
-    red = ('sgr', 34)
-    orange = ('rgb', (255, 128, 0))
 
+
+class MyFgRegister(FgRegister):
+
+    black = Rule(Render.sgr, 31)
+    red = Rule(Render.sgr, 34)
+    orange = Rule(Render.rgb_fg, 255, 128, 0)
+    # ...
+
+
+# Create a new instance from the new Register
 
 fg = MyFgRegister()
 
-a = fg.orange + 'This is custom orange text.' + rs.fg
+a = fg.orange + 'This is orange text from a non default attribute.' + rs.fg
 
 print(a)
 
@@ -207,43 +217,66 @@ def rgb_bg(rgb: tuple):
 # Extend default Fg register.
 class MyFgRegister(FgRegister):
 
-    def rgb(self, *args):
-        return rgb_bg(*args)
+    def __init__(self):
+        super().__init__()
+        self.set_renderer(Render.rgb_bg, renderfunc.rgb_bg)
 
-    black = ('sgr', 31)
-    red = ('sgr', 34)
-    orange = ('rgb', (255, 128, 0))
+    black = Rule(Render.sgr, 31)
+    red = Rule(Render.sgr, 34)
+    orange = Rule(Render.rgb_bg, 255, 128, 0)
 
 
 fg = MyFgRegister()
 
-a = fg.orange + 'I have a orange background instead of an orange fg.' + rs.bg
+a = fg.orange + 'I have an orange background instead of an orange fg.' + rs.bg
 
-print(a)
+fg.set_renderer(Render.rgb_bg, renderfunc.rgb_fg)
+
+b = fg.orange + 'I have orange fg again.' + rs.fg
+
+print(a, b, sep='\n')
 
 print('\nChange call renderers\n--------------------')
 ef, fg, bg, rs = reset_registers()
 
 from sty.register import FgRegister
-from sty.renderer import rgb_bg, eightbit_bg
 
 
-class MyFgRegister(FgRegister):
+class MyFgRegister2(FgRegister):
 
-    def _num_call(self, num):
-        return eightbit_bg(*num)  # default renderer is `eightbit`.
+    def __init__(self):
+        super().__init__()
+        self.set_renderer(Render.eightbit_bg, renderfunc.eightbit_bg)
+        self.set_renderer(Render.rgb_bg, renderfunc.rgb_bg)
 
-    def _rgb_call(self, *args):
-        return rgb_bg(*args)  # default renderer is `rgb`.
+    eightbit_call = Rule(Render.eightbit_bg)
+    rgb_call = Rule(Render.rgb_bg)
 
-    black = ('sgr', 31)
-    red = ('sgr', 34)
-    orange = ('rgb', (255, 128, 0))
+    black = Rule(Render.sgr, 31)
+    red = Rule(Render.sgr, 34)
+    orange = Rule(Render.rgb_bg, 255, 128, 0)
 
 
-fg = MyFgRegister()
+fg = MyFgRegister2()
 
 a = fg(90) + 'Colored bg instead of colored fg.' + rs.bg
 b = fg(40, 50, 200) + 'Colored bg instead of colored fg.' + rs.bg
 
 print(a, b, sep='\n')
+
+print('\nMute Formatting\n--------------------')
+ef, fg, bg, rs = reset_registers()
+
+fg.mute()
+
+a = fg.red + 'This red forground was muted.' + fg.rs
+b = fg(10) + 'This green foreground was muted.' + fg.rs
+c = fg(100, 140, 180) + "This blue foreground was muted." + fg.rs
+
+fg.unmute()
+
+d = fg.red + 'The mute switch is off, so this is red.' + fg.rs
+e = fg(10) + 'The mute switch is off, so this is green.' + fg.rs
+f = fg(100, 140, 180) + 'The mute switch is off, so this is blue.' + fg.rs
+
+print(a, b, c, d, e, f, sep='\n')

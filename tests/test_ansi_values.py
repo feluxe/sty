@@ -1,5 +1,5 @@
 from sty import rs
-from sty.renderer import sgr
+from sty.renderfunc import sgr
 
 
 items = [
