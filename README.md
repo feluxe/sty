@@ -5,7 +5,7 @@
 
 ## News
 
-#### Beta 6 released
+#### Beta 7 released
 
 * Subscribe to [#5](https://github.com/feluxe/sty/issues/5) to keep track of breaking changes. 
 * Subscribe to [#4](https://github.com/feluxe/sty/issues/4) to keep track of the full changelog.
@@ -130,11 +130,20 @@ I think this is all you need to know to get going. Check out the documentation o
   * [List of default reset attributes](#list-of-default-reset-attributes)
 * [Renderers](#renderers)
   * [List of renderers](#list-of-renderers) 
+* [Muting](#muting)
+  * [The mute and unmute methods](#the-mute-and-unmute-methods) 
+  * [The mute and unmute batch functions](#the-mute-and-unmute-batch-functions)
 * [Customization](#customization)
-  * [Direct attribute customization](#direct-attribute-customization)
-  * [Dynamic attribute customization](#dynamic-attribute-customization)
-  * [Extending the default registers](#extending-the-default-registers)
-  * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
+  * [The Rule type and the Render enum](#the-rule-type-and-the-render-enum)
+  * [Customizing register-objects](#customizing-register-objects)
+    * [Direct attribute customization](#direct-attribute-customization)
+    * [Dynamic attribute customization using set_rule method](#dynamic-attribute-customization-using-the-set_rule-method)
+    * [Changing render-functions using set_renderer method](#changing-render-functions-using-set_renderer-method)
+  * [Customizing register-classes](#customizing-the-register-classes)
+    * [Extending the default registers and creating new instances](#extending-the-default-registers-and-creating-new-instances)
+    * [Adding render-functions in a class definition](#adding-render-functions-in-a-class-definition)
+    * [Adding special \__call__ methods in a class definition](#addding-special-_call_-mehtods-in-a-class-definition)
+    * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
 * [Developing / Testing](#developing--testing)
 * [Terminal Support](#terminal-support)
 
@@ -379,7 +388,7 @@ The default render-functions are stored in `sty.renderfunc`.
 | sty.renderfunc.rgb_bg               | Render background using 24bit (RGB) color codes |
 
 
-## Muting / Silencing / Disabling formatting
+## Muting
 
 ### The `mute` and `unmute` methods
 
@@ -501,7 +510,7 @@ fg.set_rule(my_color_name, Rule(Render.eightbit_fg, 51))
 a = fg.special_teal + 'This is custom teal text.' + fg.rs
 ```
 
-#### Changing a render-functions using `set_renderer` method for a regsiter-object.
+#### Changing render-functions using `set_renderer` method.
 
 In order to change a render-function for a register-object (fg, bg, ef, rs) you can use the `set_renderer` mehtod:
 
@@ -550,7 +559,7 @@ This is useful in case you want to provide your project with custom versions of 
 You could for example create your own `style.py` and import your custom regsiter-objects from there: `from myproj.style import fg, bg, ef, rs`.
 
 
-#### Add/customize render-functions in a class definition
+#### Adding render-functions in a class definition
 
 In an earlier chapter, we saw how to use the `set_renderer` method to replace a render-function for a register-object. In this example we set a new render-function within a class definition. 
 
@@ -586,7 +595,7 @@ fg = MyFgRegister()
 a = fg.orange + 'I use the new render-function.' + fg.rs
 ```
 
-#### Add/customize special \__call__ mehtods
+#### Addding special \__call__ mehtods in a class definition
 
 Remember that you can call register-objects like this `fg(100)` (to generate a 8bit color) or like this `fg(40, 100, 20)` (to generate an rgb color)?
 
