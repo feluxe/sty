@@ -130,9 +130,15 @@ I think this is all you need to know to get going. Check out the documentation o
   * [List of default reset attributes](#list-of-default-reset-attributes)
 * [Renderers](#renderers)
   * [List of renderers](#list-of-renderers) 
+* [Muting / Silencing / Disabling formatting](#muting--silencing--disabling-formatting)
+  * [The mute and unmute methods](#the-mute-and-unmute-methods) 
+  * [The mute and unmute batch functions](#the-mute-and-unmute-batch-functions)
 * [Customization](#customization)
-  * [Direct attribute customization](#direct-attribute-customization)
-  * [Dynamic attribute customization](#dynamic-attribute-customization)
+  * [The Rule type and the Render enum](#the-rule-type-and-the-render-enum)
+  * [Customizing register-objects](#customizing-register-objects)
+    * [Direct attribute customization](#direct-attribute-customization)
+    * [Dynamic attribute customization using set_rule method](#dynamic-attribute-customization-using-the-set_rule-method)
+
   * [Extending the default registers](#extending-the-default-registers)
   * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
 * [Developing / Testing](#developing--testing)
@@ -501,7 +507,7 @@ fg.set_rule(my_color_name, Rule(Render.eightbit_fg, 51))
 a = fg.special_teal + 'This is custom teal text.' + fg.rs
 ```
 
-#### Changing a render-functions using `set_renderer` method for a regsiter-object.
+#### Changing render-functions using `set_renderer` method.
 
 In order to change a render-function for a register-object (fg, bg, ef, rs) you can use the `set_renderer` mehtod:
 
