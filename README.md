@@ -138,8 +138,9 @@ I think this is all you need to know to get going. Check out the documentation o
   * [Customizing register-objects](#customizing-register-objects)
     * [Direct attribute customization](#direct-attribute-customization)
     * [Dynamic attribute customization using set_rule method](#dynamic-attribute-customization-using-the-set_rule-method)
-
-  * [Extending the default registers](#extending-the-default-registers)
+    * [Changing render-functions using set_renderer method](#changing-render-functions-using-set_renderer-method)
+  * [Customizing register-classes](#customizing-the-register-classes)
+    * [Extending the default registers and creating new instances](#extending-the-default-registers-and-creating-new-instances)
   * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
 * [Developing / Testing](#developing--testing)
 * [Terminal Support](#terminal-support)
@@ -556,7 +557,7 @@ This is useful in case you want to provide your project with custom versions of 
 You could for example create your own `style.py` and import your custom regsiter-objects from there: `from myproj.style import fg, bg, ef, rs`.
 
 
-#### Add/customize render-functions in a class definition
+#### Adding render-functions in a class definition
 
 In an earlier chapter, we saw how to use the `set_renderer` method to replace a render-function for a register-object. In this example we set a new render-function within a class definition. 
 
