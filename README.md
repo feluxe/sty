@@ -141,6 +141,7 @@ I think this is all you need to know to get going. Check out the documentation o
     * [Changing render-functions using set_renderer method](#changing-render-functions-using-set_renderer-method)
   * [Customizing register-classes](#customizing-the-register-classes)
     * [Extending the default registers and creating new instances](#extending-the-default-registers-and-creating-new-instances)
+    * [Adding render-functions in a class definition](#adding-render-functions-in-a-class-definition)
   * [Create a custom register from scratch](#create-a-custom-register-from-scratch)
 * [Developing / Testing](#developing--testing)
 * [Terminal Support](#terminal-support)
@@ -593,7 +594,7 @@ fg = MyFgRegister()
 a = fg.orange + 'I use the new render-function.' + fg.rs
 ```
 
-#### Add/customize special \__call__ mehtods
+#### Addding special \__call__ mehtods in a class definition
 
 Remember that you can call register-objects like this `fg(100)` (to generate a 8bit color) or like this `fg(40, 100, 20)` (to generate an rgb color)?
 
