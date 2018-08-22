@@ -1,9 +1,10 @@
 from sty import ef, fg, bg, rs
-from sty.register import FgRegister, BgRegister
+from sty.register import FgRegister, BgRegister, RsRegister
 
 # Reset items
 fg = FgRegister()
 bg = BgRegister()
+rs = RsRegister()
 
 print('\n\nDEMO:\n')
 
@@ -44,7 +45,7 @@ def sgr_fg(names):
 
 
 def sgr_bg(names):
-    items = [bg(name) + ' ' + name.ljust(12)+ bg.rs for name in names]
+    items = [bg(name) + ' ' + name.ljust(12) + bg.rs for name in names]
     items.insert(8, rs.bg + '\n')
     items.insert(16 + 1, rs.fg + '\n')
     line = '\nSGR_BG:\n-------\n' + ''.join(items)
@@ -55,11 +56,7 @@ def eightbit(kind):
     func = fg if kind == 'fg' else bg
     title = '8bit_FG' if kind == 'fg' else '8bit_BG'
 
-    items = [
-        func(num) + str(num).ljust(3)
-        for num
-        in range(0, 255)
-    ]
+    items = [func(num) + str(num).ljust(3) for num in range(0, 255)]
     items.insert(16, rs.all + '\n')
     items.insert(51 + 2, rs.all + '\n')
     items.insert(87 + 3, rs.all + '\n')
@@ -78,4 +75,5 @@ print(sgr_bg(names))
 print(eightbit('fg'))
 print(eightbit('bg'))
 print(
-    '\n24bit: I skip the 24-bit chart for now. Please add one to charts.py if you like.')
+    '\n24bit: I skip the 24-bit chart for now. Please add one to charts.py if you like.'
+)
