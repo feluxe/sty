@@ -5,7 +5,7 @@
 
 ## News
 
-#### Beta 6 released
+#### Beta 7 released
 
 * Subscribe to [#5](https://github.com/feluxe/sty/issues/5) to keep track of breaking changes. 
 * Subscribe to [#4](https://github.com/feluxe/sty/issues/4) to keep track of the full changelog.
