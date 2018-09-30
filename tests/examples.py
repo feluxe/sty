@@ -166,16 +166,50 @@ f = ef.bold + 'This does not reset bold any more' + rs.bold_dim \
 
 print(a, b, c, d, e, f, sep='\n')
 
+print(
+    '\nDirect attribute customization with multiple rules\n--------------------'
+)
+ef, fg, bg, rs = reset_registers()
+
+fg.green_ul = Rule(Render.sgr, 32), Rule(Render.sgr, 4)
+fg.red_i = Rule(Render.sgr, 31), ef.i
+fg.blue_b = fg.blue + ef.b
+
+a = fg.green_ul + 'This is green and underline text.' + rs.all
+b = fg.red_i + 'This is red and italic text.' + rs.all
+c = fg.blue_b + 'This is blue and bold text.' + rs.all
+
+print(a, b, c, sep='\n')
+
 print('\nDynamic attribute customization\n--------------------')
 ef, fg, bg, rs = reset_registers()
 
-my_color_name = 'special_teal'
+my_color_name = 'teal'
 
 fg.set_rule(my_color_name, Rule(Render.eightbit_fg, 51))
 
-a = fg.special_teal + 'This is custom teal text.' + fg.rs
+a = fg.teal + 'This is custom teal text.' + fg.rs
 
 print(a)
+
+print(
+    '\nDynamic attribute customization with multiple rules\n--------------------'
+)
+ef, fg, bg, rs = reset_registers()
+
+my_color_name1 = 'teal_b'
+my_color_name2 = 'green_i'
+my_color_name3 = 'red_ul'
+
+fg.set_rule(my_color_name1, (Rule(Render.eightbit_fg, 51), Rule(Render.sgr, 1)))
+fg.set_rule(my_color_name2, (fg.green, ef.i))
+fg.set_rule(my_color_name3, (Rule(Render.sgr, 31), ef.underl))
+
+a = fg.teal_b + 'This is custom teal and bold text.' + rs.all
+b = fg.green_i + 'This is green italic text.' + rs.all
+c = fg.red_ul + 'This is red and undelrined text.' + rs.all
+
+print(a, b, c, sep='\n')
 
 print('\nExtending the default registers\n--------------------')
 ef, fg, bg, rs = reset_registers()
