@@ -5,7 +5,7 @@
 
 ## News
 
-#### Beta 7 released
+#### Beta 8 released
 
 * Subscribe to [#5](http://github.com/feluxe/sty/issues/5) to keep track of breaking changes. 
 * Subscribe to [#4](https://github.com/feluxe/sty/issues/4) to keep track of the full changelog.
@@ -16,7 +16,7 @@ Simple, flexible and extensible string styling for your terminal. Supports 3/4bi
 
 If you run into compatibility problems with sty, please file an issue!
 
-Sty has no dependencies and consists of only ~250 LOC (including empty lines and comments).
+Sty has no dependencies.
 
 ## Goal
 
