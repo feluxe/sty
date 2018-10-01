@@ -471,7 +471,7 @@ The reason why we are assigning the name of the function instead of the function
 
 #### Direct attribute customization
 
-You can add and change attributes of each register-object directly like this:
+You can add and change attributes of each register-object directly like in the following **examples**:
 
 ```python
 from sty import fg, bg, ef, rs, Rule, Render
@@ -492,43 +492,33 @@ fg.my_new_item = Rule(Render.eightbit_fg, 130)
 bg.green = Rule(Render.rgb_bg, 0, 128, 255)
 
 # rs.all only resets the underline effect from now on.
-rs.bold_dim = Rule(Render.sgr, 24)
-```
+rs.all = Rule(Render.sgr, 24)
 
-You can assign multiple rules for a single attribute:
-
-```python
-# Using multiple Rules to define a new attribute:
+# You can use multiple Rules to define a new attribute:
 fg.green_ul = Rule(Render.sgr, 32), Rule(Render.sgr, 4)
 
-# Using existing attributes to define a new atribute:
+# You can use existing attributes to define a new atribute:
 fg.blue_b = fg.blue + ef.b
 `
-# Using a mix of an existing attribute and a new Rule:
+# You can use a mix of existing attributes and Rules:
 fg.red_i = ef.i, Rule(Render.sgr, 31)
 ```
 
 
 #### Dynamic attribute customization using the `set_rule` method.
 
-In case you need to set attributes of a register-object dynamically you can use the `set_rule` method:
+In case you need to set attributes of a register-object dynamically you can use the `set_rule` method like in the folowing **example**:
 
 ```python
 from sty import fg, Rule, Render
 
 my_color_name = 'special_teal'
-
-fg.set_rule(my_color_name, Rule(Render.eightbit_fg, 51))
-
-a = fg.special_teal + 'This is custom teal text.' + fg.rs
-```
-
-You can set multiple rules for a single attribute:
-
-```python
 my_color_name1 = 'teal_b'
 my_color_name2 = 'green_i'
 my_color_name3 = 'red_ul'
+
+# Using a single Rule to define a new attribute:
+fg.set_rule(my_color_name, Rule(Render.eightbit_fg, 51))
 
 # Using multiple Rules to define a new attribute:
 fg.set_rule(my_color_name1, (Rule(Render.eightbit_fg, 51), Rule(Render.sgr, 1)))
@@ -539,9 +529,10 @@ fg.set_rule(my_color_name2, (fg.green, ef.i))
 # Using a mix of an existing attribute and a new Rule:
 fg.set_rule(my_color_name3, (Rule(Render.sgr, 31), ef.underl))
 
-a = fg.teal_b + 'This is custom teal and bold text.' + rs.all
-b = fg.green_i + 'This is green italic text.' + rs.all
-c = fg.red_ul + 'This is red and undelrined text.' + rs.all
+a = fg.special_teal + 'This is custom teal text.' + fg.rs
+b = fg.teal_b + 'This is custom teal and bold text.' + rs.all
+c = fg.green_i + 'This is green italic text.' + rs.all
+d = fg.red_ul + 'This is red and undelrined text.' + rs.all
 ```
 
 
