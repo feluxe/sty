@@ -512,22 +512,22 @@ In case you need to set attributes of a register-object dynamically you can use 
 ```python
 from sty import fg, Rule, Render
 
-my_color_name = 'special_teal'
-my_color_name1 = 'teal_b'
-my_color_name2 = 'green_i'
-my_color_name3 = 'red_ul'
+my_color_name1 = 'special_teal'
+my_color_name2 = 'teal_b'
+my_color_name3 = 'green_i'
+my_color_name4 = 'red_ul'
 
 # Using a single Rule to define a new attribute:
-fg.set_rule(my_color_name, Rule(Render.eightbit_fg, 51))
+fg.set_rule(my_color_name1, Rule(Render.eightbit_fg, 51))
 
 # Using multiple Rules to define a new attribute:
-fg.set_rule(my_color_name1, (Rule(Render.eightbit_fg, 51), Rule(Render.sgr, 1)))
+fg.set_rule(my_color_name2, (Rule(Render.eightbit_fg, 51), Rule(Render.sgr, 1)))
 
 # Using existing attributes to define a new atribute:
-fg.set_rule(my_color_name2, (fg.green, ef.i))
+fg.set_rule(my_color_name3, (fg.green, ef.i))
 
 # Using a mix of an existing attribute and a new Rule:
-fg.set_rule(my_color_name3, (Rule(Render.sgr, 31), ef.underl))
+fg.set_rule(my_color_name4, (Rule(Render.sgr, 31), ef.underl))
 
 a = fg.special_teal + 'This is custom teal text.' + fg.rs
 b = fg.teal_b + 'This is custom teal and bold text.' + rs.all
