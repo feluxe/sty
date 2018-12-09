@@ -22,8 +22,8 @@ def unmute(*objects):
 
 
 
-from sty.register import EfRegister, FgRegister, BgRegister, RsRegister, Render
-from sty.primitive import Base
+from .register import EfRegister, FgRegister, BgRegister, RsRegister, Render
+from .primitive import Base
 
 ef = EfRegister()
 fg = FgRegister()

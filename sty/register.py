@@ -2,7 +2,7 @@
 These are the default registers that sty provides out of the box.
 """
 
-from sty import renderfunc, primitive, Rule
+from . import renderfunc, primitive, Rule
 from enum import Enum
 
 

@@ -1,7 +1,7 @@
 """
 The Base class: Sty's heart.
 """
-from sty import Rule
+from . import Rule
 from typing import Union, Callable
 
 
