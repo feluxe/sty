@@ -702,6 +702,7 @@ If you have issues with sty on your system, please leave an issue.
 | Genome Terminal | yes | * `blink` effect not supported. |
 | Terminte | yes | * `blink` effect not supported. |
 | Yakuake | yes | |
+| iTerm2 | yes | |
 
 
 [SGR]: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
