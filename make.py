@@ -1,3 +1,5 @@
+import shutil
+import os
 import subprocess as sp
 from cmdi import print_summary
 from buildlib import buildmisc, git, wheel, project, yaml
@@ -28,7 +30,42 @@ class Cfg:
     registry = 'pypi'
 
 
+def build_docs():
+    sp.run(['make', 'html'], cwd='sphinx')
+
+    build_html_dir = 'sphinx/_build/html'
+
+    if os.path.isfile(f"{build_html_dir}/index.html"):
+        shutil.rmtree('docs', ignore_errors=True)
+        shutil.copytree(build_html_dir, 'docs')
+        shutil.rmtree(build_html_dir, ignore_errors=True)
+
+
+def create_readme():
+
+    readme_str = ''
+    docs = 'sphinx/intro/'
+    files = [
+        'github_readme_head.rst',
+        'description.rst',
+        'requirements.rst',
+        'subscribe.rst',
+        'github_readme_tail.rst',
+    ]
+
+    for filename in files:
+        with open(docs + filename, 'r') as f:
+            readme_str += f.read()
+
+    with open('README.rst', 'w') as f:
+        f.write(readme_str)
+
+
 def build(cfg: Cfg):
+
+    build_docs()
+    create_readme()
+
     return wheel.cmd.build(clean_dir=True)
 
 
@@ -37,7 +74,7 @@ def deploy(cfg: Cfg):
 
 
 def test(cfg: Cfg):
-    sp.run(['python3.5', '-m', 'tests'])
+    sp.run(['python3.6', '-m', 'tests'])
 
 
 def bump(cfg: Cfg):
@@ -48,6 +85,8 @@ def bump(cfg: Cfg):
         result = project.cmd.bump_version()
         cfg.version = result.val
         results.append(result)
+
+    build(cfg)
 
     if wheel.prompt.should_push('PYPI'):
         results.append(deploy(cfg))

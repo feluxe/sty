@@ -1,18 +1,20 @@
 """
 The Base class: Sty's heart.
 """
-from . import Rule
-from typing import Union, Callable
+from collections import namedtuple
+from typing import Union, Callable, Dict, List, Tuple, Iterable
+from copy import deepcopy
+from .rendertype import Render
 
 
-def _is_args_rgb(*args):
+def _is_args_rgb(*args) -> bool:
     """
     Check if input matches type: renderer.rgb.
     """
     return len(args) > 1
 
 
-def _is_args_eightbit(*args):
+def _is_args_eightbit(*args) -> bool:
     """
     Check if input matches type: renderer.eightbit.
     """
@@ -24,40 +26,63 @@ def _is_args_eightbit(*args):
 
     elif isinstance(args[0], int):
         return True
-
-
-def _attr_is_renderer(name, val):
-    """
-    Check if attribute is a render method.
-    """
-    if not name.startswith('_') and name not in [
-        'set', 'cfg', '_num_call', 'rgb_call'
-    ]:
-        if callable(val):
-            return True
     else:
         return False
 
 
-class Base(object):
+def _render_rules(
+    renderfuncs,
+    rules,
+) -> Tuple[str, List[Render]]:
+
+    rendered: str = ''
+    flattened_rules = []
+
+    if isinstance(rules, Render):
+        f1: Callable = renderfuncs[type(rules)]
+        rendered += f1(*rules.args)
+        flattened_rules.append(rules)
+
+    elif isinstance(rules, (list, tuple)):
+
+        for rule in rules:
+
+            r1, r2 = _render_rules(renderfuncs, rule)
+            rendered += r1
+            flattened_rules.extend(r2)
+
+    else:
+        raise ValueError(
+            "Parameter 'rules' must be of type Rule or Tuple[Rule]."
+        )
+
+    return rendered, flattened_rules
+
+
+class Base(dict):
+
+    __getattr__: Callable = dict.__getitem__
+    __setattr__: Callable = dict.__setitem__
+    __delattr__: Callable = dict.__delitem__
 
     def __new__(cls):
 
-        cls.is_muted = False
-        cls.renderers = dict()
-        cls.register = dict()
+        cls.is_muted: bool = False
+        cls.renderfuncs: Dict[Render, Callable] = {}
+        cls.styles: Dict[str, Tuple[Render, ...]] = {}
 
         return super(Base, cls).__new__(cls)
 
-    def __call__(self, *args, **kwargs):
+    def __call__(self, *args, **kwargs) -> str:
         """
         You can call the style objects directly, e.g.:
-          fg(42)
-          bg(102, 49, 42)
+            fg(42)
+            bg(102, 49, 42)
+
         """
 
         # Return empty str if object is muted.
-        if self.is_muted:
+        if self.get('is_muted'):
             return ''
 
         # Invalid call, return empty str.
@@ -77,116 +102,90 @@ class Base(object):
         # If input is a string, return attribute with the name that matches
         # input.
         elif isinstance(args[0], str):
-            if hasattr(self, args[0]):
-                return getattr(self, args[0])
-            else:
-                return args[0]
-
-    def __setattr__(self, name, val):
-
-        if not isinstance(val, (str, Rule, (list, tuple))):
-
-            if name not in [
-                'eightbit_call',
-                'rgb_call',
-                'is_muted',
-                'set_rule',
-                'set_renderer',
-                'renderers',
-                'register',
-            ]:
-                raise TypeError(
-                    'New attributes must be of type "sty.Rule" or "str".'
-                )
-
-        super(Base, self).__setattr__(name, val)
-
-    def _handle_rule(self, name, val) -> Union[str, Callable]:
-
-        # Save Rule in register.
-        self.register[name] = val
-
-        func = self.renderers.get(val.renderer_name)
-
-        if not func:
-            raise ValueError(
-                "There is no renderer assigned to:", val.renderer_name
-            )
-
-        if name in ['eightbit_call', 'rgb_call']:
-            rendered = func
-        else:
-            rendered = func(*val.args, **val.kwargs)
-
-        setattr(self, name, rendered)
-
-        return rendered
-
-    def __getattribute__(self, name):
-
-        is_muted = super(Base, self).__getattribute__('is_muted')
-
-        if is_muted is True:
-            if name not in [
-                'is_muted',
-                'unmute',
-                'mute',
-                'set_rule',
-                'set_renderer',
-            ]:
-                return ''
-
-        val = super(Base, self).__getattribute__(name)
-
-        # Return strings immediately.
-        if isinstance(val, str):
-            return val
-
-        # If an attribute contains a 'Rule' object as its value, save the rule
-        # in `self.register` and run the renderfunction based on the rule. After
-        # that the result from the renderfunction is used as a value for the
-        # attribute.
-        elif isinstance(val, Rule):
-            return self._handle_rule(name, val)
-
-        # Handle list of rules/strings.
-        elif isinstance(val, (list, tuple)):
-            renderstr = ''
-
-            for r in val:
-
-                if isinstance(r, Rule):
-                    renderstr += self._handle_rule(name, r)
-                else:
-                    renderstr += r
-
-            return renderstr
+            return getattr(self, args[0])
 
         else:
-            return val
+            return ''
 
-    def set_rule(self, name, rule):
+    def set_style(
+        self,
+        name: str,
+        *rules: Union[Render, Tuple[Render, ...]],
+    ) -> None:
 
-        if isinstance(rule, (str, Rule, list, tuple)):
-            setattr(self, name, rule)
+        rendered, flattened_rules = _render_rules(self.renderfuncs, rules)
 
+        # Apply rendered style (str) to attribute:
+        if self.get('is_muted'):
+            setattr(self, name, '')
         else:
-            raise TypeError(
-                "Parameter 'rule' needs to be of type 'str', 'sty.Rule', \
-                'List[sty.Rule]' or 'Tuple[sty.Rule]'"
-            )
+            setattr(self, name, rendered)
 
-    def set_renderer(self, name, func):
+        # Add style rules to internal style register:
+        self.styles[name] = tuple(flattened_rules)
 
-        self.renderers[name] = func
+    def get_style(
+        self,
+        name: str,
+    ) -> Tuple[Render, ...]:
+        return self.styles[name]
 
-        for attr_name, rule in self.register.items():
+    def set_eightbit_call(self, rendertype: Render) -> None:
 
-            if name == rule.renderer_name:
-                self.set_rule(attr_name, rule)
+        func: Callable = self.renderfuncs[rendertype]
+        setattr(self, 'eightbit_call', func)
+
+    def set_rgb_call(self, rendertype: Render) -> None:
+
+        func: Callable = self.renderfuncs[rendertype]
+        setattr(self, 'rgb_call', func)
+
+    def set_renderfunc(self, rendertype: Render, func: Callable) -> None:
+
+        # Save new render-func in register
+        self.renderfuncs.update({rendertype: func})
+
+        # Update style atributes and styles with the new renderfunc.
+        for attr_name, rules in self.styles.items():
+            for rule in rules:
+                if type(rule) == rendertype:
+                    self.set_style(attr_name, *rules)
+                    break
 
     def mute(self):
-        self.is_muted = True
+
+        self['is_muted'] = True
+
+        for k, v in self.items():
+            if isinstance(v, str):
+                self.update({k: ''})
 
     def unmute(self):
-        self.is_muted = False
+
+        self['is_muted'] = False
+
+        for name, rules in self.styles.items():
+            self.set_style(name, *rules)
+
+    def as_dict(self) -> Dict[str, str]:
+        """
+        Export color register as dict.
+        """
+        items: Dict[str, str] = {}
+
+        for k, v in self.items():
+
+            if type(v) is str:
+                items.update({k: v})
+
+        return items
+
+    def as_namedtuple(self):
+        """
+        Export color register as namedtuple.
+        """
+        d = self.as_dict()
+        return namedtuple('ColorRegister', d.keys())(*d.values())
+
+    def copy(self):
+        return dict(self)
