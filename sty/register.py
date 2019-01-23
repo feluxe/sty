@@ -1,148 +1,226 @@
 """
 These are the default registers that sty provides out of the box.
 """
-
-from . import renderfunc, primitive, Rule
-from enum import Enum
-
-
-class Render:
-    sgr = 'sgr'
-    eightbit_fg = 'eightbit_fg'
-    eightbit_bg = 'eightbit_bg'
-    rgb_fg = 'rgb_fg'
-    rgb_bg = 'rgb_bg'
+from . import renderfunc
+from .primitive import Base
+from .rendertype import *
 
 
-class EfRegister(primitive.Base):
+class EfRegister(Base):
 
-    def __init__(self):
-        self.set_renderer(Render.sgr, renderfunc.sgr)
+    rules: dict = {}
 
-    b = Rule(Render.sgr, 1)
-    bold = Rule(Render.sgr, 1)
-    dim = Rule(Render.sgr, 2)
-    i = Rule(Render.sgr, 3)
-    italic = Rule(Render.sgr, 3)
-    u = Rule(Render.sgr, 4)
-    underl = Rule(Render.sgr, 4)
-    blink = Rule(Render.sgr, 5)
-    inverse = Rule(Render.sgr, 7)
-    hidden = Rule(Render.sgr, 8)
-    strike = Rule(Render.sgr, 9)
-
-
-class FgRegister(primitive.Base):
+    b: str
+    bold: str
+    dim: str
+    i: str
+    italic: str
+    u: str
+    underl: str
+    blink: str
+    inverse: str
+    hidden: str
+    strike: str
 
     def __init__(self):
-        self.set_renderer(Render.sgr, renderfunc.sgr)
-        self.set_renderer(Render.eightbit_fg, renderfunc.eightbit_fg)
-        self.set_renderer(Render.rgb_fg, renderfunc.rgb_fg)
 
-    eightbit_call = Rule(Render.eightbit_fg)
-    rgb_call = Rule(Render.rgb_fg)
+        self.set_renderfunc(Sgr, renderfunc.sgr)
 
-    # Classic terminal foreground color preset.
-    # These are well supported.
-    black = Rule(Render.sgr, 30)
-    red = Rule(Render.sgr, 31)
-    green = Rule(Render.sgr, 32)
-    yellow = Rule(Render.sgr, 33)
-    blue = Rule(Render.sgr, 34)
-    magenta = Rule(Render.sgr, 35)
-    cyan = Rule(Render.sgr, 36)
-    white = Rule(Render.sgr, 37)
-
-    rs = Rule(Render.sgr, 39)
-
-    # These are less good supported:
-    li_black = Rule(Render.sgr, 90)
-    li_red = Rule(Render.sgr, 91)
-    li_green = Rule(Render.sgr, 92)
-    li_yellow = Rule(Render.sgr, 93)
-    li_blue = Rule(Render.sgr, 94)
-    li_magenta = Rule(Render.sgr, 95)
-    li_cyan = Rule(Render.sgr, 96)
-    li_white = Rule(Render.sgr, 97)
-
-    # These are less supported:
-    da_black = Rule(Render.eightbit_fg, 0)
-    da_red = Rule(Render.eightbit_fg, 88)
-    da_green = Rule(Render.eightbit_fg, 22)
-    da_yellow = Rule(Render.eightbit_fg, 58)
-    da_blue = Rule(Render.eightbit_fg, 18)
-    da_magenta = Rule(Render.eightbit_fg, 89)
-    da_cyan = Rule(Render.eightbit_fg, 23)
-    da_white = Rule(Render.eightbit_fg, 249)
+        self.set_style('b', Sgr(1))
+        self.set_style('bold', Sgr(1))
+        self.set_style('dim', Sgr(2))
+        self.set_style('i', Sgr(3))
+        self.set_style('italic', Sgr(3))
+        self.set_style('u', Sgr(4))
+        self.set_style('underl', Sgr(4))
+        self.set_style('blink', Sgr(5))
+        self.set_style('inverse', Sgr(7))
+        self.set_style('hidden', Sgr(8))
+        self.set_style('strike', Sgr(9))
 
 
-class BgRegister(primitive.Base):
+class FgRegister(Base):
 
-    def __init__(self):
-        self.set_renderer(Render.sgr, renderfunc.sgr)
-        self.set_renderer(Render.eightbit_bg, renderfunc.eightbit_bg)
-        self.set_renderer(Render.rgb_bg, renderfunc.rgb_bg)
+    black: str
+    red: str
+    green: str
+    yellow: str
+    blue: str
+    magenta: str
+    cyan: str
+    white: str
 
-    eightbit_call = Rule(Render.eightbit_bg)
-    rgb_call = Rule(Render.rgb_bg)
+    rs: str
 
-    # Classic terminal background color preset.
-    # These are well supported.
-    black = Rule(Render.sgr, 40)
-    red = Rule(Render.sgr, 41)
-    green = Rule(Render.sgr, 42)
-    yellow = Rule(Render.sgr, 43)
-    blue = Rule(Render.sgr, 44)
-    magenta = Rule(Render.sgr, 45)
-    cyan = Rule(Render.sgr, 46)
-    white = Rule(Render.sgr, 47)
+    li_black: str
+    li_red: str
+    li_green: str
+    li_yellow: str
+    li_blue: str
+    li_magenta: str
+    li_cyan: str
+    li_white: str
 
-    rs = Rule(Render.sgr, 49)
-
-    # These are less good supported:
-    li_black = Rule(Render.sgr, 100)
-    li_red = Rule(Render.sgr, 101)
-    li_green = Rule(Render.sgr, 102)
-    li_yellow = Rule(Render.sgr, 103)
-    li_blue = Rule(Render.sgr, 104)
-    li_magenta = Rule(Render.sgr, 105)
-    li_cyan = Rule(Render.sgr, 106)
-    li_white = Rule(Render.sgr, 107)
-
-    # These are less supported:
-    da_black = Rule(Render.eightbit_bg, 0)
-    da_red = Rule(Render.eightbit_bg, 88)
-    da_green = Rule(Render.eightbit_bg, 22)
-    da_yellow = Rule(Render.eightbit_bg, 58)
-    da_blue = Rule(Render.eightbit_bg, 18)
-    da_magenta = Rule(Render.eightbit_bg, 89)
-    da_cyan = Rule(Render.eightbit_bg, 23)
-    da_white = Rule(Render.eightbit_bg, 249)
-
-
-class RsRegister(primitive.Base):
+    da_black: str
+    da_red: str
+    da_green: str
+    da_yellow: str
+    da_blue: str
+    da_magenta: str
+    da_cyan: str
+    da_white: str
 
     def __init__(self):
-        self.set_renderer(Render.sgr, renderfunc.sgr)
 
-    all = Rule(Render.sgr, 0)
-    fg = Rule(Render.sgr, 39)
-    bg = Rule(Render.sgr, 49)
+        self.set_renderfunc(Sgr, renderfunc.sgr)
+        self.set_renderfunc(EightbitFg, renderfunc.eightbit_fg)
+        self.set_renderfunc(RgbFg, renderfunc.rgb_fg)
 
-    # Deprecated:
-    # b = Rule(Render.sgr, 21)
-    # bold = Rule(Render.sgr, 21)
+        self.set_eightbit_call(EightbitFg)
+        self.set_rgb_call(RgbFg)
 
-    bold_dim = Rule(Render.sgr, 22)
-    dim_bold = Rule(Render.sgr, 22)
-    i = Rule(Render.sgr, 23)
-    italic = Rule(Render.sgr, 23)
-    u = Rule(Render.sgr, 24)
-    underl = Rule(Render.sgr, 24)
-    blink = Rule(Render.sgr, 25)
-    inverse = Rule(Render.sgr, 27)
-    hidden = Rule(Render.sgr, 28)
-    strike = Rule(Render.sgr, 29)
+        # Classic terminal foreground color preset.
+        # These are well supported.
+        self.set_style('black', Sgr(30))
+        self.set_style('red', Sgr(31))
+        self.set_style('green', Sgr(32))
+        self.set_style('yellow', Sgr(33))
+        self.set_style('blue', Sgr(34))
+        self.set_style('magenta', Sgr(35))
+        self.set_style('cyan', Sgr(36))
+        self.set_style('white', Sgr(37))
+
+        self.set_style('rs', Sgr(39))
+
+        # These are less good supported.
+        self.set_style('li_black', Sgr(90))
+        self.set_style('li_red', Sgr(91))
+        self.set_style('li_green', Sgr(92))
+        self.set_style('li_yellow', Sgr(93))
+        self.set_style('li_blue', Sgr(94))
+        self.set_style('li_magenta', Sgr(95))
+        self.set_style('li_cyan', Sgr(96))
+        self.set_style('li_white', Sgr(97))
+
+        # These are less supported.
+        self.set_style('da_black', EightbitFg(0))
+        self.set_style('da_red', EightbitFg(88))
+        self.set_style('da_green', EightbitFg(22))
+        self.set_style('da_yellow', EightbitFg(58))
+        self.set_style('da_blue', EightbitFg(18))
+        self.set_style('da_magenta', EightbitFg(89))
+        self.set_style('da_cyan', EightbitFg(23))
+        self.set_style('da_white', EightbitFg(249))
+
+
+class BgRegister(Base):
+
+    black: str
+    red: str
+    green: str
+    yellow: str
+    blue: str
+    magenta: str
+    cyan: str
+    white: str
+
+    rs: str
+
+    li_black: str
+    li_red: str
+    li_green: str
+    li_yellow: str
+    li_blue: str
+    li_magenta: str
+    li_cyan: str
+    li_white: str
+
+    da_black: str
+    da_red: str
+    da_green: str
+    da_yellow: str
+    da_blue: str
+    da_magenta: str
+    da_cyan: str
+    da_white: str
+
+    def __init__(self):
+
+        self.set_renderfunc(Sgr, renderfunc.sgr)
+        self.set_renderfunc(EightbitBg, renderfunc.eightbit_bg)
+        self.set_renderfunc(RgbBg, renderfunc.rgb_bg)
+
+        self.set_eightbit_call(EightbitBg)
+        self.set_rgb_call(RgbBg)
+
+        # Classic terminal background color preset.
+        # These are well supported.
+        self.set_style('black', Sgr(40))
+        self.set_style('red', Sgr(41))
+        self.set_style('green', Sgr(42))
+        self.set_style('yellow', Sgr(43))
+        self.set_style('blue', Sgr(44))
+        self.set_style('magenta', Sgr(45))
+        self.set_style('cyan', Sgr(46))
+        self.set_style('white', Sgr(47))
+
+        self.set_style('rs', Sgr(49))
+
+        # These are less good supported.
+        self.set_style('li_black', Sgr(100))
+        self.set_style('li_red', Sgr(101))
+        self.set_style('li_green', Sgr(102))
+        self.set_style('li_yellow', Sgr(103))
+        self.set_style('li_blue', Sgr(104))
+        self.set_style('li_magenta', Sgr(105))
+        self.set_style('li_cyan', Sgr(106))
+        self.set_style('li_white', Sgr(107))
+
+        # These are less supported.
+        self.set_style('da_black', EightbitBg(0))
+        self.set_style('da_red', EightbitBg(88))
+        self.set_style('da_green', EightbitBg(22))
+        self.set_style('da_yellow', EightbitBg(58))
+        self.set_style('da_blue', EightbitBg(18))
+        self.set_style('da_magenta', EightbitBg(89))
+        self.set_style('da_cyan', EightbitBg(23))
+        self.set_style('da_white', EightbitBg(249))
+
+
+class RsRegister(Base):
+
+    all: str
+    fg: str
+    bg: str
+    bold_dim: str
+    dim_bold: str
+    i: str
+    italic: str
+    u: str
+    underl: str
+    blink: str
+    inverse: str
+    hidden: str
+    strike: str
+
+    def __init__(self):
+
+        self.set_renderfunc(Sgr, renderfunc.sgr)
+
+        self.set_style('all', Sgr(0))
+        self.set_style('fg', Sgr(39))
+        self.set_style('bg', Sgr(49))
+
+        self.set_style('bold_dim', Sgr(22))
+        self.set_style('dim_bold', Sgr(22))
+        self.set_style('i', Sgr(23))
+        self.set_style('italic', Sgr(23))
+        self.set_style('u', Sgr(24))
+        self.set_style('underl', Sgr(24))
+        self.set_style('blink', Sgr(25))
+        self.set_style('inverse', Sgr(27))
+        self.set_style('hidden', Sgr(28))
+        self.set_style('strike', Sgr(29))
 
 
 ef = EfRegister()

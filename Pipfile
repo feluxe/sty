@@ -4,14 +4,20 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+mypy = "*"
 
 [dev-packages]
 "ruamel.yaml" = "*"
 setuptools = "*"
-buildlib = "==0.3.1"
+buildlib = "==2.1.7"
 yapf = "*"
 pylint = "*"
 docopt = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true

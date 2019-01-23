@@ -1,10 +1,4 @@
 from sty import ef, fg, bg, rs
-from sty.register import FgRegister, BgRegister, RsRegister
-
-# Reset items
-fg = FgRegister()
-bg = BgRegister()
-rs = RsRegister()
 
 print('\n\nDEMO:\n')
 
@@ -37,22 +31,28 @@ names = [
 
 
 def sgr_fg(names):
+
     items = [fg(name) + ' ' + name.ljust(12) for name in names]
     items.insert(8, rs.fg + '\n')
     items.insert(16 + 1, rs.fg + '\n')
+
     line = '\nSGR_FG:\n-------\n' + ''.join(items) + rs.fg
+
     return line
 
 
 def sgr_bg(names):
+
     items = [bg(name) + ' ' + name.ljust(12) + bg.rs for name in names]
     items.insert(8, rs.bg + '\n')
     items.insert(16 + 1, rs.fg + '\n')
     line = '\nSGR_BG:\n-------\n' + ''.join(items)
+
     return line
 
 
 def eightbit(kind):
+
     func = fg if kind == 'fg' else bg
     title = '8bit_FG' if kind == 'fg' else '8bit_BG'
 
@@ -65,8 +65,8 @@ def eightbit(kind):
     items.insert(195 + 6, rs.all + '\n')
     items.insert(231 + 7, rs.all + '\n')
 
-    # items_br = [item for i, item in enumerate(items) if i == 1 ]
     line = '\n' + title + '\n-------\n ' + ' '.join(items) + rs.all
+
     return line
 
 

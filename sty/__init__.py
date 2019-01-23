@@ -1,31 +1,27 @@
-"""
-"""
-
-
-class Rule:
-
-    def __init__(self, renderer_name, *args, **kwargs):
-        self.renderer_name = renderer_name
-        self.args = args
-        self.kwargs = kwargs
-
-
-def mute(*objects):
-    for obj in objects:
-        if hasattr(obj, 'mute') and callable(obj.mute):
-            obj.mute()
-
-def unmute(*objects):
-    for obj in objects:
-        if hasattr(obj, 'unmute') and callable(obj.mute):
-            obj.unmute()
-
-
-
-from .register import EfRegister, FgRegister, BgRegister, RsRegister, Render
 from .primitive import Base
+from .register import ef, fg, bg, rs, Render, EfRegister, FgRegister, BgRegister, RsRegister
+from .rendertype import *
 
-ef = EfRegister()
-fg = FgRegister()
-bg = BgRegister()
-rs = RsRegister()
+
+def mute(*objects: Base) -> None:
+
+    err = ValueError(
+        "The mute() method can only be used with objects that inherit "\
+        "from the 'Base class'."
+    )
+    for obj in objects:
+        if not isinstance(obj, Base):
+            raise err
+        obj.mute()
+
+
+def unmute(*objects: Base) -> None:
+
+    err = ValueError(
+        "The unmute() method can only be used with objects that inherit "\
+        "from the 'Base class'."
+    )
+    for obj in objects:
+        if not isinstance(obj, Base):
+            raise err
+        obj.unmute()

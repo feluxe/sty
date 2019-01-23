@@ -2,14 +2,13 @@ from setuptools import setup, find_packages
 from codecs import open
 import ruamel.yaml as yaml
 
-with open('README.md') as f:
+with open('README.rst') as f:
     long_description = f.read()
 
 config = None
 
 with open('Project', 'r') as stream:
     config = yaml.safe_load(stream.read())
-
 
 setup(
     name=config['public_name'],
@@ -24,13 +23,11 @@ setup(
     download_url=config['url'] + '/tarball/' + config['version'],
     license=config['license'],
     keywords=config['keywords'],
-
     include_package_data=True,
     platforms=config['pypi']['platforms'],
     classifiers=config['pypi']['classifiers'],
     install_requires=config['pypi']['install_requires'],
-    packages=find_packages(where='.', exclude=(
-        'tests', 'tests.*')),
+    packages=find_packages(where='.', exclude=('tests', 'tests.*')),
     package_dir=config['pypi']['package_dir'],
     package_data=config['pypi']['package_data'],
     data_files=config['pypi']['data_files'],
