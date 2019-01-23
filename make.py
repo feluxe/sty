@@ -74,7 +74,7 @@ def deploy(cfg: Cfg):
 
 
 def test(cfg: Cfg):
-    sp.run(['python3.6', '-m', 'tests'])
+    sp.run(['python', '-m', 'tests'])
 
 
 def bump(cfg: Cfg):
@@ -119,7 +119,8 @@ def run():
     if uinput['bump']:
         results.extend(bump(cfg))
 
-    print_summary(results)
+    if results:
+        print_summary(results)
 
 
 if __name__ == '__main__':

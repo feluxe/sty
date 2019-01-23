@@ -10,6 +10,14 @@ Index
 .. toctree::
    :maxdepth: 1
    :titlesonly:
+   :caption: Source Code:
+
+   on github <https://github.com/feluxe/sty>
+
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
    :caption: Introduction:
 
    intro/description.rst

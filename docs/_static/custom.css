@@ -85,13 +85,13 @@ a.icon-home {
     border-right: 1px solid #dcdfe3;
 }
 
-a.reference.internal {
+a.reference.internal, a.reference.external {
     color: #717171;
     background: #fafafa;
     border-right: 0;
 }
 
-a.reference.internal:hover {
+a.reference.internal:hover, a.reference.external:hover {
     color: #2980b9 !important;
     background: #fafafa !important;
 }

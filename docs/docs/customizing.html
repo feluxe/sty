@@ -80,7 +80,11 @@
               
             
             
-              <p class="caption"><span class="caption-text">Introduction:</span></p>
+              <p class="caption"><span class="caption-text">Source Code:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/feluxe/sty">on github</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Introduction:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro/description.html">Description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro/requirements.html">Requirements</a></li>
@@ -292,9 +296,11 @@ register-objects from them.</p>
 
 
 <span class="c1"># Extend the default foreground register-class.</span>
+
 <span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">FgRegister</span><span class="p">):</span>
 
     <span class="c1"># Add this for better editor support.</span>
+
     <span class="n">purple</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">blue</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">orange</span><span class="p">:</span> <span class="nb">str</span>
@@ -305,16 +311,19 @@ register-objects from them.</p>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="c1"># Add custom style attributes.</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">Sgr</span><span class="p">(</span><span class="mi">35</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">Sgr</span><span class="p">(</span><span class="mi">34</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">RgbFg</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
         <span class="c1"># ...</span>
 
 
-<span class="c1"># Create new style-object from extended register-class.</span>
+<span class="c1"># Create new register-object from extended register-class.</span>
+
 <span class="n">fg</span> <span class="o">=</span> <span class="n">MyFgRegister</span><span class="p">()</span>
 
-<span class="c1"># Use your new style-object.</span>
+<span class="c1"># Use your new register-object.</span>
+
 <span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">purple</span> <span class="o">+</span> <span class="s2">&quot;I have purple foreground&quot;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">blue</span> <span class="o">+</span> <span class="s2">&quot;I have blue foreground&quot;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">orange</span> <span class="o">+</span> <span class="s2">&quot;I have orange foreground&quot;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
@@ -355,19 +364,19 @@ register-objects from them.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_eightbit_call</span><span class="p">(</span><span class="n">EightbitFg</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_rgb_call</span><span class="p">(</span><span class="n">RgbFg</span><span class="p">)</span>
 
-        <span class="c1"># Classic terminal foreground color preset.</span>
-        <span class="c1"># These are well supported.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">RgbFg</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">70</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">Sgr</span><span class="p">(</span><span class="mi">31</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">Sgr</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;rs&#39;</span><span class="p">,</span> <span class="n">Sgr</span><span class="p">(</span><span class="mi">39</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">RgbFg</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">70</span><span class="p">))</span>
         <span class="c1"># ...</span>
 
 
-<span class="c1"># Create new style-object from extended register-class.</span>
+<span class="c1"># Create new register-object from register-class.</span>
+
 <span class="n">fg</span> <span class="o">=</span> <span class="n">FgRegister</span><span class="p">()</span>
 
-<span class="c1"># Use your new style-object.</span>
+<span class="c1"># Use your new register-object.</span>
+
 <span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">yellow</span> <span class="o">+</span> <span class="s2">&quot;I have yellow foreground&quot;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s2">&quot;I have red foreground&quot;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">green</span> <span class="o">+</span> <span class="s2">&quot;I have green foreground&quot;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
