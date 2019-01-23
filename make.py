@@ -28,7 +28,27 @@ class Cfg:
     registry = 'pypi'
 
 
+def create_readme():
+    readme_str = ''
+    docs = 'docs/introduction/'
+    files = [
+        'github_readme_head.rst',
+        'description.rst',
+        'requirements.rst',
+        'subscribe.rst',
+        'github_readme_tail.rst',
+    ]
+
+    for filename in files:
+        with open(docs + filename, 'r') as f:
+            readme_str += f.read()
+
+    with open('README.rst', 'w') as f:
+        f.write(readme_str)
+
+
 def build(cfg: Cfg):
+    create_readme()
     return wheel.cmd.build(clean_dir=True)
 
 
@@ -37,7 +57,7 @@ def deploy(cfg: Cfg):
 
 
 def test(cfg: Cfg):
-    sp.run(['python3.5', '-m', 'tests'])
+    sp.run(['python3.6', '-m', 'tests'])
 
 
 def bump(cfg: Cfg):

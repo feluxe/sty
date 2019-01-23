@@ -1,0 +1,81 @@
+
+
+Getting Started
+===============
+
+Install:
+
+::
+
+   pip install sty
+
+You can import sty like this:
+
+.. code:: python
+
+   import sty
+
+However, if you need to style a lot of stuff, you might consider
+importing the style objects directly, like this:
+
+.. code:: python
+
+   from sty import fg, bg, ef, rs
+
+.. _sty-all-the-strings!:
+
+
+*Sty* all the strings!
+----------------------
+
+.. literalinclude:: examples.py
+   :language: py
+   :start-after: example: gettings started: sty all the strings
+   :end-before: # ===
+
+output:
+ 
+<img src="https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png" alt="example_so" />  
+
+
+
+A quick look at the primitives:
+-------------------------------
+
+sty provides a bunch of tiny, but flexible primitives (called register-objects) that can be used to style your strings: 
+
+* `ef` (effect-register)
+* `fg` (foreground-register)
+* `bg` (background-register)
+* `rs` (reset-register).
+
+Each register-object carries a default selection of attributes ([list-of-effects](#list-of-default-effects), [list-of-colors](#list-of-default-colors), [list-of-resetters](#list-of-default-reset-attributes)), which you can select like this:
+
+.. code:: python
+
+   ef.italic
+   fg.blue
+   bg.green
+   rs.all
+
+Or like this, which is nice in case you need to dynamically select
+attributes:
+
+.. literalinclude:: examples.py
+   :language: py
+   :start-after: example: gettings started: select dynamically
+   :end-before: # ===
+
+``fg`` and ``bg`` are special in the way that they allow you to select
+8bit and 24bit colors directly:
+
+.. literalinclude:: examples.py
+   :language: py
+   :start-after: example: gettings started: select 8bit and 24bit directly
+   :end-before: # ===
+
+I think this is all you need to know to get going. Check out the
+documentation or the codebase for more detail or feel free to create an
+issue and ask. Have fun! :D
+
+

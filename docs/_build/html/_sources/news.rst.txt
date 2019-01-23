@@ -1,0 +1,11 @@
+
+
+News
+====
+
+Beta 8 released
+---------------
+
+-  Subscribe to `#5`_ to keep track of breaking changes.
+-  Subscribe to `#4`_ to keep track of the full changelog.
+

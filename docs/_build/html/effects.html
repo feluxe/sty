@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Effects &mdash; sty 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coloring" href="doc.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" />
+<link href="_static/custom.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> sty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Effects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-default-effects">List of default effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#italic">Italic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bold">Bold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#underline">Underline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc.html">Coloring</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#list-of-default-colors">List of default colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#coloring-by-name">Coloring by name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#coloring-with-8-bit-codes">Coloring with 8-bit codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#coloring-with-24bit-codes">Coloring with 24bit codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc.html#resetting">Resetting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#list-of-default-reset-attributes">List of default reset attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc.html#renderers">Renderers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#list-of-renderers">List of Renderers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc.html#muting">Muting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#the-mute-and-unmute-methods">The <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#the-mute-and-unmute-batch-functions">The <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> batch functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc.html#customization">Customization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#the-rule-type-and-the-render-enum">The “Rule” type and the “Render” enum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#customizing-register-objects">Customizing register-objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.html#customizing-the-register-classes">Customizing the register-classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doc.html#developing-testing">Developing / Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc.html#terminal-support">Terminal Support</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sty</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Effects</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/effects.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="effects">
+<h1>Effects<a class="headerlink" href="#effects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-of-default-effects">
+<h2>List of default effects<a class="headerlink" href="#list-of-default-effects" title="Permalink to this headline">¶</a></h2>
+<p>These are the default attributes for the <code class="docutils literal notranslate"><span class="pre">ef</span></code> register-object.</p>
+<p>More info: [wikipedia:SGR][SGR]</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="43%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Effect</th>
+<th class="head">Description</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bold (alias b)</td>
+<td>Bold or increased intensity</td>
+<td>sty.renderfunc.sgr(1)</td>
+</tr>
+<tr class="row-odd"><td>dim</td>
+<td>Decreased intensity</td>
+<td>sty.renderfunc.sgr(2)</td>
+</tr>
+<tr class="row-even"><td>italic (alias i)</td>
+<td>Italic..</td>
+<td>sty.renderfunc.sgr(3)</td>
+</tr>
+<tr class="row-odd"><td>underl (alias u)</td>
+<td>Underline..</td>
+<td>sty.renderfunc.sgr(4)</td>
+</tr>
+<tr class="row-even"><td>blink</td>
+<td>Blink..</td>
+<td>sty.renderfunc.sgr(5)</td>
+</tr>
+<tr class="row-odd"><td>inverse</td>
+<td>Inverse fore- and background</td>
+<td>sty.renderfunc.sgr(7)</td>
+</tr>
+<tr class="row-even"><td>hidden</td>
+<td>Conceal/Hide</td>
+<td>sty.renderfunc.sgr(8)</td>
+</tr>
+<tr class="row-odd"><td>strike</td>
+<td>Strike-trhough</td>
+<td>sty.renderfunc.sgr(9)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="italic">
+<h2>Italic<a class="headerlink" href="#italic" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">italic</span> <span class="o">+</span> <span class="s1">&#39;Italic.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">italic</span>
+
+<span class="c1"># There are shorthands for this:</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">blue</span> <span class="o">+</span> <span class="s1">&#39;Italic.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="s1">&#39; Not italic but blue.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<img src="../../../assets/italic.png" alt="italic" /></div>
+<div class="section" id="bold">
+<h2>Bold<a class="headerlink" href="#bold" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">bold</span> <span class="o">+</span> <span class="s1">&#39;Bold.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bold_dim</span>
+
+<span class="c1"># This has shorthands too:</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">b</span> <span class="o">+</span> <span class="s1">&#39;Bold.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bold_dim</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">li_yellow</span> <span class="o">+</span> <span class="s1">&#39; Not bold but yellow.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<img src="../../../assets/bold.png" alt="bold" /></div>
+<div class="section" id="underline">
+<h2>Underline<a class="headerlink" href="#underline" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">underl</span> <span class="o">+</span> <span class="s1">&#39;Underlined.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">underl</span>
+
+<span class="c1"># Shorthand version:</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="s1">&#39;Underlined.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">green</span> <span class="o">+</span> <span class="s1">&#39; Not underlined but green.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<img src="../../../assets/underline.png" alt="underline" /><p>TODO: Add examples for, strike, blink, etc..
+&lt;br&gt;</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="doc.html" class="btn btn-neutral float-right" title="Coloring" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting_started.html" class="btn btn-neutral" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, sty
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

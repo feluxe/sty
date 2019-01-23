@@ -1,0 +1,49 @@
+
+Muting
+======
+
+The ``mute`` and ``unmute`` methods
+-----------------------------------
+
+Sometimes its useful to disable the formatting for a register-object.
+You can do so by invoking the ``mute`` and ``unmute`` methods:
+
+.. code:: python
+
+   a = fg.red + 'This text is red.' + fg.rs
+
+   fg.mute()
+
+   b = fg.red + 'This text is NOT red.' + fg.rs
+
+   fg.unmute()
+
+   c = fg.red + 'This text is red.' + fg.rs
+
+The ``mute`` and ``unmute`` batch functions
+-------------------------------------------
+
+If you want to mute multiple register-objects at the same time you can
+use the ``mute`` and ``unmute`` functions that you find in ``sty.mute``,
+``sty.unmute``:
+
+.. code:: python
+
+   from sty import fg, bg, ef, rs, mute, unmute
+
+   a1 = fg.red + 'This text is red.' + fg.rs
+   a2 = bg.red + 'This bg is red.' + bg.rs
+   a3 = ef.italic + 'This text is italic' + ef.rs
+
+   mute(fg, bg, ef, rs)
+
+   b1 = fg.red + 'This text is NOT red.' + fg.rs
+   b2 = bg.red + 'This bg is NOT red.' + bg.rs
+   b3 = ef.italic + 'This text is NOT italic' + ef.rs
+
+   unmute(fg, bg, ef, rs)
+
+   c1 = fg.red + 'This text is red.' + fg.rs
+   c2 = bg.red + 'This bg is red.' + bg.rs
+   c3 = ef.italic + 'This text is italic' + ef.rs
+

@@ -1,0 +1,1092 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>sty 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="sty">
+<h1>sty<a class="headerlink" href="#sty" title="Permalink to this headline">¶</a></h1>
+<img src="assets/charts.png" alt="charts" /></div>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<span id="document-intro"></span><div class="section" id="news">
+<h2>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="beta-8-released">
+<h3>Beta 8 released<a class="headerlink" href="#beta-8-released" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Subscribe to <a class="reference external" href="http://github.com/feluxe/sty/issues/5">#5</a> to keep
+track of breaking changes.</li>
+<li>Subscribe to <a class="reference external" href="https://github.com/feluxe/sty/issues/4">#4</a> to keep
+track of the full changelog.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Simple, flexible and extensible string styling for your terminal.
+Supports 3/4bit, 8bit and 24bit (truecolor, rgb) colors. Should work on
+most Unix platfroms with most terminals. Recent versions of Windows 10
+should work with this as well.</p>
+<p>If you run into compatibility problems with sty, please file an issue!</p>
+<p>Sty has no dependencies.</p>
+</div>
+<div class="section" id="goal">
+<h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
+<p>The idea is to provide Python with a little string styling markup, which
+is decoupled from color palettes and terminal implementations.</p>
+<p>Sty comes with default color palettes and renderers, but you can easily
+replace/customize them with new ones, without touching the markup.</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Sty requires Python <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">3.5</span></code></p>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sty</span>
+</pre></div>
+</div>
+<p>You can import sty like this:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sty</span>
+</pre></div>
+</div>
+<p>However, if you need to style a lot of stuff, you might consider
+importing the style objects directly, like this:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span>
+</pre></div>
+</div>
+<div class="section" id="sty-all-the-strings">
+<span id="id1"></span><h3><em>Sty</em> all the strings!<a class="headerlink" href="#sty-all-the-strings" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span><span class="p">,</span> <span class="n">Render</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This is red text!&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">blue</span> <span class="o">+</span> <span class="s1">&#39;This has a blue background!&#39;</span> <span class="o">+</span> <span class="n">bg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">baz</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">italic</span> <span class="o">+</span> <span class="s1">&#39;This is italic text&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">italic</span>
+<span class="n">qux</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is pink text using 8bit colors&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">qui</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is red text using 24bit colors.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+
+<span class="c1"># Add new colors:</span>
+
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+
+<span class="n">buf</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">orange</span> <span class="o">+</span> <span class="s1">&#39;Yay, Im orange.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">baz</span><span class="p">,</span> <span class="n">qux</span><span class="p">,</span> <span class="n">qui</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>output:</p>
+<img src="assets/example_so.png" alt="example_so" /></div>
+<div class="section" id="a-quick-look-at-the-primitives">
+<h3>A quick look at the primitives:<a class="headerlink" href="#a-quick-look-at-the-primitives" title="Permalink to this headline">¶</a></h3>
+<p>sty provides a bunch of tiny, but flexible primitives (called
+register-objects) that can be used to style your strings:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ef</span></code> (effect-register)</li>
+<li><code class="docutils literal notranslate"><span class="pre">fg</span></code> (foreground-register)</li>
+<li><code class="docutils literal notranslate"><span class="pre">bg</span></code> (background-register)</li>
+<li><code class="docutils literal notranslate"><span class="pre">rs</span></code> (reset-register).</li>
+</ul>
+<p>Each register-object carries a default selection of attributes
+(<a class="reference external" href="#list-of-default-effects">list-of-effects</a>,
+<a class="reference external" href="#list-of-default-colors">list-of-colors</a>,
+<a class="reference external" href="#list-of-default-reset-attributes">list-of-resetters</a>), which you
+can select like this:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ef</span><span class="o">.</span><span class="n">italic</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">blue</span>
+<span class="n">bg</span><span class="o">.</span><span class="n">green</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+<p>Or like this, which is nice in case you need to dynamically select
+attributes:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ef</span><span class="p">(</span><span class="s1">&#39;italic&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;Italic text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">italic</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;Blue text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">bg</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">254</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;Random colored bg&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fg</span></code> and <code class="docutils literal notranslate"><span class="pre">bg</span></code> are special in the way that they allow you to select
+8bit and 24bit colors directly:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># select an 8bit color directly.</span>
+<span class="n">fg</span><span class="p">(</span><span class="mi">196</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is red text&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="c1"># select a 24bit rgb color directly.</span>
+<span class="n">bg</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;Text with green bg&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+
+</pre></div>
+</div>
+<p>I think this is all you need to know to get going. Check out the
+documentation or the codebase for more detail or feel free to create an
+issue and ask. Have fun! :D</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<span id="document-docindex"></span><div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<span id="document-doc"></span><ul class="simple">
+<li><a class="reference external" href="#effects">Effects</a><ul>
+<li><a class="reference external" href="#list-of-default-effects">List of default effects</a></li>
+<li><a class="reference external" href="#italic">Italic</a></li>
+<li><a class="reference external" href="#bold">Bold</a></li>
+<li><a class="reference external" href="#underline">Underline</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#colors">Colors</a><ul>
+<li><a class="reference external" href="#list-of-default-colors">List of default colors</a><ul>
+<li><a class="reference external" href="#foreground">Foreground</a></li>
+<li><a class="reference external" href="#background">Background</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#coloring-by-name">Coloring by name</a></li>
+<li><a class="reference external" href="#coloring-with-8-bit-codes">Coloring with 8bit codes</a></li>
+<li><a class="reference external" href="#coloring-with-24bit-codes">Coloring with 24bit codes</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#reset">Reset</a><ul>
+<li><a class="reference external" href="#list-of-default-reset-attributes">List of default reset
+attributes</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#renderers">Renderers</a><ul>
+<li><a class="reference external" href="#list-of-renderers">List of renderers</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#muting">Muting</a><ul>
+<li><a class="reference external" href="#the-mute-and-unmute-methods">The mute and unmute methods</a></li>
+<li><a class="reference external" href="#the-mute-and-unmute-batch-functions">The mute and unmute batch
+functions</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#customization">Customization</a><ul>
+<li><a class="reference external" href="#the-rule-type-and-the-render-enum">The Rule type and the Render
+enum</a></li>
+<li><a class="reference external" href="#customizing-register-objects">Customizing register-objects</a><ul>
+<li><a class="reference external" href="#direct-attribute-customization">Direct attribute
+customization</a></li>
+<li><a class="reference external" href="#dynamic-attribute-customization-using-the-set_rule-method">Dynamic attribute customization using set_rule
+method</a></li>
+<li><a class="reference external" href="#changing-render-functions-using-set_renderer-method">Changing render-functions using set_renderer
+method</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#customizing-the-register-classes">Customizing
+register-classes</a><ul>
+<li><a class="reference external" href="#extending-the-default-registers-and-creating-new-instances">Extending the default registers and creating new
+instances</a></li>
+<li><a class="reference external" href="#adding-render-functions-in-a-class-definition">Adding render-functions in a class
+definition</a></li>
+<li><a class="reference external" href="#addding-special-_call_-mehtods-in-a-class-definition">Adding special _call_ methods in a class
+definition</a></li>
+<li><a class="reference external" href="#create-a-custom-register-from-scratch">Create a custom register from
+scratch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="#developing--testing">Developing / Testing</a></li>
+<li><a class="reference external" href="#terminal-support">Terminal Support</a></li>
+</ul>
+<div class="section" id="effects">
+<h3>Effects<a class="headerlink" href="#effects" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="list-of-default-effects">
+<h4>List of default effects<a class="headerlink" href="#list-of-default-effects" title="Permalink to this headline">¶</a></h4>
+<p>These are the default attributes for the <code class="docutils literal notranslate"><span class="pre">ef</span></code> register-object.</p>
+<p>More info:
+<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters">wikipedia:SGR</a></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="43%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Effect</th>
+<th class="head">Description</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bold (alias b)</td>
+<td>Bold or increased intensity</td>
+<td>sty.renderfunc.sgr(1)</td>
+</tr>
+<tr class="row-odd"><td>dim</td>
+<td>Decreased intensity</td>
+<td>sty.renderfunc.sgr(2)</td>
+</tr>
+<tr class="row-even"><td>italic (alias i)</td>
+<td>Italic..</td>
+<td>sty.renderfunc.sgr(3)</td>
+</tr>
+<tr class="row-odd"><td>underl (alias u)</td>
+<td>Underline..</td>
+<td>sty.renderfunc.sgr(4)</td>
+</tr>
+<tr class="row-even"><td>blink</td>
+<td>Blink..</td>
+<td>sty.renderfunc.sgr(5)</td>
+</tr>
+<tr class="row-odd"><td>inverse</td>
+<td>Inverse fore- and background</td>
+<td>sty.renderfunc.sgr(7)</td>
+</tr>
+<tr class="row-even"><td>hidden</td>
+<td>Conceal/Hide</td>
+<td>sty.renderfunc.sgr(8)</td>
+</tr>
+<tr class="row-odd"><td>strike</td>
+<td>Strike-trhough</td>
+<td>sty.renderfunc.sgr(9)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="italic">
+<h4>Italic<a class="headerlink" href="#italic" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">italic</span> <span class="o">+</span> <span class="s1">&#39;Italic.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">italic</span>
+
+<span class="c1"># There are shorthands for this:</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">blue</span> <span class="o">+</span> <span class="s1">&#39;Italic.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="s1">&#39; Not italic but blue.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<img src="assets/italic.png" alt="italic" /></div>
+<div class="section" id="bold">
+<h4>Bold<a class="headerlink" href="#bold" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">bold</span> <span class="o">+</span> <span class="s1">&#39;Bold.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bold_dim</span>
+
+<span class="c1"># This has shorthands too:</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">b</span> <span class="o">+</span> <span class="s1">&#39;Bold.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bold_dim</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">li_yellow</span> <span class="o">+</span> <span class="s1">&#39; Not bold but yellow.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<img src="assets/bold.png" alt="bold" /></div>
+<div class="section" id="underline">
+<h4>Underline<a class="headerlink" href="#underline" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">underl</span> <span class="o">+</span> <span class="s1">&#39;Underlined.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">underl</span>
+
+<span class="c1"># Shorthand version:</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="s1">&#39;Underlined.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">green</span> <span class="o">+</span> <span class="s1">&#39; Not underlined but green.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<img src="assets/underline.png" alt="underline" /><blockquote>
+<div>TODO: Add examples for, strike, blink, etc..</div></blockquote>
+</div>
+</div>
+<div class="section" id="colors">
+<h3>Colors<a class="headerlink" href="#colors" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="list-of-default-colors">
+<h4>List of default colors<a class="headerlink" href="#list-of-default-colors" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="foreground">
+<h5>Foreground<a class="headerlink" href="#foreground" title="Permalink to this headline">¶</a></h5>
+<p>More info: <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit">wikipedia:3/4bit
+colors</a>,
+<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">wikipedia:8bit
+colors</a>,
+<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit">wikipedia:24bit
+colors</a>.</p>
+<p>The default colors for the <code class="docutils literal notranslate"><span class="pre">fg</span></code> register-object.</p>
+<p>These are most widely supported. (using sgr codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">normal</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>black</td>
+<td>sty.renderfunc.sgr(30)</td>
+</tr>
+<tr class="row-odd"><td>red</td>
+<td>sty.renderfunc.sgr(31)</td>
+</tr>
+<tr class="row-even"><td>green</td>
+<td>sty.renderfunc.sgr(32)</td>
+</tr>
+<tr class="row-odd"><td>yellow</td>
+<td>sty.renderfunc.sgr(33)</td>
+</tr>
+<tr class="row-even"><td>blue</td>
+<td>sty.renderfunc.sgr(34)</td>
+</tr>
+<tr class="row-odd"><td>magenta</td>
+<td>sty.renderfunc.sgr(35)</td>
+</tr>
+<tr class="row-even"><td>cyan</td>
+<td>sty.renderfunc.sgr(36)</td>
+</tr>
+<tr class="row-odd"><td>white</td>
+<td>sty.renderfunc.sgr(37)</td>
+</tr>
+</tbody>
+</table>
+<p>These are less widely supported. (using less common set of sgr codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">light</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>li_black</td>
+<td>sty.renderfunc.sgr(90)</td>
+</tr>
+<tr class="row-odd"><td>li_red</td>
+<td>sty.renderfunc.sgr(91)</td>
+</tr>
+<tr class="row-even"><td>li_green</td>
+<td>sty.renderfunc.sgr(92)</td>
+</tr>
+<tr class="row-odd"><td>li_yellow</td>
+<td>sty.renderfunc.sgr(93)</td>
+</tr>
+<tr class="row-even"><td>li_blue</td>
+<td>sty.renderfunc.sgr(94)</td>
+</tr>
+<tr class="row-odd"><td>li_magenta</td>
+<td>sty.renderfunc.sgr(95)</td>
+</tr>
+<tr class="row-even"><td>li_cyan</td>
+<td>sty.renderfunc.sgr(96)</td>
+</tr>
+<tr class="row-odd"><td>li_white</td>
+<td>sty.renderfunc.sgr(97)</td>
+</tr>
+</tbody>
+</table>
+<p>These are even less widely supported. (using 8bit color codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">dark</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>da_black</td>
+<td>sty.renderfunc.eightbit_fg(0)</td>
+</tr>
+<tr class="row-odd"><td>da_red</td>
+<td>sty.renderfunc.eightbit_fg(88)</td>
+</tr>
+<tr class="row-even"><td>da_green</td>
+<td>sty.renderfunc.eightbit_fg(22)</td>
+</tr>
+<tr class="row-odd"><td>da_yellow</td>
+<td>sty.renderfunc.eightbit_fg(58)</td>
+</tr>
+<tr class="row-even"><td>da_blue</td>
+<td>sty.renderfunc.eightbit_fg(18)</td>
+</tr>
+<tr class="row-odd"><td>da_magenta</td>
+<td>sty.renderfunc.eightbit_fg(89)</td>
+</tr>
+<tr class="row-even"><td>da_cyan</td>
+<td>sty.renderfunc.eightbit_fg(23)</td>
+</tr>
+<tr class="row-odd"><td>da_white</td>
+<td>sty.renderfunc.eightbit_fg(249)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="background">
+<h5>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h5>
+<p>The default colors for the <code class="docutils literal notranslate"><span class="pre">bg</span></code> register-object.</p>
+<p>These are most widely supported. (using sgr codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">normal</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>black</td>
+<td>sty.renderfunc.sgr(40)</td>
+</tr>
+<tr class="row-odd"><td>red</td>
+<td>sty.renderfunc.sgr(41)</td>
+</tr>
+<tr class="row-even"><td>green</td>
+<td>sty.renderfunc.sgr(42)</td>
+</tr>
+<tr class="row-odd"><td>yellow</td>
+<td>sty.renderfunc.sgr(43)</td>
+</tr>
+<tr class="row-even"><td>blue</td>
+<td>sty.renderfunc.sgr(44)</td>
+</tr>
+<tr class="row-odd"><td>magenta</td>
+<td>sty.renderfunc.sgr(45)</td>
+</tr>
+<tr class="row-even"><td>cyan</td>
+<td>sty.renderfunc.sgr(46)</td>
+</tr>
+<tr class="row-odd"><td>white</td>
+<td>sty.renderfunc.sgr(47)</td>
+</tr>
+</tbody>
+</table>
+<p>These are less widely supported. (using less common set of sgr codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">light</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>li_black</td>
+<td>sty.renderfunc.sgr(100)</td>
+</tr>
+<tr class="row-odd"><td>li_red</td>
+<td>sty.renderfunc.sgr(101)</td>
+</tr>
+<tr class="row-even"><td>li_green</td>
+<td>sty.renderfunc.sgr(102)</td>
+</tr>
+<tr class="row-odd"><td>li_yellow</td>
+<td>sty.renderfunc.sgr(103)</td>
+</tr>
+<tr class="row-even"><td>li_blue</td>
+<td>sty.renderfunc.sgr(104)</td>
+</tr>
+<tr class="row-odd"><td>li_magenta</td>
+<td>sty.renderfunc.sgr(105)</td>
+</tr>
+<tr class="row-even"><td>li_cyan</td>
+<td>sty.renderfunc.sgr(106)</td>
+</tr>
+<tr class="row-odd"><td>li_white</td>
+<td>sty.renderfunc.sgr(107)</td>
+</tr>
+</tbody>
+</table>
+<p>These are even less widely supported. (using 8bit color codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">dark</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>da_black</td>
+<td>sty.renderfunc.eightbit_bg(0)</td>
+</tr>
+<tr class="row-odd"><td>da_red</td>
+<td>sty.renderfunc.eightbit_bg(88)</td>
+</tr>
+<tr class="row-even"><td>da_green</td>
+<td>sty.renderfunc.eightbit_bg(22)</td>
+</tr>
+<tr class="row-odd"><td>da_yellow</td>
+<td>sty.renderfunc.eightbit_bg(58)</td>
+</tr>
+<tr class="row-even"><td>da_blue</td>
+<td>sty.renderfunc.eightbit_bg(18)</td>
+</tr>
+<tr class="row-odd"><td>da_magenta</td>
+<td>sty.renderfunc.eightbit_bg(89)</td>
+</tr>
+<tr class="row-even"><td>da_cyan</td>
+<td>sty.renderfunc.eightbit_bg(23)</td>
+</tr>
+<tr class="row-odd"><td>da_white</td>
+<td>sty.renderfunc.eightbit_bg(249)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="coloring-by-name">
+<h4>Coloring by name<a class="headerlink" href="#coloring-by-name" title="Permalink to this headline">¶</a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">li_blue</span> <span class="o">+</span> <span class="s1">&#39;I have a light blue foreground.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">cyan</span> <span class="o">+</span> <span class="s1">&#39;I have a cyan background&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">da_red</span> <span class="o">+</span> <span class="n">bg</span><span class="o">.</span><span class="n">li_red</span> <span class="o">+</span> <span class="s1">&#39;I have a dark red fg and light red bg.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have yellow fg.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="assets/color_by_name.png" alt="color_by_name" /></div>
+<div class="section" id="coloring-with-8-bit-codes">
+<h4>Coloring with 8-bit codes<a class="headerlink" href="#coloring-with-8-bit-codes" title="Permalink to this headline">¶</a></h4>
+<p>Link:
+<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">wikipedia:8bit</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have a green foreground.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">bg</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have a pink background&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">226</span><span class="p">)</span> <span class="o">+</span> <span class="n">bg</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have a light yellow fg and dark blue bg.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="assets/8bit.png" alt="8bit" /></div>
+<div class="section" id="coloring-with-24bit-codes">
+<h4>Coloring with 24bit codes<a class="headerlink" href="#coloring-with-24bit-codes" title="Permalink to this headline">¶</a></h4>
+<p>Link:
+<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit">wikipedia:24bit</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have a green foreground.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">bg</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have an orange background&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span> <span class="o">+</span> <span class="n">bg</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;Grey fg and dark grey bg.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="assets/24bit.png" alt="24bit" /></div>
+</div>
+<div class="section" id="reset">
+<h3>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h3>
+<p>The reset register-object <code class="docutils literal notranslate"><span class="pre">rs</span></code> can be used to reset previously applied
+styles.</p>
+<p>Link:
+<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters">wikipedia:SGR</a></p>
+<div class="section" id="list-of-default-reset-attributes">
+<h4>List of default reset attributes<a class="headerlink" href="#list-of-default-reset-attributes" title="Permalink to this headline">¶</a></h4>
+<p>These are the default attributes for the <code class="docutils literal notranslate"><span class="pre">rs</span></code> register-object:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Reset</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>all</td>
+<td>sty.renderfunc.sgr(0)</td>
+</tr>
+<tr class="row-odd"><td>fg</td>
+<td>sty.renderfunc.sgr(39)</td>
+</tr>
+<tr class="row-even"><td>bg</td>
+<td>sty.renderfunc.sgr(49)</td>
+</tr>
+<tr class="row-odd"><td>bold_faint</td>
+<td>sty.renderfunc.sgr(22)</td>
+</tr>
+<tr class="row-even"><td>faint_bold</td>
+<td>sty.renderfunc.sgr(22)</td>
+</tr>
+<tr class="row-odd"><td>italic (alias i)</td>
+<td>sty.renderfunc.sgr(23)</td>
+</tr>
+<tr class="row-even"><td>underl (alias u)</td>
+<td>sty.renderfunc.sgr(24)</td>
+</tr>
+<tr class="row-odd"><td>blink</td>
+<td>sty.renderfunc.sgr(25)</td>
+</tr>
+<tr class="row-even"><td>hidden</td>
+<td>sty.renderfunc.sgr(28)</td>
+</tr>
+<tr class="row-odd"><td>strike</td>
+<td>sty.renderfunc.sgr(29)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="renderers">
+<h3>Renderers<a class="headerlink" href="#renderers" title="Permalink to this headline">¶</a></h3>
+<p>The default render-functions are stored in <code class="docutils literal notranslate"><span class="pre">sty.renderfunc</span></code>.</p>
+<div class="section" id="list-of-renderers">
+<h4>List of Renderers<a class="headerlink" href="#list-of-renderers" title="Permalink to this headline">¶</a></h4>
+<p>sty.renderfunc.eightbit_bg Render background using 8bit color codes
+sty.renderfunc.rgb_fg      Render foreground using <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit">24bit (RGB) color codes (wikipedia:24bit)</a>
+sty.renderfunc.rgb_bg      Render background using 24bit (RGB) color codes
+==========================
+============================================================================================================================================================================</p>
+</div>
+</div>
+<div class="section" id="muting">
+<h3>Muting<a class="headerlink" href="#muting" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-mute-and-unmute-methods">
+<h4>The <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> methods<a class="headerlink" href="#the-mute-and-unmute-methods" title="Permalink to this headline">¶</a></h4>
+<p>Sometimes its useful to disable the formatting for a register-object.
+You can do so by invoking the <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> methods:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This text is red.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+
+<span class="n">fg</span><span class="o">.</span><span class="n">mute</span><span class="p">()</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This text is NOT red.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+
+<span class="n">fg</span><span class="o">.</span><span class="n">unmute</span><span class="p">()</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This text is red.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-mute-and-unmute-batch-functions">
+<h4>The <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> batch functions<a class="headerlink" href="#the-mute-and-unmute-batch-functions" title="Permalink to this headline">¶</a></h4>
+<p>If you want to mute multiple register-objects at the same time you can
+use the <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> functions that you find in <code class="docutils literal notranslate"><span class="pre">sty.mute</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sty.unmute</span></code>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span><span class="p">,</span> <span class="n">mute</span><span class="p">,</span> <span class="n">unmute</span>
+
+<span class="n">a1</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This text is red.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This bg is red.&#39;</span> <span class="o">+</span> <span class="n">bg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">a3</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">italic</span> <span class="o">+</span> <span class="s1">&#39;This text is italic&#39;</span> <span class="o">+</span> <span class="n">ef</span><span class="o">.</span><span class="n">rs</span>
+
+<span class="n">mute</span><span class="p">(</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span><span class="p">)</span>
+
+<span class="n">b1</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This text is NOT red.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This bg is NOT red.&#39;</span> <span class="o">+</span> <span class="n">bg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">b3</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">italic</span> <span class="o">+</span> <span class="s1">&#39;This text is NOT italic&#39;</span> <span class="o">+</span> <span class="n">ef</span><span class="o">.</span><span class="n">rs</span>
+
+<span class="n">unmute</span><span class="p">(</span><span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span><span class="p">)</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This text is red.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This bg is red.&#39;</span> <span class="o">+</span> <span class="n">bg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">c3</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">italic</span> <span class="o">+</span> <span class="s1">&#39;This text is italic&#39;</span> <span class="o">+</span> <span class="n">ef</span><span class="o">.</span><span class="n">rs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="customization">
+<h3>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h3>
+<p>Sty allows you to change or to extend the default registers as you like.
+You can also create a complete new register. More on these things in the
+following chapters.</p>
+<blockquote>
+<div><p class="rubric" id="warning">WARNING:</p>
+<p>If you create a library that is shared among other projects, I highly
+suggest not to customize the “global” register-objects (sty.fg,
+sty.bg, sty.ef, sty.rs) directly, because that might cause conflicts
+with other packages that share the same sty dependency within the
+same project.</p>
+<p>If you want to use custom register-objects in a library project, you
+should create new register-object instances from the register-classes
+dedicated to your project only. More on this int the chapter
+<em>“Extending the default registers and creating new instances”</em>.</p>
+</div></blockquote>
+<div class="section" id="the-rule-type-and-the-render-enum">
+<span id="id1"></span><h4>The “Rule” type and the “Render” enum<a class="headerlink" href="#the-rule-type-and-the-render-enum" title="Permalink to this headline">¶</a></h4>
+<p>In order to assing values to a register-object, you have to use the
+‘Rule’ type (<code class="docutils literal notranslate"><span class="pre">sty.Rule</span></code>).</p>
+<p>The Rule type simply takes the name of a render-function and the
+arguments that the function should use:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Rule(renderer_name,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code></p>
+<p>In this example we assign a render-function called ‘sgr’ with the
+argument 32 to <code class="docutils literal notranslate"><span class="pre">fg.red</span></code>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="s1">&#39;sgr&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sty provides an enum <code class="docutils literal notranslate"><span class="pre">sty.Render</span></code> that allows for more structured
+selection of the render-function name. The following example does the
+same as the one above:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">Render</span>
+
+<span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The reason why we are assigning the name of the function instead of the
+function itself is that this way we can replace the render-functions on
+the fly for each register-object.</p>
+</div>
+<div class="section" id="customizing-register-objects">
+<h4>Customizing register-objects<a class="headerlink" href="#customizing-register-objects" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="direct-attribute-customization">
+<h5>Direct attribute customization<a class="headerlink" href="#direct-attribute-customization" title="Permalink to this headline">¶</a></h5>
+<p>You can add and change attributes of each register-object directly like
+in the following <strong>examples</strong>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span>from sty import fg, bg, ef, rs, Rule, Render
+
+# ef.italic now renders underlined text.
+ef.italic = Rule(Render.sgr, 4)
+
+# fg.red renders green text from now on.
+fg.red = Rule(Render.sgr, 32)
+
+# fg.blue renders red text from now on (using an 8bit color code).
+fg.blue = Rule(Render.eightbit_fg, 88)
+
+# Create a new item that renders brown text.
+fg.my_new_item = Rule(Render.eightbit_fg, 130)
+
+# bg.green renders blue bg from now on (using a 24bit rgb code).
+bg.green = Rule(Render.rgb_bg, 0, 128, 255)
+
+# rs.all only resets the underline effect from now on.
+rs.all = Rule(Render.sgr, 24)
+
+# You can use multiple Rules to define a new attribute:
+fg.green_ul = Rule(Render.sgr, 32), Rule(Render.sgr, 4)
+
+# You can use existing attributes to define a new atribute:
+fg.blue_b = fg.blue + ef.b
+`
+# You can use a mix of existing attributes and Rules:
+fg.red_i = ef.i, Rule(Render.sgr, 31)
+</pre></div>
+</div>
+</div>
+<div class="section" id="dynamic-attribute-customization-using-the-set-rule-method">
+<h5>Dynamic attribute customization using the <code class="docutils literal notranslate"><span class="pre">set_rule</span></code> method.<a class="headerlink" href="#dynamic-attribute-customization-using-the-set-rule-method" title="Permalink to this headline">¶</a></h5>
+<p>In case you need to set attributes of a register-object dynamically you
+can use the <code class="docutils literal notranslate"><span class="pre">set_rule</span></code> method like in the folowing <strong>example</strong>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">Rule</span><span class="p">,</span> <span class="n">Render</span>
+
+<span class="n">my_color_name1</span> <span class="o">=</span> <span class="s1">&#39;special_teal&#39;</span>
+<span class="n">my_color_name2</span> <span class="o">=</span> <span class="s1">&#39;teal_b&#39;</span>
+<span class="n">my_color_name3</span> <span class="o">=</span> <span class="s1">&#39;green_i&#39;</span>
+<span class="n">my_color_name4</span> <span class="o">=</span> <span class="s1">&#39;red_ul&#39;</span>
+
+<span class="c1"># Using a single Rule to define a new attribute:</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="n">my_color_name1</span><span class="p">,</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">eightbit_fg</span><span class="p">,</span> <span class="mi">51</span><span class="p">))</span>
+
+<span class="c1"># Using multiple Rules to define a new attribute:</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="n">my_color_name2</span><span class="p">,</span> <span class="p">(</span><span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">eightbit_fg</span><span class="p">,</span> <span class="mi">51</span><span class="p">),</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="c1"># Using existing attributes to define a new atribute:</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="n">my_color_name3</span><span class="p">,</span> <span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">ef</span><span class="o">.</span><span class="n">i</span><span class="p">))</span>
+
+<span class="c1"># Using a mix of an existing attribute and a new Rule:</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="n">my_color_name4</span><span class="p">,</span> <span class="p">(</span><span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="n">ef</span><span class="o">.</span><span class="n">underl</span><span class="p">))</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">special_teal</span> <span class="o">+</span> <span class="s1">&#39;This is custom teal text.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">teal_b</span> <span class="o">+</span> <span class="s1">&#39;This is custom teal and bold text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">green_i</span> <span class="o">+</span> <span class="s1">&#39;This is green italic text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red_ul</span> <span class="o">+</span> <span class="s1">&#39;This is red and undelrined text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-render-functions-using-set-renderer-method">
+<h5>Changing render-functions using <code class="docutils literal notranslate"><span class="pre">set_renderer</span></code> method.<a class="headerlink" href="#changing-render-functions-using-set-renderer-method" title="Permalink to this headline">¶</a></h5>
+<p>In order to change a render-function for a register-object (fg, bg, ef,
+rs) you can use the <code class="docutils literal notranslate"><span class="pre">set_renderer</span></code> mehtod:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">Render</span>
+
+<span class="k">def</span> <span class="nf">my_custom_renderfunc</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+
+<span class="n">fg</span><span class="o">.</span><span class="n">set_renderer</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="n">my_custom_renderfunc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After this each attribute of <code class="docutils literal notranslate"><span class="pre">fg</span></code> that was set with a
+<code class="docutils literal notranslate"><span class="pre">Rule(Render.rgb_fg,</span> <span class="pre">...</span></code> will now use the new render-function.</p>
+</div>
+</div>
+<div class="section" id="customizing-the-register-classes">
+<h4>Customizing the register-classes<a class="headerlink" href="#customizing-the-register-classes" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="extending-the-default-registers-and-creating-new-instances">
+<h5>Extending the default registers and creating new instances<a class="headerlink" href="#extending-the-default-registers-and-creating-new-instances" title="Permalink to this headline">¶</a></h5>
+<p>If you want to set a larger register of custom attributes, it may be
+more convenient to extend the default register-classes and create new
+register-objects from them.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">FgRegister</span><span class="p">,</span> <span class="n">Rule</span><span class="p">,</span> <span class="n">Render</span>
+
+
+<span class="c1"># Extend default Fg register.</span>
+
+<span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">FgRegister</span><span class="p">):</span>
+
+    <span class="n">black</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+    <span class="n">orange</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+
+
+<span class="c1"># Create a new instance from the new Register</span>
+
+<span class="n">fg</span> <span class="o">=</span> <span class="n">MyFgRegister</span><span class="p">()</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">orange</span> <span class="o">+</span> <span class="s1">&#39;This is orange text from a non default attribute.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+</pre></div>
+</div>
+<p>This is useful in case you want to provide your project with custom
+versions of <code class="docutils literal notranslate"><span class="pre">fg</span></code>, <code class="docutils literal notranslate"><span class="pre">bg</span></code>, <code class="docutils literal notranslate"><span class="pre">ef</span></code>, <code class="docutils literal notranslate"><span class="pre">rs</span></code> or if you don’t want to mess
+with the “global” register-objects provided by sty.</p>
+<p>You could for example create your own <code class="docutils literal notranslate"><span class="pre">style.py</span></code> and import your
+custom regsiter-objects from there:
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">myproj.style</span> <span class="pre">import</span> <span class="pre">fg,</span> <span class="pre">bg,</span> <span class="pre">ef,</span> <span class="pre">rs</span></code>.</p>
+</div>
+<div class="section" id="adding-render-functions-in-a-class-definition">
+<h5>Adding render-functions in a class definition<a class="headerlink" href="#adding-render-functions-in-a-class-definition" title="Permalink to this headline">¶</a></h5>
+<p>In an earlier chapter, we saw how to use the <code class="docutils literal notranslate"><span class="pre">set_renderer</span></code> method to
+replace a render-function for a register-object. In this example we set
+a new render-function within a class definition.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sty</span>
+<span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">Rule</span><span class="p">,</span> <span class="n">FgRegister</span>
+
+
+<span class="c1"># Your new bg render-function.</span>
+<span class="k">def</span> <span class="nf">my_custom_rgb_fg</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[48;2;{str(r)};{str(g)};{str(b)}m&#39;</span>
+
+
+<span class="c1"># Extend the enum with the name of your new render-funtion.</span>
+<span class="k">class</span> <span class="nc">Render</span><span class="p">(</span><span class="n">sty</span><span class="o">.</span><span class="n">Render</span><span class="p">):</span>
+    <span class="n">custom_rgb_fg</span> <span class="o">=</span> <span class="s1">&#39;custom_rgb_fg&#39;</span>
+
+
+<span class="c1"># Extend default Fg register.</span>
+<span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">FgRegister</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span> <span class="c1"># Call super to apply render-functions from FgRegister.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_renderer</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">custom_rgb_fg</span><span class="p">,</span> <span class="n">my_custom_rgb_fg</span><span class="p">)</span>
+
+    <span class="n">black</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+    <span class="n">orange</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">custom_rgb_bg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># This uses the new render-function.</span>
+
+
+<span class="n">fg</span> <span class="o">=</span> <span class="n">MyFgRegister</span><span class="p">()</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">orange</span> <span class="o">+</span> <span class="s1">&#39;I use the new render-function.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="addding-special-call-mehtods-in-a-class-definition">
+<h5>Addding special _<em>call</em>_ mehtods in a class definition<a class="headerlink" href="#addding-special-call-mehtods-in-a-class-definition" title="Permalink to this headline">¶</a></h5>
+<p>Remember that you can call register-objects like this <code class="docutils literal notranslate"><span class="pre">fg(100)</span></code> (to
+generate a 8bit color) or like this <code class="docutils literal notranslate"><span class="pre">fg(40,</span> <span class="pre">100,</span> <span class="pre">20)</span></code> (to generate an
+rgb color)?</p>
+<p>Each of those two calls have a different render-function assigned. You
+can add/change the render-functions for these calls by setting the
+<code class="docutils literal notranslate"><span class="pre">eightbit_call</span></code> and <code class="docutils literal notranslate"><span class="pre">rgb_call</span></code> attributes, like in this example:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty.register</span> <span class="k">import</span> <span class="n">FgRegister</span>
+
+
+<span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">FgRegister</span><span class="p">):</span>
+
+    <span class="n">eightbit_call</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">eightbit_fg</span><span class="p">)</span>
+    <span class="n">rgb_call</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">)</span>
+
+    <span class="n">black</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+    <span class="n">orange</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="n">fg</span> <span class="o">=</span> <span class="n">MyFgRegister</span><span class="p">()</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I use an eightbit_fg renderer.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I use an rgb_fg renderer.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-custom-register-from-scratch">
+<h5>Create a custom register from scratch<a class="headerlink" href="#create-a-custom-register-from-scratch" title="Permalink to this headline">¶</a></h5>
+<p>If you want to create custom register-classes from scratch, you can do
+it as described in the chapters above. The only difference is that you
+inherit from the <code class="docutils literal notranslate"><span class="pre">Base</span></code> class instead of the default register-classes.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">Base</span><span class="p">,</span> <span class="n">Rule</span><span class="p">,</span> <span class="n">Render</span><span class="p">,</span> <span class="n">renderfunc</span>
+
+
+<span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+
+    <span class="c1"># Set render-functions.</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_renderer</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="n">renderfunc</span><span class="o">.</span><span class="n">sgr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_renderer</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="n">renderfunc</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">)</span>
+
+    <span class="c1"># Set rules for special call methods.</span>
+    <span class="n">eightbit_call</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">eightbit_fg</span><span class="p">)</span>
+    <span class="n">rgb_call</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">)</span>
+
+    <span class="c1"># Set styling rules.</span>
+    <span class="n">black</span> <span class="o">=</span> <span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+    <span class="n">orange</span> <span class="o">=</span> <span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This is exactly how the default register-classes are created in
+<code class="docutils literal notranslate"><span class="pre">sty.register</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="developing-testing">
+<span id="id2"></span><h3>Developing / Testing<a class="headerlink" href="#developing-testing" title="Permalink to this headline">¶</a></h3>
+<p>Clone the repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">feluxe</span><span class="o">/</span><span class="n">sty</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Run tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sty</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">tests</span>
+</pre></div>
+</div>
+<p>Read test results in your terminal and see if things match up.</p>
+</div>
+<div class="section" id="terminal-support">
+<h3>Terminal Support<a class="headerlink" href="#terminal-support" title="Permalink to this headline">¶</a></h3>
+<p>If you have issues with sty on your system, please leave an issue.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="11%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Terminal</th>
+<th class="head">Tested</th>
+<th class="head">Known Issues</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Genome Terminal</td>
+<td>yes</td>
+<td>* <code class="docutils literal notranslate"><span class="pre">blink</span></code> effect not supported.</td>
+</tr>
+<tr class="row-odd"><td>Terminte</td>
+<td>yes</td>
+<td>* <code class="docutils literal notranslate"><span class="pre">blink</span></code> effect not supported.</td>
+</tr>
+<tr class="row-even"><td>Yakuake</td>
+<td>yes</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html#document-index">sty</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-intro">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#goal">Goal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#getting-started">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-docindex">Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html#document-index">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Felix Meyer-Wolters.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

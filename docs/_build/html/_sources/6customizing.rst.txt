@@ -1,0 +1,289 @@
+
+Customizing
+===========
+
+Sty allows you to change or to extend the default registers as you like.
+You can also create a complete new register. More on these things in the
+following chapters.
+
+   .. rubric:: WARNING:
+      :name: warning:
+
+   If you create a library that is shared among other projects, I highly
+   suggest not to customize the "global" register-objects (sty.fg,
+   sty.bg, sty.ef, sty.rs) directly, because that might cause conflicts
+   with other packages that share the same sty dependency within the
+   same project.
+
+   If you want to use custom register-objects in a library project, you
+   should create new register-object instances from the register-classes
+   dedicated to your project only. More on this int the chapter
+   *"Extending the default registers and creating new instances"*.
+
+.. _the-"rule"-type-and-the-"render"-enum:
+
+The "Rule" type and the "Render" enum
+-------------------------------------
+
+In order to assing values to a register-object, you have to use the
+'Rule' type (``sty.Rule``).
+
+The Rule type simply takes the name of a render-function and the
+arguments that the function should use:
+
+``Rule(renderer_name, *args, **kwargs)``
+
+In this example we assign a render-function called 'sgr' with the
+argument 32 to ``fg.red``:
+
+.. code:: python
+
+   fg.red = Rule('sgr', 32)
+
+Sty provides an enum ``sty.Render`` that allows for more structured
+selection of the render-function name. The following example does the
+same as the one above:
+
+.. code:: python
+
+   from sty import Render
+
+   fg.red = Rule(Render.sgr, 32)
+
+The reason why we are assigning the name of the function instead of the
+function itself is that this way we can replace the render-functions on
+the fly for each register-object.
+
+Customizing register-objects
+----------------------------
+
+Direct attribute customization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can add and change attributes of each register-object directly like
+in the following **examples**:
+
+.. code:: python
+
+   from sty import fg, bg, ef, rs, Rule, Render
+
+   # ef.italic now renders underlined text.
+   ef.italic = Rule(Render.sgr, 4)
+
+   # fg.red renders green text from now on.
+   fg.red = Rule(Render.sgr, 32)
+
+   # fg.blue renders red text from now on (using an 8bit color code).
+   fg.blue = Rule(Render.eightbit_fg, 88)
+
+   # Create a new item that renders brown text.
+   fg.my_new_item = Rule(Render.eightbit_fg, 130)
+
+   # bg.green renders blue bg from now on (using a 24bit rgb code).
+   bg.green = Rule(Render.rgb_bg, 0, 128, 255)
+
+   # rs.all only resets the underline effect from now on.
+   rs.all = Rule(Render.sgr, 24)
+
+   # You can use multiple Rules to define a new attribute:
+   fg.green_ul = Rule(Render.sgr, 32), Rule(Render.sgr, 4)
+
+   # You can use existing attributes to define a new atribute:
+   fg.blue_b = fg.blue + ef.b
+   `
+   # You can use a mix of existing attributes and Rules:
+   fg.red_i = ef.i, Rule(Render.sgr, 31)
+
+Dynamic attribute customization using the ``set_rule`` method.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In case you need to set attributes of a register-object dynamically you
+can use the ``set_rule`` method like in the folowing **example**:
+
+.. code:: python
+
+   from sty import fg, Rule, Render
+
+   my_color_name1 = 'special_teal'
+   my_color_name2 = 'teal_b'
+   my_color_name3 = 'green_i'
+   my_color_name4 = 'red_ul'
+
+   # Using a single Rule to define a new attribute:
+   fg.set_rule(my_color_name1, Rule(Render.eightbit_fg, 51))
+
+   # Using multiple Rules to define a new attribute:
+   fg.set_rule(my_color_name2, (Rule(Render.eightbit_fg, 51), Rule(Render.sgr, 1)))
+
+   # Using existing attributes to define a new atribute:
+   fg.set_rule(my_color_name3, (fg.green, ef.i))
+
+   # Using a mix of an existing attribute and a new Rule:
+   fg.set_rule(my_color_name4, (Rule(Render.sgr, 31), ef.underl))
+
+   a = fg.special_teal + 'This is custom teal text.' + fg.rs
+   b = fg.teal_b + 'This is custom teal and bold text.' + rs.all
+   c = fg.green_i + 'This is green italic text.' + rs.all
+   d = fg.red_ul + 'This is red and undelrined text.' + rs.all
+
+Changing render-functions using ``set_renderer`` method.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to change a render-function for a register-object (fg, bg, ef,
+rs) you can use the ``set_renderer`` mehtod:
+
+.. code:: python
+
+   from sty import fg, Render
+
+   def my_custom_renderfunc():
+       # ...
+
+   fg.set_renderer(Render.rgb_fg, my_custom_renderfunc)
+
+After this each attribute of ``fg`` that was set with a
+``Rule(Render.rgb_fg, ...`` will now use the new render-function.
+
+Customizing the register-classes
+--------------------------------
+
+Extending the default registers and creating new instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to set a larger register of custom attributes, it may be
+more convenient to extend the default register-classes and create new
+register-objects from them.
+
+.. code:: python
+
+   from sty import FgRegister, Rule, Render
+
+
+   # Extend default Fg register.
+
+   class MyFgRegister(FgRegister):
+
+       black = Rule(Render.sgr, 31)
+       red = Rule(Render.sgr, 34)
+       orange = Rule(Render.rgb_fg, 255, 128, 0)
+       # ...
+
+
+   # Create a new instance from the new Register
+
+   fg = MyFgRegister()
+
+   a = fg.orange + 'This is orange text from a non default attribute.' + rs.fg
+
+This is useful in case you want to provide your project with custom
+versions of ``fg``, ``bg``, ``ef``, ``rs`` or if you don't want to mess
+with the "global" register-objects provided by sty.
+
+You could for example create your own ``style.py`` and import your
+custom regsiter-objects from there:
+``from myproj.style import fg, bg, ef, rs``.
+
+Adding render-functions in a class definition
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In an earlier chapter, we saw how to use the ``set_renderer`` method to
+replace a render-function for a register-object. In this example we set
+a new render-function within a class definition.
+
+.. code:: python
+
+   import sty
+   from sty import Rule, FgRegister
+
+
+   # Your new bg render-function.
+   def my_custom_rgb_fg(r,g,b):
+       return f'\x1b[48;2;{str(r)};{str(g)};{str(b)}m'
+
+
+   # Extend the enum with the name of your new render-funtion.
+   class Render(sty.Render):
+       custom_rgb_fg = 'custom_rgb_fg'
+
+
+   # Extend default Fg register.
+   class MyFgRegister(FgRegister):
+
+       def __init__(self):
+           super().__init__() # Call super to apply render-functions from FgRegister.
+           self.set_renderer(Render.custom_rgb_fg, my_custom_rgb_fg)
+
+       black = Rule(Render.sgr, 31)
+       red = Rule(Render.sgr, 34)
+       orange = Rule(Render.custom_rgb_bg, 255, 128, 0) # This uses the new render-function.
+
+
+   fg = MyFgRegister()
+
+   a = fg.orange + 'I use the new render-function.' + fg.rs
+
+Addding special \_\ *call*\ \_ mehtods in a class definition
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Remember that you can call register-objects like this ``fg(100)`` (to
+generate a 8bit color) or like this ``fg(40, 100, 20)`` (to generate an
+rgb color)?
+
+Each of those two calls have a different render-function assigned. You
+can add/change the render-functions for these calls by setting the
+``eightbit_call`` and ``rgb_call`` attributes, like in this example:
+
+.. code:: python
+
+   from sty.register import FgRegister
+
+
+   class MyFgRegister(FgRegister):
+       
+       eightbit_call = Rule(Render.eightbit_fg)
+       rgb_call = Rule(Render.rgb_fg)
+
+       black = Rule(Render.sgr, 31)
+       red = Rule(Render.sgr, 34)
+       orange = Rule(Render.rgb_fg, 255, 128, 0)
+       
+
+   fg = MyFgRegister()
+
+   a = fg(100) + 'I use an eightbit_fg renderer.' + rs.fg
+   b = fg(40, 50, 200) + 'I use an rgb_fg renderer.' + rs.fg
+
+Create a custom register from scratch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to create custom register-classes from scratch, you can do
+it as described in the chapters above. The only difference is that you
+inherit from the ``Base`` class instead of the default register-classes.
+
+.. code:: python
+
+   from sty import Base, Rule, Render, renderfunc
+
+
+   class MyFgRegister(Base):
+
+       # Set render-functions.
+       def __init__(self):
+           self.set_renderer(Render.sgr, renderfunc.sgr)
+           self.set_renderer(Render.rgb_fg, renderfunc.rgb_fg)
+
+       # Set rules for special call methods.
+       eightbit_call = Rule(Render.eightbit_fg)
+       rgb_call = Rule(Render.rgb_fg)
+
+       # Set styling rules.
+       black = (Render.sgr, 31)
+       red = (Render.sgr, 34)
+       orange = (Render.rgb_fg, 255, 128, 0)
+       # ...
+
+This is exactly how the default register-classes are created in
+``sty.register``.
+
+.. _developing-/-testing:
+

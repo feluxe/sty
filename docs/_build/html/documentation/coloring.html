@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Coloring &mdash; sty 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Resetting" href="resetting.html" />
+    <link rel="prev" title="Effects" href="effects.html" />
+<link href="../_static/custom.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> sty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/description.html">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/subscribe.html">Subscribe for Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="effects.html">Effects</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Coloring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resetting.html">Resetting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renderers.html">Renderers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="muting.html">Muting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporting.html">Exporting / Copying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing_testing.html">Developing / Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="term_support.html">Terminal Support</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sty</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Coloring</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/documentation/coloring.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="coloring">
+<h1>Coloring<a class="headerlink" href="#coloring" title="Permalink to this headline">¶</a></h1>
+<p>Sty uses ANSI escape sequences for coloring.</p>
+<p>More about ANSI colors on wikipedia:
+<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit">3/4bit colors</a>
+| <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">8bit colors</a>
+| <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit">24bit colors</a>.</p>
+<div class="section" id="sty-s-default-color-register">
+<span id="anchor-color-register"></span><h2>Sty’s default color register<a class="headerlink" href="#sty-s-default-color-register" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="foreground">
+<h3>Foreground<a class="headerlink" href="#foreground" title="Permalink to this headline">¶</a></h3>
+<p>The default colors for the <code class="docutils literal notranslate"><span class="pre">sty.fg</span></code> register-object.</p>
+<p>These are most widely supported. (using sgr codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">normal</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>black</td>
+<td>sty.renderfunc.sgr(30)</td>
+</tr>
+<tr class="row-odd"><td>red</td>
+<td>sty.renderfunc.sgr(31)</td>
+</tr>
+<tr class="row-even"><td>green</td>
+<td>sty.renderfunc.sgr(32)</td>
+</tr>
+<tr class="row-odd"><td>yellow</td>
+<td>sty.renderfunc.sgr(33)</td>
+</tr>
+<tr class="row-even"><td>blue</td>
+<td>sty.renderfunc.sgr(34)</td>
+</tr>
+<tr class="row-odd"><td>magenta</td>
+<td>sty.renderfunc.sgr(35)</td>
+</tr>
+<tr class="row-even"><td>cyan</td>
+<td>sty.renderfunc.sgr(36)</td>
+</tr>
+<tr class="row-odd"><td>white</td>
+<td>sty.renderfunc.sgr(37)</td>
+</tr>
+</tbody>
+</table>
+<p>These are less widely supported. (using less common set of sgr codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">light</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>li_black</td>
+<td>sty.renderfunc.sgr(90)</td>
+</tr>
+<tr class="row-odd"><td>li_red</td>
+<td>sty.renderfunc.sgr(91)</td>
+</tr>
+<tr class="row-even"><td>li_green</td>
+<td>sty.renderfunc.sgr(92)</td>
+</tr>
+<tr class="row-odd"><td>li_yellow</td>
+<td>sty.renderfunc.sgr(93)</td>
+</tr>
+<tr class="row-even"><td>li_blue</td>
+<td>sty.renderfunc.sgr(94)</td>
+</tr>
+<tr class="row-odd"><td>li_magenta</td>
+<td>sty.renderfunc.sgr(95)</td>
+</tr>
+<tr class="row-even"><td>li_cyan</td>
+<td>sty.renderfunc.sgr(96)</td>
+</tr>
+<tr class="row-odd"><td>li_white</td>
+<td>sty.renderfunc.sgr(97)</td>
+</tr>
+</tbody>
+</table>
+<p>These are even less widely supported. (using 8bit color codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">dark</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>da_black</td>
+<td>sty.renderfunc.eightbit_fg(0)</td>
+</tr>
+<tr class="row-odd"><td>da_red</td>
+<td>sty.renderfunc.eightbit_fg(88)</td>
+</tr>
+<tr class="row-even"><td>da_green</td>
+<td>sty.renderfunc.eightbit_fg(22)</td>
+</tr>
+<tr class="row-odd"><td>da_yellow</td>
+<td>sty.renderfunc.eightbit_fg(58)</td>
+</tr>
+<tr class="row-even"><td>da_blue</td>
+<td>sty.renderfunc.eightbit_fg(18)</td>
+</tr>
+<tr class="row-odd"><td>da_magenta</td>
+<td>sty.renderfunc.eightbit_fg(89)</td>
+</tr>
+<tr class="row-even"><td>da_cyan</td>
+<td>sty.renderfunc.eightbit_fg(23)</td>
+</tr>
+<tr class="row-odd"><td>da_white</td>
+<td>sty.renderfunc.eightbit_fg(249)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+<p>The default colors for the <code class="docutils literal notranslate"><span class="pre">sty.bg</span></code> register-object.</p>
+<p>These are most widely supported. (using sgr codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">normal</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>black</td>
+<td>sty.renderfunc.sgr(40)</td>
+</tr>
+<tr class="row-odd"><td>red</td>
+<td>sty.renderfunc.sgr(41)</td>
+</tr>
+<tr class="row-even"><td>green</td>
+<td>sty.renderfunc.sgr(42)</td>
+</tr>
+<tr class="row-odd"><td>yellow</td>
+<td>sty.renderfunc.sgr(43)</td>
+</tr>
+<tr class="row-even"><td>blue</td>
+<td>sty.renderfunc.sgr(44)</td>
+</tr>
+<tr class="row-odd"><td>magenta</td>
+<td>sty.renderfunc.sgr(45)</td>
+</tr>
+<tr class="row-even"><td>cyan</td>
+<td>sty.renderfunc.sgr(46)</td>
+</tr>
+<tr class="row-odd"><td>white</td>
+<td>sty.renderfunc.sgr(47)</td>
+</tr>
+</tbody>
+</table>
+<p>These are less widely supported. (using less common set of sgr codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">light</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>li_black</td>
+<td>sty.renderfunc.sgr(100)</td>
+</tr>
+<tr class="row-odd"><td>li_red</td>
+<td>sty.renderfunc.sgr(101)</td>
+</tr>
+<tr class="row-even"><td>li_green</td>
+<td>sty.renderfunc.sgr(102)</td>
+</tr>
+<tr class="row-odd"><td>li_yellow</td>
+<td>sty.renderfunc.sgr(103)</td>
+</tr>
+<tr class="row-even"><td>li_blue</td>
+<td>sty.renderfunc.sgr(104)</td>
+</tr>
+<tr class="row-odd"><td>li_magenta</td>
+<td>sty.renderfunc.sgr(105)</td>
+</tr>
+<tr class="row-even"><td>li_cyan</td>
+<td>sty.renderfunc.sgr(106)</td>
+</tr>
+<tr class="row-odd"><td>li_white</td>
+<td>sty.renderfunc.sgr(107)</td>
+</tr>
+</tbody>
+</table>
+<p>These are even less widely supported. (using 8bit color codes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">dark</th>
+<th class="head">Default Renderer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>da_black</td>
+<td>sty.renderfunc.eightbit_bg(0)</td>
+</tr>
+<tr class="row-odd"><td>da_red</td>
+<td>sty.renderfunc.eightbit_bg(88)</td>
+</tr>
+<tr class="row-even"><td>da_green</td>
+<td>sty.renderfunc.eightbit_bg(22)</td>
+</tr>
+<tr class="row-odd"><td>da_yellow</td>
+<td>sty.renderfunc.eightbit_bg(58)</td>
+</tr>
+<tr class="row-even"><td>da_blue</td>
+<td>sty.renderfunc.eightbit_bg(18)</td>
+</tr>
+<tr class="row-odd"><td>da_magenta</td>
+<td>sty.renderfunc.eightbit_bg(89)</td>
+</tr>
+<tr class="row-even"><td>da_cyan</td>
+<td>sty.renderfunc.eightbit_bg(23)</td>
+</tr>
+<tr class="row-odd"><td>da_white</td>
+<td>sty.renderfunc.eightbit_bg(249)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="coloring-by-name">
+<h2>Coloring by name<a class="headerlink" href="#coloring-by-name" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">rs</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">li_blue</span> <span class="o">+</span> <span class="s1">&#39;I have a light blue foreground.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">cyan</span> <span class="o">+</span> <span class="s1">&#39;I have a cyan background&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">da_red</span> <span class="o">+</span> <span class="n">bg</span><span class="o">.</span><span class="n">li_red</span> <span class="o">+</span> <span class="s1">&#39;I have a dark red fg and light red bg.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have yellow fg.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="coloring by name" src="../_images/color_by_name.png" />
+</div>
+<div class="section" id="coloring-with-8-bit-codes">
+<h2>Coloring with 8-bit codes<a class="headerlink" href="#coloring-with-8-bit-codes" title="Permalink to this headline">¶</a></h2>
+<p>Link:
+<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">wikipedia:8bit</a></p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">rs</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have a green foreground.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">bg</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have a pink background&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">226</span><span class="p">)</span> <span class="o">+</span> <span class="n">bg</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have a light yellow fg and dark blue bg.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="coloring by 8bit number" src="../_images/8bit.png" />
+</div>
+<div class="section" id="coloring-with-24bit-codes">
+<h2>Coloring with 24bit codes<a class="headerlink" href="#coloring-with-24bit-codes" title="Permalink to this headline">¶</a></h2>
+<p>Link:
+<a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit">wikipedia:24bit</a></p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">rs</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have a green foreground.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">bg</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I have an orange background&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span> <span class="o">+</span> <span class="n">bg</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;Grey fg and dark grey bg.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="coloring by 24bit number" src="../_images/24bit.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="resetting.html" class="btn btn-neutral float-right" title="Resetting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="effects.html" class="btn btn-neutral" title="Effects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, sty
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

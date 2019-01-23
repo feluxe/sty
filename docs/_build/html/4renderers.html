@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Renderers &mdash; sty 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Muting" href="5muting.html" />
+    <link rel="prev" title="Resetting" href="3resetting.html" />
+<link href="_static/custom.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> sty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="0intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1effects.html">Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2coloring.html">Coloring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3resetting.html">Resetting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Renderers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5muting.html">Muting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6customizing.html">Customizing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7developing_testing.html">Developing / Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8term_support.html">Terminal Support</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sty</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Renderers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/4renderers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="renderers">
+<h1>Renderers<a class="headerlink" href="#renderers" title="Permalink to this headline">¶</a></h1>
+<p>The default render-functions are stored in <code class="docutils literal notranslate"><span class="pre">sty.renderfunc</span></code>.</p>
+<div class="section" id="list-of-renderers">
+<h2>List of Renderers<a class="headerlink" href="#list-of-renderers" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Render-Function</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sty.renderfunc.sgr</td>
+<td>Render <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters">SGR codes (wikipedia:SGR)</a> (works for fg-colors, bg-colors and effects)</td>
+</tr>
+<tr class="row-odd"><td>sty.renderfunc.eightbit_fg</td>
+<td>Render foreground using <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">8bit color codes (wikipedia:8bit)</a></td>
+</tr>
+<tr class="row-even"><td>sty.renderfunc.eightbit_bg</td>
+<td>Render background using 8bit color codes</td>
+</tr>
+<tr class="row-odd"><td>sty.renderfunc.rgb_fg</td>
+<td>Render foreground using <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit">24bit (RGB) color codes (wikipedia:24bit)</a></td>
+</tr>
+<tr class="row-even"><td>sty.renderfunc.rgb_bg</td>
+<td>Render background using 24bit (RGB) color codes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5muting.html" class="btn btn-neutral float-right" title="Muting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="3resetting.html" class="btn btn-neutral" title="Resetting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, sty
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

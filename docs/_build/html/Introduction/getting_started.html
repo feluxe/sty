@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; sty 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<link href="../_static/custom.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> sty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/effects.html">Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/coloring.html">Coloring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/resetting.html">Resetting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/renderers.html">Renderers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/muting.html">Muting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/customizing.html">Customizing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/developing_testing.html">Developing / Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/term_support.html">Terminal Support</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sty</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Introduction/getting_started.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sty</span>
+</pre></div>
+</div>
+<p>You can import sty like this:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sty</span>
+</pre></div>
+</div>
+<p>However, if you need to style a lot of stuff, you might consider
+importing the style objects directly, like this:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span>
+</pre></div>
+</div>
+<div class="section" id="sty-all-the-strings">
+<span id="id1"></span><h2><em>Sty</em> all the strings!<a class="headerlink" href="#sty-all-the-strings" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span><span class="p">,</span> <span class="n">Render</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This is red text!&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">blue</span> <span class="o">+</span> <span class="s1">&#39;This has a blue background!&#39;</span> <span class="o">+</span> <span class="n">bg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">baz</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">italic</span> <span class="o">+</span> <span class="s1">&#39;This is italic text&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">italic</span>
+<span class="n">qux</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is pink text using 8bit colors&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">qui</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is red text using 24bit colors.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+
+<span class="c1"># Add new colors:</span>
+
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+
+<span class="n">buf</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">orange</span> <span class="o">+</span> <span class="s1">&#39;Yay, Im orange.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">baz</span><span class="p">,</span> <span class="n">qux</span><span class="p">,</span> <span class="n">qui</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>output:</p>
+<p>&lt;img src=”<a class="reference external" href="https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png">https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png</a>” alt=”example_so” /&gt;</p>
+</div>
+<div class="section" id="a-quick-look-at-the-primitives">
+<h2>A quick look at the primitives:<a class="headerlink" href="#a-quick-look-at-the-primitives" title="Permalink to this headline">¶</a></h2>
+<p>sty provides a bunch of tiny, but flexible primitives (called register-objects) that can be used to style your strings:</p>
+<ul class="simple">
+<li><cite>ef</cite> (effect-register)</li>
+<li><cite>fg</cite> (foreground-register)</li>
+<li><cite>bg</cite> (background-register)</li>
+<li><cite>rs</cite> (reset-register).</li>
+</ul>
+<p>Each register-object carries a default selection of attributes ([list-of-effects](#list-of-default-effects), [list-of-colors](#list-of-default-colors), [list-of-resetters](#list-of-default-reset-attributes)), which you can select like this:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ef</span><span class="o">.</span><span class="n">italic</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">blue</span>
+<span class="n">bg</span><span class="o">.</span><span class="n">green</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+<p>Or like this, which is nice in case you need to dynamically select
+attributes:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ef</span><span class="p">(</span><span class="s1">&#39;italic&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;Italic text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">italic</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;Blue text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">bg</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">254</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;Random colored bg&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fg</span></code> and <code class="docutils literal notranslate"><span class="pre">bg</span></code> are special in the way that they allow you to select
+8bit and 24bit colors directly:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># select an 8bit color directly.</span>
+<span class="n">fg</span><span class="p">(</span><span class="mi">196</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is red text&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+
+<span class="c1"># select a 24bit rgb color directly.</span>
+<span class="n">bg</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;Text with green bg&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">bg</span>
+
+</pre></div>
+</div>
+<p>I think this is all you need to know to get going. Check out the
+documentation or the codebase for more detail or feel free to create an
+issue and ask. Have fun! :D</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, sty
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

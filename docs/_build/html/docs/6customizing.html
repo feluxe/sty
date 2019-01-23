@@ -1,0 +1,476 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Customizing &mdash; sty 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developing / Testing" href="7developing_testing.html" />
+    <link rel="prev" title="Muting" href="5muting.html" />
+<link href="../_static/custom.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> sty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../0intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1effects.html">Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2coloring.html">Coloring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3resetting.html">Resetting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4renderers.html">Renderers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5muting.html">Muting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Customizing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7developing_testing.html">Developing / Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8term_support.html">Terminal Support</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sty</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Customizing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/docs/6customizing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="customizing">
+<h1>Customizing<a class="headerlink" href="#customizing" title="Permalink to this headline">¶</a></h1>
+<p>Sty allows you to change or to extend the default registers as you like.
+You can also create a complete new register. More on these things in the
+following chapters.</p>
+<blockquote>
+<div><p class="rubric" id="warning">WARNING:</p>
+<p>If you create a library that is shared among other projects, I highly
+suggest not to customize the “global” register-objects (sty.fg,
+sty.bg, sty.ef, sty.rs) directly, because that might cause conflicts
+with other packages that share the same sty dependency within the
+same project.</p>
+<p>If you want to use custom register-objects in a library project, you
+should create new register-object instances from the register-classes
+dedicated to your project only. More on this int the chapter
+<em>“Extending the default registers and creating new instances”</em>.</p>
+</div></blockquote>
+<div class="section" id="the-rule-type-and-the-render-enum">
+<span id="id1"></span><h2>The “Rule” type and the “Render” enum<a class="headerlink" href="#the-rule-type-and-the-render-enum" title="Permalink to this headline">¶</a></h2>
+<p>In order to assing values to a register-object, you have to use the
+‘Rule’ type (<code class="docutils literal notranslate"><span class="pre">sty.Rule</span></code>).</p>
+<p>The Rule type simply takes the name of a render-function and the
+arguments that the function should use:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Rule(renderer_name,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code></p>
+<p>In this example we assign a render-function called ‘sgr’ with the
+argument 32 to <code class="docutils literal notranslate"><span class="pre">fg.red</span></code>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="s1">&#39;sgr&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sty provides an enum <code class="docutils literal notranslate"><span class="pre">sty.Render</span></code> that allows for more structured
+selection of the render-function name. The following example does the
+same as the one above:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">Render</span>
+
+<span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The reason why we are assigning the name of the function instead of the
+function itself is that this way we can replace the render-functions on
+the fly for each register-object.</p>
+</div>
+<div class="section" id="customizing-register-objects">
+<h2>Customizing register-objects<a class="headerlink" href="#customizing-register-objects" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="direct-attribute-customization">
+<h3>Direct attribute customization<a class="headerlink" href="#direct-attribute-customization" title="Permalink to this headline">¶</a></h3>
+<p>You can add and change attributes of each register-object directly like
+in the following <strong>examples</strong>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span>from sty import fg, bg, ef, rs, Rule, Render
+
+# ef.italic now renders underlined text.
+ef.italic = Rule(Render.sgr, 4)
+
+# fg.red renders green text from now on.
+fg.red = Rule(Render.sgr, 32)
+
+# fg.blue renders red text from now on (using an 8bit color code).
+fg.blue = Rule(Render.eightbit_fg, 88)
+
+# Create a new item that renders brown text.
+fg.my_new_item = Rule(Render.eightbit_fg, 130)
+
+# bg.green renders blue bg from now on (using a 24bit rgb code).
+bg.green = Rule(Render.rgb_bg, 0, 128, 255)
+
+# rs.all only resets the underline effect from now on.
+rs.all = Rule(Render.sgr, 24)
+
+# You can use multiple Rules to define a new attribute:
+fg.green_ul = Rule(Render.sgr, 32), Rule(Render.sgr, 4)
+
+# You can use existing attributes to define a new atribute:
+fg.blue_b = fg.blue + ef.b
+`
+# You can use a mix of existing attributes and Rules:
+fg.red_i = ef.i, Rule(Render.sgr, 31)
+</pre></div>
+</div>
+</div>
+<div class="section" id="dynamic-attribute-customization-using-the-set-rule-method">
+<h3>Dynamic attribute customization using the <code class="docutils literal notranslate"><span class="pre">set_rule</span></code> method.<a class="headerlink" href="#dynamic-attribute-customization-using-the-set-rule-method" title="Permalink to this headline">¶</a></h3>
+<p>In case you need to set attributes of a register-object dynamically you
+can use the <code class="docutils literal notranslate"><span class="pre">set_rule</span></code> method like in the folowing <strong>example</strong>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">Rule</span><span class="p">,</span> <span class="n">Render</span>
+
+<span class="n">my_color_name1</span> <span class="o">=</span> <span class="s1">&#39;special_teal&#39;</span>
+<span class="n">my_color_name2</span> <span class="o">=</span> <span class="s1">&#39;teal_b&#39;</span>
+<span class="n">my_color_name3</span> <span class="o">=</span> <span class="s1">&#39;green_i&#39;</span>
+<span class="n">my_color_name4</span> <span class="o">=</span> <span class="s1">&#39;red_ul&#39;</span>
+
+<span class="c1"># Using a single Rule to define a new attribute:</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="n">my_color_name1</span><span class="p">,</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">eightbit_fg</span><span class="p">,</span> <span class="mi">51</span><span class="p">))</span>
+
+<span class="c1"># Using multiple Rules to define a new attribute:</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="n">my_color_name2</span><span class="p">,</span> <span class="p">(</span><span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">eightbit_fg</span><span class="p">,</span> <span class="mi">51</span><span class="p">),</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="c1"># Using existing attributes to define a new atribute:</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="n">my_color_name3</span><span class="p">,</span> <span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">ef</span><span class="o">.</span><span class="n">i</span><span class="p">))</span>
+
+<span class="c1"># Using a mix of an existing attribute and a new Rule:</span>
+<span class="n">fg</span><span class="o">.</span><span class="n">set_rule</span><span class="p">(</span><span class="n">my_color_name4</span><span class="p">,</span> <span class="p">(</span><span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="n">ef</span><span class="o">.</span><span class="n">underl</span><span class="p">))</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">special_teal</span> <span class="o">+</span> <span class="s1">&#39;This is custom teal text.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">teal_b</span> <span class="o">+</span> <span class="s1">&#39;This is custom teal and bold text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">green_i</span> <span class="o">+</span> <span class="s1">&#39;This is green italic text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red_ul</span> <span class="o">+</span> <span class="s1">&#39;This is red and undelrined text.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-render-functions-using-set-renderer-method">
+<h3>Changing render-functions using <code class="docutils literal notranslate"><span class="pre">set_renderer</span></code> method.<a class="headerlink" href="#changing-render-functions-using-set-renderer-method" title="Permalink to this headline">¶</a></h3>
+<p>In order to change a render-function for a register-object (fg, bg, ef,
+rs) you can use the <code class="docutils literal notranslate"><span class="pre">set_renderer</span></code> mehtod:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">Render</span>
+
+<span class="k">def</span> <span class="nf">my_custom_renderfunc</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+
+<span class="n">fg</span><span class="o">.</span><span class="n">set_renderer</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="n">my_custom_renderfunc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After this each attribute of <code class="docutils literal notranslate"><span class="pre">fg</span></code> that was set with a
+<code class="docutils literal notranslate"><span class="pre">Rule(Render.rgb_fg,</span> <span class="pre">...</span></code> will now use the new render-function.</p>
+</div>
+</div>
+<div class="section" id="customizing-the-register-classes">
+<h2>Customizing the register-classes<a class="headerlink" href="#customizing-the-register-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="extending-the-default-registers-and-creating-new-instances">
+<h3>Extending the default registers and creating new instances<a class="headerlink" href="#extending-the-default-registers-and-creating-new-instances" title="Permalink to this headline">¶</a></h3>
+<p>If you want to set a larger register of custom attributes, it may be
+more convenient to extend the default register-classes and create new
+register-objects from them.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">FgRegister</span><span class="p">,</span> <span class="n">Rule</span><span class="p">,</span> <span class="n">Render</span>
+
+
+<span class="c1"># Extend default Fg register.</span>
+
+<span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">FgRegister</span><span class="p">):</span>
+
+    <span class="n">black</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+    <span class="n">orange</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+
+
+<span class="c1"># Create a new instance from the new Register</span>
+
+<span class="n">fg</span> <span class="o">=</span> <span class="n">MyFgRegister</span><span class="p">()</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">orange</span> <span class="o">+</span> <span class="s1">&#39;This is orange text from a non default attribute.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+</pre></div>
+</div>
+<p>This is useful in case you want to provide your project with custom
+versions of <code class="docutils literal notranslate"><span class="pre">fg</span></code>, <code class="docutils literal notranslate"><span class="pre">bg</span></code>, <code class="docutils literal notranslate"><span class="pre">ef</span></code>, <code class="docutils literal notranslate"><span class="pre">rs</span></code> or if you don’t want to mess
+with the “global” register-objects provided by sty.</p>
+<p>You could for example create your own <code class="docutils literal notranslate"><span class="pre">style.py</span></code> and import your
+custom regsiter-objects from there:
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">myproj.style</span> <span class="pre">import</span> <span class="pre">fg,</span> <span class="pre">bg,</span> <span class="pre">ef,</span> <span class="pre">rs</span></code>.</p>
+</div>
+<div class="section" id="adding-render-functions-in-a-class-definition">
+<h3>Adding render-functions in a class definition<a class="headerlink" href="#adding-render-functions-in-a-class-definition" title="Permalink to this headline">¶</a></h3>
+<p>In an earlier chapter, we saw how to use the <code class="docutils literal notranslate"><span class="pre">set_renderer</span></code> method to
+replace a render-function for a register-object. In this example we set
+a new render-function within a class definition.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sty</span>
+<span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">Rule</span><span class="p">,</span> <span class="n">FgRegister</span>
+
+
+<span class="c1"># Your new bg render-function.</span>
+<span class="k">def</span> <span class="nf">my_custom_rgb_fg</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[48;2;{str(r)};{str(g)};{str(b)}m&#39;</span>
+
+
+<span class="c1"># Extend the enum with the name of your new render-funtion.</span>
+<span class="k">class</span> <span class="nc">Render</span><span class="p">(</span><span class="n">sty</span><span class="o">.</span><span class="n">Render</span><span class="p">):</span>
+    <span class="n">custom_rgb_fg</span> <span class="o">=</span> <span class="s1">&#39;custom_rgb_fg&#39;</span>
+
+
+<span class="c1"># Extend default Fg register.</span>
+<span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">FgRegister</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span> <span class="c1"># Call super to apply render-functions from FgRegister.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_renderer</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">custom_rgb_fg</span><span class="p">,</span> <span class="n">my_custom_rgb_fg</span><span class="p">)</span>
+
+    <span class="n">black</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+    <span class="n">orange</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">custom_rgb_bg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># This uses the new render-function.</span>
+
+
+<span class="n">fg</span> <span class="o">=</span> <span class="n">MyFgRegister</span><span class="p">()</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">orange</span> <span class="o">+</span> <span class="s1">&#39;I use the new render-function.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="addding-special-call-mehtods-in-a-class-definition">
+<h3>Addding special _<em>call</em>_ mehtods in a class definition<a class="headerlink" href="#addding-special-call-mehtods-in-a-class-definition" title="Permalink to this headline">¶</a></h3>
+<p>Remember that you can call register-objects like this <code class="docutils literal notranslate"><span class="pre">fg(100)</span></code> (to
+generate a 8bit color) or like this <code class="docutils literal notranslate"><span class="pre">fg(40,</span> <span class="pre">100,</span> <span class="pre">20)</span></code> (to generate an
+rgb color)?</p>
+<p>Each of those two calls have a different render-function assigned. You
+can add/change the render-functions for these calls by setting the
+<code class="docutils literal notranslate"><span class="pre">eightbit_call</span></code> and <code class="docutils literal notranslate"><span class="pre">rgb_call</span></code> attributes, like in this example:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty.register</span> <span class="k">import</span> <span class="n">FgRegister</span>
+
+
+<span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">FgRegister</span><span class="p">):</span>
+
+    <span class="n">eightbit_call</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">eightbit_fg</span><span class="p">)</span>
+    <span class="n">rgb_call</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">)</span>
+
+    <span class="n">black</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+    <span class="n">orange</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="n">fg</span> <span class="o">=</span> <span class="n">MyFgRegister</span><span class="p">()</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I use an eightbit_fg renderer.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;I use an rgb_fg renderer.&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">fg</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-custom-register-from-scratch">
+<h3>Create a custom register from scratch<a class="headerlink" href="#create-a-custom-register-from-scratch" title="Permalink to this headline">¶</a></h3>
+<p>If you want to create custom register-classes from scratch, you can do
+it as described in the chapters above. The only difference is that you
+inherit from the <code class="docutils literal notranslate"><span class="pre">Base</span></code> class instead of the default register-classes.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">Base</span><span class="p">,</span> <span class="n">Rule</span><span class="p">,</span> <span class="n">Render</span><span class="p">,</span> <span class="n">renderfunc</span>
+
+
+<span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+
+    <span class="c1"># Set render-functions.</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_renderer</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="n">renderfunc</span><span class="o">.</span><span class="n">sgr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_renderer</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="n">renderfunc</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">)</span>
+
+    <span class="c1"># Set rules for special call methods.</span>
+    <span class="n">eightbit_call</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">eightbit_fg</span><span class="p">)</span>
+    <span class="n">rgb_call</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">)</span>
+
+    <span class="c1"># Set styling rules.</span>
+    <span class="n">black</span> <span class="o">=</span> <span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">sgr</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+    <span class="n">orange</span> <span class="o">=</span> <span class="p">(</span><span class="n">Render</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This is exactly how the default register-classes are created in
+<code class="docutils literal notranslate"><span class="pre">sty.register</span></code>.</p>
+<span class="target" id="developing-testing"></span></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="7developing_testing.html" class="btn btn-neutral float-right" title="Developing / Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="5muting.html" class="btn btn-neutral" title="Muting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, sty
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

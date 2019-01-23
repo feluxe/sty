@@ -4,16 +4,18 @@
 INFO.fmw.md
 **/tmp/*
 .cache/
+.git
+.gitsub
 
 # Python
 
-.mypy_cache/
 __pycache__/
 .env
 *.pyc
 /build/
 dist/
 buildlib.egg-info/
+.mypy_cache
 
 # Ediors
 

@@ -5,5 +5,6 @@ split_arguments_when_comma_terminated = true
 
 join_multiple_lines = true
 each_dict_entry_on_separate_line = false
+blank_lines_around_top_level_definition = 2
 blank_line_before_nested_class_or_def = true
-
+indent_dictionary_value = true

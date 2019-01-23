@@ -1,0 +1,67 @@
+
+Effects
+=======
+
+List of default effects
+-----------------------
+
+These are the default attributes for the ``ef`` register-object.
+
+More info: [wikipedia:SGR][SGR]
+
+================ ============================ =====================
+Effect           Description                  Default Renderer
+================ ============================ =====================
+bold (alias b)   Bold or increased intensity  sty.renderfunc.sgr(1)
+dim              Decreased intensity          sty.renderfunc.sgr(2)
+italic (alias i) Italic..                     sty.renderfunc.sgr(3)
+underl (alias u) Underline..                  sty.renderfunc.sgr(4)
+blink            Blink..                      sty.renderfunc.sgr(5)
+inverse          Inverse fore- and background sty.renderfunc.sgr(7)
+hidden           Conceal/Hide                 sty.renderfunc.sgr(8)
+strike           Strike-trhough               sty.renderfunc.sgr(9)
+================ ============================ =====================
+
+Italic
+------
+
+.. literalinclude:: examples.py
+   :language: py
+   :start-after: example: italic
+   :end-before: # ===
+
+.. raw:: html
+
+   <img src="../../../assets/italic.png" alt="italic" />  
+
+
+Bold
+----
+
+.. literalinclude:: examples.py
+   :language: py
+   :start-after: example: bold
+   :end-before: # ===
+
+.. raw:: html
+
+   <img src="../../../assets/bold.png" alt="bold" />  
+
+
+Underline
+---------
+
+.. literalinclude:: examples.py
+   :language: py
+   :start-after: example: underline
+   :end-before: # ===
+
+.. raw:: html
+
+   <img src="../../../assets/underline.png" alt="underline" />  
+
+..
+
+TODO: Add examples for, strike, blink, etc..
+<br>
+

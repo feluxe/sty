@@ -1,0 +1,166 @@
+
+Coloring
+========
+
+List of default colors
+----------------------
+
+Foreground
+~~~~~~~~~~
+
+More info: `wikipedia:3/4bit
+colors <https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit>`__,
+`wikipedia:8bit
+colors <https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit>`__,
+`wikipedia:24bit
+colors <https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit>`__.
+
+The default colors for the ``fg`` register-object.
+
+These are most widely supported. (using sgr codes).
+
+======= ======================
+normal  Default Renderer
+======= ======================
+black   sty.renderfunc.sgr(30)
+red     sty.renderfunc.sgr(31)
+green   sty.renderfunc.sgr(32)
+yellow  sty.renderfunc.sgr(33)
+blue    sty.renderfunc.sgr(34)
+magenta sty.renderfunc.sgr(35)
+cyan    sty.renderfunc.sgr(36)
+white   sty.renderfunc.sgr(37)
+======= ======================
+
+These are less widely supported. (using less common set of sgr codes).
+
+========== ======================
+light      Default Renderer
+========== ======================
+li_black   sty.renderfunc.sgr(90)
+li_red     sty.renderfunc.sgr(91)
+li_green   sty.renderfunc.sgr(92)
+li_yellow  sty.renderfunc.sgr(93)
+li_blue    sty.renderfunc.sgr(94)
+li_magenta sty.renderfunc.sgr(95)
+li_cyan    sty.renderfunc.sgr(96)
+li_white   sty.renderfunc.sgr(97)
+========== ======================
+
+These are even less widely supported. (using 8bit color codes).
+
+========== ===============================
+dark       Default Renderer
+========== ===============================
+da_black   sty.renderfunc.eightbit_fg(0)
+da_red     sty.renderfunc.eightbit_fg(88)
+da_green   sty.renderfunc.eightbit_fg(22)
+da_yellow  sty.renderfunc.eightbit_fg(58)
+da_blue    sty.renderfunc.eightbit_fg(18)
+da_magenta sty.renderfunc.eightbit_fg(89)
+da_cyan    sty.renderfunc.eightbit_fg(23)
+da_white   sty.renderfunc.eightbit_fg(249)
+========== ===============================
+
+Background
+~~~~~~~~~~
+
+The default colors for the ``bg`` register-object.
+
+These are most widely supported. (using sgr codes).
+
+======= ======================
+normal  Default Renderer
+======= ======================
+black   sty.renderfunc.sgr(40)
+red     sty.renderfunc.sgr(41)
+green   sty.renderfunc.sgr(42)
+yellow  sty.renderfunc.sgr(43)
+blue    sty.renderfunc.sgr(44)
+magenta sty.renderfunc.sgr(45)
+cyan    sty.renderfunc.sgr(46)
+white   sty.renderfunc.sgr(47)
+======= ======================
+
+These are less widely supported. (using less common set of sgr codes).
+
+========== =======================
+light      Default Renderer
+========== =======================
+li_black   sty.renderfunc.sgr(100)
+li_red     sty.renderfunc.sgr(101)
+li_green   sty.renderfunc.sgr(102)
+li_yellow  sty.renderfunc.sgr(103)
+li_blue    sty.renderfunc.sgr(104)
+li_magenta sty.renderfunc.sgr(105)
+li_cyan    sty.renderfunc.sgr(106)
+li_white   sty.renderfunc.sgr(107)
+========== =======================
+
+These are even less widely supported. (using 8bit color codes).
+
+========== ===============================
+dark       Default Renderer
+========== ===============================
+da_black   sty.renderfunc.eightbit_bg(0)
+da_red     sty.renderfunc.eightbit_bg(88)
+da_green   sty.renderfunc.eightbit_bg(22)
+da_yellow  sty.renderfunc.eightbit_bg(58)
+da_blue    sty.renderfunc.eightbit_bg(18)
+da_magenta sty.renderfunc.eightbit_bg(89)
+da_cyan    sty.renderfunc.eightbit_bg(23)
+da_white   sty.renderfunc.eightbit_bg(249)
+========== ===============================
+
+Coloring by name
+----------------
+
+.. code:: python
+
+   a = fg.li_blue + 'I have a light blue foreground.' + rs.fg
+   b = bg.cyan + 'I have a cyan background' + rs.bg
+   c = fg.da_red + bg.li_red + 'I have a dark red fg and light red bg.' + rs.all
+   d = fg('yellow') + 'I have yellow fg.' + rs.fg
+
+   print(a, b, c, d, sep='\n')
+
+.. raw:: html
+
+   <img src="../../../assets/color_by_name.png" alt="color_by_name" />  
+
+Coloring with 8-bit codes
+-------------------------
+
+Link:
+`wikipedia:8bit <https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit>`__
+
+.. code:: python
+
+   a = fg(34) + 'I have a green foreground.' + rs.fg
+   b = bg(133) + 'I have a pink background' + rs.bg
+   c = fg(226) + bg(19) + 'I have a light yellow fg and dark blue bg.' + rs.all
+
+   print(a, b, c, sep='\n')
+
+.. raw:: html
+
+   <img src="../../../assets/8bit.png" alt="8bit" />  
+
+Coloring with 24bit codes
+-------------------------
+
+Link:
+`wikipedia:24bit <https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit>`__
+
+.. code:: python
+
+   a = fg(10, 255, 10) + 'I have a green foreground.' + rs.fg
+   b = bg(255, 150, 50) + 'I have an orange background' + rs.bg
+   c = fg(90, 90, 90) + bg(32, 32, 32) + 'Grey fg and dark grey bg.' + rs.all
+
+   print(a, b, c, sep='\n')
+
+.. raw:: html
+
+   <img src="../../../assets/24bit.png" alt="24bit" />  
+
