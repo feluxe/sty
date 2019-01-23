@@ -8,7 +8,11 @@ h3,
 h4,
 h5,
 h6,
-h7 {
+h7,
+.rst-content,
+.toctree-wrapper,
+p.caption,
+legend {
     font-family: Arial, sans-serif !important;
 }
 
@@ -40,7 +44,7 @@ pre {
 }
 
 blockquote {
-    background: #FFFCD7;
+    background: #fffcd7;
     margin-left: 0 !important;
     padding-top: 15px !important;
     padding-bottom: 15px !important;
