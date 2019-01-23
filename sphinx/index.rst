@@ -1,7 +1,7 @@
 
 
-sty
-===
+Index
+=====
 
 .. image:: ../assets/charts.png
    :alt: charts
