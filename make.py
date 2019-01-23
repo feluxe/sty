@@ -48,8 +48,8 @@ def create_readme():
     files = [
         'github_readme_head.rst',
         'description.rst',
-        'requirements.rst',
         'subscribe.rst',
+        'requirements.rst',
         'github_readme_tail.rst',
     ]
 

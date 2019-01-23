@@ -29,13 +29,6 @@ If you run into compatibility problems with sty, please file an issue!
 
 
 
-Requirements
-------------
-
-Sty requires Python ``>= 3.5``
-
-
-
 Subscribe for Changes
 ---------------------
 
@@ -44,6 +37,13 @@ Subscribe for Changes
 
 .. _#5: http://github.com/feluxe/sty/issues/5
 .. _#4: https://github.com/feluxe/sty/issues/4
+
+
+
+Requirements
+------------
+
+Sty requires Python ``>= 3.5``
 
 
 
