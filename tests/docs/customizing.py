@@ -85,9 +85,11 @@ from sty import FgRegister, Sgr, RgbFg
 
 
 # Extend the default foreground register-class.
+
 class MyFgRegister(FgRegister):
 
     # Add this for better editor support.
+
     purple: str
     blue: str
     orange: str
@@ -98,16 +100,19 @@ class MyFgRegister(FgRegister):
         super().__init__()
 
         # Add custom style attributes.
+
         self.set_style('purple', Sgr(35))
         self.set_style('blue', Sgr(34))
         self.set_style('orange', RgbFg(255, 128, 0))
         # ...
 
 
-# Create new style-object from extended register-class.
+# Create new register-object from extended register-class.
+
 fg = MyFgRegister()
 
-# Use your new style-object.
+# Use your new register-object.
+
 a = fg.purple + "I have purple foreground" + fg.rs
 b = fg.blue + "I have blue foreground" + fg.rs
 c = fg.orange + "I have orange foreground" + fg.rs
@@ -147,19 +152,19 @@ class FgRegister(Base):
         self.set_eightbit_call(EightbitFg)
         self.set_rgb_call(RgbFg)
 
-        # Classic terminal foreground color preset.
-        # These are well supported.
-        self.set_style('yellow', RgbFg(250, 250, 70))
         self.set_style('red', Sgr(31))
         self.set_style('green', Sgr(32))
         self.set_style('rs', Sgr(39))
+        self.set_style('yellow', RgbFg(250, 250, 70))
         # ...
 
 
-# Create new style-object from extended register-class.
+# Create new register-object from register-class.
+
 fg = FgRegister()
 
-# Use your new style-object.
+# Use your new register-object.
+
 a = fg.yellow + "I have yellow foreground" + fg.rs
 b = fg.red + "I have red foreground" + fg.rs
 c = fg.green + "I have green foreground" + fg.rs
