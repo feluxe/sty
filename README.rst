@@ -43,7 +43,7 @@ Subscribe for Changes
 Requirements
 ------------
 
-Sty requires Python ``>= 3.5``
+Sty requires Python ``>= 3.6``
 
 
 
