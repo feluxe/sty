@@ -1,26 +1,23 @@
 
 # Misc
-
-INFO.fmw.md
 **/tmp/*
 .cache/
 .git
 .gitsub
 .gitsub_hidden/
+sphinx/_build/
 
 
 # Python
-
 __pycache__/
 .env
 *.pyc
 /build/
 dist/
-buildlib.egg-info/
 .mypy_cache
 
-# Ediors
 
+# Ediors
 .vscode
 .history
 *.iml
@@ -28,4 +25,3 @@ buildlib.egg-info/
 .swp
 
 
-sphinx/_docs/
