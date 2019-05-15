@@ -61,10 +61,6 @@ def _render_rules(
 
 class Base(dict):
 
-    __getattr__: Callable = dict.__getitem__
-    __setattr__: Callable = dict.__setitem__
-    __delattr__: Callable = dict.__delitem__
-
     def __new__(cls):
 
         cls.is_muted: bool = False
@@ -72,6 +68,28 @@ class Base(dict):
         cls.styles: Dict[str, Tuple[Render, ...]] = {}
 
         return super(Base, cls).__new__(cls)
+
+    def __getattr__(self, k):
+        try:
+            return self[k]
+        except KeyError:
+            raise AttributeError(k)
+
+    def __setattr__(self, k, v):
+        try:
+            object.__getattribute__(self, k)
+        except AttributeError:
+            self[k] = v
+        else:
+            object.__setattr__(self, k, v)
+
+    def __delattr__(self, k):
+        try:
+            object.__getattribute__(self, k)
+        except AttributeError:
+            del self[k]
+        else:
+            object.__delattr__(self, k)
 
     def __call__(self, *args, **kwargs) -> str:
         """
