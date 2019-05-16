@@ -1,4 +1,4 @@
-from .. import Example, reset_registers
+from .. import Example
 
 
 print("\n\nMUTING\n" + "="*80)
@@ -23,7 +23,6 @@ print(a, b, c, d, e, f, sep='\n')
 # ===== End =====
 
 # ===== Start =====
-ef, fg, bg, rs = reset_registers()
 Example("mute formatting batch")
 from sty import mute, unmute, ef, fg, bg, rs
 

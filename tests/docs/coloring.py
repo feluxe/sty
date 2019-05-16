@@ -1,7 +1,6 @@
-from .. import Example, reset_registers
+from .. import Example
 
-
-print("\n\nCOLORING\n" + "="*80)
+print("\n\nCOLORING\n" + "=" * 80)
 
 # ===== Start =====
 Example("coloring by name")

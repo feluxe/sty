@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -32,21 +39,16 @@
     <link rel="prev" title="Muting" href="muting.html" />
 <link href="../_static/custom.css" rel="stylesheet" type="text/css">
 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -200,11 +202,11 @@ dedicated to your project only. More on this int the chapter
 <h2>Render Types<a class="headerlink" href="#render-types" title="Permalink to this headline">¶</a></h2>
 <p>To define the values for a style you have to use <code class="docutils literal notranslate"><span class="pre">rendertypes</span></code>:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">Sgr(num:</span> <span class="pre">int)</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">EightbitFg(num:</span> <span class="pre">int)</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">EightbitBg(num:</span> <span class="pre">int)</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">RgbFg(r:</span> <span class="pre">int,</span> <span class="pre">g:</span> <span class="pre">int,</span> <span class="pre">b:</span> <span class="pre">int)</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">RgbBg(r:</span> <span class="pre">int,</span> <span class="pre">g:</span> <span class="pre">int,</span> <span class="pre">b:</span> <span class="pre">int)</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sgr(num:</span> <span class="pre">int)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EightbitFg(num:</span> <span class="pre">int)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EightbitBg(num:</span> <span class="pre">int)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RgbFg(r:</span> <span class="pre">int,</span> <span class="pre">g:</span> <span class="pre">int,</span> <span class="pre">b:</span> <span class="pre">int)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RgbBg(r:</span> <span class="pre">int,</span> <span class="pre">g:</span> <span class="pre">int,</span> <span class="pre">b:</span> <span class="pre">int)</span></code></p></li>
 </ul>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">Sgr</span><span class="p">,</span> <span class="n">RgbFg</span><span class="p">,</span> <span class="n">EightbitFg</span>
 
@@ -260,7 +262,7 @@ This is useful in case you want to create new styles composed out of existing st
 <div class="section" id="set-eightbit-call-and-set-rgb-call-methods">
 <h2><code class="docutils literal notranslate"><span class="pre">set_eightbit_call</span></code> and <code class="docutils literal notranslate"><span class="pre">set_rgb_call</span></code> methods<a class="headerlink" href="#set-eightbit-call-and-set-rgb-call-methods" title="Permalink to this headline">¶</a></h2>
 <p>Remember that you can call the register-objects like a function:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fg</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is pink text using 8bit colors&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fg</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is pink text using 8bit colors&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
 <span class="n">fg</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is red text using 24bit colors.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
 </pre></div>
 </div>
@@ -288,14 +290,14 @@ more convenient to extend the default register-classes and create new
 register-objects from them.</p>
 <p>Customizing sty this way has some advantages:</p>
 <ul class="simple">
-<li>You get better editor support (mypy, pylint, etc).</li>
-<li>You aren’t mutating sty’s global register-objects (<code class="docutils literal notranslate"><span class="pre">sty.ef</span></code>, <code class="docutils literal notranslate"><span class="pre">sty.fg</span></code>, etc.). This may be important for library projects.</li>
+<li><p>You get better editor support (mypy, pylint, etc).</p></li>
+<li><p>You aren’t mutating sty’s global register-objects (<code class="docutils literal notranslate"><span class="pre">sty.ef</span></code>, <code class="docutils literal notranslate"><span class="pre">sty.fg</span></code>, etc.). This may be important for library projects.</p></li>
 </ul>
 <p>In order to extend the register-classes we use the same functions as in the chapters above (<code class="docutils literal notranslate"><span class="pre">set_style</span></code>, <code class="docutils literal notranslate"><span class="pre">set_renderfunc</span></code>, etc.):</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">FgRegister</span><span class="p">,</span> <span class="n">Sgr</span><span class="p">,</span> <span class="n">RgbFg</span>
 
-
 <span class="c1"># Extend the default foreground register-class.</span>
+
 
 <span class="k">class</span> <span class="nc">MyFgRegister</span><span class="p">(</span><span class="n">FgRegister</span><span class="p">):</span>
 
@@ -308,6 +310,7 @@ register-objects from them.</p>
     <span class="c1"># ...</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="c1"># Add custom style attributes.</span>
@@ -357,6 +360,8 @@ register-objects from them.</p>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">set_renderfunc</span><span class="p">(</span><span class="n">Sgr</span><span class="p">,</span> <span class="n">renderfunc</span><span class="o">.</span><span class="n">sgr</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_renderfunc</span><span class="p">(</span><span class="n">EightbitFg</span><span class="p">,</span> <span class="n">renderfunc</span><span class="o">.</span><span class="n">eightbit_fg</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_renderfunc</span><span class="p">(</span><span class="n">RgbFg</span><span class="p">,</span> <span class="n">renderfunc</span><span class="o">.</span><span class="n">rgb_fg</span><span class="p">)</span>
@@ -402,7 +407,7 @@ register-objects from them.</p>
         <a href="exporting.html" class="btn btn-neutral float-right" title="Exporting / Copying" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="muting.html" class="btn btn-neutral" title="Muting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="muting.html" class="btn btn-neutral float-left" title="Muting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -428,26 +433,16 @@ register-objects from them.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-from .. import Example, reset_registers
+from .. import Example
 
 print("\n\nETC\n" + "=" * 80)
 
@@ -26,9 +26,10 @@ print(a)
 
 # ===== Start =====
 Example("copy")
-from sty import fg as fg_a, RgbFg
+from sty import fg as fg_a, RgbFg, FgRegister
 
 fg_b = fg_a
+
 fg_c = fg_a.copy()
 
 fg_a.set_style('orange', RgbFg(240, 100, 100))
@@ -44,4 +45,4 @@ try:
 except AttributeError:
     print(msg)
 
-# ===== End =====
+# # ===== End =====

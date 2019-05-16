@@ -1,4 +1,4 @@
-from .. import Example, reset_registers
+from .. import Example
 from random import randint
 
 print("\n\nGETTING STARTED\n" + "=" * 80)

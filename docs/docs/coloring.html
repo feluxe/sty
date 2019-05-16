@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -32,21 +39,16 @@
     <link rel="prev" title="Effects" href="effects.html" />
 <link href="../_static/custom.css" rel="stylesheet" type="text/css">
 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -179,116 +181,116 @@
 <h3>Foreground<a class="headerlink" href="#foreground" title="Permalink to this headline">¶</a></h3>
 <p>The default colors for the <code class="docutils literal notranslate"><span class="pre">sty.fg</span></code> register-object.</p>
 <p>These are most widely supported. (using sgr codes).</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col style="width: 24%" />
+<col style="width: 76%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">normal</th>
-<th class="head">Default Renderer</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>normal</p></th>
+<th class="head"><p>Default Renderer</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>black</td>
-<td>sty.renderfunc.sgr(30)</td>
+<tbody>
+<tr class="row-even"><td><p>black</p></td>
+<td><p>sty.renderfunc.sgr(30)</p></td>
 </tr>
-<tr class="row-odd"><td>red</td>
-<td>sty.renderfunc.sgr(31)</td>
+<tr class="row-odd"><td><p>red</p></td>
+<td><p>sty.renderfunc.sgr(31)</p></td>
 </tr>
-<tr class="row-even"><td>green</td>
-<td>sty.renderfunc.sgr(32)</td>
+<tr class="row-even"><td><p>green</p></td>
+<td><p>sty.renderfunc.sgr(32)</p></td>
 </tr>
-<tr class="row-odd"><td>yellow</td>
-<td>sty.renderfunc.sgr(33)</td>
+<tr class="row-odd"><td><p>yellow</p></td>
+<td><p>sty.renderfunc.sgr(33)</p></td>
 </tr>
-<tr class="row-even"><td>blue</td>
-<td>sty.renderfunc.sgr(34)</td>
+<tr class="row-even"><td><p>blue</p></td>
+<td><p>sty.renderfunc.sgr(34)</p></td>
 </tr>
-<tr class="row-odd"><td>magenta</td>
-<td>sty.renderfunc.sgr(35)</td>
+<tr class="row-odd"><td><p>magenta</p></td>
+<td><p>sty.renderfunc.sgr(35)</p></td>
 </tr>
-<tr class="row-even"><td>cyan</td>
-<td>sty.renderfunc.sgr(36)</td>
+<tr class="row-even"><td><p>cyan</p></td>
+<td><p>sty.renderfunc.sgr(36)</p></td>
 </tr>
-<tr class="row-odd"><td>white</td>
-<td>sty.renderfunc.sgr(37)</td>
+<tr class="row-odd"><td><p>white</p></td>
+<td><p>sty.renderfunc.sgr(37)</p></td>
 </tr>
 </tbody>
 </table>
 <p>These are less widely supported. (using less common set of sgr codes).</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="31%" />
-<col width="69%" />
+<col style="width: 31%" />
+<col style="width: 69%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">light</th>
-<th class="head">Default Renderer</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>light</p></th>
+<th class="head"><p>Default Renderer</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>li_black</td>
-<td>sty.renderfunc.sgr(90)</td>
+<tbody>
+<tr class="row-even"><td><p>li_black</p></td>
+<td><p>sty.renderfunc.sgr(90)</p></td>
 </tr>
-<tr class="row-odd"><td>li_red</td>
-<td>sty.renderfunc.sgr(91)</td>
+<tr class="row-odd"><td><p>li_red</p></td>
+<td><p>sty.renderfunc.sgr(91)</p></td>
 </tr>
-<tr class="row-even"><td>li_green</td>
-<td>sty.renderfunc.sgr(92)</td>
+<tr class="row-even"><td><p>li_green</p></td>
+<td><p>sty.renderfunc.sgr(92)</p></td>
 </tr>
-<tr class="row-odd"><td>li_yellow</td>
-<td>sty.renderfunc.sgr(93)</td>
+<tr class="row-odd"><td><p>li_yellow</p></td>
+<td><p>sty.renderfunc.sgr(93)</p></td>
 </tr>
-<tr class="row-even"><td>li_blue</td>
-<td>sty.renderfunc.sgr(94)</td>
+<tr class="row-even"><td><p>li_blue</p></td>
+<td><p>sty.renderfunc.sgr(94)</p></td>
 </tr>
-<tr class="row-odd"><td>li_magenta</td>
-<td>sty.renderfunc.sgr(95)</td>
+<tr class="row-odd"><td><p>li_magenta</p></td>
+<td><p>sty.renderfunc.sgr(95)</p></td>
 </tr>
-<tr class="row-even"><td>li_cyan</td>
-<td>sty.renderfunc.sgr(96)</td>
+<tr class="row-even"><td><p>li_cyan</p></td>
+<td><p>sty.renderfunc.sgr(96)</p></td>
 </tr>
-<tr class="row-odd"><td>li_white</td>
-<td>sty.renderfunc.sgr(97)</td>
+<tr class="row-odd"><td><p>li_white</p></td>
+<td><p>sty.renderfunc.sgr(97)</p></td>
 </tr>
 </tbody>
 </table>
 <p>These are even less widely supported. (using 8bit color codes).</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col style="width: 24%" />
+<col style="width: 76%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">dark</th>
-<th class="head">Default Renderer</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>dark</p></th>
+<th class="head"><p>Default Renderer</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>da_black</td>
-<td>sty.renderfunc.eightbit_fg(0)</td>
+<tbody>
+<tr class="row-even"><td><p>da_black</p></td>
+<td><p>sty.renderfunc.eightbit_fg(0)</p></td>
 </tr>
-<tr class="row-odd"><td>da_red</td>
-<td>sty.renderfunc.eightbit_fg(88)</td>
+<tr class="row-odd"><td><p>da_red</p></td>
+<td><p>sty.renderfunc.eightbit_fg(88)</p></td>
 </tr>
-<tr class="row-even"><td>da_green</td>
-<td>sty.renderfunc.eightbit_fg(22)</td>
+<tr class="row-even"><td><p>da_green</p></td>
+<td><p>sty.renderfunc.eightbit_fg(22)</p></td>
 </tr>
-<tr class="row-odd"><td>da_yellow</td>
-<td>sty.renderfunc.eightbit_fg(58)</td>
+<tr class="row-odd"><td><p>da_yellow</p></td>
+<td><p>sty.renderfunc.eightbit_fg(58)</p></td>
 </tr>
-<tr class="row-even"><td>da_blue</td>
-<td>sty.renderfunc.eightbit_fg(18)</td>
+<tr class="row-even"><td><p>da_blue</p></td>
+<td><p>sty.renderfunc.eightbit_fg(18)</p></td>
 </tr>
-<tr class="row-odd"><td>da_magenta</td>
-<td>sty.renderfunc.eightbit_fg(89)</td>
+<tr class="row-odd"><td><p>da_magenta</p></td>
+<td><p>sty.renderfunc.eightbit_fg(89)</p></td>
 </tr>
-<tr class="row-even"><td>da_cyan</td>
-<td>sty.renderfunc.eightbit_fg(23)</td>
+<tr class="row-even"><td><p>da_cyan</p></td>
+<td><p>sty.renderfunc.eightbit_fg(23)</p></td>
 </tr>
-<tr class="row-odd"><td>da_white</td>
-<td>sty.renderfunc.eightbit_fg(249)</td>
+<tr class="row-odd"><td><p>da_white</p></td>
+<td><p>sty.renderfunc.eightbit_fg(249)</p></td>
 </tr>
 </tbody>
 </table>
@@ -297,116 +299,116 @@
 <h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
 <p>The default colors for the <code class="docutils literal notranslate"><span class="pre">sty.bg</span></code> register-object.</p>
 <p>These are most widely supported. (using sgr codes).</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col style="width: 24%" />
+<col style="width: 76%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">normal</th>
-<th class="head">Default Renderer</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>normal</p></th>
+<th class="head"><p>Default Renderer</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>black</td>
-<td>sty.renderfunc.sgr(40)</td>
+<tbody>
+<tr class="row-even"><td><p>black</p></td>
+<td><p>sty.renderfunc.sgr(40)</p></td>
 </tr>
-<tr class="row-odd"><td>red</td>
-<td>sty.renderfunc.sgr(41)</td>
+<tr class="row-odd"><td><p>red</p></td>
+<td><p>sty.renderfunc.sgr(41)</p></td>
 </tr>
-<tr class="row-even"><td>green</td>
-<td>sty.renderfunc.sgr(42)</td>
+<tr class="row-even"><td><p>green</p></td>
+<td><p>sty.renderfunc.sgr(42)</p></td>
 </tr>
-<tr class="row-odd"><td>yellow</td>
-<td>sty.renderfunc.sgr(43)</td>
+<tr class="row-odd"><td><p>yellow</p></td>
+<td><p>sty.renderfunc.sgr(43)</p></td>
 </tr>
-<tr class="row-even"><td>blue</td>
-<td>sty.renderfunc.sgr(44)</td>
+<tr class="row-even"><td><p>blue</p></td>
+<td><p>sty.renderfunc.sgr(44)</p></td>
 </tr>
-<tr class="row-odd"><td>magenta</td>
-<td>sty.renderfunc.sgr(45)</td>
+<tr class="row-odd"><td><p>magenta</p></td>
+<td><p>sty.renderfunc.sgr(45)</p></td>
 </tr>
-<tr class="row-even"><td>cyan</td>
-<td>sty.renderfunc.sgr(46)</td>
+<tr class="row-even"><td><p>cyan</p></td>
+<td><p>sty.renderfunc.sgr(46)</p></td>
 </tr>
-<tr class="row-odd"><td>white</td>
-<td>sty.renderfunc.sgr(47)</td>
+<tr class="row-odd"><td><p>white</p></td>
+<td><p>sty.renderfunc.sgr(47)</p></td>
 </tr>
 </tbody>
 </table>
 <p>These are less widely supported. (using less common set of sgr codes).</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col style="width: 30%" />
+<col style="width: 70%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">light</th>
-<th class="head">Default Renderer</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>light</p></th>
+<th class="head"><p>Default Renderer</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>li_black</td>
-<td>sty.renderfunc.sgr(100)</td>
+<tbody>
+<tr class="row-even"><td><p>li_black</p></td>
+<td><p>sty.renderfunc.sgr(100)</p></td>
 </tr>
-<tr class="row-odd"><td>li_red</td>
-<td>sty.renderfunc.sgr(101)</td>
+<tr class="row-odd"><td><p>li_red</p></td>
+<td><p>sty.renderfunc.sgr(101)</p></td>
 </tr>
-<tr class="row-even"><td>li_green</td>
-<td>sty.renderfunc.sgr(102)</td>
+<tr class="row-even"><td><p>li_green</p></td>
+<td><p>sty.renderfunc.sgr(102)</p></td>
 </tr>
-<tr class="row-odd"><td>li_yellow</td>
-<td>sty.renderfunc.sgr(103)</td>
+<tr class="row-odd"><td><p>li_yellow</p></td>
+<td><p>sty.renderfunc.sgr(103)</p></td>
 </tr>
-<tr class="row-even"><td>li_blue</td>
-<td>sty.renderfunc.sgr(104)</td>
+<tr class="row-even"><td><p>li_blue</p></td>
+<td><p>sty.renderfunc.sgr(104)</p></td>
 </tr>
-<tr class="row-odd"><td>li_magenta</td>
-<td>sty.renderfunc.sgr(105)</td>
+<tr class="row-odd"><td><p>li_magenta</p></td>
+<td><p>sty.renderfunc.sgr(105)</p></td>
 </tr>
-<tr class="row-even"><td>li_cyan</td>
-<td>sty.renderfunc.sgr(106)</td>
+<tr class="row-even"><td><p>li_cyan</p></td>
+<td><p>sty.renderfunc.sgr(106)</p></td>
 </tr>
-<tr class="row-odd"><td>li_white</td>
-<td>sty.renderfunc.sgr(107)</td>
+<tr class="row-odd"><td><p>li_white</p></td>
+<td><p>sty.renderfunc.sgr(107)</p></td>
 </tr>
 </tbody>
 </table>
 <p>These are even less widely supported. (using 8bit color codes).</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col style="width: 24%" />
+<col style="width: 76%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">dark</th>
-<th class="head">Default Renderer</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>dark</p></th>
+<th class="head"><p>Default Renderer</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>da_black</td>
-<td>sty.renderfunc.eightbit_bg(0)</td>
+<tbody>
+<tr class="row-even"><td><p>da_black</p></td>
+<td><p>sty.renderfunc.eightbit_bg(0)</p></td>
 </tr>
-<tr class="row-odd"><td>da_red</td>
-<td>sty.renderfunc.eightbit_bg(88)</td>
+<tr class="row-odd"><td><p>da_red</p></td>
+<td><p>sty.renderfunc.eightbit_bg(88)</p></td>
 </tr>
-<tr class="row-even"><td>da_green</td>
-<td>sty.renderfunc.eightbit_bg(22)</td>
+<tr class="row-even"><td><p>da_green</p></td>
+<td><p>sty.renderfunc.eightbit_bg(22)</p></td>
 </tr>
-<tr class="row-odd"><td>da_yellow</td>
-<td>sty.renderfunc.eightbit_bg(58)</td>
+<tr class="row-odd"><td><p>da_yellow</p></td>
+<td><p>sty.renderfunc.eightbit_bg(58)</p></td>
 </tr>
-<tr class="row-even"><td>da_blue</td>
-<td>sty.renderfunc.eightbit_bg(18)</td>
+<tr class="row-even"><td><p>da_blue</p></td>
+<td><p>sty.renderfunc.eightbit_bg(18)</p></td>
 </tr>
-<tr class="row-odd"><td>da_magenta</td>
-<td>sty.renderfunc.eightbit_bg(89)</td>
+<tr class="row-odd"><td><p>da_magenta</p></td>
+<td><p>sty.renderfunc.eightbit_bg(89)</p></td>
 </tr>
-<tr class="row-even"><td>da_cyan</td>
-<td>sty.renderfunc.eightbit_bg(23)</td>
+<tr class="row-even"><td><p>da_cyan</p></td>
+<td><p>sty.renderfunc.eightbit_bg(23)</p></td>
 </tr>
-<tr class="row-odd"><td>da_white</td>
-<td>sty.renderfunc.eightbit_bg(249)</td>
+<tr class="row-odd"><td><p>da_white</p></td>
+<td><p>sty.renderfunc.eightbit_bg(249)</p></td>
 </tr>
 </tbody>
 </table>
@@ -469,7 +471,7 @@
         <a href="resetting.html" class="btn btn-neutral float-right" title="Resetting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="effects.html" class="btn btn-neutral" title="Effects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="effects.html" class="btn btn-neutral float-left" title="Effects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -495,26 +497,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -32,21 +39,16 @@
     <link rel="prev" title="Subscribe for Changes" href="subscribe.html" />
 <link href="../_static/custom.css" rel="stylesheet" type="text/css">
 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -173,12 +175,12 @@
 </pre></div>
 </div>
 <p>You can import sty like this:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sty</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sty</span>
 </pre></div>
 </div>
 <p>However, if you need to style a lot of stuff, you might consider
 importing the register-objects directly, like this:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="k">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span>
 </pre></div>
 </div>
 <div class="section" id="sty-all-the-strings">
@@ -207,13 +209,13 @@ importing the register-objects directly, like this:</p>
 <h2>A quick look at the primitives:<a class="headerlink" href="#a-quick-look-at-the-primitives" title="Permalink to this headline">¶</a></h2>
 <p>sty provides a bunch of tiny, but flexible primitives (called register-objects) that can be used to style your strings:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">ef</span></code> (effect-register)</li>
-<li><code class="docutils literal notranslate"><span class="pre">fg</span></code> (foreground-register)</li>
-<li><code class="docutils literal notranslate"><span class="pre">bg</span></code> (background-register)</li>
-<li><code class="docutils literal notranslate"><span class="pre">rs</span></code> (reset-register).</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ef</span></code> (effect-register)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fg</span></code> (foreground-register)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bg</span></code> (background-register)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rs</span></code> (reset-register).</p></li>
 </ul>
 <p>Each register-object carries a default selection of attributes (<a class="reference internal" href="../docs/effects.html#anchor-effect-register"><span class="std std-ref">effect-register</span></a>, <a class="reference internal" href="../docs/coloring.html#anchor-color-register"><span class="std std-ref">color-register</span></a>, <a class="reference internal" href="../docs/resetting.html#anchor-reset-register"><span class="std std-ref">reset-register</span></a>), which you can select like this:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ef</span><span class="o">.</span><span class="n">italic</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ef</span><span class="o">.</span><span class="n">italic</span>
 <span class="n">fg</span><span class="o">.</span><span class="n">blue</span>
 <span class="n">bg</span><span class="o">.</span><span class="n">green</span>
 <span class="n">rs</span><span class="o">.</span><span class="n">all</span>
@@ -256,7 +258,7 @@ issue and ask. Have fun! :D</p>
         <a href="../docs/effects.html" class="btn btn-neutral float-right" title="Effects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="subscribe.html" class="btn btn-neutral" title="Subscribe for Changes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="subscribe.html" class="btn btn-neutral float-left" title="Subscribe for Changes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -282,26 +284,16 @@ issue and ask. Have fun! :D</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
