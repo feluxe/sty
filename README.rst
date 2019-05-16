@@ -1,11 +1,12 @@
-
 sty
 ===
 
-.. raw:: html
 
-   <img src="assets/charts.png" alt="charts" />  
-
+.. image:: https://feluxe.github.io/sty/_images/charts.png
+   :target: https://feluxe.github.io/sty/_images/charts.png
+   :align: center
+   :alt: sty_overview
+   :width: 600px
 
 
 Description
@@ -91,9 +92,12 @@ importing the register-objects directly, like this:
     print(foo, bar, baz, qux, qui, buf, sep='\n')
 
 
-.. raw:: html
 
-   <img src="assets/example_so.png" alt="charts" />  
+.. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png
+   :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png
+   :align: center
+   :alt: examples
+   :width: 600px
 
 
 
