@@ -63,7 +63,6 @@ class Base(dict):
 
     def __new__(cls):
 
-        cls.is_muted: bool = False
         cls.renderfuncs: Dict[Render, Callable] = {}
         cls.styles: Dict[str, Tuple[Render, ...]] = {}
 
