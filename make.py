@@ -4,6 +4,8 @@ import subprocess as sp
 from cmdi import print_summary
 from buildlib import buildmisc, git, wheel, project, yaml
 from docopt import docopt
+from sty import fg
+import prmt
 
 interface = """
     Install:
@@ -11,7 +13,8 @@ interface = """
         pipenv run python make.py
 
     Usage:
-        make.py build [options]
+        make.py build wheel [options]
+        make.py build docs [options]
         make.py deploy [options]
         make.py test [options]
         make.py bump [options]
@@ -30,7 +33,22 @@ class Cfg:
     registry = 'pypi'
 
 
-def build_docs():
+def build_wheel(cfg: Cfg):
+    return wheel.cmd.build(clean_dir=True)
+
+
+def build_docs(cfg: Cfg):
+
+    q = (
+        f"{fg.red}WARNING{fg.rs}\n"
+        "Documentation changes and code changes should use seperate commits.\n"
+        "Only proceed if there are no uncommited code changes.\n\n"
+        "Do you want to build the documentation pages?"
+    )
+    if not prmt.confirm(q, 'n'):
+        return
+
+    # Build Static Page with Sphinx
     sp.run(['make', 'html'], cwd='sphinx')
 
     build_html_dir = 'sphinx/_build/html'
@@ -40,9 +58,7 @@ def build_docs():
         shutil.copytree(build_html_dir, 'docs')
         shutil.rmtree(build_html_dir, ignore_errors=True)
 
-
-def create_readme():
-
+    # Create README.rst
     readme_str = ''
     docs = 'sphinx/intro/'
     files = [
@@ -61,14 +77,6 @@ def create_readme():
         f.write(readme_str)
 
 
-def build(cfg: Cfg):
-
-    build_docs()
-    create_readme()
-
-    return wheel.cmd.build(clean_dir=True)
-
-
 def deploy(cfg: Cfg):
     return wheel.cmd.push(clean_dir=True, repository=cfg.registry)
 
@@ -81,19 +89,24 @@ def bump(cfg: Cfg):
 
     results = []
 
-    if project.prompt.should_bump_version():
+    if prmt.confirm("Do you want to BUMP VERSION number?", "n"):
         result = project.cmd.bump_version()
         cfg.version = result.val
         results.append(result)
 
-    build(cfg)
+    if prmt.confirm("Do you want to BUILD WHEEL?", "n"):
+        results.append(build_wheel(cfg))
 
-    if wheel.prompt.should_push('PYPI'):
+    if prmt.confirm("Do you want to PUSH WHEEL to PYPI?", "n"):
         results.append(deploy(cfg))
+
+    if prmt.confirm("Do you want to BUILD DOCUMENTATION PAGES?", "n"):
+        results.append(build_docs(cfg))
 
     new_release = cfg.version != proj['version']
 
-    results.extend(git.seq.bump_git(cfg.version, new_release))
+    if prmt.confirm("Do you want to RUN GIT COMMANDS?", "n"):
+        results.extend(git.seq.bump_git(cfg.version, new_release))
 
     return results
 
@@ -104,8 +117,11 @@ def run():
     uinput = docopt(interface)
     results = []
 
-    if uinput['build']:
-        results.append(build(cfg))
+    if uinput['build'] and uinput['wheel']:
+        results.append(build_wheel(cfg))
+
+    if uinput['build'] and uinput['docs']:
+        results.append(build_docs(cfg))
 
     if uinput['deploy']:
         results.append(deploy(cfg))
