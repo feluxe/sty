@@ -16,6 +16,7 @@ __pycache__/
 /build/
 dist/
 .mypy_cache
+sty.egg-info/
 
 
 # Ediors

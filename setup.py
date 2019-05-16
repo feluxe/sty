@@ -1,14 +1,11 @@
 from setuptools import setup, find_packages
 from codecs import open
-import ruamel.yaml as yaml
+from buildlib import yaml
 
 with open('README.rst') as f:
     long_description = f.read()
 
-config = None
-
-with open('Project', 'r') as f:
-    config = yaml.safe_load(f.read())
+config = yaml.loadfile('Project')
 
 setup(
     name=config['public_name'],
