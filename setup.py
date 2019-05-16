@@ -7,8 +7,8 @@ with open('README.rst') as f:
 
 config = None
 
-with open('Project', 'r') as stream:
-    config = yaml.safe_load(stream.read())
+with open('Project', 'r') as f:
+    config = yaml.safe_load(f.read())
 
 setup(
     name=config['public_name'],
@@ -20,17 +20,18 @@ setup(
     url=config['url'],
     description=config['description'],
     long_description=long_description,
+    long_description_content_type='text/x-rst',
     download_url=config['url'] + '/tarball/' + config['version'],
     license=config['license'],
     keywords=config['keywords'],
     include_package_data=True,
-    platforms=config['pypi']['platforms'],
-    classifiers=config['pypi']['classifiers'],
-    install_requires=config['pypi']['install_requires'],
+    platforms='',
+    classifiers=[],
+    install_requires=[],
     packages=find_packages(where='.', exclude=('tests', 'tests.*')),
-    package_dir=config['pypi']['package_dir'],
-    package_data=config['pypi']['package_data'],
-    data_files=config['pypi']['data_files'],
-    entry_points=config['pypi']['entry_points'],
-    tests_require=config['pypi']['tests_require']
+    package_dir={"sty": "sty"},
+    package_data={},
+    data_files=[],
+    entry_points={'console_scripts': [], 'gui_scripts': []},
+    tests_require=['pytest']
 )
