@@ -1,4 +1,4 @@
-from .. import Example, reset_registers
+from .. import Example
 from sty.rendertype import *
 
 print("\n\nCUSTOMIZING\n" + "=" * 80)
@@ -83,8 +83,8 @@ print(a, b, sep="\n")
 Example("extending register-classes")
 from sty import FgRegister, Sgr, RgbFg
 
-
 # Extend the default foreground register-class.
+
 
 class MyFgRegister(FgRegister):
 
@@ -97,6 +97,7 @@ class MyFgRegister(FgRegister):
     # ...
 
     def __init__(self):
+
         super().__init__()
 
         # Add custom style attributes.
@@ -144,6 +145,8 @@ class FgRegister(Base):
     # ...
 
     def __init__(self):
+
+        super().__init__()
 
         self.set_renderfunc(Sgr, renderfunc.sgr)
         self.set_renderfunc(EightbitFg, renderfunc.eightbit_fg)

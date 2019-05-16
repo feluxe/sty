@@ -6,6 +6,7 @@
 .gitsub
 .gitsub_hidden/
 sphinx/_build/
+_userfiles/
 
 
 # Python

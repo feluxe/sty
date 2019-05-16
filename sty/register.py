@@ -24,6 +24,8 @@ class EfRegister(Base):
 
     def __init__(self):
 
+        super().__init__()
+
         self.set_renderfunc(Sgr, renderfunc.sgr)
 
         self.set_style('b', Sgr(1))
@@ -71,6 +73,8 @@ class FgRegister(Base):
     da_white: str
 
     def __init__(self):
+
+        super().__init__()
 
         self.set_renderfunc(Sgr, renderfunc.sgr)
         self.set_renderfunc(EightbitFg, renderfunc.eightbit_fg)
@@ -146,6 +150,8 @@ class BgRegister(Base):
 
     def __init__(self):
 
+        super().__init__()
+
         self.set_renderfunc(Sgr, renderfunc.sgr)
         self.set_renderfunc(EightbitBg, renderfunc.eightbit_bg)
         self.set_renderfunc(RgbBg, renderfunc.rgb_bg)
@@ -204,6 +210,8 @@ class RsRegister(Base):
     strike: str
 
     def __init__(self):
+
+        super().__init__()
 
         self.set_renderfunc(Sgr, renderfunc.sgr)
 

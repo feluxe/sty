@@ -7,29 +7,6 @@ from copy import deepcopy
 from .rendertype import Render
 
 
-def _is_args_rgb(*args) -> bool:
-    """
-    Check if input matches type: renderer.rgb.
-    """
-    return len(args) > 1
-
-
-def _is_args_eightbit(*args) -> bool:
-    """
-    Check if input matches type: renderer.eightbit.
-    """
-    if not args:
-        return False
-
-    elif args[0] is 0:
-        return True
-
-    elif isinstance(args[0], int):
-        return True
-    else:
-        return False
-
-
 def _render_rules(
     renderfuncs,
     rules,
@@ -59,67 +36,44 @@ def _render_rules(
     return rendered, flattened_rules
 
 
-class Base(dict):
+class Base:
 
-    def __new__(cls):
+    def __init__(self):
 
-        cls.renderfuncs: Dict[Render, Callable] = {}
-        cls.styles: Dict[str, Tuple[Render, ...]] = {}
-
-        return super(Base, cls).__new__(cls)
-
-    def __getattr__(self, k):
-        try:
-            return self[k]
-        except KeyError:
-            raise AttributeError(k)
-
-    def __setattr__(self, k, v):
-        try:
-            object.__getattribute__(self, k)
-        except AttributeError:
-            self[k] = v
-        else:
-            object.__setattr__(self, k, v)
-
-    def __delattr__(self, k):
-        try:
-            object.__getattribute__(self, k)
-        except AttributeError:
-            del self[k]
-        else:
-            object.__delattr__(self, k)
+        self.renderfuncs: Dict[Render, Callable] = {}
+        self.styles: Dict[str, Tuple[Render, ...]] = {}
+        self.is_muted = False
+        self.eightbit_call = lambda x: x
+        self.rgb_call = lambda r, g, b: (r, g, b)
 
     def __call__(self, *args, **kwargs) -> str:
         """
         You can call the style objects directly, e.g.:
             fg(42)
             bg(102, 49, 42)
-
+            fg('red')
         """
 
-        # Return empty str if object is muted.
-        if self.get('is_muted'):
+        # # Return empty str if object is muted.
+        if self.is_muted:
             return ''
 
-        # Invalid call, return empty str.
-        elif not args or len(args) == 0:
-            return ''
+        len_args = len(args)
+
+        if len_args == 1:
+
+            # If input is an 8bit color code, run 8bit render function.
+            if isinstance(args[0], int):
+                return self.eightbit_call(*args, **kwargs)
+
+            # If input is a string, return attribute with the name that matches
+            # input.
+            else:
+                return getattr(self, args[0])
 
         # If input is an 24bit color code, run 24bit render function.
-        elif _is_args_rgb(*args):
-            func = getattr(self, 'rgb_call')
-            return func(*args, **kwargs)
-
-        # If input is an 8bit color code, run 8bit render function.
-        elif _is_args_eightbit(*args):
-            func = getattr(self, 'eightbit_call')
-            return func(*args, **kwargs)
-
-        # If input is a string, return attribute with the name that matches
-        # input.
-        elif isinstance(args[0], str):
-            return getattr(self, args[0])
+        elif len_args == 3:
+            return self.rgb_call(*args, **kwargs)
 
         else:
             return ''
@@ -133,7 +87,7 @@ class Base(dict):
         rendered, flattened_rules = _render_rules(self.renderfuncs, rules)
 
         # Apply rendered style (str) to attribute:
-        if self.get('is_muted'):
+        if self.is_muted:
             setattr(self, name, '')
         else:
             setattr(self, name, rendered)
@@ -150,12 +104,12 @@ class Base(dict):
     def set_eightbit_call(self, rendertype: Render) -> None:
 
         func: Callable = self.renderfuncs[rendertype]
-        setattr(self, 'eightbit_call', func)
+        self.eightbit_call = func
 
     def set_rgb_call(self, rendertype: Render) -> None:
 
         func: Callable = self.renderfuncs[rendertype]
-        setattr(self, 'rgb_call', func)
+        self.rgb_call = func
 
     def set_renderfunc(self, rendertype: Render, func: Callable) -> None:
 
@@ -171,15 +125,18 @@ class Base(dict):
 
     def mute(self):
 
-        self['is_muted'] = True
+        self.is_muted = True
 
-        for k, v in self.items():
-            if isinstance(v, str):
-                self.update({k: ''})
+        for name in dir(self):
+
+            if not name.startswith("_") and\
+               isinstance(getattr(self, name), str):
+
+                setattr(self, name, '')
 
     def unmute(self):
 
-        self['is_muted'] = False
+        self.is_muted = False
 
         for name, rules in self.styles.items():
             self.set_style(name, *rules)
@@ -190,10 +147,12 @@ class Base(dict):
         """
         items: Dict[str, str] = {}
 
-        for k, v in self.items():
+        for name in dir(self):
 
-            if type(v) is str:
-                items.update({k: v})
+            if not name.startswith("_") and\
+               isinstance(getattr(self, name), str):
+
+                items.update({name: getattr(self, name)})
 
         return items
 
@@ -205,4 +164,4 @@ class Base(dict):
         return namedtuple('ColorRegister', d.keys())(*d.values())
 
     def copy(self):
-        return dict(self)
+        return deepcopy(self)

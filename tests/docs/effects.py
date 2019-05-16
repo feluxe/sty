@@ -1,4 +1,4 @@
-from .. import Example, reset_registers
+from .. import Example
 
 
 print("\n\nEFFECTS\n" + "="*80)

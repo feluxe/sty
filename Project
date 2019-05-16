@@ -1,6 +1,6 @@
 public_name: sty
 interal_name: sty
-version: 1.0.0-beta.10
+version: 1.0.0-beta.11
 license: Apache 2.0
 author: Felix Meyer-Wolters
 author_email: felix@meyerwolters.de
@@ -8,5 +8,6 @@ maintainer: Felix Meyer-Wolters
 maintainer_email: felix@meyerwolters.de
 url: https://github.com/feluxe/sty
 description: ''
-keywords: [styling]
+keywords:
+- styling
 interpreter: python3.6
