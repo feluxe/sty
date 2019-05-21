@@ -182,12 +182,12 @@ with other packages that share the same sty dependency within the
 same project.</p>
 <p>If you want to use custom register-objects in a library project, you
 should create new register-object instances from the register-classes
-dedicated to your project only. More on this int the chapter
+dedicated to your project only. More on this in the chapter
 <em>“Extending the default registers and creating new instances”</em>.</p>
 </div></blockquote>
 <div class="section" id="set-style-method">
 <h2><code class="docutils literal notranslate"><span class="pre">set_style</span></code> method<a class="headerlink" href="#set-style-method" title="Permalink to this headline">¶</a></h2>
-<p>Each register-object has a mehtod called <code class="docutils literal notranslate"><span class="pre">set_style</span></code>, with it you can add or change styles for a register-object:</p>
+<p>Each register-object has a method called <code class="docutils literal notranslate"><span class="pre">set_style</span></code>, with it you can add or change styles for a register-object:</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">RgbFg</span>
 
 <span class="n">fg</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;my_red&#39;</span><span class="p">,</span> <span class="n">RgbFg</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>

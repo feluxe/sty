@@ -18,7 +18,7 @@ following chapters.
 
    If you want to use custom register-objects in a library project, you
    should create new register-object instances from the register-classes
-   dedicated to your project only. More on this int the chapter
+   dedicated to your project only. More on this in the chapter
    *"Extending the default registers and creating new instances"*.
 
 
@@ -26,7 +26,7 @@ following chapters.
 ``set_style`` method
 ~~~~~~~~~~~~~~~~~~~~
 
-Each register-object has a mehtod called ``set_style``, with it you can add or change styles for a register-object:
+Each register-object has a method called ``set_style``, with it you can add or change styles for a register-object:
 
 .. literalinclude:: ../../tests/docs/customizing.py
    :language: py
