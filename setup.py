@@ -5,10 +5,7 @@ from buildlib import yaml
 with open('README.rst') as f:
     long_description = f.read()
 
-config = None
-
-with open('Project', 'r') as f:
-    config = yaml.loadfile(f.read())
+config = yaml.loadfile('Project')
 
 setup(
     name=config['public_name'],
