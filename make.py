@@ -1,29 +1,29 @@
+"""
+Install:
+  pipenv install --dev
+  pipenv run python make.py
+
+Usage:
+  make.py build wheel
+  make.py build docs
+  make.py deploy
+  make.py test
+  make.py bump
+  make.py git
+  make.py -h | --help
+
+Options:
+  -h, --help    Show this screen.
+"""
+
 import shutil
 import os
 import subprocess as sp
 from cmdi import print_summary
-from buildlib import buildmisc, git, wheel, project, yaml
+from buildlib import git, wheel, project, yaml
 from docopt import docopt
 from sty import fg
 import prmt
-
-interface = """
-    Install:
-        pipenv install
-        pipenv run python make.py
-
-    Usage:
-        make.py build wheel [options]
-        make.py build docs [options]
-        make.py deploy [options]
-        make.py test [options]
-        make.py bump [options]
-        make.py git [options]
-        make.py -h | --help
-
-    Options:
-    -h, --help               Show this screen.
-"""
 
 proj = yaml.loadfile('Project')
 
@@ -114,25 +114,25 @@ def bump(cfg: Cfg):
 def run():
 
     cfg = Cfg()
-    uinput = docopt(interface)
+    args = docopt(__doc__)
     results = []
 
-    if uinput['build'] and uinput['wheel']:
+    if args['build'] and args['wheel']:
         results.append(build_wheel(cfg))
 
-    if uinput['build'] and uinput['docs']:
+    if args['build'] and args['docs']:
         results.append(build_docs(cfg))
 
-    if uinput['deploy']:
+    if args['deploy']:
         results.append(deploy(cfg))
 
-    if uinput['test']:
+    if args['test']:
         test(cfg)
 
-    if uinput['git']:
+    if args['git']:
         results.append(git.seq.bump_git(cfg.version, new_release=False))
 
-    if uinput['bump']:
+    if args['bump']:
         results.extend(bump(cfg))
 
     if results:
