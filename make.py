@@ -57,6 +57,7 @@ def build_docs(cfg: Cfg):
         shutil.rmtree('docs', ignore_errors=True)
         shutil.copytree(build_html_dir, 'docs')
         shutil.rmtree(build_html_dir, ignore_errors=True)
+        shutil.copyfile('sphinx/CNAME', 'docs/CNAME')
 
     # Create README.rst
     readme_str = ''
