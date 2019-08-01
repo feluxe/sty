@@ -83,7 +83,11 @@ class Base:
         name: str,
         *rules: Union[Render, Tuple[Render, ...]],
     ) -> None:
+        """
+        With this method, you can add or change styles for a register-object.
 
+        :param name: The field name for the new style.
+        """
         rendered, flattened_rules = _render_rules(self.renderfuncs, rules)
 
         # Apply rendered style (str) to attribute:
@@ -99,20 +103,41 @@ class Base:
         self,
         name: str,
     ) -> Tuple[Render, ...]:
+        """
+        Retrieve styling rules from a register-object.
+        This is useful in case you want to compose new styles out of existing styles.
+
+        :param name: The name of the style for which you want to retrieve the styling rules.
+        """
         return self.styles[name]
 
     def set_eightbit_call(self, rendertype: Render) -> None:
+        """
+        You can call a register-object directly. A call like this `fg(144)`
+        is a Eightbit-call. With this method you can define the render-type for such calls.
 
+        :param rendertype: The new rendertype that is used for Eightbit-calls.
+        """
         func: Callable = self.renderfuncs[rendertype]
         self.eightbit_call = func
 
     def set_rgb_call(self, rendertype: Render) -> None:
+        """
+        You can call a register-object directly. A call like this `fg(10, 42, 255)`
+        is a RGB-call. With this method you can define the render-type for such calls.
 
+        :param rendertype: The new rendertype that is used for RGB-calls.
+        """
         func: Callable = self.renderfuncs[rendertype]
         self.rgb_call = func
 
     def set_renderfunc(self, rendertype: Render, func: Callable) -> None:
+        """
+        With this method you can add or replace render-functions for a given register-object:
 
+        :param rendertype: The render type for which the new renderfunc is used.
+        :param func: The new render function.
+        """
         # Save new render-func in register
         self.renderfuncs.update({rendertype: func})
 
@@ -124,7 +149,10 @@ class Base:
                     break
 
     def mute(self):
-
+        """
+        Sometimes its useful to disable the formatting for a register-object. You can
+        do so by invoking this method.
+        """
         self.is_muted = True
 
         for name in dir(self):
@@ -135,7 +163,9 @@ class Base:
                 setattr(self, name, '')
 
     def unmute(self):
-
+        """
+        Use this method to unmute a previously muted register object.
+        """
         self.is_muted = False
 
         for name, rules in self.styles.items():
@@ -164,4 +194,7 @@ class Base:
         return namedtuple('ColorRegister', d.keys())(*d.values())
 
     def copy(self):
+        """
+        Make a deepcopy of a register-object.
+        """
         return deepcopy(self)
