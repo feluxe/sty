@@ -58,7 +58,16 @@ a.icon-home {
 }
 
 .logo {
-    max-width: 100px !important;
+    width: 100px !important;
+    animation: fadein 0.25s;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .fa-home:before,
@@ -70,6 +79,7 @@ a.icon-home {
 .wy-side-nav-search {
     border-right: 1px solid #dcdfe3;
     /* background: #769AB3; */
+    min-height: 165px;
 }
 
 .toctree-l1 {
@@ -90,14 +100,16 @@ a.icon-home {
     border-right: 1px solid #dcdfe3;
 }
 
-a.reference.internal, a.reference.external {
+a.reference.internal,
+a.reference.external {
     color: #717171;
     /* background: #fafafa; */
     background: transparent !important;
     border-right: 0;
 }
 
-a.reference.internal:hover, a.reference.external:hover {
+a.reference.internal:hover,
+a.reference.external:hover {
     color: #2980b9 !important;
     background: transparent !important;
 }
@@ -273,8 +285,6 @@ div[role="contentinfo"] {
     display: none;
 }
 
-
 ul.simple li p {
     margin-bottom: 3px !important;
 }
-
