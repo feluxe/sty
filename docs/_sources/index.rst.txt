@@ -45,7 +45,7 @@ Index
    docs/customizing.rst
    docs/exporting.rst
    docs/developing_testing.rst
-   docs/term_support.rst
+   docs/known_issues.rst
 
 
 
