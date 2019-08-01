@@ -3,6 +3,12 @@
 Index
 =====
 
+.. meta::
+   :description: String styling for your terminal
+   :keywords: sty, python, terminal, style, colors, coloring
+   :author: Felix Meyer-Wolters
+
+
 .. image:: ../assets/charts.png
    :alt: charts
 

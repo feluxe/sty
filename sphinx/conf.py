@@ -3,6 +3,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+import yaml
 
 # -- Project information -----------------------------------------------------
 
@@ -10,10 +11,17 @@ project = 'sty'
 copyright = '2018, sty'
 author = 'Felix Meyer-Wolters'
 
+
+def get_version():
+    with open('../Project', 'r') as f:
+        data = yaml.safe_load(f.read())
+    return data.get('version') or ''
+
+
 # The short X.Y version
-version = ''
+version = get_version()
 # The full version, including alpha/beta/rc tags
-release = '1'
+release = version
 
 # -- General configuration ---------------------------------------------------
 
@@ -57,6 +65,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'vs'
 
 # -- Options for HTML output -------------------------------------------------
+html_title = 'sty - python'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.

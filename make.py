@@ -48,6 +48,8 @@ def build_docs(cfg: Cfg):
     if not prmt.confirm(q, 'n'):
         return
 
+    
+
     # Build Static Page with Sphinx
     sp.run(['make', 'html'], cwd='sphinx')
 
