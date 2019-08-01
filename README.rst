@@ -55,7 +55,7 @@ Install
 
    pip install sty
 
-   
+
 You can import sty like this:
 
 .. code:: python
@@ -104,4 +104,4 @@ importing the register-objects directly, like this:
 Documentation
 -------------
 
-https://feluxe.github.io/sty/
+https://sty.mewo.dev
