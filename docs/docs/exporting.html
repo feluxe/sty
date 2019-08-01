@@ -52,9 +52,12 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> sty
+            <a href="../index.html">
           
 
+          
+            
+            <img src="../_static/logo_200.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -176,7 +179,18 @@
 <h1>Exporting / Copying<a class="headerlink" href="#exporting-copying" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="as-dict-method">
 <h2><code class="docutils literal notranslate"><span class="pre">as_dict</span></code> method<a class="headerlink" href="#as-dict-method" title="Permalink to this headline">¶</a></h2>
-<p>Each register-object has an <code class="docutils literal notranslate"><span class="pre">as_dict</span></code> method. With it you can convert your register-object into a dict.</p>
+<dl class="method">
+<dt id="sty.Base.as_dict">
+<code class="sig-prename descclassname">Base.</code><code class="sig-name descname">as_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sty/primitive.html#Base.as_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sty.Base.as_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export color register as dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p><strong>Example:</strong></p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span> <span class="k">as</span> <span class="n">fg_obj</span>
 
 <span class="n">fg</span> <span class="o">=</span> <span class="n">fg_obj</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
@@ -189,7 +203,13 @@
 </div>
 <div class="section" id="as-namedtuple-method">
 <h2><code class="docutils literal notranslate"><span class="pre">as_namedtuple</span></code> method<a class="headerlink" href="#as-namedtuple-method" title="Permalink to this headline">¶</a></h2>
-<p>Each register-object has an <code class="docutils literal notranslate"><span class="pre">as_namedtuple</span></code> method. With it you can convert your register-object into a namedtuple.</p>
+<dl class="method">
+<dt id="sty.Base.as_namedtuple">
+<code class="sig-prename descclassname">Base.</code><code class="sig-name descname">as_namedtuple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sty/primitive.html#Base.as_namedtuple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sty.Base.as_namedtuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export color register as namedtuple.</p>
+</dd></dl>
+
+<p><strong>Example:</strong></p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span> <span class="k">as</span> <span class="n">fg_obj</span>
 
 <span class="n">fg</span> <span class="o">=</span> <span class="n">fg_obj</span><span class="o">.</span><span class="n">as_namedtuple</span><span class="p">()</span>
@@ -202,7 +222,13 @@
 </div>
 <div class="section" id="copy-method">
 <h2><code class="docutils literal notranslate"><span class="pre">copy</span></code> method<a class="headerlink" href="#copy-method" title="Permalink to this headline">¶</a></h2>
-<p>Each register-object has a <code class="docutils literal notranslate"><span class="pre">copy</span></code> method. With it you can make a copy of it.</p>
+<dl class="method">
+<dt id="sty.Base.copy">
+<code class="sig-prename descclassname">Base.</code><code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sty/primitive.html#Base.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sty.Base.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a deepcopy of a register-object.</p>
+</dd></dl>
+
+<p><strong>Example:</strong></p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span> <span class="k">as</span> <span class="n">fg_a</span><span class="p">,</span> <span class="n">RgbFg</span><span class="p">,</span> <span class="n">FgRegister</span>
 
 <span class="n">fg_b</span> <span class="o">=</span> <span class="n">fg_a</span>

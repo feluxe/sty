@@ -26,7 +26,9 @@ following chapters.
 ``set_style`` method
 ~~~~~~~~~~~~~~~~~~~~
 
-Each register-object has a method called ``set_style``, with it you can add or change styles for a register-object:
+.. automethod:: sty.Base.set_style
+
+**Example:**
 
 .. literalinclude:: ../../tests/docs/customizing.py
    :language: py
@@ -37,14 +39,17 @@ Each register-object has a method called ``set_style``, with it you can add or c
 Render Types
 ~~~~~~~~~~~~
 
-To define the values for a style you have to use ``rendertypes``:
+To define the values for a style you have to use the following *Render Types*.
+See the example below.
 
-* ``Sgr(num: int)``
-* ``EightbitFg(num: int)``
-* ``EightbitBg(num: int)``
-* ``RgbFg(r: int, g: int, b: int)``
-* ``RgbBg(r: int, g: int, b: int)``
+.. autoclass:: sty.Sgr
+.. autoclass:: sty.EightbitFg
+.. autoclass:: sty.EightbitBg
+.. autoclass:: sty.RgbFg
+.. autoclass:: sty.RgbBg
 
+
+**Example:**
 
 .. literalinclude:: ../../tests/docs/customizing.py
    :language: py
@@ -55,8 +60,9 @@ To define the values for a style you have to use ``rendertypes``:
 ``get_style`` method
 ~~~~~~~~~~~~~~~~~~~~
 
-Each register-object has a method called ``get_style``. With it you can retrieve styling rules from a register-object.
-This is useful in case you want to create new styles composed out of existing styles:
+.. automethod:: sty.Base.get_style
+
+**Example:**
 
 .. literalinclude:: ../../tests/docs/customizing.py
    :language: py
@@ -67,7 +73,9 @@ This is useful in case you want to create new styles composed out of existing st
 ``set_renderfunc`` method
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each register-object has a method called ``set_renderfunc``. With it you can add or replace render-functions for a given register-object:
+.. automethod:: sty.Base.set_renderfunc
+
+**Example:**
 
 .. literalinclude:: ../../tests/docs/customizing.py
    :language: py
@@ -77,6 +85,11 @@ Each register-object has a method called ``set_renderfunc``. With it you can add
 
 ``set_eightbit_call`` and ``set_rgb_call`` methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. automethod:: sty.Base.set_eightbit_call
+.. automethod:: sty.Base.set_rgb_call
+
+**Example**:
 
 Remember that you can call the register-objects like a function:
 

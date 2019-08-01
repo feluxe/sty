@@ -1,8 +1,5 @@
 
 
-Index
-=====
-
 .. meta::
    :description: String styling for your terminal
    :keywords: sty, python, terminal, style, colors, coloring
@@ -12,6 +9,10 @@ Index
 .. image:: ../assets/charts.png
    :alt: charts
 
+|
+
+Index
+=====
 
 .. toctree::
    :maxdepth: 1

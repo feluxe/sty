@@ -7,7 +7,9 @@ Exporting / Copying
 ``as_dict`` method
 ~~~~~~~~~~~~~~~~~~
 
-Each register-object has an ``as_dict`` method. With it you can convert your register-object into a dict.
+.. automethod:: sty.Base.as_dict
+
+**Example:**
 
 .. literalinclude:: ../../tests/docs/exporting.py
    :language: py
@@ -19,7 +21,9 @@ Each register-object has an ``as_dict`` method. With it you can convert your reg
 ``as_namedtuple`` method
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each register-object has an ``as_namedtuple`` method. With it you can convert your register-object into a namedtuple.
+.. automethod:: sty.Base.as_namedtuple
+
+**Example:**
 
 .. literalinclude:: ../../tests/docs/exporting.py
    :language: py
@@ -30,7 +34,9 @@ Each register-object has an ``as_namedtuple`` method. With it you can convert yo
 ``copy`` method
 ~~~~~~~~~~~~~~~
 
-Each register-object has a ``copy`` method. With it you can make a copy of it.
+.. automethod:: sty.Base.copy
+
+**Example:**
 
 .. literalinclude:: ../../tests/docs/exporting.py
    :language: py

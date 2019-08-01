@@ -57,6 +57,10 @@ a.icon-home {
     line-height: 40px;
 }
 
+.logo {
+    max-width: 100px !important;
+}
+
 .fa-home:before,
 .icon-home:before {
     content: "";
@@ -65,6 +69,7 @@ a.icon-home {
 .wy-nav-side,
 .wy-side-nav-search {
     border-right: 1px solid #dcdfe3;
+    /* background: #769AB3; */
 }
 
 .toctree-l1 {
@@ -87,13 +92,14 @@ a.icon-home {
 
 a.reference.internal, a.reference.external {
     color: #717171;
-    background: #fafafa;
+    /* background: #fafafa; */
+    background: transparent !important;
     border-right: 0;
 }
 
 a.reference.internal:hover, a.reference.external:hover {
     color: #2980b9 !important;
-    background: #fafafa !important;
+    background: transparent !important;
 }
 
 /*
@@ -156,6 +162,7 @@ a.reference.internal:hover, a.reference.external:hover {
 
 .wy-nav-content {
     background: #fdfdfd;
+    padding-top: 0 !important;
 }
 
 */ .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
@@ -264,4 +271,9 @@ footer {
 
 div[role="contentinfo"] {
     display: none;
+}
+
+
+.rst-content dl p, .rst-content dl table, .rst-content dl ul, .rst-content dl ol {
+    margin-bottom: 3px !important;
 }

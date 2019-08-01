@@ -52,9 +52,12 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> sty
+            <a href="../index.html">
           
 
+          
+            
+            <img src="../_static/logo_200.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -176,8 +179,20 @@
 <h1>Muting<a class="headerlink" href="#muting" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="the-mute-and-unmute-methods">
 <h2>The <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> methods<a class="headerlink" href="#the-mute-and-unmute-methods" title="Permalink to this headline">¶</a></h2>
-<p>Sometimes its useful to disable the formatting for a register-object.
-You can do so by invoking the <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> methods:</p>
+<dl class="method">
+<dt id="sty.Base.mute">
+<code class="sig-prename descclassname">Base.</code><code class="sig-name descname">mute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sty/primitive.html#Base.mute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sty.Base.mute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sometimes its useful to disable the formatting for a register-object. You can
+do so by invoking this method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sty.Base.unmute">
+<code class="sig-prename descclassname">Base.</code><code class="sig-name descname">unmute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sty/primitive.html#Base.unmute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sty.Base.unmute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this method to unmute a previously muted register object.</p>
+</dd></dl>
+
+<p><strong>Example:</strong></p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span>
 
 <span class="n">fg</span><span class="o">.</span><span class="n">mute</span><span class="p">()</span>
@@ -198,9 +213,35 @@ You can do so by invoking the <code class="docutils literal notranslate"><span c
 </div>
 <div class="section" id="the-mute-and-unmute-batch-functions">
 <h2>The <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> batch functions<a class="headerlink" href="#the-mute-and-unmute-batch-functions" title="Permalink to this headline">¶</a></h2>
-<p>If you want to mute multiple register-objects at the same time you can
-use the <code class="docutils literal notranslate"><span class="pre">mute</span></code> and <code class="docutils literal notranslate"><span class="pre">unmute</span></code> functions that you find in <code class="docutils literal notranslate"><span class="pre">sty.mute</span></code>,
-<code class="docutils literal notranslate"><span class="pre">sty.unmute</span></code>:</p>
+<dl class="function">
+<dt id="sty.mute">
+<code class="sig-prename descclassname">sty.</code><code class="sig-name descname">mute</code><span class="sig-paren">(</span><em class="sig-param">*objects</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sty/lib.html#mute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sty.mute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to mute multiple register-objects at once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>objects</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code>) – Pass multiple register-objects to the function.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="sty.unmute">
+<code class="sig-prename descclassname">sty.</code><code class="sig-name descname">unmute</code><span class="sig-paren">(</span><em class="sig-param">*objects</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sty/lib.html#unmute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sty.unmute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to unmute multiple register-objects at once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>objects</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code>) – Pass multiple register-objects to the function.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p><strong>Example:</strong></p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">mute</span><span class="p">,</span> <span class="n">unmute</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">rs</span>
 
 <span class="n">a1</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This text is red.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
