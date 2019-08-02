@@ -76,7 +76,7 @@ pygments_style = 'vs'
 
 # -- Options for HTML output -------------------------------------------------
 html_title = 'sty - python'
-html_logo = '../assets/logo_200.jpg'
+html_logo = '../assets/logo_100.jpg'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
