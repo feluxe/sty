@@ -4,6 +4,7 @@
    :align: center
    :alt: sty_logo
 
+------------
 
 .. image:: https://feluxe.github.io/sty/_images/charts.png
    :target: https://feluxe.github.io/sty/_images/charts.png
