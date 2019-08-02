@@ -58,7 +58,7 @@ a.icon-home {
 }
 
 .logo {
-    width: 100px !important;
+    /* width: 100px !important; */
     animation: fadein 0.25s;
 }
 @keyframes fadein {
