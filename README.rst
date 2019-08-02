@@ -1,6 +1,6 @@
 
-.. image:: https://feluxe.github.io/sty/_images/logo_200.png
-   :target: https://feluxe.github.io/sty/_images/logo_200.png
+.. image:: https://feluxe.github.io/sty/_images/logo_readme.png
+   :target: https://feluxe.github.io/sty/_images/logo_readme.png
    :align: center
    :alt: sty_logo
 

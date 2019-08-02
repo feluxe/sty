@@ -4,7 +4,7 @@
 
 .. We need this image for the README.
 
-.. image:: ../assets/logo_200.png
-   :target: ../assets/logo_200.png
+.. image:: ../assets/logo_readme.png
+   :target: ../assets/logo_readme.png
    :alt: sty_logo
 
