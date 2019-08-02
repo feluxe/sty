@@ -97,7 +97,7 @@ a.icon-home {
     line-height: 45px;
     background: #fafafa;
     color: black;
-    border-right: 1px solid #dcdfe3;
+    /* border-right: 1px solid #dcdfe3; */
 }
 
 a.reference.internal,
@@ -174,7 +174,7 @@ a.reference.external:hover {
 
 .wy-nav-content {
     background: #fdfdfd;
-    padding-top: 0 !important;
+    padding-top: 10px !important;
 }
 
 */ .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {

@@ -38,12 +38,13 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx_autodoc_typehints',
     'sphinx.ext.viewcode',
-    'sphinx.ext.doctest',
     'sphinx.ext.todo',
     'sphinx.ext.githubpages',
     'sphinx.ext.intersphinx',
+    # 'sphinx.ext.doctest',
 ]
 
+# Configure 'sphinx_autodoc_typehints' extension.
 set_type_checking_flag = True
 
 # Add any paths that contain templates here, relative to this directory.
@@ -103,15 +104,15 @@ html_static_path = ['_static']
 html_theme = 'sphinx_rtd_theme'
 
 html_theme_options = {
-    'canonical_url': '',
+    'canonical_url': 'https://sty.mewo.dev',
     'analytics_id': '',
     'logo_only': True,
     'display_version': True,
     'prev_next_buttons_location': 'bottom',
-    'style_external_links': False,
+    'style_external_links': True,
     # 'vcs_pageview_mode': '',
     # Toc options
-    'collapse_navigation': False,
+    'collapse_navigation': True,
     'sticky_navigation': True,
     'navigation_depth': 1,
     'includehidden': True,
