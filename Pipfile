@@ -14,7 +14,7 @@ yapf = "==0.27.0"
 docopt = "==0.6.2"
 sphinx = "==2.1.2"
 sphinx-rtd-theme = "==0.4.3"
-sphinx-autodoc-typehints = {index = "https://felix-mw-pypi-download:3g3foOuTot6KImpRMV2a8MeGPKWZ2E2Y@registry.mewo.cloud/repository/mw-pypi/simple/",version = "*"}
+sphinx-autodoc-typehints = "*"
 
 [requires]
 python_version = "3.7"
