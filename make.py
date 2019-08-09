@@ -48,8 +48,6 @@ def build_docs(cfg: Cfg):
     if not prmt.confirm(q, 'n'):
         return
 
-    
-
     # Build Static Page with Sphinx
     sp.run(['make', 'html'], cwd='sphinx')
 
@@ -78,6 +76,22 @@ def build_docs(cfg: Cfg):
 
     with open('README.rst', 'w') as f:
         f.write(readme_str)
+
+    # Remove modernizer
+    # This is needed to reduce flickering on page load until this is fixed:
+    # https://github.com/readthedocs/sphinx_rtd_theme/issues/724
+    from glob import glob
+
+    for html_file in glob("./docs/**/*.html", recursive=True):
+        print(html_file)
+        data = ""
+        with open(html_file, 'r') as fr:
+            for line in fr:
+                if 'modernizr.min.js"' not in line:
+                    data += line
+
+        with open(html_file, 'w') as fw:
+            fw.write(data)
 
 
 def deploy(cfg: Cfg):
