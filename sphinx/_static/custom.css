@@ -57,18 +57,6 @@ a.icon-home {
     line-height: 40px;
 }
 
-.logo {
-    /* width: 100px !important; */
-    animation: fadein 0.25s;
-}
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 
 .fa-home:before,
 .icon-home:before {
