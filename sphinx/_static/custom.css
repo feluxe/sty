@@ -78,8 +78,6 @@ a.icon-home {
 .wy-nav-side,
 .wy-side-nav-search {
     border-right: 1px solid #dcdfe3;
-    /* background: #769AB3; */
-    min-height: 165px;
 }
 
 .toctree-l1 {
