@@ -6,14 +6,6 @@
 
 ------------
 
-.. image:: https://feluxe.github.io/sty/_images/charts.png
-   :target: https://feluxe.github.io/sty/_images/charts.png
-   :align: center
-   :alt: sty_overview
-   :width: 600px
-
-
-
 Description
 -----------
 
@@ -33,50 +25,8 @@ Sty has no dependencies.
 If you run into compatibility problems with sty, please file an issue!
 
 
-
-
-Subscribe for Changes
----------------------
-
-- Subscribe to github issue `#5`_ to keep track of breaking changes.
-- Subscribe to github issue `#4`_ to keep track of the full changelog.
-
-.. _#5: http://github.com/feluxe/sty/issues/5
-.. _#4: https://github.com/feluxe/sty/issues/4
-
-
-
-Requirements
+Code Example
 ------------
-
-Sty requires Python ``>= 3.6``
-
-
-
-Install
--------
-
-::
-
-   pip install sty
-
-
-You can import sty like this:
-
-.. code:: python
-
-   import sty
-
-However, if you need to style a lot of stuff, you might consider
-importing the register-objects directly, like this:
-
-.. code:: python
-
-   from sty import fg, bg, ef, rs
-
-
-*Sty* all the strings!
-----------------------
 
 .. code:: python
 
@@ -97,6 +47,7 @@ importing the register-objects directly, like this:
     print(foo, bar, baz, qux, qui, buf, sep='\n')
 
 
+The code above will print like this in the terminal:
 
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png
@@ -104,6 +55,15 @@ importing the register-objects directly, like this:
    :alt: examples
    :width: 600px
 
+
+Demo
+----
+
+.. image:: https://feluxe.github.io/sty/_images/charts.png
+   :target: https://feluxe.github.io/sty/_images/charts.png
+   :align: center
+   :alt: sty_overview
+   :width: 600px
 
 
 Documentation
