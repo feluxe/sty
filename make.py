@@ -59,24 +59,6 @@ def build_docs(cfg: Cfg):
         shutil.rmtree(build_html_dir, ignore_errors=True)
         shutil.copyfile('sphinx/CNAME', 'docs/CNAME')
 
-    # Create README.rst
-    readme_str = ''
-    docs = 'sphinx/intro/'
-    files = [
-        'github_readme_head.rst',
-        'description.rst',
-        'subscribe.rst',
-        'requirements.rst',
-        'github_readme_tail.rst',
-    ]
-
-    for filename in files:
-        with open(docs + filename, 'r') as f:
-            readme_str += f.read()
-
-    with open('README.rst', 'w') as f:
-        f.write(readme_str)
-
     # Remove modernizer
     # This is needed to reduce flickering on page load until this is fixed:
     # https://github.com/readthedocs/sphinx_rtd_theme/issues/724

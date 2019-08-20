@@ -15,7 +15,7 @@
   
   
   
-    <link rel="canonical" href="https://sty.mewo.devintro/github_readme_tail.html"/>
+    <link rel="canonical" href="https://sty.mewo.devintro/install.html"/>
   
 
   
@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting Started" href="getting_started.html" />
+    <link rel="prev" title="Requirements" href="requirements.html" />
 <link href="../_static/custom.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -93,10 +95,9 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/feluxe/sty">on github</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Introduction:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="description.html">Description</a></li>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="subscribe.html">Subscribe for Changes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation:</span></p>
@@ -161,7 +162,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/intro/github_readme_tail.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/intro/install.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -176,43 +177,14 @@
             
   <div class="section" id="install">
 <h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+<p>Sty exists as a <a class="reference external" href="https://pypi.org/project/sty/">pypi package</a>, which you can install via <code class="code docutils literal notranslate"><span class="pre">pip</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sty</span>
 </pre></div>
 </div>
-<p>You can import sty like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sty</span>
+<p>or <code class="code docutils literal notranslate"><span class="pre">pipenv</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipenv</span> <span class="n">install</span> <span class="n">sty</span>
 </pre></div>
 </div>
-<p>However, if you need to style a lot of stuff, you might consider
-importing the register-objects directly, like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="sty-all-the-strings">
-<h1><em>Sty</em> all the strings!<a class="headerlink" href="#sty-all-the-strings" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sty</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">ef</span><span class="p">,</span> <span class="n">rs</span><span class="p">,</span> <span class="n">RgbFg</span>
-
-<span class="n">foo</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">red</span> <span class="o">+</span> <span class="s1">&#39;This is red text!&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
-<span class="n">bar</span> <span class="o">=</span> <span class="n">bg</span><span class="o">.</span><span class="n">blue</span> <span class="o">+</span> <span class="s1">&#39;This has a blue background!&#39;</span> <span class="o">+</span> <span class="n">bg</span><span class="o">.</span><span class="n">rs</span>
-<span class="n">baz</span> <span class="o">=</span> <span class="n">ef</span><span class="o">.</span><span class="n">italic</span> <span class="o">+</span> <span class="s1">&#39;This is italic text&#39;</span> <span class="o">+</span> <span class="n">rs</span><span class="o">.</span><span class="n">italic</span>
-<span class="n">qux</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">201</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is pink text using 8bit colors&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
-<span class="n">qui</span> <span class="o">=</span> <span class="n">fg</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;This is red text using 24bit colors.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
-
-<span class="c1"># Add new colors:</span>
-
-<span class="n">fg</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">RgbFg</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
-
-<span class="n">buf</span> <span class="o">=</span> <span class="n">fg</span><span class="o">.</span><span class="n">orange</span> <span class="o">+</span> <span class="s1">&#39;Yay, Im orange.&#39;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">rs</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">baz</span><span class="p">,</span> <span class="n">qux</span><span class="p">,</span> <span class="n">qui</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference external image-reference" href="https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png"><img alt="examples" class="align-center" src="https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png" style="width: 600px;" /></a>
-</div>
-<div class="section" id="documentation">
-<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://sty.mewo.dev">https://sty.mewo.dev</a></p>
 </div>
 
 
@@ -220,6 +192,15 @@ importing the register-objects directly, like this:</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="requirements.html" class="btn btn-neutral float-left" title="Requirements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

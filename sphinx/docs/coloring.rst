@@ -1,7 +1,5 @@
-
 Coloring
 ========
-
 
 Sty uses ANSI escape sequences for coloring.
 
@@ -16,105 +14,77 @@ More about ANSI colors on wikipedia:
 Sty's default color register
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Colors that use the :code:`sgr()` renderer are most widely supported.
+
+
 Foreground
 ----------
 
-The default colors for the ``sty.fg`` register-object.
+.. rst-class:: table-color-fg
 
-These are most widely supported. (using sgr codes).
-
-======= ======================
-normal  Default Renderer
-======= ======================
-black   sty.renderfunc.sgr(30)
-red     sty.renderfunc.sgr(31)
-green   sty.renderfunc.sgr(32)
-yellow  sty.renderfunc.sgr(33)
-blue    sty.renderfunc.sgr(34)
-magenta sty.renderfunc.sgr(35)
-cyan    sty.renderfunc.sgr(36)
-white   sty.renderfunc.sgr(37)
-======= ======================
-
-These are less widely supported. (using less common set of sgr codes).
-
-========== ======================
-light      Default Renderer
-========== ======================
-li_black   sty.renderfunc.sgr(90)
-li_red     sty.renderfunc.sgr(91)
-li_green   sty.renderfunc.sgr(92)
-li_yellow  sty.renderfunc.sgr(93)
-li_blue    sty.renderfunc.sgr(94)
-li_magenta sty.renderfunc.sgr(95)
-li_cyan    sty.renderfunc.sgr(96)
-li_white   sty.renderfunc.sgr(97)
-========== ======================
-
-These are even less widely supported. (using 8bit color codes).
-
-========== ===============================
-dark       Default Renderer
-========== ===============================
-da_black   sty.renderfunc.eightbit_fg(0)
-da_red     sty.renderfunc.eightbit_fg(88)
-da_green   sty.renderfunc.eightbit_fg(22)
-da_yellow  sty.renderfunc.eightbit_fg(58)
-da_blue    sty.renderfunc.eightbit_fg(18)
-da_magenta sty.renderfunc.eightbit_fg(89)
-da_cyan    sty.renderfunc.eightbit_fg(23)
-da_white   sty.renderfunc.eightbit_fg(249)
-========== ===============================
+============= ========= ======== =======================================
+Attribute     Ex. Light Ex. Dark          Default Renderer
+============= ========= ======== =======================================
+fg.li_black   Example   Example  sty.renderfunc.sgr(90)
+fg.black      Example   Example  sty.renderfunc.sgr(30)
+fg.da_black   Example   Example  sty.renderfunc.eightbit_fg(0)
+fg.li_red     Example   Example  sty.renderfunc.sgr(91)
+fg.red        Example   Example  sty.renderfunc.sgr(31)
+fg.da_red     Example   Example  sty.renderfunc.eightbit_fg(88)
+fg.li_green   Example   Example  sty.renderfunc.sgr(92)
+fg.green      Example   Example  sty.renderfunc.sgr(32)
+fg.da_green   Example   Example  sty.renderfunc.eightbit_fg(22)
+fg.li_yellow  Example   Example  sty.renderfunc.sgr(93)
+fg.yellow     Example   Example  sty.renderfunc.sgr(33)
+fg.da_yellow  Example   Example  sty.renderfunc.eightbit_fg(58)
+fg.li_blue    Example   Example  sty.renderfunc.sgr(94)
+fg.blue       Example   Example  sty.renderfunc.sgr(34)
+fg.da_blue    Example   Example  sty.renderfunc.eightbit_fg(18)
+fg.li_magenta Example   Example  sty.renderfunc.sgr(95)
+fg.magenta    Example   Example  sty.renderfunc.sgr(35)
+fg.da_magenta Example   Example  sty.renderfunc.eightbit_fg(89)
+fg.li_cyan    Example   Example  sty.renderfunc.sgr(96)
+fg.cyan       Example   Example  sty.renderfunc.sgr(36)
+fg.da_cyan    Example   Example  sty.renderfunc.eightbit_fg(23)
+fg.li_white   Example   Example  sty.renderfunc.sgr(97)
+fg.white      Example   Example  sty.renderfunc.sgr(37)
+fg.da_white   Example   Example  sty.renderfunc.eightbit_fg(249)
+============= ========= ======== =======================================
 
 Background
 ----------
 
-The default colors for the ``sty.bg`` register-object.
+.. rst-class:: table-color-bg
 
-These are most widely supported. (using sgr codes).
+============= ========= ======== =======================================
+Attribute     Ex. Light Ex. Dark Default Renderer
+============= ========= ======== =======================================
+fg.li_black   Example   Example  sty.renderfunc.sgr(90)
+fg.black      Example   Example  sty.renderfunc.sgr(30)
+fg.da_black   Example   Example  sty.renderfunc.eightbit_fg(0)
+fg.li_red     Example   Example  sty.renderfunc.sgr(91)
+fg.red        Example   Example  sty.renderfunc.sgr(31)
+fg.da_red     Example   Example  sty.renderfunc.eightbit_fg(88)
+fg.li_green   Example   Example  sty.renderfunc.sgr(92)
+fg.green      Example   Example  sty.renderfunc.sgr(32)
+fg.da_green   Example   Example  sty.renderfunc.eightbit_fg(22)
+fg.li_yellow  Example   Example  sty.renderfunc.sgr(93)
+fg.yellow     Example   Example  sty.renderfunc.sgr(33)
+fg.da_yellow  Example   Example  sty.renderfunc.eightbit_fg(58)
+fg.li_blue    Example   Example  sty.renderfunc.sgr(94)
+fg.blue       Example   Example  sty.renderfunc.sgr(34)
+fg.da_blue    Example   Example  sty.renderfunc.eightbit_fg(18)
+fg.li_magenta Example   Example  sty.renderfunc.sgr(95)
+fg.magenta    Example   Example  sty.renderfunc.sgr(35)
+fg.da_magenta Example   Example  sty.renderfunc.eightbit_fg(89)
+fg.li_cyan    Example   Example  sty.renderfunc.sgr(96)
+fg.cyan       Example   Example  sty.renderfunc.sgr(36)
+fg.da_cyan    Example   Example  sty.renderfunc.eightbit_fg(23)
+fg.li_white   Example   Example  sty.renderfunc.sgr(97)
+fg.white      Example   Example  sty.renderfunc.sgr(37)
+fg.da_white   Example   Example  sty.renderfunc.eightbit_fg(249)
+============= ========= ======== =======================================
 
-======= ======================
-normal  Default Renderer
-======= ======================
-black   sty.renderfunc.sgr(40)
-red     sty.renderfunc.sgr(41)
-green   sty.renderfunc.sgr(42)
-yellow  sty.renderfunc.sgr(43)
-blue    sty.renderfunc.sgr(44)
-magenta sty.renderfunc.sgr(45)
-cyan    sty.renderfunc.sgr(46)
-white   sty.renderfunc.sgr(47)
-======= ======================
-
-These are less widely supported. (using less common set of sgr codes).
-
-========== =======================
-light      Default Renderer
-========== =======================
-li_black   sty.renderfunc.sgr(100)
-li_red     sty.renderfunc.sgr(101)
-li_green   sty.renderfunc.sgr(102)
-li_yellow  sty.renderfunc.sgr(103)
-li_blue    sty.renderfunc.sgr(104)
-li_magenta sty.renderfunc.sgr(105)
-li_cyan    sty.renderfunc.sgr(106)
-li_white   sty.renderfunc.sgr(107)
-========== =======================
-
-These are even less widely supported. (using 8bit color codes).
-
-========== ===============================
-dark       Default Renderer
-========== ===============================
-da_black   sty.renderfunc.eightbit_bg(0)
-da_red     sty.renderfunc.eightbit_bg(88)
-da_green   sty.renderfunc.eightbit_bg(22)
-da_yellow  sty.renderfunc.eightbit_bg(58)
-da_blue    sty.renderfunc.eightbit_bg(18)
-da_magenta sty.renderfunc.eightbit_bg(89)
-da_cyan    sty.renderfunc.eightbit_bg(23)
-da_white   sty.renderfunc.eightbit_bg(249)
-========== ===============================
 
 
 Coloring by name
@@ -157,6 +127,7 @@ Link:
 
 .. image:: ../../assets/24bit.png
    :alt: coloring by 24bit number
+
 
 
 

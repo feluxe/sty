@@ -15,8 +15,10 @@ Sty's default reset register
 
 These are the default attributes for the ``sty.rs`` register-object:
 
+.. rst-class:: table-register
+
 ================ ======================
-Reset            Default Renderer
+Attribute        Default Renderer
 ================ ======================
 all              sty.renderfunc.sgr(0)
 fg               sty.renderfunc.sgr(39)

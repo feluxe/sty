@@ -1,15 +1,5 @@
-
-
 Getting Started
 ===============
-
-Install:
-
-::
-
-   pip install sty
-
-   
 
 You can import sty like this:
 
@@ -33,8 +23,8 @@ importing the register-objects directly, like this:
    :start-after: Example("gettings started: sty all the strings")
    :end-before: # ===== End
 
-output:
- 
+The code above will print like this in the terminal:
+
 .. image:: ../../assets/example_so.png
    :alt: example usage
 
@@ -43,7 +33,7 @@ output:
 A quick look at the primitives:
 -------------------------------
 
-sty provides a bunch of tiny, but flexible primitives (called register-objects) that can be used to style your strings: 
+sty provides a bunch of tiny, but flexible primitives (called register-objects) that can be used to style your strings:
 
 * ``ef`` (effect-register)
 * ``fg`` (foreground-register)

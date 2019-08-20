@@ -15,8 +15,10 @@ Sty's default effect register
 
 These are the default attributes for the ``sty.ef`` register-object.
 
+.. rst-class:: table-register
+
 ================ ============================ =====================
-Effect           Description                  Default Renderer
+Attribute        Description                  Default Renderer
 ================ ============================ =====================
 bold (alias b)   Bold or increased intensity  sty.renderfunc.sgr(1)
 dim              Decreased intensity          sty.renderfunc.sgr(2)

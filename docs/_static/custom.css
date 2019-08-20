@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif !important;
+    font-size: 16px;
 }
 
 h1,
@@ -14,6 +15,13 @@ h7,
 p.caption,
 legend {
     font-family: Arial, sans-serif !important;
+}
+
+h1 {
+    font-size: 32px;
+    margin-top: 30px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #cccccc;
 }
 
 h2 {
@@ -34,12 +42,13 @@ li {
 }
 
 pre {
+    /* background: #f8f8f8; */
     background: #f8f8f8;
     padding-top: 18px !important;
     padding-bottom: 18px !important;
     padding-left: 20px !important;
     padding-right: 20px !important;
-    font-size: 13px !important;
+    font-size: 14px !important;
     line-height: 21px !important;
 }
 
@@ -57,7 +66,6 @@ a.icon-home {
     line-height: 40px;
 }
 
-
 .fa-home:before,
 .icon-home:before {
     content: "";
@@ -72,12 +80,11 @@ a.icon-home {
     margin-left: 5px;
 }
 
-/*
 .wy-menu-vertical a {
-    line-height: 22px;
+    line-height: 15px;
+    font-size: 15px;
 }
 
-*/
 .wy-menu-vertical p.caption {
     height: 45px;
     line-height: 45px;
@@ -262,6 +269,10 @@ div.rst-content div hr {
     display: none;
 }
 
+.style-external-links hr {
+    display: none;
+}
+
 footer {
     font-size: 12px;
     margin-top: 55px;
@@ -273,4 +284,430 @@ div[role="contentinfo"] {
 
 ul.simple li p {
     margin-bottom: 3px !important;
+}
+
+
+.rst-content .section > img, .rst-content .section > a > img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Effect Reset Tables
+ * ===================
+ */
+
+table.table-register {
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+table.table-register td p {
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 12px !important;
+}
+
+table.table-register th p {
+    margin-bottom: 5px;
+}
+
+table.table-register td:nth-child(2) p {
+    font-family: sans-serif !important;
+}
+
+/* Color Fg table
+ * ==============
+ */
+
+table.table-color-fg,
+table.table-color-bg {
+    padding: 5px 10px;
+}
+
+table.table-color-fg td p,
+table.table-color-bg td p {
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 12px !important;
+}
+
+table.table-color-fg th p,
+table.table-color-bg th p {
+    margin-bottom: 5px;
+}
+
+table.table-color-fg td:nth-child(2) {
+    background: #f6f6f6 !important;
+}
+
+table.table-color-fg td:nth-child(3) {
+    background: #222222 !important;
+    border-bottom: 1px solid #333333;
+}
+
+/* balck fg on light */
+table.table-color-fg tr:nth-child(1) td:nth-child(2) {
+    color: rgb(127, 127, 127) !important;
+}
+table.table-color-fg tr:nth-child(2) td:nth-child(2) {
+    color: rgb(0, 0, 0) !important;
+}
+table.table-color-fg tr:nth-child(3) td:nth-child(2) {
+    color: rgb(0, 0, 0) !important;
+}
+
+/* balck fg on dark */
+table.table-color-fg tr:nth-child(1) td:nth-child(3) {
+    color: rgb(127, 127, 127) !important;
+}
+table.table-color-fg tr:nth-child(2) td:nth-child(3) {
+    color: rgb(0, 0, 0) !important;
+}
+table.table-color-fg tr:nth-child(3) td:nth-child(3) {
+    color: rgb(0, 0, 0) !important;
+}
+
+/* red fg on light */
+table.table-color-fg tr:nth-child(4) td:nth-child(2) {
+    color: rgb(255, 0, 0) !important;
+}
+table.table-color-fg tr:nth-child(5) td:nth-child(2) {
+    color: rgb(205, 0, 0) !important;
+}
+table.table-color-fg tr:nth-child(6) td:nth-child(2) {
+    color: rgb(135, 0, 0) !important;
+}
+
+/* red fg on dark */
+table.table-color-fg tr:nth-child(4) td:nth-child(3) {
+    color: rgb(255, 0, 0) !important;
+}
+table.table-color-fg tr:nth-child(5) td:nth-child(3) {
+    color: rgb(205, 0, 0) !important;
+}
+table.table-color-fg tr:nth-child(6) td:nth-child(3) {
+    color: rgb(135, 0, 0) !important;
+}
+
+/* green fg on light */
+table.table-color-fg tr:nth-child(7) td:nth-child(2) {
+    color: rgb(0, 255, 0) !important;
+}
+table.table-color-fg tr:nth-child(8) td:nth-child(2) {
+    color: rgb(0, 205, 0) !important;
+}
+table.table-color-fg tr:nth-child(9) td:nth-child(2) {
+    color: rgb(0, 95, 0) !important;
+}
+
+/* green fg on dark */
+table.table-color-fg tr:nth-child(7) td:nth-child(3) {
+    color: rgb(0, 255, 0) !important;
+}
+table.table-color-fg tr:nth-child(8) td:nth-child(3) {
+    color: rgb(0, 205, 0) !important;
+}
+table.table-color-fg tr:nth-child(9) td:nth-child(3) {
+    color: rgb(0, 95, 0) !important;
+}
+
+/* yellow fg on light */
+table.table-color-fg tr:nth-child(10) td:nth-child(2) {
+    color: rgb(255, 255, 0) !important;
+}
+table.table-color-fg tr:nth-child(11) td:nth-child(2) {
+    color: rgb(205, 205, 0) !important;
+}
+table.table-color-fg tr:nth-child(12) td:nth-child(2) {
+    color: rgb(95, 95, 0) !important;
+}
+
+/* yellow fg on dark */
+table.table-color-fg tr:nth-child(10) td:nth-child(3) {
+    color: rgb(255, 255, 0) !important;
+}
+table.table-color-fg tr:nth-child(11) td:nth-child(3) {
+    color: rgb(205, 205, 0) !important;
+}
+table.table-color-fg tr:nth-child(12) td:nth-child(3) {
+    color: rgb(95, 95, 0) !important;
+}
+
+/* blue fg on light */
+table.table-color-fg tr:nth-child(13) td:nth-child(2) {
+    color: rgb(92, 92, 255) !important;
+}
+table.table-color-fg tr:nth-child(14) td:nth-child(2) {
+    color: rgb(0, 0, 238) !important;
+}
+table.table-color-fg tr:nth-child(15) td:nth-child(2) {
+    color: rgb(0, 0, 135) !important;
+}
+
+/* blue fg on dark */
+table.table-color-fg tr:nth-child(13) td:nth-child(3) {
+    color: rgb(92, 92, 255) !important;
+}
+table.table-color-fg tr:nth-child(14) td:nth-child(3) {
+    color: rgb(0, 0, 238) !important;
+}
+table.table-color-fg tr:nth-child(15) td:nth-child(3) {
+    color: rgb(0, 0, 135) !important;
+}
+
+/* magenta fg on light */
+table.table-color-fg tr:nth-child(16) td:nth-child(2) {
+    color: rgb(255, 0, 255) !important;
+}
+table.table-color-fg tr:nth-child(17) td:nth-child(2) {
+    color: rgb(205, 0, 205) !important;
+}
+table.table-color-fg tr:nth-child(18) td:nth-child(2) {
+    color: rgb(135, 0, 95) !important;
+}
+
+/* magenta fg on dark */
+table.table-color-fg tr:nth-child(16) td:nth-child(3) {
+    color: rgb(255, 0, 255) !important;
+}
+table.table-color-fg tr:nth-child(17) td:nth-child(3) {
+    color: rgb(205, 0, 205) !important;
+}
+table.table-color-fg tr:nth-child(18) td:nth-child(3) {
+    color: rgb(135, 0, 95) !important;
+}
+
+/* cyan fg on light */
+table.table-color-fg tr:nth-child(19) td:nth-child(2) {
+    color: rgb(0, 255, 255) !important;
+}
+table.table-color-fg tr:nth-child(20) td:nth-child(2) {
+    color: rgb(0, 205, 205) !important;
+}
+table.table-color-fg tr:nth-child(21) td:nth-child(2) {
+    color: rgb(0, 95, 95) !important;
+}
+
+/* cyan fg on dark */
+table.table-color-fg tr:nth-child(19) td:nth-child(3) {
+    color: rgb(0, 255, 255) !important;
+}
+table.table-color-fg tr:nth-child(20) td:nth-child(3) {
+    color: rgb(0, 205, 205) !important;
+}
+table.table-color-fg tr:nth-child(21) td:nth-child(3) {
+    color: rgb(0, 95, 95) !important;
+}
+
+/* white fg on light */
+table.table-color-fg tr:nth-child(22) td:nth-child(2) {
+    color: rgb(255, 255, 255) !important;
+}
+table.table-color-fg tr:nth-child(23) td:nth-child(2) {
+    color: rgb(229, 229, 229) !important;
+}
+table.table-color-fg tr:nth-child(24) td:nth-child(2) {
+    color: rgb(178, 178, 178) !important;
+}
+
+/* white fg on dark */
+table.table-color-fg tr:nth-child(22) td:nth-child(3) {
+    color: rgb(255, 255, 255) !important;
+}
+table.table-color-fg tr:nth-child(23) td:nth-child(3) {
+    color: rgb(229, 229, 229) !important;
+}
+table.table-color-fg tr:nth-child(24) td:nth-child(3) {
+    color: rgb(178, 178, 178) !important;
+}
+
+/* Color Bg table
+ * ==============
+ */
+
+table.table-color-bg td:nth-child(2) {
+    color: #f6f6f6 !important;
+    border-bottom: transparent;
+}
+
+table.table-color-bg td:nth-child(3) {
+    color: #333333 !important;
+    border-bottom: transparent;
+    border-left: 10px solid #cccccc;
+}
+
+/* balck bg on light */
+table.table-color-bg tr:nth-child(1) td:nth-child(2) {
+    background: rgb(127, 127, 127) !important;
+}
+table.table-color-bg tr:nth-child(2) td:nth-child(2) {
+    background: rgb(0, 0, 0) !important;
+}
+table.table-color-bg tr:nth-child(3) td:nth-child(2) {
+    background: rgb(0, 0, 0) !important;
+}
+
+/* balck bg on dark */
+table.table-color-bg tr:nth-child(1) td:nth-child(3) {
+    background: rgb(127, 127, 127) !important;
+}
+table.table-color-bg tr:nth-child(2) td:nth-child(3) {
+    background: rgb(0, 0, 0) !important;
+}
+table.table-color-bg tr:nth-child(3) td:nth-child(3) {
+    background: rgb(0, 0, 0) !important;
+}
+
+/* red bg on light */
+table.table-color-bg tr:nth-child(4) td:nth-child(2) {
+    background: rgb(255, 0, 0) !important;
+}
+table.table-color-bg tr:nth-child(5) td:nth-child(2) {
+    background: rgb(205, 0, 0) !important;
+}
+table.table-color-bg tr:nth-child(6) td:nth-child(2) {
+    background: rgb(135, 0, 0) !important;
+}
+
+/* red bg on dark */
+table.table-color-bg tr:nth-child(4) td:nth-child(3) {
+    background: rgb(255, 0, 0) !important;
+}
+table.table-color-bg tr:nth-child(5) td:nth-child(3) {
+    background: rgb(205, 0, 0) !important;
+}
+table.table-color-bg tr:nth-child(6) td:nth-child(3) {
+    background: rgb(135, 0, 0) !important;
+}
+
+/* green bg on light */
+table.table-color-bg tr:nth-child(7) td:nth-child(2) {
+    background: rgb(0, 255, 0) !important;
+}
+table.table-color-bg tr:nth-child(8) td:nth-child(2) {
+    background: rgb(0, 205, 0) !important;
+}
+table.table-color-bg tr:nth-child(9) td:nth-child(2) {
+    background: rgb(0, 95, 0) !important;
+}
+
+/* green bg on dark */
+table.table-color-bg tr:nth-child(7) td:nth-child(3) {
+    background: rgb(0, 255, 0) !important;
+}
+table.table-color-bg tr:nth-child(8) td:nth-child(3) {
+    background: rgb(0, 205, 0) !important;
+}
+table.table-color-bg tr:nth-child(9) td:nth-child(3) {
+    background: rgb(0, 95, 0) !important;
+}
+
+/* yellow bg on light */
+table.table-color-bg tr:nth-child(10) td:nth-child(2) {
+    background: rgb(255, 255, 0) !important;
+}
+table.table-color-bg tr:nth-child(11) td:nth-child(2) {
+    background: rgb(205, 205, 0) !important;
+}
+table.table-color-bg tr:nth-child(12) td:nth-child(2) {
+    background: rgb(95, 95, 0) !important;
+}
+
+/* yellow bg on dark */
+table.table-color-bg tr:nth-child(10) td:nth-child(3) {
+    background: rgb(255, 255, 0) !important;
+}
+table.table-color-bg tr:nth-child(11) td:nth-child(3) {
+    background: rgb(205, 205, 0) !important;
+}
+table.table-color-bg tr:nth-child(12) td:nth-child(3) {
+    background: rgb(95, 95, 0) !important;
+}
+
+/* blue bg on light */
+table.table-color-bg tr:nth-child(13) td:nth-child(2) {
+    background: rgb(92, 92, 255) !important;
+}
+table.table-color-bg tr:nth-child(14) td:nth-child(2) {
+    background: rgb(0, 0, 238) !important;
+}
+table.table-color-bg tr:nth-child(15) td:nth-child(2) {
+    background: rgb(0, 0, 135) !important;
+}
+
+/* blue bg on dark */
+table.table-color-bg tr:nth-child(13) td:nth-child(3) {
+    background: rgb(92, 92, 255) !important;
+}
+table.table-color-bg tr:nth-child(14) td:nth-child(3) {
+    background: rgb(0, 0, 238) !important;
+}
+table.table-color-bg tr:nth-child(15) td:nth-child(3) {
+    background: rgb(0, 0, 135) !important;
+}
+
+/* magenta bg on light */
+table.table-color-bg tr:nth-child(16) td:nth-child(2) {
+    background: rgb(255, 0, 255) !important;
+}
+table.table-color-bg tr:nth-child(17) td:nth-child(2) {
+    background: rgb(205, 0, 205) !important;
+}
+table.table-color-bg tr:nth-child(18) td:nth-child(2) {
+    background: rgb(135, 0, 95) !important;
+}
+
+/* magenta bg on dark */
+table.table-color-bg tr:nth-child(16) td:nth-child(3) {
+    background: rgb(255, 0, 255) !important;
+}
+table.table-color-bg tr:nth-child(17) td:nth-child(3) {
+    background: rgb(205, 0, 205) !important;
+}
+table.table-color-bg tr:nth-child(18) td:nth-child(3) {
+    background: rgb(135, 0, 95) !important;
+}
+
+/* cyan bg on light */
+table.table-color-bg tr:nth-child(19) td:nth-child(2) {
+    background: rgb(0, 255, 255) !important;
+}
+table.table-color-bg tr:nth-child(20) td:nth-child(2) {
+    background: rgb(0, 205, 205) !important;
+}
+table.table-color-bg tr:nth-child(21) td:nth-child(2) {
+    background: rgb(0, 95, 95) !important;
+}
+
+/* cyan bg on dark */
+table.table-color-bg tr:nth-child(19) td:nth-child(3) {
+    background: rgb(0, 255, 255) !important;
+}
+table.table-color-bg tr:nth-child(20) td:nth-child(3) {
+    background: rgb(0, 205, 205) !important;
+}
+table.table-color-bg tr:nth-child(21) td:nth-child(3) {
+    background: rgb(0, 95, 95) !important;
+}
+
+/* white bg on light */
+table.table-color-bg tr:nth-child(22) td:nth-child(2) {
+    background: rgb(255, 255, 255) !important;
+}
+table.table-color-bg tr:nth-child(23) td:nth-child(2) {
+    background: rgb(229, 229, 229) !important;
+}
+table.table-color-bg tr:nth-child(24) td:nth-child(2) {
+    background: rgb(178, 178, 178) !important;
+}
+
+/* white bg on dark */
+table.table-color-bg tr:nth-child(22) td:nth-child(3) {
+    background: rgb(255, 255, 255) !important;
+}
+table.table-color-bg tr:nth-child(23) td:nth-child(3) {
+    background: rgb(229, 229, 229) !important;
+}
+table.table-color-bg tr:nth-child(24) td:nth-child(3) {
+    background: rgb(178, 178, 178) !important;
 }
