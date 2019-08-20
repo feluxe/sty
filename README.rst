@@ -6,6 +6,13 @@
 
 ------------
 
+.. image:: https://feluxe.github.io/sty/_images/charts.png
+   :target: https://feluxe.github.io/sty/_images/charts.png
+   :align: center
+   :alt: sty_overview
+   :width: 600px
+
+
 Description
 -----------
 
@@ -53,16 +60,6 @@ The code above will print like this in the terminal:
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png
    :align: center
    :alt: examples
-   :width: 600px
-
-
-Demo
-----
-
-.. image:: https://feluxe.github.io/sty/_images/charts.png
-   :target: https://feluxe.github.io/sty/_images/charts.png
-   :align: center
-   :alt: sty_overview
    :width: 600px
 
 
