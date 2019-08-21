@@ -317,7 +317,7 @@ table.table-register {
 table.table-register th {
     background: #f6f8fa;
     color: #404040;
-    border-bottom: 1px solid #404040 !important;
+    border-bottom: 1px solid #cccccc !important;
     padding: 5px 10px 5px !important;
 }
 
@@ -352,7 +352,7 @@ table.table-color-fg th,
 table.table-color-bg th {
     background: #f6f8fa;
     color: #404040;
-    border-bottom: 1px solid #404040 !important;
+    border-bottom: 1px solid #cccccc !important;
     padding: 5px 10px 5px !important;
 }
 
