@@ -7,8 +7,7 @@ You can also create a complete new register. More on these things in the
 following chapters.
 
 
-   .. rubric:: Warning:
-      :name: warning:
+.. CAUTION::
 
    If you create a library that is shared among other projects, I highly
    suggest not to customize the "global" register-objects (sty.fg,

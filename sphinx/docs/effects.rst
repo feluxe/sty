@@ -2,9 +2,7 @@
 Effects
 =======
 
-Sty uses ANSI SGR parameters to apply effects.
-
-More about ANSI Select Graphic Rendition (SGR) on wikipedia:
+Sty uses ANSI SGR parameters to apply effects. More about ANSI Select Graphic Rendition (SGR) on wikipedia:
 `ANSI SGR <https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters>`__
 
 

@@ -27,7 +27,6 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
     
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
@@ -38,7 +37,8 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Exporting / Copying" href="exporting.html" />
     <link rel="prev" title="Muting" href="muting.html" />
-<link href="../_static/custom.css" rel="stylesheet" type="text/css">
+<link href="../_static/mewo_custom.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../_static/mewo_theme.js"></script>
 
 </head>
 
@@ -180,8 +180,8 @@
 <p>Sty allows you to change or to extend the default registers as you like.
 You can also create a complete new register. More on these things in the
 following chapters.</p>
-<blockquote>
-<div><p class="rubric" id="warning">Warning:</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
 <p>If you create a library that is shared among other projects, I highly
 suggest not to customize the “global” register-objects (sty.fg,
 sty.bg, sty.ef, sty.rs) directly, because that might cause conflicts
@@ -191,7 +191,7 @@ same project.</p>
 should create new register-object instances from the register-classes
 dedicated to your project only. More on this in the chapter
 <em>“Extending the default registers and creating new instances”</em>.</p>
-</div></blockquote>
+</div>
 <div class="section" id="set-style-method">
 <h2><code class="docutils literal notranslate"><span class="pre">set_style</span></code> method<a class="headerlink" href="#set-style-method" title="Permalink to this headline">¶</a></h2>
 <dl class="method">

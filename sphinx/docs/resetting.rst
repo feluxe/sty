@@ -2,10 +2,7 @@
 Resetting
 =========
 
-
-Sty uses ANSI SGR parameters to reset previously applied styles.
-
-More about ANSI Select Graphic Rendition (SGR) on wikipedia:
+Sty uses ANSI SGR parameters to reset previously applied styles. More about ANSI Select Graphic Rendition (SGR) on wikipedia:
 `ANSI SGR <https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters>`__
 
 .. _anchor_reset_register:

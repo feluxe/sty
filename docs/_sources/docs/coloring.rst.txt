@@ -1,9 +1,7 @@
 Coloring
 ========
 
-Sty uses ANSI escape sequences for coloring.
-
-More about ANSI colors on wikipedia:
+Sty uses ANSI escape sequences for coloring. More about ANSI colors on wikipedia:
 `3/4bit colors <https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit>`__
 | `8bit colors <https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit>`__
 | `24bit colors <https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit>`__.
