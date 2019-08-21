@@ -69,7 +69,9 @@ def build_docs(cfg: Cfg):
         data = ""
         with open(html_file, 'r') as fr:
             for line in fr:
-                if 'modernizr.min.js"' not in line:
+                if 'modernizr.min.js"' not in line and \
+                   'js/theme.js' not in line:
+
                     data += line
 
         with open(html_file, 'w') as fw:
