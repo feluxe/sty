@@ -124,7 +124,7 @@ print(a, b, c, d, sep='\n')
 
 # ===== Start =====
 Example("register-class from scratch")
-from sty import Base, renderfunc, Sgr, EightbitFg, RgbFg
+from sty import Register, renderfunc, Sgr, EightbitFg, RgbFg
 
 
 def my_eightbit_fg_render_func(num: int) -> str:
@@ -135,7 +135,7 @@ def my_rgb_fg_render_func(r: int, g: int, b: int) -> str:
     return '\x1b[38;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
 
 
-class FgRegister(Base):
+class FgRegister(Register):
 
     yellow: str
     red: str
