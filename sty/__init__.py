@@ -1,6 +1,7 @@
-from .primitive import Base
-from .register import ef, fg, bg, rs, Render, EfRegister, FgRegister, BgRegister, RsRegister
+from .primitive import Register, Style
+from .register import ef, fg, bg, rs, EfRegister, FgRegister, BgRegister, RsRegister
 from .rendertype import *
 from .lib import *
+
 
 

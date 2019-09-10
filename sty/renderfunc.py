@@ -1,8 +1,8 @@
 """
 A selection of render functions.
 
-These functions generate the escape-sequences that trigger certain
-colors/effects in the terminals.
+These functions generate the escape-sequences that trigger certain colors/effects in
+the terminals.
 """
 
 
@@ -24,3 +24,4 @@ def rgb_fg(r: int, g: int, b: int) -> str:
 
 def rgb_bg(r: int, g: int, b: int) -> str:
     return '\x1b[48;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
+

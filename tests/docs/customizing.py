@@ -4,6 +4,30 @@ from sty.rendertype import *
 print("\n\nCUSTOMIZING\n" + "=" * 80)
 
 # ===== Start =====
+Example("customizing the register-objects: assignment")
+from sty import fg, ef, rs, Style, RgbFg, Sgr
+
+fg.my_red = Style(RgbFg(255, 0, 0))
+
+a = fg.my_red + 'This text has red fg.' + fg.rs
+
+print(a)
+# ===== End =====
+
+# ===== Start =====
+Example("customizing the register-objects: compose")
+from sty import fg, ef, rs, Style, RgbFg, Sgr
+
+fg.blue_bold = Style(RgbFg(0, 100, 200), Sgr(1))
+fg.green_italic = Style(fg.green, ef.i)
+
+a = fg.blue_bold + 'This text has bold blue fg.' + rs.all
+b = fg.green_italic + 'This text has italic green fg' + rs.all
+
+print(a, b, sep='\n')
+# ===== End =====
+
+# ===== Start =====
 Example("customizing the register-objects: set_style")
 from sty import fg, RgbFg
 
@@ -42,8 +66,6 @@ rs.set_style('green_i', rs.get_style('fg'), rs.get_style('italic'))
 a = fg.green_i + 'This text has a green italic fg.' + rs.green_i
 
 print(a, sep='\n')
-# ===== End =====
-
 # ===== End =====
 
 # ===== Start =====
@@ -88,23 +110,15 @@ from sty import FgRegister, Sgr, RgbFg
 
 class MyFgRegister(FgRegister):
 
-    # Add this for better editor support.
-
-    purple: str
-    blue: str
-    orange: str
-
-    # ...
-
     def __init__(self):
 
         super().__init__()
 
         # Add custom style attributes.
 
-        self.set_style('purple', Sgr(35))
-        self.set_style('blue', Sgr(34))
-        self.set_style('orange', RgbFg(255, 128, 0))
+        self.purple = Style(Sgr(35))
+        self.blue = Style(Sgr(34))
+        self.orange = Style(RgbFg(255, 128, 0))
         # ...
 
 
@@ -124,7 +138,7 @@ print(a, b, c, d, sep='\n')
 
 # ===== Start =====
 Example("register-class from scratch")
-from sty import Base, renderfunc, Sgr, EightbitFg, RgbFg
+from sty import Register, renderfunc, Sgr, EightbitFg, RgbFg
 
 
 def my_eightbit_fg_render_func(num: int) -> str:
@@ -135,14 +149,7 @@ def my_rgb_fg_render_func(r: int, g: int, b: int) -> str:
     return '\x1b[38;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
 
 
-class FgRegister(Base):
-
-    yellow: str
-    red: str
-    green: str
-    rs: str
-
-    # ...
+class FgRegister(Register):
 
     def __init__(self):
 
@@ -155,10 +162,10 @@ class FgRegister(Base):
         self.set_eightbit_call(EightbitFg)
         self.set_rgb_call(RgbFg)
 
-        self.set_style('red', Sgr(31))
-        self.set_style('green', Sgr(32))
-        self.set_style('rs', Sgr(39))
-        self.set_style('yellow', RgbFg(250, 250, 70))
+        self.red = Style(Sgr(31))
+        self.green = Style(Sgr(32))
+        self.rs = Style(Sgr(39))
+        self.yellow = Style(RgbFg(250, 250, 70))
         # ...
 
 

@@ -2,13 +2,15 @@
 """
 
 
-class Render:
+class RenderType:
     args: list = []
 
 
-class Sgr(Render):
+class Sgr(RenderType):
     """
-    Use this type to set SGR numbers.
+    Define SGR styling rule.
+
+    More info about SGR parameters: https://en.wikipedia.org/wiki/ANSI_escape_code#SGR
 
     :param num: A SGR number.
     """
@@ -17,9 +19,11 @@ class Sgr(Render):
         self.args = [num]
 
 
-class EightbitFg(Render):
+class EightbitFg(RenderType):
     """
-    Use this type to set Eightbit Foregrounds.
+    Define Eightbit Forground.
+
+    More info about 8-bit terminal colors: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 
     :param num: Eightbit number.
     """
@@ -28,9 +32,11 @@ class EightbitFg(Render):
         self.args = [num]
 
 
-class EightbitBg(Render):
+class EightbitBg(RenderType):
     """
-    Use this type to set Eightbit Backgrounds.
+    Define Eightbit Background.
+
+    More info about 8-bit terminal colors: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 
     :param num: Eightbit number.
     """
@@ -39,9 +45,11 @@ class EightbitBg(Render):
         self.args = [num]
 
 
-class RgbFg(Render):
+class RgbFg(RenderType):
     """
-    Use this type to set RGB Foregrounds.
+    Define RGB Foreground.
+
+    More info about 24-bit terminal colors: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
 
     :param r: Red.
     :param g: Green.
@@ -52,9 +60,11 @@ class RgbFg(Render):
         self.args = [r, g, b]
 
 
-class RgbBg(Render):
+class RgbBg(RenderType):
     """
-    Use this type to set RGB Backgrounds.
+    Define RGB Background.
+
+    More info about 24-bit terminal colors: https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
 
     :param r: Red.
     :param g: Green.
@@ -63,3 +73,4 @@ class RgbBg(Render):
 
     def __init__(self, r: int, g: int, b: int):
         self.args = [r, g, b]
+

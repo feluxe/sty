@@ -6,7 +6,7 @@ Install:
 Usage:
   make.py build wheel
   make.py build docs
-  make.py deploy
+  make.py push
   make.py test
   make.py bump
   make.py git
@@ -34,7 +34,7 @@ class Cfg:
 
 
 def build_wheel(cfg: Cfg):
-    return wheel.cmd.build(clean_dir=True)
+    return wheel.cmd.build(cleanup=True)
 
 
 def build_docs(cfg: Cfg):
@@ -78,8 +78,9 @@ def build_docs(cfg: Cfg):
             fw.write(data)
 
 
-def deploy(cfg: Cfg):
-    return wheel.cmd.push(clean_dir=True, repository=cfg.registry)
+def push(cfg: Cfg):
+    w = wheel.find_wheel('./dist', semver_num=cfg.version)
+    return wheel.cmd.push(f'./dist/{w}')
 
 
 def test(cfg: Cfg):
@@ -99,7 +100,7 @@ def bump(cfg: Cfg):
         results.append(build_wheel(cfg))
 
     if prmt.confirm("Do you want to PUSH WHEEL to PYPI?", "n"):
-        results.append(deploy(cfg))
+        results.append(push(cfg))
 
     if prmt.confirm("Do you want to BUILD DOCUMENTATION PAGES?", "n"):
         results.append(build_docs(cfg))
@@ -124,8 +125,8 @@ def run():
     if args['build'] and args['docs']:
         results.append(build_docs(cfg))
 
-    if args['deploy']:
-        results.append(deploy(cfg))
+    if args['push']:
+        results.append(push(cfg))
 
     if args['test']:
         test(cfg)

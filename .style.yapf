@@ -1,6 +1,6 @@
 
 [style]
-column_limit = 80
+column_limit = 88
 dedent_closing_brackets = true
 split_arguments_when_comma_terminated = true
 join_multiple_lines = true

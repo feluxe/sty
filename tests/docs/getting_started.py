@@ -5,7 +5,7 @@ print("\n\nGETTING STARTED\n" + "=" * 80)
 
 # ===== Start =====
 Example("gettings started: sty all the strings")
-from sty import fg, bg, ef, rs, RgbFg
+from sty import fg, bg, ef, rs
 
 foo = fg.red + 'This is red text!' + fg.rs
 bar = bg.blue + 'This has a blue background!' + bg.rs
@@ -13,9 +13,11 @@ baz = ef.italic + 'This is italic text' + rs.italic
 qux = fg(201) + 'This is pink text using 8bit colors' + fg.rs
 qui = fg(255, 10, 10) + 'This is red text using 24bit colors.' + fg.rs
 
-# Add new colors:
+# Add custom colors:
 
-fg.set_style('orange', RgbFg(255, 150, 50))
+from sty import Style, RgbFg
+
+fg.orange = Style(RgbFg(255, 150, 50))
 
 buf = fg.orange + 'Yay, Im orange.' + fg.rs
 

@@ -1,7 +1,7 @@
-from .primitive import Base
+from .primitive import Register
 
 
-def mute(*objects: Base) -> None:
+def mute(*objects: Register) -> None:
     """
     Use this function to mute multiple register-objects at once.
 
@@ -9,15 +9,15 @@ def mute(*objects: Base) -> None:
     """
     err = ValueError(
         "The mute() method can only be used with objects that inherit "\
-        "from the 'Base class'."
+        "from the 'Register class'."
     )
     for obj in objects:
-        if not isinstance(obj, Base):
+        if not isinstance(obj, Register):
             raise err
         obj.mute()
 
 
-def unmute(*objects: Base) -> None:
+def unmute(*objects: Register) -> None:
     """
     Use this function to unmute multiple register-objects at once.
 
@@ -25,9 +25,10 @@ def unmute(*objects: Base) -> None:
     """
     err = ValueError(
         "The unmute() method can only be used with objects that inherit "\
-        "from the 'Base class'."
+        "from the 'Register class'."
     )
     for obj in objects:
-        if not isinstance(obj, Base):
+        if not isinstance(obj, Register):
             raise err
         obj.unmute()
+
