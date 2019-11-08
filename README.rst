@@ -67,4 +67,7 @@ The code above will print like this in the terminal:
 Documentation
 -------------
 
-https://sty.mewo.dev
+Documentation-Website: https://sty.mewo.dev
+
+Documentation-Website-Source: https://github.com/feluxe/sty-docs
+
