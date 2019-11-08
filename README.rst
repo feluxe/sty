@@ -1,13 +1,13 @@
 
-.. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/logo_readme.png
-   :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/logo_readme.png
+.. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo.png
+   :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo.png
    :align: center
    :alt: sty_logo
 
 ------------
 
-.. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/charts.png
-   :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/charts.png
+.. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_demo.png
+   :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_demo.png
    :align: center
    :alt: sty_demo
    :width: 600px
@@ -57,8 +57,8 @@ Code Example
 
 The code above will print like this in the terminal:
 
-.. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png
-   :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/example_so.png
+.. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_example.png
+   :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_example.png
    :align: center
    :alt: example
    :width: 600px
