@@ -17,9 +17,9 @@ Description
 -----------
 
 Simple, flexible and extensible string styling for your terminal.
-Supports 3/4bit, 8bit and 24bit (truecolor, rgb) colors. Should work on
-most Unix platfroms with most terminals. Recent versions of Windows 10
-should work with this as well.
+Supports 3/4bit, 8bit and 24bit (truecolor, rgb) colors. Should work on most
+Unix platfroms with most terminals. Works with recent Windows terminals. Window
+legacy terminal (cmd) needs a `shim <https://github.com/feluxe/sty/issues/2#issuecomment-501890699>`__ to work.
 
 Sty comes with default color palettes and renderers, but you can easily
 replace/customize them, without touching the markup.
@@ -29,7 +29,7 @@ is decoupled from color palettes and terminal implementations.
 
 Sty has no dependencies.
 
-If you run into compatibility problems with sty, please file an issue!
+If you run into compatibility problems with sty, please file an `issue <https://github.com/feluxe/sty/issues>`__!
 
 
 Code Example
