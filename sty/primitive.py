@@ -183,7 +183,7 @@ class Register:
 
     def mute(self):
         """
-        Sometimes its useful to disable the formatting for a register-object. You can
+        Sometimes it is useful to disable the formatting for a register-object. You can
         do so by invoking this method.
         """
         self.is_muted = True

@@ -303,7 +303,7 @@ def mute_formatting():
 
     fg.mute()
 
-    a = fg.red + 'This red forground was muted.' + fg.rs
+    a = fg.red + 'This red foreground was muted.' + fg.rs
     b = fg(10) + 'This green foreground was muted.' + fg.rs
     c = fg(100, 140, 180) + "This blue foreground was muted." + fg.rs
 

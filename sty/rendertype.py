@@ -21,7 +21,7 @@ class Sgr(RenderType):
 
 class EightbitFg(RenderType):
     """
-    Define Eightbit Forground.
+    Define Eightbit Foreground.
 
     More info about 8-bit terminal colors: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 
