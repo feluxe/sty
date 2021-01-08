@@ -8,7 +8,7 @@ def mute(*objects: Register) -> None:
     :param objects: Pass multiple register-objects to the function.
     """
     err = ValueError(
-        "The mute() method can only be used with objects that inherit "\
+        "The mute() method can only be used with objects that inherit "
         "from the 'Register class'."
     )
     for obj in objects:
@@ -24,11 +24,10 @@ def unmute(*objects: Register) -> None:
     :param objects: Pass multiple register-objects to the function.
     """
     err = ValueError(
-        "The unmute() method can only be used with objects that inherit "\
+        "The unmute() method can only be used with objects that inherit "
         "from the 'Register class'."
     )
     for obj in objects:
         if not isinstance(obj, Register):
             raise err
         obj.unmute()
-

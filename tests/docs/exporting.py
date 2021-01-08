@@ -8,7 +8,7 @@ from sty import fg as fg_obj
 
 fg = fg_obj.as_dict()
 
-a = fg['red'] + "I have a red fg." + fg['rs']
+a = fg["red"] + "I have a red fg." + fg["rs"]
 
 print(a)
 # ===== End =====
@@ -26,13 +26,14 @@ print(a)
 
 # ===== Start =====
 Example("copy")
-from sty import fg as fg_a, RgbFg, FgRegister
+from sty import FgRegister, RgbFg
+from sty import fg as fg_a
 
 fg_b = fg_a
 
 fg_c = fg_a.copy()
 
-fg_a.set_style('orange', RgbFg(240, 100, 100))
+fg_a.set_style("orange", RgbFg(240, 100, 100))
 
 a = fg_a.orange + "I have an orange fg." + fg.rs
 b = fg_b.orange + "I have an orange fg too." + fg.rs

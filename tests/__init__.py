@@ -1,8 +1,9 @@
-from sty import EfRegister, FgRegister, BgRegister, RsRegister
+from sty import BgRegister, EfRegister, FgRegister, RsRegister
 
 
 def reset_registers():
     import sty
+
     sty.ef = EfRegister()
     sty.fg = FgRegister()
     sty.bg = BgRegister()

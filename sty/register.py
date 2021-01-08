@@ -7,7 +7,6 @@ from .rendertype import *
 
 
 class EfRegister(Register):
-
     def __init__(self):
 
         super().__init__()
@@ -28,7 +27,6 @@ class EfRegister(Register):
 
 
 class FgRegister(Register):
-
     def __init__(self):
 
         super().__init__()
@@ -75,7 +73,6 @@ class FgRegister(Register):
 
 
 class BgRegister(Register):
-
     def __init__(self):
 
         super().__init__()
@@ -122,7 +119,6 @@ class BgRegister(Register):
 
 
 class RsRegister(Register):
-
     def __init__(self):
 
         super().__init__()
@@ -149,4 +145,3 @@ ef = EfRegister()
 fg = FgRegister()
 bg = BgRegister()
 rs = RsRegister()
-

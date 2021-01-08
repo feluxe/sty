@@ -16,21 +16,23 @@ Options:
   -h, --help    Show this screen.
 """
 
-import shutil
 import os
+import shutil
 import subprocess as sp
-from cmdi import print_summary
-from buildlib import git, wheel, project, yaml
-from docopt import docopt
-from sty import fg
-import prmt
 
-proj = yaml.loadfile('Project')
+import prmt
+from buildlib import git, project, wheel, yaml
+from cmdi import print_summary
+from docopt import docopt
+
+from sty import fg
+
+proj = yaml.loadfile("Project")
 
 
 class Cfg:
-    version = proj['version']
-    registry = 'pypi'
+    version = proj["version"]
+    registry = "pypi"
 
 
 def build_wheel(cfg: Cfg):
@@ -45,19 +47,20 @@ def build_docs(cfg: Cfg):
         "Only proceed if there are no uncommited code changes.\n\n"
         "Do you want to build the documentation pages?"
     )
-    if not prmt.confirm(q, 'n'):
+
+    if not prmt.confirm(q, "n"):
         return
 
     # Build Static Page with Sphinx
-    sp.run(['make', 'html'], cwd='sphinx')
+    sp.run(["make", "html"], cwd="sphinx")
 
-    build_html_dir = 'sphinx/_build/html'
+    build_html_dir = "sphinx/_build/html"
 
     if os.path.isfile(f"{build_html_dir}/index.html"):
-        shutil.rmtree('docs', ignore_errors=True)
-        shutil.copytree(build_html_dir, 'docs')
+        shutil.rmtree("docs", ignore_errors=True)
+        shutil.copytree(build_html_dir, "docs")
         shutil.rmtree(build_html_dir, ignore_errors=True)
-        shutil.copyfile('sphinx/CNAME', 'docs/CNAME')
+        shutil.copyfile("sphinx/CNAME", "docs/CNAME")
 
     # Remove modernizer
     # This is needed to reduce flickering on page load until this is fixed:
@@ -67,24 +70,23 @@ def build_docs(cfg: Cfg):
     for html_file in glob("./docs/**/*.html", recursive=True):
         print(html_file)
         data = ""
-        with open(html_file, 'r') as fr:
+        with open(html_file, "r") as fr:
             for line in fr:
-                if 'modernizr.min.js"' not in line and \
-                   'js/theme.js' not in line:
+                if 'modernizr.min.js"' not in line and "js/theme.js" not in line:
 
                     data += line
 
-        with open(html_file, 'w') as fw:
+        with open(html_file, "w") as fw:
             fw.write(data)
 
 
 def push(cfg: Cfg):
-    w = wheel.find_wheel('./dist', semver_num=cfg.version)
-    return wheel.cmd.push(f'./dist/{w}')
+    w = wheel.find_wheel("./dist", semver_num=cfg.version)
+    return wheel.cmd.push(f"./dist/{w}")
 
 
 def test(cfg: Cfg):
-    sp.run(['python', '-m', 'tests'])
+    sp.run(["python", "-m", "tests"])
 
 
 def bump(cfg: Cfg):
@@ -105,7 +107,7 @@ def bump(cfg: Cfg):
     if prmt.confirm("Do you want to BUILD DOCUMENTATION PAGES?", "n"):
         results.append(build_docs(cfg))
 
-    new_release = cfg.version != proj['version']
+    new_release = cfg.version != proj["version"]
 
     if prmt.confirm("Do you want to RUN GIT COMMANDS?", "n"):
         results.extend(git.seq.bump_git(cfg.version, new_release))
@@ -119,30 +121,30 @@ def run():
     args = docopt(__doc__)
     results = []
 
-    if args['build'] and args['wheel']:
+    if args["build"] and args["wheel"]:
         results.append(build_wheel(cfg))
 
-    if args['build'] and args['docs']:
+    if args["build"] and args["docs"]:
         results.append(build_docs(cfg))
 
-    if args['push']:
+    if args["push"]:
         results.append(push(cfg))
 
-    if args['test']:
+    if args["test"]:
         test(cfg)
 
-    if args['git']:
+    if args["git"]:
         results.append(git.seq.bump_git(cfg.version, new_release=False))
 
-    if args['bump']:
+    if args["bump"]:
         results.extend(bump(cfg))
 
     if results:
         print_summary(results)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         run()
     except KeyboardInterrupt:
-        print('\n\nScript aborted by user.')
+        print("\n\nScript aborted by user.")

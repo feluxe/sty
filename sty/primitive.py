@@ -2,8 +2,9 @@
 The Register class: Sty's heart.
 """
 from collections import namedtuple
-from typing import Union, Callable, Dict, List, Tuple, Iterable
 from copy import deepcopy
+from typing import Callable, Dict, Iterable, List, Tuple, Union
+
 from .rendertype import RenderType
 
 
@@ -24,7 +25,7 @@ class Style(str):
 
     """
 
-    def __new__(cls, *rules, value=''):
+    def __new__(cls, *rules, value=""):
         cls = str.__new__(cls, value)
         cls.rules = rules
         return cls
@@ -35,7 +36,7 @@ def _render_rules(
     rules,
 ) -> Tuple[str, List[RenderType]]:
 
-    rendered: str = ''
+    rendered: str = ""
     flattened_rules = []
 
     if isinstance(rules, RenderType):
@@ -79,7 +80,7 @@ class Register:
         if isinstance(value, Style):
 
             if self.is_muted:
-                rendered_style = Style(value.rules, value='')
+                rendered_style = Style(value.rules, value="")
             else:
                 rendered, rules = _render_rules(self.renderfuncs, value.rules)
                 rendered_style = Style(rules, value=rendered)
@@ -95,7 +96,7 @@ class Register:
 
         # # Return empty str if object is muted.
         if self.is_muted:
-            return ''
+            return ""
 
         len_args = len(args)
 
@@ -115,7 +116,7 @@ class Register:
             return self.rgb_call(*args, **kwargs)
 
         else:
-            return ''
+            return ""
 
     def set_style(
         self,
@@ -212,8 +213,7 @@ class Register:
 
         for name in dir(self):
 
-            if not name.startswith("_") and\
-               isinstance(getattr(self, name), str):
+            if not name.startswith("_") and isinstance(getattr(self, name), str):
 
                 items.update({name: str(getattr(self, name))})
 
@@ -224,11 +224,10 @@ class Register:
         Export color register as namedtuple.
         """
         d = self.as_dict()
-        return namedtuple('StyleRegister', d.keys())(*d.values())
+        return namedtuple("StyleRegister", d.keys())(*d.values())
 
     def copy(self):
         """
         Make a deepcopy of a register-object.
         """
         return deepcopy(self)
-

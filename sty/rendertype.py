@@ -73,4 +73,3 @@ class RgbBg(RenderType):
 
     def __init__(self, r: int, g: int, b: int):
         self.args = [r, g, b]
-
