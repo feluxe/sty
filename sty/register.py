@@ -3,7 +3,7 @@ These are the default registers that sty provides out of the box.
 """
 from . import renderfunc
 from .primitive import Register, Style
-from .rendertype import *
+from .rendertype import EightbitBg, EightbitFg, RgbBg, RgbFg, Sgr
 
 
 class EfRegister(Register):
