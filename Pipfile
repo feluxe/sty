@@ -7,16 +7,14 @@ name = "pypi"
 
 [dev-packages]
 toml = "==0.10.2"
-buildlib = "==2.3.5"
+buildlib = "==3.0.2"
 setuptools = "==41.0.1"
 docopt = "==0.6.2"
-sphinx = ">=3.0"
-sphinx-rtd-theme = "==0.4.3"
-sphinx-autodoc-typehints = "*"
 doc8 = "==0.8.1"
 black = "==20.8b1"
 mypy = "==0.790"
 pylint = "==2.6.0"
+twine = "==3.3.0"
 
 [requires]
 python_version = "3.7"

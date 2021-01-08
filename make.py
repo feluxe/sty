@@ -22,7 +22,7 @@ import subprocess as sp
 
 import prmt
 import toml
-from buildlib import git, project, wheel, yaml
+from buildlib import git, project, wheel
 from cmdi import print_summary
 from docopt import docopt
 
@@ -82,7 +82,7 @@ def build_docs(cfg: Cfg):
 
 
 def push(cfg: Cfg):
-    w = wheel.find_wheel("./dist", semver_num=cfg.version)
+    w = wheel.find_wheel("./dist", semver_num=cfg.version, raise_not_found=True)
     return wheel.cmd.push(f"./dist/{w}")
 
 

@@ -19,7 +19,7 @@ Sty version `1.0.0` is now feature complete.
 
 * I'm going to support Python version `>=3.7` indefinitely.
 * Sty will follow `semver` so there won't be any breaking changes for version `1.x.x`. This release is the last one with breaking changes.
-* This is a pre-release (`rc.0`). I'll release `1.0.0` in a couple of month if no major bug are reported.
+* This is a pre-release (`rc.0`). I'll release `1.0.0` in a couple of month if no major bugs are reported.
 
 `Breaking Changes <https://github.com/feluxe/sty/releases/tag/1.0.0-rc.0>`__
 
