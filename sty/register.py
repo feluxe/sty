@@ -131,6 +131,8 @@ class RsRegister(Register):
         self.all = Style(Sgr(0))
         self.fg = Style(Sgr(39))
         self.bg = Style(Sgr(49))
+        # Reset all effects (Unfortunately there is no single Escape Sequence for this)
+        self.rs = Style(Sgr(22), Sgr(23), Sgr(24), Sgr(25), Sgr(27), Sgr(28), Sgr(29))
 
         self.bold_dim = Style(Sgr(22))
         self.dim_bold = Style(Sgr(22))
