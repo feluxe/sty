@@ -1,10 +1,14 @@
+"""
+"""
 from sty import RgbFg, Style, ef, fg
-from tests import charts, test_ansi_values
-from tests.docs import (
+
+from tests import demo, test_ansi_values  # isort:skip
+
+from tests.docs import (  # isort:skip
+    getting_started,
+    effects,
     coloring,
     customizing,
-    effects,
-    exporting,
-    getting_started,
     muting,
+    etc,
 )

@@ -82,3 +82,12 @@ a = ef.strike + "Striked out." + rs.strike + " Not Striked out"
 
 print(a, sep="\n")
 # ===== End =====
+
+# ===== Start =====
+Example("Reset multiple effects")
+from sty import ef
+
+a = ef.strike + ef.underl + "Striked out and underlined." + rs.all + " No more effects."
+
+print(a, sep="\n")
+# ===== End =====

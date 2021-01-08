@@ -114,5 +114,10 @@ items = [
     sgr(109) + "?????" + rs.all,
 ]
 
+print("\n\n\nTRY ALL ANSI VALUES:")
+print(
+    "================================================================================\n"
+)
+
 for item in items:
     print(item)
