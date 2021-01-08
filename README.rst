@@ -12,7 +12,7 @@
    :alt: sty_demo
    :width: 600px
 
-Relase 1.0.0-rc.0 (January 08. 2021)
+Release 1.0.0-rc.0 (January 08. 2021)
 -----------
 
 Sty version `1.0.0` is now feature complete.
