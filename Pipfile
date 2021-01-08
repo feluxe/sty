@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 
 [dev-packages]
+toml = "==0.10.2"
 buildlib = "==2.3.5"
 setuptools = "==41.0.1"
 docopt = "==0.6.2"

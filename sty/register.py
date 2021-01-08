@@ -64,7 +64,7 @@ class FgRegister(Register):
         self.li_cyan = Style(Sgr(96))
         self.white = Style(Sgr(97))
 
-        # These are less supported.
+        # These are least supported.
         self.da_black = Style(EightbitFg(0))
         self.da_red = Style(EightbitFg(88))
         self.da_green = Style(EightbitFg(22))
@@ -110,7 +110,7 @@ class BgRegister(Register):
         self.li_cyan = Style(Sgr(106))
         self.white = Style(Sgr(107))
 
-        # These are less supported.
+        # These are least supported.
         self.da_black = Style(EightbitBg(0))
         self.da_red = Style(EightbitBg(88))
         self.da_green = Style(EightbitBg(22))

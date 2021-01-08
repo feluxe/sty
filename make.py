@@ -21,13 +21,14 @@ import shutil
 import subprocess as sp
 
 import prmt
+import toml
 from buildlib import git, project, wheel, yaml
 from cmdi import print_summary
 from docopt import docopt
 
 from sty import fg
 
-proj = yaml.loadfile("Project")
+proj = toml.load("pyproject.toml")["mewo_project"]
 
 
 class Cfg:
