@@ -4,8 +4,7 @@ Install:
   pipenv run python make.py
 
 Usage:
-  make.py build wheel
-  make.py build docs
+  make.py build
   make.py push
   make.py test
   make.py bump
@@ -40,47 +39,6 @@ def build_wheel(cfg: Cfg):
     return wheel.cmd.build(cleanup=True)
 
 
-def build_docs(cfg: Cfg):
-
-    q = (
-        f"{fg.red}WARNING{fg.rs}\n"
-        "Documentation changes and code changes should use seperate commits.\n"
-        "Only proceed if there are no uncommited code changes.\n\n"
-        "Do you want to build the documentation pages?"
-    )
-
-    if not prmt.confirm(q, "n"):
-        return
-
-    # Build Static Page with Sphinx
-    sp.run(["make", "html"], cwd="sphinx")
-
-    build_html_dir = "sphinx/_build/html"
-
-    if os.path.isfile(f"{build_html_dir}/index.html"):
-        shutil.rmtree("docs", ignore_errors=True)
-        shutil.copytree(build_html_dir, "docs")
-        shutil.rmtree(build_html_dir, ignore_errors=True)
-        shutil.copyfile("sphinx/CNAME", "docs/CNAME")
-
-    # Remove modernizer
-    # This is needed to reduce flickering on page load until this is fixed:
-    # https://github.com/readthedocs/sphinx_rtd_theme/issues/724
-    from glob import glob
-
-    for html_file in glob("./docs/**/*.html", recursive=True):
-        print(html_file)
-        data = ""
-        with open(html_file, "r") as fr:
-            for line in fr:
-                if 'modernizr.min.js"' not in line and "js/theme.js" not in line:
-
-                    data += line
-
-        with open(html_file, "w") as fw:
-            fw.write(data)
-
-
 def push(cfg: Cfg):
     w = wheel.find_wheel("./dist", semver_num=cfg.version, raise_not_found=True)
     return wheel.cmd.push(f"./dist/{w}")
@@ -105,9 +63,6 @@ def bump(cfg: Cfg):
     if prmt.confirm("Do you want to PUSH WHEEL to PYPI?", "n"):
         results.append(push(cfg))
 
-    if prmt.confirm("Do you want to BUILD DOCUMENTATION PAGES?", "n"):
-        results.append(build_docs(cfg))
-
     new_release = cfg.version != proj["version"]
 
     if prmt.confirm("Do you want to RUN GIT COMMANDS?", "n"):
@@ -122,11 +77,8 @@ def run():
     args = docopt(__doc__)
     results = []
 
-    if args["build"] and args["wheel"]:
+    if args["build"]:
         results.append(build_wheel(cfg))
-
-    if args["build"] and args["docs"]:
-        results.append(build_docs(cfg))
 
     if args["push"]:
         results.append(push(cfg))
