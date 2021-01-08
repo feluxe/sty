@@ -18,7 +18,7 @@ setup(
     maintainer="Felix Meyer-Wolters",
     maintainer_email="felix@meyerwolters.de",
     url="https://github.com/feluxe/sty",
-    description="String styling for your terminal.",
+    description="String styling for your terminal",
     long_description=readme,
     long_description_content_type="text/x-rst",
     download_url="https://github.com/feluxe/sty" + "/tarball/" + project["version"],
