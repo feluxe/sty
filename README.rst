@@ -19,8 +19,7 @@ Release 1.0.0-rc.1 (January 31. 2021)
 * Sty is now fully typed.
 * Deprecated methods `.set_style(...)` and `.get_style(...)` were finally removed.
 
-[Release Note](https://github.com/feluxe/sty/releases/tag/1.0.0-rc.1)
-
+`Release Note <https://github.com/feluxe/sty/releases/tag/1.0.0-rc.1>`__
 
 Release 1.0.0-rc.0 (January 08. 2021)
 -------------------------------------
@@ -53,7 +52,7 @@ Sty is fully typed, you should get good editor support for it.
 
 Sty has no dependencies.
 
-Sty follows [semver](https://semver.org/).
+Sty follows `semver <https://semver.org/>`__
 
 Sty will support Python `>=3.7` for as long as possible.
 
