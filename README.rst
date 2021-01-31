@@ -12,13 +12,23 @@
    :alt: sty_demo
    :width: 600px
 
+
+Release 1.0.0-rc.1 (January 31. 2021)
+-------------------------------------
+
+* Sty is now fully typed.
+* Deprecated methods `.set_style(...)` and `.get_style(...)` were finally removed.
+
+[Release Note](https://github.com/feluxe/sty/releases/tag/1.0.0-rc.1)
+
+
 Release 1.0.0-rc.0 (January 08. 2021)
 -------------------------------------
 
 Sty version `1.0.0` is now feature complete.
 
 * I'm going to support Python version `>=3.7` indefinitely.
-* Sty will follow `semver` so there won't be any breaking changes for version `1.x.x`. This release is the last one with breaking changes.
+* Sty will follow `semver` so there won't be any breaking changes for version `1.x.x` after 1.0.0 was released.
 * This is a pre-release (`rc.0`). I'll release `1.0.0` in a couple of month if no major bugs are reported.
 
 `Breaking Changes <https://github.com/feluxe/sty/releases/tag/1.0.0-rc.0>`__
@@ -27,18 +37,25 @@ Sty version `1.0.0` is now feature complete.
 Description
 -----------
 
-Simple, flexible and extensible string styling for your terminal.
-Supports 3/4bit, 8bit and 24bit (truecolor, rgb) colors. Should work on most
-Unix platfroms with most terminals. Works with recent Windows terminals. Window
-legacy terminal (cmd) needs a `shim <https://github.com/feluxe/sty/issues/2#issuecomment-501890699>`__ to work.
-
-Sty comes with default color palettes and renderers, but you can easily
-replace/customize them, without touching the markup.
-
-Sty's goal is to provide Python with a little string styling markup, which
+Sty's goal is to provide Python with a simple, customizable and performant string styling markup, which
 is decoupled from color palettes and terminal implementations.
 
+Sty supports 3/4bit, 8bit and 24bit (truecolor/RGB) colors as well as effects like `bold`, `italic`, `underline`, etc.
+
+Sty should work on most Unix platforms with most terminals. It works with recent Windows terminals. Window
+legacy terminal (cmd) needs a `shim <https://github.com/feluxe/sty/issues/2#issuecomment-501890699>`__ to work.
+
+Sty comes with default color palettes and renderers, but you can easily replace/customize them, without touching the markup in your code.
+
+Sty provides high access performance for all styling rules.
+
+Sty is fully typed, you should get good editor support for it.
+
 Sty has no dependencies.
+
+Sty follows [semver](https://semver.org/).
+
+Sty will support Python `>=3.7` for as long as possible.
 
 If you run into compatibility problems with sty, please file an `issue <https://github.com/feluxe/sty/issues>`__!
 
