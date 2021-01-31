@@ -54,7 +54,7 @@ class FgRegister(Register):
 
         self.rs = Style(Sgr(39))
 
-        # These are less good supported.
+        # These are less supported.
         self.da_grey = Style(Sgr(90))
         self.li_red = Style(Sgr(91))
         self.li_green = Style(Sgr(92))
@@ -100,7 +100,7 @@ class BgRegister(Register):
 
         self.rs = Style(Sgr(49))
 
-        # These are less good supported.
+        # These are less supported.
         self.da_grey = Style(Sgr(100))
         self.li_red = Style(Sgr(101))
         self.li_green = Style(Sgr(102))
