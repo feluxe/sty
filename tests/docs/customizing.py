@@ -1,4 +1,4 @@
-from sty.rendertype import *
+# from sty.rendertype import EightbitFg
 
 from .. import Example
 
@@ -29,49 +29,8 @@ print(a, b, sep="\n")
 # ===== End =====
 
 # ===== Start =====
-Example("customizing the register-objects: set_style")
-from sty import RgbFg, fg
-
-fg.set_style("my_red", RgbFg(255, 0, 0))
-
-a = fg.my_red + "This text has red fg." + fg.rs
-
-print(a)
-# ===== End =====
-
-# ===== Start =====
-Example("customizing the register-objects: render_types")
-from sty import EightbitFg, RgbFg, Sgr, fg
-
-fg.set_style("my_sgr_red", Sgr(31))
-fg.set_style("my_eightbit_red", EightbitFg(196))
-fg.set_style("my_rgb_red", RgbFg(255, 0, 0))
-
-a = fg.my_sgr_red + "This text has a red fg." + fg.rs
-b = fg.my_eightbit_red + "This text has a red fg." + fg.rs
-c = fg.my_rgb_red + "This text has a red fg." + fg.rs
-
-print(a, b, c, sep="\n")
-# ===== End =====
-
-# ===== Start =====
-Example("customizing the register-objects: get_style")
-from sty import ef, fg, rs
-
-# Make fg.green_i render a green and itelic foreground.
-fg.set_style("green_i", fg.get_style("green"), ef.get_style("italic"))
-
-# Make rs.green_i reset green and itelic foregrounds.
-rs.set_style("green_i", rs.get_style("fg"), rs.get_style("italic"))
-
-a = fg.green_i + "This text has a green italic fg." + rs.green_i
-
-print(a, sep="\n")
-# ===== End =====
-
-# ===== Start =====
 Example("customizing the register-objects: render-func")
-from sty import bg, fg
+from sty import bg, fg, EightbitFg
 
 
 def my_eightbit_bg_render_func(num: int) -> str:

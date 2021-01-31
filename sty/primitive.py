@@ -118,34 +118,6 @@ class Register:
         else:
             return ""
 
-    def set_style(
-        self,
-        name: str,
-        *rules: Union[RenderType, Tuple[RenderType, ...]],
-    ) -> None:
-        """
-        DEPRECATED: This method will be removed in favour of the Style() type.
-
-        With this method, you can add or change styles for a register-object.
-
-        :param name: The field name for the new style.
-        """
-        setattr(self, name, Style(*rules))
-
-    def get_style(
-        self,
-        name: str,
-    ) -> Tuple[RenderType, ...]:
-        """
-        DEPRECATED: This method will be removed in favour of the Style() type.
-
-        Retrieve styling rules from a register-object.
-        This is useful in case you want to compose new styles out of existing styles.
-
-        :param name: The name of the style for which you want to retrieve the styling rules.
-        """
-        return getattr(self, name).rules
-
     def set_eightbit_call(self, rendertype: RenderType) -> None:
         """
         You can call a register-object directly. A call like this ``fg(144)``

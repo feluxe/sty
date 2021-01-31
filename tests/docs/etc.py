@@ -27,24 +27,17 @@ print(a)
 
 # ===== Start =====
 Example("copy")
-from sty import FgRegister, RgbFg
-from sty import fg as fg_a
+from sty import RgbFg, Style, fg
 
-fg_b = fg_a
+fg_copy = fg.copy()
+fg_no_copy = fg
 
-fg_c = fg_a.copy()
+fg.orange = Style(RgbFg(255, 200, 35))
 
-fg_a.set_style("orange", RgbFg(255, 200, 35))
+# 'fg' and 'fg_no_copy' point to the same instance, therefore both can access 'orange':
+assert hasattr(fg, "orange") == True
+assert hasattr(fg_no_copy, "orange") == True
 
-a = fg_a.orange + "I have an orange fg." + fg.rs
-b = fg_b.orange + "I have an orange fg too." + fg.rs
-
-print(a, b, sep="\n")
-
-try:
-    msg = "But I have no orange fg, because I'm an earlier copy."
-    fg_c.orange + msg + fg.rs
-except AttributeError:
-    print(msg)
-
+# fg_copy is not effected by the changes made to the global 'fg' register-object.
+assert hasattr(fg_copy, "orange") == False
 # # ===== End =====
