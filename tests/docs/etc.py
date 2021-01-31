@@ -40,4 +40,6 @@ assert hasattr(fg_no_copy, "orange") == True
 
 # fg_copy is not effected by the changes made to the global 'fg' register-object.
 assert hasattr(fg_copy, "orange") == False
-# # ===== End =====
+# ===== End =====
+print("Copy works if no exception was thrown.")
+
