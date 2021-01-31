@@ -42,6 +42,7 @@ is decoupled from color palettes and terminal implementations.
 * Sty supports 3/4bit, 8bit and 24bit (truecolor/RGB) colors as well as effects like `bold`, `italic`, `underline`, etc.
 * Sty should work on most Unix platforms with most terminals. It works with recent Windows terminals. Window legacy terminal (cmd) needs a `shim <https://github.com/feluxe/sty/issues/2#issuecomment-501890699>`__ to work.
 * Sty comes with default color palettes and renderers, but you can easily replace/customize them, without touching the markup in your code.
+* Sty allows you to mute/unmute all styles in your codebase.
 * Sty provides high access performance for all styling rules.
 * Sty is fully typed, you should get good editor support for it.
 * Sty has no dependencies.
