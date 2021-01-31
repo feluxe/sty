@@ -1,4 +1,5 @@
 """
+This module contains the default render types.
 """
 
 
