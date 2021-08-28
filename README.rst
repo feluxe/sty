@@ -4,6 +4,12 @@
    :align: center
    :alt: sty_logo
 
+.. image:: https://static.pepy.tech/personalized-badge/sty?period=total&units=international_system&left_color=grey&right_color=lightgrey&left_text=downloads
+ :target: https://pepy.tech/project/sty
+
+.. image:: https://static.pepy.tech/personalized-badge/sty?period=month&units=international_system&left_color=grey&right_color=lightgrey&left_text=downloads/month
+ :target: https://pepy.tech/project/sty
+
 ------------
 
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_demo.png
