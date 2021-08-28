@@ -12,6 +12,13 @@
    :alt: sty_demo
    :width: 600px
 
+Release 1.0.0-rc.2 (August 28. 2021)
+-------------------------------------
+
+* Fix typo in "reset" register.
+
+`Release Note (Breaking Changes) <https://github.com/feluxe/sty/releases/tag/1.0.0-rc.2>`__
+
 
 Release 1.0.0-rc.1 (January 31. 2021)
 -------------------------------------
@@ -30,7 +37,7 @@ Sty version `1.0.0` is now feature complete.
 * Sty will follow `semver` so there won't be any breaking changes for version `1.x.x` after 1.0.0 was released.
 * This is a pre-release (`rc.0`). I'll release `1.0.0` in a couple of month if no major bugs are reported.
 
-`Breaking Changes <https://github.com/feluxe/sty/releases/tag/1.0.0-rc.0>`__
+`Release Note (Breaking Changes) <https://github.com/feluxe/sty/releases/tag/1.0.0-rc.0>`__
 
 
 Description
