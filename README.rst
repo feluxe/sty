@@ -4,6 +4,8 @@
    :align: center
    :alt: sty_logo
 
+|
+
 .. image:: https://static.pepy.tech/personalized-badge/sty?period=total&units=international_system&left_color=grey&right_color=lightgrey&left_text=downloads
  :target: https://pepy.tech/project/sty
 
