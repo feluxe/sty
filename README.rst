@@ -6,11 +6,11 @@
 
 |
 
-.. image:: https://static.pepy.tech/personalized-badge/sty?period=total&units=international_system&left_color=grey&right_color=lightgrey&left_text=downloads
- :target: https://pepy.tech/project/sty
+.. raw:: html
 
-.. image:: https://static.pepy.tech/personalized-badge/sty?period=month&units=international_system&left_color=grey&right_color=lightgrey&left_text=downloads/month
- :target: https://pepy.tech/project/sty
+   <img src="https://static.pepy.tech/personalized-badge/sty?period=total&units=international_system&left_color=grey&right_color=lightgrey&left_text=downloads" />
+   &nbsp;
+   <img src="https://static.pepy.tech/personalized-badge/sty?period=month&units=international_system&left_color=grey&right_color=lightgrey&left_text=downloads/month" />
 
 ------------
 
