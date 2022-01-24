@@ -60,6 +60,7 @@ is decoupled from color palettes and terminal implementations.
 * Sty allows you to mute/unmute all styles in your codebase.
 * Sty provides high access performance for all styling rules.
 * Sty is fully typed, you should get good editor support for it.
+* Sty does not implicitly mess with globals. E.g.: `colorama` overrides `sys.stdout` which causes a lot of trouble.
 * Sty has no dependencies.
 * Sty follows `semver <https://semver.org/>`__
 * Sty will support Python `>=3.7` for as long as possible.
