@@ -20,7 +20,7 @@
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_demo.png
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_demo.png
    :alt: sty_demo
-   :width: 600px
+   :width: 100%
 
 
 Release 1.0.0 (February 05. 2022)
