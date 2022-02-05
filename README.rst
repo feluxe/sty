@@ -13,7 +13,7 @@
 
 .. image:: https://static.pepy.tech/personalized-badge/sty?period=month&units=international_system&left_color=grey&right_color=lightgrey&left_text=downloads/month
    :target: https://static.pepy.tech/personalized-badge/sty?period=month&units=international_system&left_color=grey&right_color=lightgrey&left_text=downloads/month
-   :align: left
+   :align: center
    :alt: badge-monthly-downloads
 
 
