@@ -1,7 +1,6 @@
 
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo.png
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo.png
-   :align: center
    :alt: sty_logo
 
 |
@@ -20,7 +19,6 @@
 
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_demo.png
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_demo.png
-   :align: center
    :alt: sty_demo
    :width: 600px
 
@@ -112,7 +110,6 @@ The code above will print like this in the terminal:
 
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_example.png
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_example.png
-   :align: left
    :alt: example
    :width: 600px
 
