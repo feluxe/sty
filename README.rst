@@ -16,6 +16,7 @@
    :align: left
    :alt: badge-monthly-downloads
 
+|
 
 ------------
 
@@ -24,6 +25,8 @@
    :align: left
    :alt: sty_demo
    :width: 600px
+
+|
 
 Release 1.0.0 (February 05. 2022)
 ---------------------------------
