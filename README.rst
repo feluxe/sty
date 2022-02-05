@@ -1,7 +1,7 @@
 
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo.png
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo.png
-   :align: left
+   :align: center
    :alt: sty_logo
 
 |
@@ -16,17 +16,15 @@
    :align: left
    :alt: badge-monthly-downloads
 
-|
 
 ------------
 
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_demo.png
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_demo.png
-   :align: left
+   :align: center
    :alt: sty_demo
    :width: 600px
 
-|
 
 Release 1.0.0 (February 05. 2022)
 ---------------------------------
