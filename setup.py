@@ -38,7 +38,7 @@ setup(
     install_requires=[],
     packages=find_packages(where=".", exclude=("tests", "tests.*")),
     package_dir={"sty": "sty"},
-    package_data={},
+    package_data={"sty": ["py.typed"]},
     data_files=[],
     entry_points={"console_scripts": [], "gui_scripts": []},
     tests_require=[],
