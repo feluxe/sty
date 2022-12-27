@@ -8,7 +8,7 @@ name = "pypi"
 [dev-packages]
 toml = "==0.10.2"
 buildlib = "==3.0.2"
-setuptools = "==57.4.0"
+setuptools = "==65.5.1"
 docopt = "==0.6.2"
 doc8 = "==0.9.0"
 black = "==21.7b0"
