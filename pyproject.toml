@@ -1,2 +1,32 @@
-[mewo_project]
+[tool.poetry]
+name = "sty"
 version = "1.0.4"
+description = "String styling for your terminal"
+authors = ["feluxe <felix@meyerwolters.de>"]
+maintainers = ["feluxe <felix@meyerwolters.de>"]
+repository = "https://github.com/feluxe/sty"
+homepage = "https://sty.mewo.dev/"
+documentation = "https://sty.mewo.dev/"
+license = "Apache 2.0"
+readme = "README.rst"
+keywords = ["styling", "color", "colour", "terminal", "ansi", "command", "line", "cli"]
+classifiers = [
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Typing :: Typed",
+  "Topic :: Printing",
+  "Topic :: Terminals",
+  "Topic :: System :: Shells",
+]
+packages = [
+    { include = "sty" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
