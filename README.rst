@@ -54,7 +54,7 @@ is decoupled from color palettes and terminal implementations.
 * Sty is fully typed, you should get good editor support for it.
 * Sty does not implicitly mess with globals. E.g.: `colorama` overrides `sys.stdout` which causes a lot of trouble.
 * Sty has no dependencies.
-* Sty follows `semver <https://semver.org/>`__
+* Sty follows `semver <https://semver.org/>`__.
 * Sty will support Python `>=3.7` for as long as possible.
 
 If you run into compatibility problems with sty, please file an `issue <https://github.com/feluxe/sty/issues>`__!
