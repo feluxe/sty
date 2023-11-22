@@ -1,14 +1,13 @@
 """
 These are the default registers that sty provides out of the box.
 """
-from . import renderfunc
-from .primitive import Register, Style
-from .rendertype import EightbitBg, EightbitFg, RgbBg, RgbFg, Sgr
+from sty import renderfunc
+from sty.primitive import Register, Style
+from sty.rendertype import EightbitBg, EightbitFg, RgbBg, RgbFg, Sgr
 
 
 class EfRegister(Register):
     def __init__(self):
-
         super().__init__()
 
         self.renderfuncs[Sgr] = renderfunc.sgr
@@ -31,7 +30,6 @@ class EfRegister(Register):
 
 class FgRegister(Register):
     def __init__(self):
-
         super().__init__()
 
         self.renderfuncs[Sgr] = renderfunc.sgr
@@ -77,7 +75,6 @@ class FgRegister(Register):
 
 class BgRegister(Register):
     def __init__(self):
-
         super().__init__()
 
         self.renderfuncs[Sgr] = renderfunc.sgr
@@ -123,7 +120,6 @@ class BgRegister(Register):
 
 class RsRegister(Register):
     def __init__(self):
-
         super().__init__()
 
         self.renderfuncs[Sgr] = renderfunc.sgr

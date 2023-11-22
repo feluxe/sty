@@ -1,4 +1,4 @@
-from .primitive import Register
+from sty.primitive import Register
 
 
 def mute(*objects: Register) -> None:

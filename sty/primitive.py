@@ -5,7 +5,7 @@ from collections import namedtuple
 from copy import deepcopy
 from typing import Callable, Dict, Iterable, List, NamedTuple, Tuple, Type, Union
 
-from .rendertype import RenderType
+from sty.rendertype import RenderType
 
 Renderfuncs = Dict[Type[RenderType], Callable]
 
@@ -41,12 +41,10 @@ def _render_rules(
     renderfuncs: Renderfuncs,
     rules: Iterable[StylingRule],
 ) -> Tuple[str, Iterable[StylingRule]]:
-
     rendered: str = ""
     flattened_rules: List[StylingRule] = []
 
     for rule in rules:
-
         if isinstance(rule, RenderType):
             f1: Callable = renderfuncs[type(rule)]
             rendered += f1(*rule.args)
@@ -76,9 +74,7 @@ class Register:
         self.rgb_call = lambda r, g, b: (r, g, b)
 
     def __setattr__(self, name: str, value: Style):
-
         if isinstance(value, Style):
-
             if self.is_muted:
                 rendered_style = Style(*value.rules, value="")
             else:
@@ -102,7 +98,6 @@ class Register:
         len_args = len(args)
 
         if len_args == 1:
-
             # If input is an 8bit color code, run 8bit render function.
             if isinstance(args[0], int):
                 return self.eightbit_call(*args, **kwargs)
@@ -185,9 +180,7 @@ class Register:
         items: Dict[str, str] = {}
 
         for name in dir(self):
-
             if not name.startswith("_") and isinstance(getattr(self, name), str):
-
                 items.update({name: str(getattr(self, name))})
 
         return items
