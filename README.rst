@@ -1,6 +1,6 @@
 
-.. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo.png
-   :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo.png
+.. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo_aliased.svg
+   :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo_aliased.svg
    :alt: sty_logo
 
 |
@@ -23,44 +23,18 @@
    :width: 100%
 
 
-Release 1.0.0 (February 05. 2022)
+Release 1.0.5 (November 22. 2023)
 ---------------------------------
 
-Sty v1.0.0 released 🎉
+Code Changes:
+* Add `py.typed` file for better typing support. Thanks! @Eisfunke
+* Use explicit imports: `from .lib import` is now `from sty.lib import`.
 
-At this point sty can be considered stable.
-
-The "release candidate" phase was given a lot of time and nothing critical was reported for a while.
-All features that are planned for the future are compatible with the existing interfaces.
-
-Nothing changed since `rc.2`.
-
-Release 1.0.0-rc.2 (August 28. 2021)
--------------------------------------
-
-* Fix typo in "reset" register.
-
-`Release Note (Breaking Changes) <https://github.com/feluxe/sty/releases/tag/1.0.0-rc.2>`__
-
-
-Release 1.0.0-rc.1 (January 31. 2021)
--------------------------------------
-
-* Sty is now fully typed.
-* Deprecated methods `.set_style(...)` and `.get_style(...)` were finally removed.
-
-`Release Note <https://github.com/feluxe/sty/releases/tag/1.0.0-rc.1>`__
-
-Release 1.0.0-rc.0 (January 08. 2021)
--------------------------------------
-
-Sty version `1.0.0` is now feature complete.
-
-* I'm going to support Python version `>=3.7` indefinitely.
-* Sty will follow `semver` so there won't be any breaking changes for version `1.x.x` after 1.0.0 was released.
-* This is a pre-release (`rc.0`). I'll release `1.0.0` in a couple of month if no major bugs are reported.
-
-`Release Note (Breaking Changes) <https://github.com/feluxe/sty/releases/tag/1.0.0-rc.0>`__
+Other:
+* Add svg logo. Thanks! @kubinka0505
+* Replace `pipenv` with `poetry`.
+* Remove `make.py` build system.
+* Remove all dev dependencies.
 
 
 Description
