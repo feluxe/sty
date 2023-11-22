@@ -2,6 +2,7 @@
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo_aliased.svg
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo_aliased.svg
    :alt: sty_logo
+   :width: 30%
 
 |
 
@@ -27,10 +28,12 @@ Release 1.0.5 (November 22. 2023)
 ---------------------------------
 
 Code Changes:
+
 * Add `py.typed` file for better typing support. Thanks! @Eisfunke
 * Use explicit imports: `from .lib import` is now `from sty.lib import`.
 
 Other:
+
 * Add svg logo. Thanks! @kubinka0505
 * Replace `pipenv` with `poetry`.
 * Remove `make.py` build system.
