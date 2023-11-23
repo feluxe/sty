@@ -3,6 +3,7 @@
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_logo_aliased.svg
    :alt: sty_logo
    :width: 30%
+   :class: intro-logo
 
 |
 
