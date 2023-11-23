@@ -31,6 +31,7 @@ Code Changes:
 
 * Add `py.typed` file for better typing support. Thanks! @Eisfunke
 * Use explicit imports: `from .lib import` is now `from sty.lib import`.
+* More and better doc-strings. `help(x)` should be much more useful now.
 
 Other:
 
