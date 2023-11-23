@@ -7,6 +7,18 @@ from sty.rendertype import EightbitBg, EightbitFg, RgbBg, RgbFg, Sgr
 
 
 class EfRegister(Register):
+    """
+    The default effect register.
+
+    Instances from this class can be used to create effects like 'bold', 'dim',
+    'italic', 'blink', etc.
+
+    For example:
+
+        print(f"{ef.bold}Bold Text{ef.rs}")
+        print(f"{ef.italic}Italic Text{ef.rs}")
+    """
+
     def __init__(self):
         super().__init__()
 
@@ -29,6 +41,17 @@ class EfRegister(Register):
 
 
 class FgRegister(Register):
+    """
+    The default 'foreground register'.
+
+    Instances from this class can be used to create colored text.
+
+    For example:
+
+        print(f"{fg.red}Red Text{fg.rs}")
+        print(f"{fg.green}Green Text{fg.rs}")
+    """
+
     def __init__(self):
         super().__init__()
 
@@ -74,6 +97,17 @@ class FgRegister(Register):
 
 
 class BgRegister(Register):
+    """
+    The default 'background register'.
+
+    Instances from this class can be used to create text with colored backgrounds.
+
+    For example:
+
+        print(f"{bg.red}Text With Red Background{bg.rs}")
+        print(f"{bg.green}Text With Green Background{bg.rs}")
+    """
+
     def __init__(self):
         super().__init__()
 
@@ -119,6 +153,19 @@ class BgRegister(Register):
 
 
 class RsRegister(Register):
+    """
+    The default 'reset register'.
+
+    Instances from this class can be used to reset single effects, foregrounds
+    and backgrounds.
+
+    For example:
+
+        print(f"{ef.italic}Italic Text{rs.italic}")
+        print(f"{ef.underl}Underlined Text{rs.underl}")
+        print(f"{fg.red}{ef.italic}Red Italic Text{rs.all}")
+    """
+
     def __init__(self):
         super().__init__()
 

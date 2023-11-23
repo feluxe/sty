@@ -26,7 +26,6 @@ class Style(str):
         isinstance(fg.orange, str) # True
 
         str(fg.orange) # '\x1b[38;2;1;5;10m\x1b[1m' (The ASNI sequence for orange and bold)
-
     """
 
     rules: Iterable[StylingRule]

@@ -1,3 +1,7 @@
+"""
+Utility funcitons go here.
+This module is private. You shouldn't import it when using sty.
+"""
 from sty.primitive import Register
 
 

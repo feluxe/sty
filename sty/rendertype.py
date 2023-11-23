@@ -1,5 +1,7 @@
 """
 This module contains the default render types.
+
+These can be used to create register classes and custom styling rules.
 """
 
 
