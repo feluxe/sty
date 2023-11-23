@@ -84,12 +84,34 @@ Code Example
 
     print(foo, bar, baz, qux, qui, buf, sep='\n')
 
+
 The code above will print like this in the terminal:
 
 .. image:: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_example.png
    :target: https://raw.githubusercontent.com/feluxe/sty/master/assets/README_example.png
    :alt: example
    :width: 600px
+
+
+You can also create your own registers.
+
+.. code:: python
+
+    # Create custom register:
+
+    from sty import FgRegister, RgbFg, Sgr
+
+    class MyFgRegister(FgRegister):
+
+        def __init__(self):
+            super().__init__()
+
+            self.purple = Style(Sgr(35))
+            self.blue = Style(Sgr(34))
+            self.orange = Style(RgbFg(255, 128, 0))
+            # ...
+
+     fg = MyFgRegister()
 
 
 Documentation
