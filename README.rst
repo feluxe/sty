@@ -93,11 +93,11 @@ The code above will print like this in the terminal:
    :width: 600px
 
 
-You can also create your own registers.
+You can use the `Register` class or the default registers `FgRegister`, `BgRegister`, `EfRegister` and `RsRegister` to create your own registers:
 
 .. code:: python
 
-    # Create custom register:
+    # Extend the default FgRegister
 
     from sty import FgRegister, RgbFg, Sgr
 
