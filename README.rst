@@ -97,9 +97,9 @@ You can use the `Register` class or the default registers `FgRegister`, `BgRegis
 
 .. code:: python
 
-    # Extend the default FgRegister
+    # Extending the default FgRegister
 
-    from sty import FgRegister, RgbFg, Sgr
+    from sty import FgRegister, Style, RgbFg, Sgr
 
     class MyFgRegister(FgRegister):
 
