@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sty"
-version = "1.0.5"
+version = "1.0.6"
 description = "String styling for your terminal"
 authors = ["feluxe <felix@meyerwolters.de>"]
 maintainers = ["feluxe <felix@meyerwolters.de>"]
