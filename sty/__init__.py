@@ -32,7 +32,20 @@ Example: Create your own register:
 
 For more info see the docs.
 """
+
+# NOTE: These are PEP-484 compatible exports using "*" and "... as ...".
 from sty.lib import *
-from sty.primitive import Register, Style
-from sty.register import BgRegister, EfRegister, FgRegister, RsRegister, bg, ef, fg, rs
+
+from sty.primitive import Register as Register
+from sty.primitive import Style as Style
+
+from sty.register import BgRegister as BgRegister
+from sty.register import EfRegister as EfRegister
+from sty.register import FgRegister as FgRegister
+from sty.register import RsRegister as RsRegister
+from sty.register import bg as bg
+from sty.register import ef as ef
+from sty.register import fg as fg
+from sty.register import rs as rs
+
 from sty.rendertype import *
