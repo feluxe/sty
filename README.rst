@@ -25,6 +25,14 @@
    :width: 100%
 
 
+Release 1.0.6 (November 27. 2023)
+---------------------------------
+
+Code Changes:
+
+* Use PEP-484 compatible exports to satisfy static type checkers.
+
+
 Release 1.0.5 (November 22. 2023)
 ---------------------------------
 
